@@ -16,6 +16,8 @@ return new class extends Migration
             $table->comment('the design');
             $table->foreignId('scope_id');
             $table->foreignId('type_id');
+            $table->foreignId('prefernce_id');
+            $table->foreignId('prefernce_value_id')->nullable();
             $table->boolean('is_enable_post')->default(0);
             $table->unsignedBigInteger('likes');
             $table->double('price')->unsigned();
