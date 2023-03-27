@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\Sluggable\HasSlug;
@@ -18,7 +19,7 @@ class Customer extends Model
         'last_name',
         'is_active',
         'avatar',
-        'country',
+        'country_id',
         'company',
         'phone_number',
         'email',
@@ -51,6 +52,11 @@ class Customer extends Model
     public function points(): MorphMany
     {
         return $this->morphMany(Point::class, 'creatable');
+    }
+
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(country::class);
     }
     /**
      * Get the options for generating the slug.
