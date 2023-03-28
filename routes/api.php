@@ -1,6 +1,6 @@
 <?php
 
-use app\Action\Authentication\CreateCustomerTokenAction;
+
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
 use Illuminate\Http\Request;

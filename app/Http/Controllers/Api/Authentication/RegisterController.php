@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Authentication;
 
 use app\Action\Authentication\CreateCustomerTokenAction;
+use App\Actions\Authentication\CreateTokenAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Customer;
@@ -36,7 +37,8 @@ class RegisterController extends Controller
         $customer->email             =     $request->email;
         $customer->password          =     Hash::make($request->password);
         $customer->save();
-        $customer = (new CreateCustomerTokenAction())($customer);
+        $customer = (new CreateTokenAction())($customer);
+        
         return sendSuccessResponse();
     }
 }

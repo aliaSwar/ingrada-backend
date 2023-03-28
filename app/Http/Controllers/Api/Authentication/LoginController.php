@@ -13,14 +13,14 @@ class LoginController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(LoginRequest $request): JsonResponse
+    public function __invoke(LoginRequest $request)/* : JsonResponse */
     {
         Auth::shouldUse(config('auth.guards.customer'));
-        //return Auth::attempt($request->validated());
 
-        if (/* Auth::attempt($request->validated()) */1) {
+
+        if (Auth::attempt($request->all())) {
             $customer = Auth::guard('customer')->user();
-            $customer = (new CreateCustomerTokenAction())($customer);
+            $customer = (new CreateTokenAction())($customer);
         }
         return sendSuccessResponse();
     }
