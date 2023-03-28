@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\API\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+
+class {{ class }} extends Controller
+{
+    /**
+     * Handle the incoming request.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function __invoke(Request $request): JsonResponse
+    {
+        return sendSuccessResponse(__('messages.get_data'));
+    }
+}
+
