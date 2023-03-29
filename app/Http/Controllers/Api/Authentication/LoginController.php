@@ -2,26 +2,29 @@
 
 namespace App\Http\Controllers\Api\Authentication;
 
-use app\Action\Authentication\CreateCustomerTokenAction;
+use App\Actions\Authentication\CreateTokenAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Http\JsonResponse;
+use App\Http\Resources\AuthenticationResource;
 use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(LoginRequest $request)/* : JsonResponse */
+    public function __invoke(LoginRequest $request)
     {
-        Auth::shouldUse(config('auth.guards.customer'));
 
-
-        if (Auth::attempt($request->all())) {
-            $customer = Auth::guard('customer')->user();
+        if (Auth::guard('web')->attempt($request->validated())) {
+            $customer = $request->user();
             $customer = (new CreateTokenAction())($customer);
+
+            return sendSuccessResponse(
+                __('auth.success_login'),
+                AuthenticationResource::make($customer)
+            );
         }
-        return sendSuccessResponse();
     }
 }
