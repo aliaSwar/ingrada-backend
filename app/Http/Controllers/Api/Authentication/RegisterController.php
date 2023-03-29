@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Api\Authentication;
 
-use app\Action\Authentication\CreateCustomerTokenAction;
 use App\Actions\Authentication\CreateTokenAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\AuthenticationResource;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,7 +18,6 @@ class RegisterController extends Controller
      */
     public function __invoke(RegisterRequest $request): JsonResponse
     {
-
         Auth::shouldUse(config('auth.guards.customer'));
         $customer = new Customer();
 
@@ -38,7 +36,10 @@ class RegisterController extends Controller
         $customer->password          =     Hash::make($request->password);
         $customer->save();
         $customer = (new CreateTokenAction())($customer);
-        
-        return sendSuccessResponse();
+
+        return sendSuccessResponse(
+            __('auth.success_register'), //from lang folder when merge with develop branch
+            AuthenticationResource::make($customer)
+        );
     }
 }
