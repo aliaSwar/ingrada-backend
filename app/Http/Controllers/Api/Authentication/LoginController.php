@@ -6,6 +6,7 @@ use App\Actions\Authentication\CreateTokenAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Resources\AuthenticationResource;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -14,10 +15,11 @@ class LoginController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(LoginRequest $request)
+    public function __invoke(LoginRequest $request): JsonResponse
     {
+        Auth::shouldUse(config('auth.customer_guard_name'));
 
-        if (Auth::guard('web')->attempt($request->validated())) {
+        if (Auth::attempt($request->validated())) {
             $customer = $request->user();
             $customer = (new CreateTokenAction())($customer);
 

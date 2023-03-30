@@ -38,7 +38,17 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'customer-login' => [
+            'driver' => 'session',
             'provider' => 'customers',
+            'hash'   => false
+        ],
+        'customer-api' => [
+            'driver' => 'sanctum',
+            'provider' => 'customers',
+            'hash'   => false
         ],
 
     ],
@@ -122,5 +132,6 @@ return [
     */
 
     'password_timeout' => 10800,
+    'customer_guard_name' => 'customer-login'
 
 ];
