@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Authentication;
 
 use App\Actions\Authentication\CreateTokenAction;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Resources\AuthenticationResource;
 use Illuminate\Http\JsonResponse;
