@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('fullname');
             $table->string('avatar')->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->integer('number_tasks')->unsigned()->nullable();
             $table->foreignId('category_id')->nullable(); //category users['creative','fast','extutable']
             $table->string('email')->unique();
