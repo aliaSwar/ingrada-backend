@@ -40,6 +40,17 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'customer-login' => [
+            'driver' => 'session',
+            'provider' => 'customers',
+            'hash'   => false
+        ],
+        'customer-api' => [
+            'driver' => 'sanctum',
+            'provider' => 'customers',
+            'hash'   => false
+        ],
+
     ],
 
     /*
@@ -63,6 +74,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Customer::class,
         ],
 
         // 'users' => [
@@ -97,6 +112,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'customers' => [
+            'provider' => 'customers',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
     ],
 
     /*
@@ -111,5 +132,6 @@ return [
     */
 
     'password_timeout' => 10800,
+    'customer_guard_name' => 'customer-login'
 
 ];

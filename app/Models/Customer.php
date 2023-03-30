@@ -2,23 +2,30 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Customer extends Model
+class Customer extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, Notifiable, HasApiTokens;
+    protected $guards = 'customer';
+
     protected $fillable = [
         'name',
         'first_name',
         'last_name',
         'is_active',
         'avatar',
-        'country',
+        'country_id',
         'company',
         'phone_number',
         'email',
@@ -51,6 +58,11 @@ class Customer extends Model
     public function points(): MorphMany
     {
         return $this->morphMany(Point::class, 'creatable');
+    }
+
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(country::class);
     }
     /**
      * Get the options for generating the slug.
