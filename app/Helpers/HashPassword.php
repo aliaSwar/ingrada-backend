@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Returns a success HTTP JSON response.
+ * Returns a hash Password string.
  *
  * @param string|null $password
  * @return string
