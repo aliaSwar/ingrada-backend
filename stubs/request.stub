@@ -32,7 +32,7 @@ class {{ class }} extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
-            sendErrorResponse($validator->errors()->first(), null, 422)
+            sendFailedResponse($validator->errors()->first(), null, 422)
         );
     }
 }
