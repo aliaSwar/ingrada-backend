@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Api\Authentication;
 
 use App\Actions\Authentication\CreateTokenAction;
 use App\Http\Controllers\Api\Controller;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\AuthCustomer\RegisterRequest;
 use App\Http\Resources\AuthenticationResource;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
