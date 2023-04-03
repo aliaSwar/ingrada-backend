@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\StoreFilePathAction;
 use App\Http\Controllers\Api\Controller;
+use App\Http\Requests\AuthUser\RegisteredUserRequest;
 use App\Models\User;
+use App\Notifications\UserPublish;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Arr;
 use Illuminate\View\View;
+
 
 class RegisteredUserController extends Controller
 {
@@ -28,23 +29,19 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(RegisteredUserRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $data = $request->validated();
+        $data = Arr::add($data, 'avatar', uploadFile($request->path, 'users'));
 
-        event(new Registered($user));
+        $user = new User($data);
 
-        Auth::login($user);
+        if (!$user) {
+            return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
+        }
+
+        Notification::send($user, new UserPublish($user));
 
         return redirect(RouteServiceProvider::HOME);
     }

@@ -18,6 +18,7 @@ class Customer extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, HasSlug, Notifiable, HasApiTokens;
     protected $guards = 'customer';
+    protected $appends = ['fullname'];
 
     protected $fillable = [
         'name',
@@ -82,5 +83,9 @@ class Customer extends Authenticatable implements MustVerifyEmail
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

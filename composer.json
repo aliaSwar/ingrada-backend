@@ -32,7 +32,9 @@
         },
         "files": [
             "app/Helpers/ApiResponse.php",
+            "app/Helpers/UploadFile.php",
             "app/Helpers/HashPassword.php"
+
         ]
     },
     "autoload-dev": {

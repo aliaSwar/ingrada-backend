@@ -8,9 +8,7 @@ use App\Http\Requests\AuthCustomer\RegisterRequest;
 use App\Http\Resources\AuthenticationResource;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -20,6 +18,7 @@ class RegisterController extends Controller
     public function __invoke(RegisterRequest $request): JsonResponse
     {
         Auth::shouldUse(config('auth.guards.customer'));
+
         $customer = new Customer();
 
         if ($request->hasFile('avatar')) {
@@ -34,7 +33,7 @@ class RegisterController extends Controller
         $customer->company           =     $request->company;
         $customer->phone_number      =     $request->phone_number;
         $customer->email             =     $request->email;
-        $customer->password          =     Hash::make($request->password);
+        $customer->password          =    defaultHashedPassword($request->password);
         $customer->save();
         $customer = (new CreateTokenAction())($customer);
 
