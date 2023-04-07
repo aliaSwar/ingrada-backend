@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Api\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthUser\RegisteredUserRequest;
 use App\Models\User;
 use App\Notifications\UserPublish;

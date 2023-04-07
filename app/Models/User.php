@@ -33,8 +33,8 @@ class User extends Authenticatable
         'fullname',
         'avatar',
         'number_tasks',
-        'category_id'
-
+        'category_id',
+        'is_active'
     ];
 
     /**

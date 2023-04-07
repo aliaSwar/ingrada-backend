@@ -16,9 +16,15 @@
 
 <body>
     <h3>hello {{ $user->fullname }} </h3>
-    <a href="{{ route('password.request') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-        in</a>
-
+    <a href="{{ route('password.request') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Change
+        Password
+    </a>
+    <a href="{{ route('active.account') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">active
+        Account
+    </a>
 </body>
+
+
+
 
 </html>
