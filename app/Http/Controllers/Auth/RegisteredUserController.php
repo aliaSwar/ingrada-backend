@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Actions\StoreFilePathAction;
 use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\AuthUser\RegisteredUserRequest;
 use App\Models\User;
@@ -36,7 +35,7 @@ class RegisteredUserController extends Controller
         $data = Arr::add($data, 'avatar', uploadFile($request->path, 'users'));
 
         $user = new User($data);
-
+        $user->save();
         if (!$user) {
             return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
         }
