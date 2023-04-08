@@ -26,14 +26,14 @@ class RegisterController extends Controller
             $path = $avatar->store('customer-images', 'public');
             $customer->avatar = $path;
         }
-        $customer->name              =     $request->name;
-        $customer->first_name        =     $request->first_name;
-        $customer->last_name         =     $request->last_name;
-        $customer->country_id        =     $request->country_id;
-        $customer->company           =     $request->company;
-        $customer->phone_number      =     $request->phone_number;
-        $customer->email             =     $request->email;
-        $customer->password          =    defaultHashedPassword($request->password);
+        $customer->name = $request->name;
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->country_id = $request->country_id;
+        $customer->company = $request->company;
+        $customer->phone_number = $request->phone_number;
+        $customer->email = $request->email;
+        $customer->password = defaultHashedPassword($request->password);
         $customer->save();
         $customer = (new CreateTokenAction())($customer);
 

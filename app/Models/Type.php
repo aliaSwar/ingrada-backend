@@ -25,10 +25,12 @@ class Type extends Model
     {
         return 'slug';
     }
+
     public function items(): HasMany
     {
         return $this->hasMany(Item::class);
     }
+
     public function prefernces(): HasMany
     {
         return $this->hasMany(Prefernce::class);

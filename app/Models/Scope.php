@@ -26,14 +26,17 @@ class Scope extends Model
     {
         return 'slug';
     }
+
     public function items(): HasMany
     {
         return $this->hasMany(Item::class);
     }
+
     public function colors(): BelongsToMany
     {
         return $this->belongsToMany(Color::class);
     }
+
     public function fonts(): BelongsToMany
     {
         return $this->belongsToMany(Font::class);

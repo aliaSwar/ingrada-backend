@@ -19,30 +19,37 @@ class Item extends Model
     {
         return $this->hasOne(Order::class);
     }
+
     public function scope(): BelongsTo
     {
         return $this->belongsTo(Scope::class);
     }
+
     public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }
+
     public function prefernce(): BelongsTo
     {
         return $this->belongsTo(Prefernce::class);
     }
+
     public function preferncevalue(): BelongsTo
     {
         return $this->belongsTo(Preferncevalue::class);
     }
+
     public function colors(): BelongsToMany
     {
         return $this->belongsToMany(Color::class);
     }
+
     public function fonts(): BelongsToMany
     {
         return $this->belongsToMany(Font::class);
     }
+
     public function imageitems(): HasMany
     {
         return $this->hasMany(ImageItem::class);

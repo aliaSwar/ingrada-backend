@@ -25,10 +25,12 @@ class Color extends Model
     {
         return 'slug';
     }
+
     public function items(): BelongsToMany
     {
         return $this->belongsToMany(Item::class);
     }
+
     public function scopes(): BelongsToMany
     {
         return $this->belongsToMany(Scope::class);

@@ -8,10 +8,9 @@ use App\Models\User;
 use App\Notifications\UserPublish;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
-
 
 class RegisteredUserController extends Controller
 {
@@ -36,7 +35,7 @@ class RegisteredUserController extends Controller
 
         $user = new User($data);
         $user->save();
-        if (!$user) {
+        if (! $user) {
             return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
         }
 

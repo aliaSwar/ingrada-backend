@@ -43,12 +43,12 @@ return [
         'customer-login' => [
             'driver' => 'session',
             'provider' => 'customers',
-            'hash'   => false
+            'hash' => false,
         ],
         'customer-api' => [
             'driver' => 'sanctum',
             'provider' => 'customers',
-            'hash'   => false
+            'hash' => false,
         ],
 
     ],
@@ -132,6 +132,6 @@ return [
     */
 
     'password_timeout' => 10800,
-    'customer_guard_name' => 'customer-login'
+    'customer_guard_name' => 'customer-login',
 
 ];

@@ -9,7 +9,6 @@ use App\Http\Resources\AuthenticationResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
-
 class LoginController extends Controller
 {
     /**

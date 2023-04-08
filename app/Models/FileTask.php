@@ -12,7 +12,6 @@ class FileTask extends Model
 
     protected $fillable = ['path'];
 
-
     public function task(): BelongsTo
     {
         return $this->belongsTo(Task::class);

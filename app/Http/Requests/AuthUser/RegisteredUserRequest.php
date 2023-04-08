@@ -25,16 +25,15 @@ class RegisteredUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username'              =>     ['required', 'unique:users,username', 'max:255', 'regex:/\w*$/', 'string'],
-            'fullname'              =>     ['required', 'string', 'max:255'],
-            'number_tasks'          =>     ['nullable', 'numeric'],
-            'category_id'           =>     ['nullable', 'numeric', 'exists:tablecategories,id'],
-            'path'                  =>     ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,bmp,ico'],
-            'email'                 =>     ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'password'              =>     ['required', 'confirmed', Rules\Password::defaults()],
+            'username' => ['required', 'unique:users,username', 'max:255', 'regex:/\w*$/', 'string'],
+            'fullname' => ['required', 'string', 'max:255'],
+            'number_tasks' => ['nullable', 'numeric'],
+            'category_id' => ['nullable', 'numeric', 'exists:tablecategories,id'],
+            'path' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,bmp,ico'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ];
     }
-
 
     protected function failedValidation(Validator $validator)
     {

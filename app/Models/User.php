@@ -12,9 +12,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -35,7 +35,7 @@ class User extends Authenticatable
         'avatar',
         'number_tasks',
         'category_id',
-        'is_active'
+        'is_active',
     ];
 
     /**
@@ -56,6 +56,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     /**
      * Get the options for generating the slug.
      */
@@ -68,8 +69,6 @@ class User extends Authenticatable
 
     /**
      * Get the route key for the model.
-     *
-     * @return string
      */
     public function getRouteKeyName(): string
     {
@@ -90,22 +89,27 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Order::class);
     }
+
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
     }
+
     public function points(): MorphMany
     {
         return $this->morphMany(Point::class, 'creatable');
     }
+
     public function historypoints(): HasMany
     {
         return $this->hasMany(HistoryPoint::class);
     }
+
     public function notifications(): BelongsToMany
     {
         return $this->belongsToMany(Notification::class);
     }
+
     public function days(): BelongsToMany
     {
         return $this->belongsToMany(Day::class);

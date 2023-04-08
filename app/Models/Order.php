@@ -10,9 +10,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Order extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'customers_id', 'item_id', 'description', 'is_idea', 'is_accept', 'type_order', 'primary_price', 'final_price', 'type',
-        'scope', 'colors', 'fonts', 'file', 'limit_date', 'status', 'notes'
+        'scope', 'colors', 'fonts', 'file', 'limit_date', 'status', 'notes',
     ];
 
     public function customer(): BelongsTo
@@ -24,6 +25,7 @@ class Order extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
     public function item(): BelongsTo
     {
         return $this->belongsTo(Item::class);

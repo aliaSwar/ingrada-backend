@@ -8,16 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Customer extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, HasSlug, Notifiable, HasApiTokens;
+
     protected $guards = 'customer';
+
     protected $appends = ['fullname'];
 
     protected $fillable = [
@@ -30,7 +32,7 @@ class Customer extends Authenticatable implements MustVerifyEmail
         'company',
         'phone_number',
         'email',
-        'password'
+        'password',
     ];
 
     /**
@@ -42,6 +44,7 @@ class Customer extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
+
     /**
      * The attributes that should be cast.
      *
@@ -65,6 +68,7 @@ class Customer extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(country::class);
     }
+
     /**
      * Get the options for generating the slug.
      */
@@ -77,15 +81,14 @@ class Customer extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the route key for the model.
-     *
-     * @return string
      */
     public function getRouteKeyName(): string
     {
         return 'slug';
     }
+
     public function getFullNameAttribute()
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name.' '.$this->last_name;
     }
 }

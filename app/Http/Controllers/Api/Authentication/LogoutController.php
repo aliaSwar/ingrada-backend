@@ -16,6 +16,7 @@ class LogoutController extends Controller
     {
         // Auth::shouldUse(config('auth.customer_guard_name'));
         $request->user()->tokens()->delete();
+
         return sendSuccessResponse(
             __('auth.success_logout ')
         );
