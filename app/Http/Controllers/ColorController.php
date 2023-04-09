@@ -28,6 +28,7 @@ class ColorController extends Controller
     public function store(StoreColorRequest $request)
     {
         $color=new Color($request->validated());
+        
         return $color;
     }
 
