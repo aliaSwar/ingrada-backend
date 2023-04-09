@@ -2,7 +2,9 @@
     "preset": "laravel",
     "rules": {
         "simplified_null_return": true,
+        "single_quote": true,
         "braces": false,
+        "function_declaration": true,
         "new_with_braces": {
             "anonymous_class": false,
             "named_class": false
