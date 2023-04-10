@@ -35,7 +35,8 @@ class RegisteredUserController extends Controller
 
         $user = new User($data);
         $user->save();
-        if (! $user) {
+        //$user->assignRole(/* $request->role */'user');
+        if (!$user) {
             return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
         }
 

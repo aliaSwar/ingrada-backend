@@ -30,8 +30,9 @@ class RegisteredUserRequest extends FormRequest
             'number_tasks' => ['nullable', 'numeric'],
             'category_id' => ['nullable', 'numeric', 'exists:tablecategories,id'],
             'path' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,bmp,ico'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required',  'max:255', 'email', 'unique:users,email'],
+            'password' => ['required', /* 'confirmed', */ Rules\Password::defaults()],
+            'role'      => ['nullable', 'string', 'max:255', 'exists:roles,name']
         ];
     }
 
