@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'ingrada'),
+    'name' => env('APP_NAME', 'Engrada-Creative'),
 
     /*
     |--------------------------------------------------------------------------
