@@ -25,14 +25,13 @@ class StoreItemRequest extends FormRequest
     {
         return [
 
-            'the design'         =>      ['required','string', 'min:10', 'max:100'],
-            'scope_id'           =>      ['required','numeric', 'exists:scopes,id'],
-            'type_id'            =>      ['required','numeric', 'exists:types,id'],
-            'prefernce_id'       =>      ['required','numeric', 'exists:prefernces,id'],
-            'prefernce_value_id' =>      ['nullable','numeric', 'exists:prefernce_values,id'],
-            'is_enable_post'     =>      ['required','numeric'],
-            'likes'              =>      ['required','numeric'],
-            'price'              =>      ['required','numeric'],
+            'scope_id'           =>      ['required', 'numeric', 'exists:scopes,id'],
+            'type_id'            =>      ['required', 'numeric', 'exists:types,id'],
+            'prefernce_id'       =>      ['required', 'numeric', 'exists:prefernces,id'],
+            'prefernce_value_id' =>      ['nullable', 'numeric', 'exists:prefernce_values,id'],
+            'is_enable_post'     =>      ['required', 'numeric'],
+            'likes'              =>      ['required', 'numeric'],
+            'price'              =>      ['required', 'numeric'],
 
         ];
     }
@@ -41,7 +40,7 @@ class StoreItemRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
-            sendErrorResponse($validator->errors()->first(), null, 422)
+            sendFailedResponse($validator->errors()->first(), null, 422)
         );
     }
 }

@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\Controller;
+use App\Http\Requests\StoreColorRequest;
+use App\Models\Color;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         return view('Color.index', ['colors' => Color::all()]);
     }
@@ -17,9 +21,9 @@ class ColorController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('colors.create');
     }
 
     /**
@@ -27,7 +31,7 @@ class ColorController extends Controller
      */
     public function store(StoreColorRequest $request)
     {
-        $color=new Color($request->validated());
+        $color = new Color($request->validated());
 
         return $color;
     }
