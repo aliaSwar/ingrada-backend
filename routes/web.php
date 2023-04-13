@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ColorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::resource('colors', ColorController::class);
-
-require __DIR__.'/auth.php';
-
+Route::resource('fonts', FontController::class);
+Route::resource('items', ItemController::class);
+Route::resource('Prefernces', PrefernceController::class);
+Route::resource('PrefernceValues', PrefernceValueController::class);
+Route::resource('Scopes', ScopeController::class);
+Route::resource('Types', TypeController::class);

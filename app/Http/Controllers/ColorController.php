@@ -11,7 +11,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        return view('Color.index', ['colors' => Color::all()]);
     }
 
     /**
@@ -28,7 +28,7 @@ class ColorController extends Controller
     public function store(StoreColorRequest $request)
     {
         $color=new Color($request->validated());
-        
+
         return $color;
     }
 

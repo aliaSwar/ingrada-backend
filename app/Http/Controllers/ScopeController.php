@@ -13,7 +13,7 @@ class ScopeController extends Controller
      */
     public function index()
     {
-        //
+        return view('Scope.index', ['Scopes' => Scope::all()]);
     }
 
     /**
@@ -30,6 +30,7 @@ class ScopeController extends Controller
     public function store(Request $request)
     {
         $scope=new Scope($request->validated());
+        $scope->save();
         return $scope;
     }
 
@@ -44,9 +45,9 @@ class ScopeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Scope $scope)
     {
-        //
+        return view('Scope.edit', ['Scope' => $scope ]);
     }
 
     /**
@@ -60,8 +61,10 @@ class ScopeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Scope $scope)
     {
-        //
+        $scope->delete();
+
+        return redirect()->route('Scope.index');
     }
 }

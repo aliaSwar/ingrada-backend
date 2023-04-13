@@ -11,7 +11,7 @@ class PrefernceValueController extends Controller
      */
     public function index()
     {
-        //
+        return view('PrefernceValue.index', ['PrefernceValues' => PrefernceValue::all()]);
     }
 
     /**
@@ -28,6 +28,7 @@ class PrefernceValueController extends Controller
     public function store(Request $request)
     {
         $prefernceValue=new  PrefernceValue($request->validated());
+        $prefernceValue->save();
         return $prefernceValue;
 
     }
@@ -43,9 +44,9 @@ class PrefernceValueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(PrefernceValue $PrefernceValue)
     {
-        //
+        return view('PrefernceValue.edit', ['PrefernceValue' => $PrefernceValue ]);
     }
 
     /**
@@ -59,8 +60,10 @@ class PrefernceValueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(PrefernceValue $prefernceValue)
     {
-        //
+        $prefernceValue->delete();
+
+        return redirect()->route('PrefernceValue.index');
     }
 }

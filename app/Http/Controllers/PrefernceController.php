@@ -12,7 +12,7 @@ class PrefernceController extends Controller
      */
     public function index()
     {
-        //
+        return view('Prefernce.index', ['Prefernces' => Prefernce::all()]);
     }
 
     /**
@@ -29,6 +29,7 @@ class PrefernceController extends Controller
     public function store(Request $request)
     {
         $prefernce=new Prefernce($request->validated());
+        $prefernce->save();
         return $prefernce;
 
     }
@@ -44,9 +45,9 @@ class PrefernceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Prefernce  $prefernce )
     {
-        //
+        return view('Prefernce.edit', ['prefernce' => $prefernce ]);
     }
 
     /**
@@ -60,8 +61,10 @@ class PrefernceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Prefernce $prefernce)
     {
-        //
+        $prefernce->delete();
+
+        return redirect()->route('Prefernce.index');
     }
 }

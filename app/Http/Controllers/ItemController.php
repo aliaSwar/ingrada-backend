@@ -30,6 +30,7 @@ class ItemController extends Controller
     public function store(StoreItemRequest $request)
     {
         $item=new Item($request->validated());
+        $item->save();
         return $item;
     }
 
@@ -44,9 +45,9 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Item $item)
     {
-        //
+        return view('Item.edit', ['Item' => $item]);
     }
 
     /**
@@ -60,8 +61,10 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Item $item)
     {
-        //
+        $item->delete();
+
+        return redirect()->route('Item.index');
     }
 }

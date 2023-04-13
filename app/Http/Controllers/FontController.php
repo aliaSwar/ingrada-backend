@@ -13,7 +13,7 @@ class FontController extends Controller
      */
     public function index()
     {
-        //
+        return view('Font.index', ['fonts' => Font::all()]);
     }
 
     /**
@@ -30,6 +30,7 @@ class FontController extends Controller
     public function store(StoreFontRequest  $request)
     {
         $font=new Font($request->validated());
+        $font->save();
         return $font;
     }
 
@@ -44,9 +45,9 @@ class FontController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Font $font)
     {
-        //
+        return view('Font.edit', ['Font' => $font]);
     }
 
     /**
@@ -60,8 +61,10 @@ class FontController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Font $font)
     {
-        //
+        $font->delete();
+
+        return redirect()->route('Font.index');
     }
 }
