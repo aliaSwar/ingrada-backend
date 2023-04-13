@@ -28,5 +28,6 @@ class LoginController extends Controller
                 AuthenticationResource::make($customer)
             );
         }
+        
     }
 }
