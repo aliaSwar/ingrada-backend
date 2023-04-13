@@ -21,39 +21,25 @@
     <!-- Custom CSS -->
     <link href="dist/css/style.min.css"
         rel="stylesheet">
-    {{ $styles ?? '' }}
 
+    {{ $styles ?? '' }}
+    <link href="{{ asset( 'assets/auth/login.css')  }}"
+        rel="stylesheet">
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative">
-            <div class="auth-box row">
 
 
-                <x-auth-image />
-                <!--
+    <!--
                     Page Content
                 -->
 
-                {{ $slot }}
+    {{ $slot }}
 
-                {{ $scripts ?? '' }}
-
-
-            </div>
+    {{ $scripts ?? '' }}
 
 
-        </div>
 
-        <!-- ============================================================== -->
-        <!-- Login box.scss -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- All Required js -->
-    <!-
-- ============================================================== -->
     <script src="assets/libs/jquery/dist/jquery.min.js "></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
