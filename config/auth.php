@@ -40,7 +40,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-<<<<<<< HEAD
+
         'customer-login' => [
             'driver' => 'session',
             'provider' => 'customers',
@@ -52,8 +52,6 @@ return [
             'hash' => false,
         ],
 
-=======
->>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
     ],
 
     /*
@@ -125,9 +123,7 @@ return [
     */
 
     'password_timeout' => 10800,
-<<<<<<< HEAD
+
     'customer_guard_name' => 'customer-login',
-=======
->>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
 
 ];

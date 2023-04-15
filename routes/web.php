@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+<<<<<<< develop
 Route::resource('setting/roles',RoleController::class);
+=======
+Route::resource('setting/roles', RoleController::class);
+>>>>>>> Resolve Conflict
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+<<<<<<< develop
 Route::resource('colors', ColorController::class);
 Route::resource('fonts', FontController::class);
 Route::resource('items', ItemController::class);
@@ -32,3 +37,7 @@ Route::resource('Prefernces', PrefernceController::class);
 Route::resource('PrefernceValues', PrefernceValueController::class);
 Route::resource('Scopes', ScopeController::class);
 Route::resource('Types', TypeController::class);
+=======
+
+require __DIR__ . '/auth.php';
+>>>>>>> Resolve Conflict

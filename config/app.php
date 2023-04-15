@@ -15,11 +15,8 @@ return [
     |
     */
 
-<<<<<<< HEAD
+
     'name' => env('APP_NAME', 'Engrada-Creative'),
-=======
-    'name' => env('APP_NAME', 'Laravel'),
->>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
 
     /*
     |--------------------------------------------------------------------------
@@ -185,10 +182,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-<<<<<<< HEAD
+
         Spatie\Permission\PermissionServiceProvider::class,
-=======
->>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
 
         /*
          * Package Service Providers...
