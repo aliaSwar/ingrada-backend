@@ -1,11 +1,9 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
-=======
->>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

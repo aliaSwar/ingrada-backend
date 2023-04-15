@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
-Route::resource('setting/roles',RoleController::class);
+
+Route::resource('setting/roles', RoleController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,9 +28,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-=======
-Route::get('/', function () {
-    return view('welcome');
-});
->>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
+require __DIR__ . '/auth.php';
