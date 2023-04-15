@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->string('username')->unique();
             $table->string('slug')->unique();
             $table->string('fullname');
@@ -20,6 +21,9 @@ return new class extends Migration
             $table->boolean('is_active')->default(false);
             $table->integer('number_tasks')->unsigned()->nullable();
             $table->foreignId('category_id')->nullable(); //category users['creative','fast','extutable']
+=======
+            $table->string('name');
+>>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -40,6 +40,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+<<<<<<< HEAD
         'customer-login' => [
             'driver' => 'session',
             'provider' => 'customers',
@@ -51,6 +52,8 @@ return [
             'hash' => false,
         ],
 
+=======
+>>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
     ],
 
     /*
@@ -74,10 +77,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
-        'customers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Customer::class,
         ],
 
         // 'users' => [
@@ -112,12 +111,6 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'customers' => [
-            'provider' => 'customers',
-            'table' => 'password_reset_tokens',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
     ],
 
     /*
@@ -132,6 +125,9 @@ return [
     */
 
     'password_timeout' => 10800,
+<<<<<<< HEAD
     'customer_guard_name' => 'customer-login',
+=======
+>>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
 
 ];

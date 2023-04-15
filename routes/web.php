@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 Route::resource('setting/roles',RoleController::class);
 
 Route::get('/dashboard', function () {
@@ -28,3 +29,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+=======
+Route::get('/', function () {
+    return view('welcome');
+});
+>>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items

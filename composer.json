@@ -9,10 +9,14 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
+<<<<<<< HEAD
         "laravel/telescope": "^4.14",
         "laravel/tinker": "^2.8",
         "spatie/laravel-permission": "^5.10",
         "spatie/laravel-sluggable": "^3.4"
+=======
+        "laravel/tinker": "^2.8"
+>>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -30,6 +34,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
+<<<<<<< HEAD
         },
         "files": [
             "app/Helpers/ApiResponse.php",
@@ -37,6 +42,9 @@
             "app/Helpers/HashPassword.php"
 
         ]
+=======
+        }
+>>>>>>> parent of a3bec64... Merge pull request #3 from aliaSwar/feature/aya/apply_items
     },
     "autoload-dev": {
         "psr-4": {
