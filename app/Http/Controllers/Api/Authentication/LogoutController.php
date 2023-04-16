@@ -12,7 +12,7 @@ class LogoutController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)/* :JsonResponse */
+    public function __invoke(Request $request):JsonResponse
     {
         // Auth::shouldUse(config('auth.customer_guard_name'));
         $request->user()->tokens()->delete();

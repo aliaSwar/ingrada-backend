@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Authentication;
 use App\Actions\Authentication\CreateTokenAction;
 use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\AuthCustomer\LoginRequest;
-use App\Http\Resources\AuthenticationResource;
+use App\Http\Resources\AuthenticationResource;       
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
