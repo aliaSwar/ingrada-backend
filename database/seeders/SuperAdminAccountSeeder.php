@@ -18,7 +18,7 @@ class SuperAdminAccountSeeder extends Seeder
             'fullname' => 'Super Admin',
             'is_super_admin' => true,
             'is_active' => true,
-            'email' => 'admin.@admin.app',
+            'email' => 'admin@admin.app',
             'password' => defaultHashedPassword(),
         ]);
     }
