@@ -39,6 +39,7 @@ class LoginUserRequest extends FormRequest
      */
     public function authenticate(): void
     {
+        /// dd($this->all());
         $this->ensureIsNotRateLimited();
 
         if (!Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))) {

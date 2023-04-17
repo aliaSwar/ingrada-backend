@@ -20,7 +20,7 @@ Route::resource('setting/roles',RoleController::class);
 Route::resource('setting/roles', RoleController::class);
 >>>>>>> Resolve Conflict
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -40,4 +40,3 @@ Route::resource('Types', TypeController::class);
 =======
 
 require __DIR__ . '/auth.php';
->>>>>>> Resolve Conflict
