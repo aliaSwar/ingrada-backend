@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('setting/roles', RoleController::class);
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
