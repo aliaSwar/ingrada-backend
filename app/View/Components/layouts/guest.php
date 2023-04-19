@@ -6,14 +6,15 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class guest extends Component
+class Guest extends Component
 {
+    public $name;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($name)
     {
-        //
+        $this->name = $name;
     }
 
     /**
