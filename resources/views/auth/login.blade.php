@@ -7,9 +7,9 @@
         @csrf
         <div class="form-group mb-3">
             <label class="label"
-                name="email"
                 for="name">Username</label>
             <input type="text"
+                name="username"
                 class="form-control @error('username') border-danger @enderror"
                 name="username"
                 placeholder="Username"
@@ -40,7 +40,6 @@
         </div>
         <div class="form-group d-md-flex">
             <div c
-
                 lass="w-50 text-left">
                 <label class="checkbox-wrap checkbox-primary mb-0">Remember Me
                     <input type="checkbox"

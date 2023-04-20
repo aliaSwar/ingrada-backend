@@ -7,8 +7,10 @@ use App\Http\Requests\AuthUser\RegisteredUserRequest;
 use App\Models\User;
 use App\Notifications\UserPublish;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
 
@@ -41,6 +43,7 @@ class RegisteredUserController extends Controller
         }
 
         Notification::send($user, new UserPublish($user));
+
 
         return redirect(RouteServiceProvider::HOME);
     }
