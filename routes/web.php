@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Setting\ColorController;
+use App\Http\Controllers\Setting\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::resource('setting/roles', RoleController::class);
+Route::resource('roles', RoleController::class);
 
 Route::get('/', function () {
     return view('dashboard');
@@ -27,12 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::resource('colors', ColorController::class);
-Route::resource('fonts', FontController::class);
+/* Route::resource('fonts', FontController::class);
 Route::resource('items', ItemController::class);
 Route::resource('Prefernces', PrefernceController::class);
 Route::resource('PrefernceValues', PrefernceValueController::class);
 Route::resource('Scopes', ScopeController::class);
-Route::resource('Types', TypeController::class);
+Route::resource('Types', TypeController::class); */
 
 
 require __DIR__ . '/auth.php';

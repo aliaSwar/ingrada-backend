@@ -1,26 +1,44 @@
 <!DOCTYPE html>
-<html dir="{{ str_replace('_', '-', app()->getLocale()) }}" lang="{{ App::getLocale() == 'ar' ? 'rtl':'ltr'}}">
+<html dir="{{ str_replace('_', '-', app()->getLocale()) }}"
+    lang="{{ App::getLocale() == 'ar' ? 'rtl':'ltr'}}">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="">
+    <meta name="author"
+        content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
-    <title>Freedash Template - The Ultimate Multipurpose admin template</title>
-    <link rel="stylesheet" href="../assets/libs/chart.js/dist/apex-charts.css" />
+    <link rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="assets/images/favicon.jpg">
+    <link rel="icon"
+        type="image/x-icon"
+        href="assets/images/favicon.jpg" />
+    <title>{{ config('app.name') }}</title>
+    <link rel="stylesheet"
+        href="../assets/libs/chart.js/dist/apex-charts.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
-    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <link href="../assets/extra-libs/c3/c3.min.css"
+        rel="stylesheet">
+    <link href="../assets/libs/chartist/dist/chartist.min.css"
+        rel="stylesheet">
+    <link href="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
+        rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="../dist/css/style.min.css" rel="stylesheet">
-    <link type="text/css" href="@@path/vendor/apexcharts/dist/apexcharts.css" rel="stylesheet">
+    <link href="../dist/css/style.min.css"
+        rel="stylesheet">
+    <link type="text/css"
+        href="@@path/vendor/apexcharts/dist/apexcharts.css"
+        rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,7 +51,14 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+    <div id="main-wrapper"
+        data-theme="light"
+        data-layout="vertical"
+        data-navbarbg="skin6"
+        data-sidebartype="full"
+        data-sidebar-position="fixed"
+        data-header-position="fixed"
+        data-boxed-layout="full">
 
         <x-nav-bar />
         <x-side-bar />
@@ -68,76 +93,76 @@
         <!-- Page JS -->
         <script src="../assets/js/dashboards-analytics.js"></script>
         <script>
-            var options = {
-                series: [{
-                    color: "#E4E0F2",
+        var options = {
+            series: [{
+                color: "#E4E0F2",
 
-                    name: 'Inflation',
-                    data: [{
+                name: 'Inflation',
+                data: [{
 
-                            x: 'Karem',
-                            y: 10
-                        }, {
-                            x: 'Hannaa',
-                            y: 18
-                        }, {
-                            x: 'Boushra',
-                            y: 13
+                        x: 'Karem',
+                        y: 10
+                    }, {
+                        x: 'Hannaa',
+                        y: 18
+                    }, {
+                        x: 'Boushra',
+                        y: 13
 
-                        },
-                        {
-                            x: 'Owais',
-                            y: 13
-                        },
-                        {
-                            x: 'Nada',
-                            y: 13
-                        }
-                    ]
-                }],
-                chart: {
-                    height: 350,
-                    type: 'bar',
-                },
-                plotOptions: {
-                    bar: {
-                        horizontal: true,
-                        borderRadius: 10,
-
-                        dataLabels: {
-                            position: 'bottom', // top, center, bottom
-
-                        },
-                    }
-                },
-                dataLabels: {
-                    enabled: false,
-                    formatter: function(val) {
-                        return val + "%";
                     },
-
-                    offsetY: -20,
-                    style: {
-                        fontSize: '12px',
-                        color: ["#FFF0BB"]
+                    {
+                        x: 'Owais',
+                        y: 13
+                    },
+                    {
+                        x: 'Nada',
+                        y: 13
                     }
+                ]
+            }],
+            chart: {
+                height: 350,
+                type: 'bar',
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                    borderRadius: 10,
+
+                    dataLabels: {
+                        position: 'bottom', // top, center, bottom
+
+                    },
+                }
+            },
+            dataLabels: {
+                enabled: false,
+                formatter: function(val) {
+                    return val + "%";
                 },
 
-
-
-                title: {
-
-                    floating: true,
-                    offsetY: 330,
-                    align: 'center',
-                    style: {
-                        color: '#444'
-                    }
+                offsetY: -20,
+                style: {
+                    fontSize: '12px',
+                    color: ["#FFF0BB"]
                 }
-            };
+            },
 
-            var chart = new ApexCharts(document.querySelector("#chart"), options);
-            chart.render();
+
+
+            title: {
+
+                floating: true,
+                offsetY: 330,
+                align: 'center',
+                style: {
+                    color: '#444'
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
         </script>
 </body>
 
