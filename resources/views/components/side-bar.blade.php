@@ -9,8 +9,9 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
+                <!--style="background: linear-gradient(to right, #fb8c00, #fdc16a, #fb8c00, #fb8c00, #fdc16a)!important"
+                        -->
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link active"
-                        style="background: linear-gradient(to right, #fb8c00, #fdc16a, #fb8c00, #fb8c00, #fdc16a)!important;"
                         href="/"
                         aria-expanded="false"><i data-feather="home"
                             class="feather-icon"></i><span class="hide-menu">HOME</span></a></li>
