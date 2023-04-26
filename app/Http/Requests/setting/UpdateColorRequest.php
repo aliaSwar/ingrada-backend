@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Setting;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreColorRequest extends FormRequest
+class UpdateColorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class StoreColorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'      =>      ['required','string','unique:colors,name'],
-            'code'      =>      ['required','string','unique:colors,code'],
+            'name'      =>      ['required', 'string', 'unique:colors,name'],
+            'code'      =>      ['required', 'string', 'unique:colors,code'],
         ];
     }
 
@@ -33,7 +33,7 @@ class StoreColorRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
-            sendErrorResponse($validator->errors()->first(), null, 422)
+            sendFailedResponse($validator->errors()->first(), null, 422)
         );
     }
 }

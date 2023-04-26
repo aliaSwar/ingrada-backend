@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ColorController;
+use App\Http\Controllers\Setting\ColorController;
 use Illuminate\Support\Facades\Route;
 
 /*
