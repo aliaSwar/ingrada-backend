@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use App\Http\API\Controller;
+use App\Http\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
