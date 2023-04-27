@@ -14,7 +14,7 @@ class CreateSuperAdminAccountSeeder extends Seeder
     {
         if (User::query()->where('email', '=', 'admin@admin.app')->doesntExist()) {
             User::query()->create([
-                'username' => 'super admin',
+                'username' => 'super_admin',
                 'slug' => 'super-admin',
                 'fullname' => 'Super Admin',
                 'is_super_admin' => true,
