@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(CountrySeeder::class);
+        //$this->call(CountrySeeder::class);
         $this->call(CreateSuperAdminAccountSeeder::class);
         $this->call(PermissionSeeder::class);
     }
