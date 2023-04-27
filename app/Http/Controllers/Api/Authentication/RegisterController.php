@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Authentication;
 
 use App\Actions\Authentication\CreateTokenAction;
-use App\Http\Controllers\Api\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthCustomer\RegisterRequest;
 use App\Http\Resources\AuthenticationResource;
 use App\Models\Customer;

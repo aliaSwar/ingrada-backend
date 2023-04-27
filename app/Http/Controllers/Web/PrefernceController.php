@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Api\Controller;
+use App\Http\Controllers\Controller;
+use App\Models\Prefernce;
 use Illuminate\Http\Request;
-use App\Models\Item;
-use  App\Http\Requests\StoreItemRequest;
 
-class ItemController extends Controller
+class PrefernceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('Item.index', ['items' => Item::all()]);
+        return view('Prefernce.index', ['Prefernces' => Prefernce::all()]);
     }
 
     /**
@@ -22,17 +21,18 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('Item.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreItemRequest $request)
+    public function store(Request $request)
     {
-        $item=new Item($request->validated());
-        $item->save();
-        return $item;
+        $prefernce=new Prefernce($request->validated());
+        $prefernce->save();
+        return $prefernce;
+
     }
 
     /**
@@ -46,9 +46,9 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Item $item)
+    public function edit(Prefernce  $prefernce )
     {
-        return view('Item.edit', ['Item' => $item]);
+        return view('Prefernce.edit', ['prefernce' => $prefernce ]);
     }
 
     /**
@@ -62,10 +62,10 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Item $item)
+    public function destroy(Prefernce $prefernce)
     {
-        $item->delete();
+        $prefernce->delete();
 
-        return redirect()->route('Item.index');
+        return redirect()->route('Prefernce.index');
     }
 }

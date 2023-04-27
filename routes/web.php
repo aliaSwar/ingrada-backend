@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Setting\ColorController;
-use App\Http\Controllers\Setting\RoleController;
+use App\Http\Controllers\Web\ProfileController;
+use App\Http\Controllers\Web\Setting\ColorController;
+use App\Http\Controllers\Web\Setting\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*

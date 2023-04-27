@@ -125,5 +125,6 @@ return [
     'password_timeout' => 10800,
 
     'customer_guard_name' => 'customer-login',
+    'customer_guard_api' => 'customer-api',
 
 ];

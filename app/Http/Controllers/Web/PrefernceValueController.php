@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\PrefernceValue;
 use Illuminate\Http\Request;
-use  App\Models\Font;
-use  App\Http\Requests\StoreFontRequest;
 
-class FontController extends Controller
+class PrefernceValueController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('Font.index', ['fonts' => Font::all()]);
+        return view('PrefernceValue.index', ['PrefernceValues' => PrefernceValue::all()]);
     }
 
     /**
@@ -27,11 +27,12 @@ class FontController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreFontRequest  $request)
+    public function store(Request $request)
     {
-        $font=new Font($request->validated());
-        $font->save();
-        return $font;
+        $prefernceValue=new  PrefernceValue($request->validated());
+        $prefernceValue->save();
+        return $prefernceValue;
+
     }
 
     /**
@@ -45,9 +46,9 @@ class FontController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Font $font)
+    public function edit(PrefernceValue $PrefernceValue)
     {
-        return view('Font.edit', ['Font' => $font]);
+        return view('PrefernceValue.edit', ['PrefernceValue' => $PrefernceValue ]);
     }
 
     /**
@@ -61,10 +62,10 @@ class FontController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Font $font)
+    public function destroy(PrefernceValue $prefernceValue)
     {
-        $font->delete();
+        $prefernceValue->delete();
 
-        return redirect()->route('Font.index');
+        return redirect()->route('PrefernceValue.index');
     }
 }

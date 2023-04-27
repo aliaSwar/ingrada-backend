@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Api\Controller;
+use App\Http\Requests\StoreItemRequest;
+use App\Models\Item;
 use Illuminate\Http\Request;
-use App\Models\Type;
 
-class TypeController extends Controller
+class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('Type.index', ['Types' => Type::all()]);
+        return view('Item.index', ['items' => Item::all()]);
     }
 
     /**
@@ -20,17 +22,17 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('Item.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreItemRequest $request)
     {
-        $type=new Type($request->validated());
-        $type->save();
-        return $type;
+        $item=new Item($request->validated());
+        $item->save();
+        return $item;
     }
 
     /**
@@ -44,9 +46,9 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Type $type)
+    public function edit(Item $item)
     {
-        return view('Type.edit', ['Type' => $type ]);
+        return view('Item.edit', ['Item' => $item]);
     }
 
     /**
@@ -60,10 +62,10 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Type $type)
+    public function destroy(Item $item)
     {
-        $type->delete();
+        $item->delete();
 
-        return redirect()->route('Type.index');
+        return redirect()->route('Item.index');
     }
 }

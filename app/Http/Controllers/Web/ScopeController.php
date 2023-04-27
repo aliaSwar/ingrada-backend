@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
+use App\Models\Scope;
 use Illuminate\Http\Request;
-use App\Models\Prefernce;
 
-class PrefernceController extends Controller
+class ScopeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('Prefernce.index', ['Prefernces' => Prefernce::all()]);
+        return view('Scope.index', ['Scopes' => Scope::all()]);
     }
 
     /**
@@ -28,10 +29,9 @@ class PrefernceController extends Controller
      */
     public function store(Request $request)
     {
-        $prefernce=new Prefernce($request->validated());
-        $prefernce->save();
-        return $prefernce;
-
+        $scope=new Scope($request->validated());
+        $scope->save();
+        return $scope;
     }
 
     /**
@@ -45,9 +45,9 @@ class PrefernceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prefernce  $prefernce )
+    public function edit(Scope $scope)
     {
-        return view('Prefernce.edit', ['prefernce' => $prefernce ]);
+        return view('Scope.edit', ['Scope' => $scope ]);
     }
 
     /**
@@ -61,10 +61,10 @@ class PrefernceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prefernce $prefernce)
+    public function destroy(Scope $scope)
     {
-        $prefernce->delete();
+        $scope->delete();
 
-        return redirect()->route('Prefernce.index');
+        return redirect()->route('Scope.index');
     }
 }

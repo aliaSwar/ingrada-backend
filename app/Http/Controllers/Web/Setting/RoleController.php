@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Setting;
+namespace App\Http\Controllers\Web\Setting;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Setting\Role\StoreRoleRequest;

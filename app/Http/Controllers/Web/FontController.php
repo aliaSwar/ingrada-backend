@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreFontRequest;
+use App\Models\Font;
 use Illuminate\Http\Request;
-use  App\Http\Requests\StoreScopeRequest;
-use App\Models\Scope;
 
-class ScopeController extends Controller
+class FontController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('Scope.index', ['Scopes' => Scope::all()]);
+        return view('Font.index', ['fonts' => Font::all()]);
     }
 
     /**
@@ -27,11 +28,11 @@ class ScopeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFontRequest  $request)
     {
-        $scope=new Scope($request->validated());
-        $scope->save();
-        return $scope;
+        $font=new Font($request->validated());
+        $font->save();
+        return $font;
     }
 
     /**
@@ -45,9 +46,9 @@ class ScopeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Scope $scope)
+    public function edit(Font $font)
     {
-        return view('Scope.edit', ['Scope' => $scope ]);
+        return view('Font.edit', ['Font' => $font]);
     }
 
     /**
@@ -61,10 +62,10 @@ class ScopeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Scope $scope)
+    public function destroy(Font $font)
     {
-        $scope->delete();
+        $font->delete();
 
-        return redirect()->route('Scope.index');
+        return redirect()->route('Font.index');
     }
 }
