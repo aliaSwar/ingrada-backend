@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
  * @param string|null $password
  * @return string
  */
-function defaultHashedPassword(string|null $password = 'super  admin'): string
+function defaultHashedPassword(string|null $password = 'admin'): string
 {
     return Hash::make($password);
 }
