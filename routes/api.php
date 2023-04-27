@@ -24,3 +24,28 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->post('/logout', LogoutController::class);
 Route::post('/register', RegisterController::class);
 Route::post('/login', LoginController::class);
+
+
+Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
+    Route::name('account.')->prefix('account')->group(function () {
+        Route::post(
+            'register',
+            RegisterController::class
+        )->name('register');
+
+        Route::post(
+            'login',
+            LoginController::class
+        )->name('login');
+    });
+
+    /**
+     * Protected endpoints.
+     */
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::get(
+            'logout',
+            LogoutController::class
+        )->name('logout');
+    });
+});
