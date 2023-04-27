@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CountrySeeder::class);
         $this->call(CreateSuperAdminAccountSeeder::class);
+        $this->call(PermissionSeeder::class);
     }
 }
