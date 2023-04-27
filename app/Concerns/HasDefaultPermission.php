@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Permission;
+namespace App\Concerns;
 
 trait HasDefaultPermission
 {
