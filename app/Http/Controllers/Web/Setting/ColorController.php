@@ -16,7 +16,7 @@ class ColorController extends Controller
      */
     public function index(): View
     {
-        return view('colors.index', ['colors' => Color::query()->paginate(7)]);
+        return view('setting.colors.index', ['colors' => Color::query()->paginate(7)]);
     }
 
 
@@ -25,7 +25,7 @@ class ColorController extends Controller
      */
     public function create(): View
     {
-        return view('colors.create');
+        return view('setting.colors.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class ColorController extends Controller
     public function show(Color $color): View
     {
         return view(
-            'colors.show',
+            'setting.colors.show',
             ['color' => $color]
         );
     }
@@ -54,7 +54,7 @@ class ColorController extends Controller
     public function edit(Color $color): View
     {
         return view(
-            'colors.edit',
+            'setting.colors.edit',
             ['color' => $color]
         );
     }
