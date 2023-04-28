@@ -6,18 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('history_points', function (Blueprint $table) {
-            //TODO:: points and history point should be redesign again
+        Schema::create('order_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->date('added_points');
-            $table->foreignId('point_id');
+            $table->foreignId('order_id');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('history_points');
+        Schema::dropIfExists('order_user');
     }
 };

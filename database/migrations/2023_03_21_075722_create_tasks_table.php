@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->text('description');
-            $table->enum('status', ['Initiated', 'Progress'.'Test', 'Fix', 'Completed']);
+            $table->enum('status', ['Initiated', 'Progress' . 'Test', 'Fix', 'Completed']);
             $table->date('start_date');
             $table->date('end_date');
             $table->date('real_end_date');
