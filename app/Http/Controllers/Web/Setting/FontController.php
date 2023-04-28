@@ -9,10 +9,11 @@ use App\Models\Font;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class FontController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index(): View
@@ -34,7 +35,10 @@ class FontController extends Controller
      */
     public function store(StoreFontRequest $request): RedirectResponse
     {
-        font::create($request->validated());
+        $data = $request->validated();
+        $data = Arr::add($data, 'file', uploadFile($request->path, 'fonts'));
+
+        Font::create($data);
         return redirect()->route('fonts.index')->with(['message' => __("messages.create_data")]);
     }
 
@@ -65,7 +69,10 @@ class FontController extends Controller
      */
     public function update(UpdateFontRequest $request, Font $font): RedirectResponse
     {
-        $font->query()->update($request->validated());
+        $data = $request->validated();
+        $data = Arr::add($data, 'file', uploadFile($request->path, 'fonts'));
+
+        $font->query()->update($data);
         return redirect()->route('fonts.show', ['font' => $font])
             ->with(['message' => __("messages.update_data")]);
     }

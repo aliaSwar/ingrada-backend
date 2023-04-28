@@ -24,7 +24,8 @@ class UpdateFontRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'      =>      ['required', 'string', 'unique:fonts,name'],
+            'file'      =>      ['required', 'string'],
         ];
     }
 

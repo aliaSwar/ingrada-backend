@@ -16,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Setting Route
 
-Route::resource('roles', RoleController::class);
+// Admin Route
+Route::prefix('admin/')->group(function () {
+    Route::resource('roles', RoleController::class);
+    Route::resource('colors', ColorController::class);
+});
+
 
 Route::get('/', function () {
     return view('dashboard');
@@ -28,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::resource('colors', ColorController::class);
+
 /* Route::resource('fonts', FontController::class);
 Route::resource('items', ItemController::class);
 Route::resource('Prefernces', PrefernceController::class);

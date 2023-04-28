@@ -28,10 +28,10 @@ class RegisteredUserRequest extends FormRequest
             'username' => ['required', 'unique:users,username', 'max:255', 'regex:/\w*$/', 'string'],
             'fullname' => ['required', 'string', 'max:255'],
             'number_tasks' => ['nullable', 'numeric'],
-            'category_id' => ['nullable', 'numeric', 'exists:tablecategories,id'],
+            'category_id' => ['nullable', 'numeric', 'exists:categories,id'],
             'path' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,bmp,ico'],
             'email' => ['required',  'max:255', 'email', 'unique:users,email'],
-            'password' => ['required', /* 'confirmed', */ Rules\Password::defaults()],
+            'password' => ['required', Rules\Password::defaults()],
             'role'      => ['nullable', 'string', 'max:255', 'exists:roles,name']
         ];
     }

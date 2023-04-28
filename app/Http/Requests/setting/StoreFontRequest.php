@@ -24,7 +24,8 @@ class StoreFontRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'      =>      ['required', 'string', 'unique:fonts,name'],
+            'path'      =>      ['required', 'string', 'image'],
         ];
     }
 
