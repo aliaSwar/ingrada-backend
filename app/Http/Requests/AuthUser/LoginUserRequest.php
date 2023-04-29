@@ -47,6 +47,7 @@ class LoginUserRequest extends FormRequest
 
             throw ValidationException::withMessages([
                 'username' => trans('auth.failed'),
+                'password' => trans('auth.failed'),
             ]);
         }
 
