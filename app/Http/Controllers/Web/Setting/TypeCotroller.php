@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Web\Setting;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\PrefernceValue;
 use Illuminate\Http\Request;
 
-class PrefernceValueController extends Controller
+class TypeCotroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('PrefernceValue.index', ['PrefernceValues' => PrefernceValue::all()]);
+        //
     }
 
     /**
@@ -29,10 +28,7 @@ class PrefernceValueController extends Controller
      */
     public function store(Request $request)
     {
-        $prefernceValue=new  PrefernceValue($request->validated());
-        $prefernceValue->save();
-        return $prefernceValue;
-
+        //
     }
 
     /**
@@ -46,9 +42,9 @@ class PrefernceValueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PrefernceValue $PrefernceValue)
+    public function edit(string $id)
     {
-        return view('PrefernceValue.edit', ['PrefernceValue' => $PrefernceValue ]);
+        //
     }
 
     /**
@@ -62,10 +58,8 @@ class PrefernceValueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PrefernceValue $prefernceValue)
+    public function destroy(string $id)
     {
-        $prefernceValue->delete();
-
-        return redirect()->route('PrefernceValue.index');
+        //
     }
 }

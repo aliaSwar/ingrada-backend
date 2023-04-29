@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\setting;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreItemRequest extends FormRequest
+class UpdateScopeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,7 @@ class StoreItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-
-            'scope_id'           =>      ['required', 'numeric', 'exists:scopes,id'],
-            'type_id'            =>      ['required', 'numeric', 'exists:types,id'],
-            'prefernce_id'       =>      ['required', 'numeric', 'exists:prefernces,id'],
-            'prefernce_value_id' =>      ['nullable', 'numeric', 'exists:prefernce_values,id'],
-            'is_enable_post'     =>      ['required', 'numeric'],
-            'likes'              =>      ['required', 'numeric'],
-            'price'              =>      ['required', 'numeric'],
-
+            //
         ];
     }
 

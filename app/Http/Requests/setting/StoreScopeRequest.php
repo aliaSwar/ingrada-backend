@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\setting;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StorePrefernceValueRequest extends FormRequest
+class StoreScopeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class StorePrefernceValueRequest extends FormRequest
     public function rules(): array
     {
         return [
-
-            'image'                    => ['required','file', 'image'],
-            'name'                     => ['string','unique:types,name'],
-            'price'                    => ['required','numeric'],
-            'prefernce_id'             => ['required','numeric', 'exists:prefernces,id'],
+            'colors' => ['requird','array']
         ];
     }
 
@@ -36,7 +32,7 @@ class StorePrefernceValueRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
-            sendErrorResponse($validator->errors()->first(), null, 422)
+            sendFailedResponse($validator->errors()->first(), null, 422)
         );
     }
 }
