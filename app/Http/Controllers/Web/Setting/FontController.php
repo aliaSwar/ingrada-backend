@@ -18,7 +18,7 @@ class FontController extends Controller
      */
     public function index(): View
     {
-        return view('fonts.index', ['fonts' => Font::query()->paginate(7)]);
+        return view('setting.fonts.index', ['fonts' => Font::query()->paginate(7)]);
     }
 
 
@@ -27,7 +27,7 @@ class FontController extends Controller
      */
     public function create(): View
     {
-        return view('fonts.create');
+        return view('setting.fonts.create');
     }
 
     /**

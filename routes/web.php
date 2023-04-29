@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\Setting\ColorController;
+use App\Http\Controllers\Web\Setting\FontController;
 use App\Http\Controllers\Web\Setting\RoleController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin/')->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('colors', ColorController::class);
+    Route::resource('fonts', FontController::class);
 });
 
 
