@@ -20,7 +20,7 @@ class CreateSuperAdminAccountSeeder extends Seeder
                 'is_super_admin' => true,
                 'is_active' => true,
                 'email' => 'admin@admin.app',
-                'password' => defaultHashedPassword(),
+                'password' => "admin",
             ]);
         }
     }
