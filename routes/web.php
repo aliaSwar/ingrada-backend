@@ -1,12 +1,6 @@
 <?php
-use App\Http\Controllers\ColorController;
-use App\Http\Controllers\FontController;
-use App\Http\Controllers\ItemController;
-use App\Http\Controllers\PrefernceController;
-use App\Http\Controllers\PrefernceValueController;
-use App\Http\Controllers\ScopeController;
-use App\Http\Controllers\TypeController;
 
+use App\Http\Controllers\Web\Manager\InternalCustomerController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\Setting\ColorController;
 use App\Http\Controllers\Web\Setting\FontController;
@@ -32,7 +26,10 @@ Route::prefix('admin/')->group(function () {
     Route::resource('colors', ColorController::class);
     Route::resource('fonts', FontController::class);
 });
-
+// Admin Route
+Route::prefix('manager/')->group(function () {
+    Route::resource('internal-customers', InternalCustomerController::class);
+});
 
 Route::get('/', function () {
     return view('dashboard');
@@ -43,20 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::resource('colors', ColorController::class);
-Route::resource('fonts', FontController::class);
-Route::resource('items', ItemController::class);
-Route::resource('Prefernces', PrefernceController::class);
-Route::resource('PrefernceValues', PrefernceValueController::class);
-Route::resource('Scopes', ScopeController::class);
-Route::resource('Types', TypeController::class);
 
-/* Route::resource('fonts', FontController::class);
-Route::resource('items', ItemController::class);
-Route::resource('Prefernces', PrefernceController::class);
-Route::resource('PrefernceValues', PrefernceValueController::class);
-Route::resource('Scopes', ScopeController::class);
-Route::resource('Types', TypeController::class); */
 
 
 require __DIR__ . '/auth.php';

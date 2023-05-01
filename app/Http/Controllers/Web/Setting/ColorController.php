@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Web\Setting;
 
-use App\Http\Controllers\Controller;
+
 use App\Http\Requests\Setting\StoreColorRequest;
 use App\Http\Requests\Setting\UpdateColorRequest;
 use App\Models\Color;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controller;
 use Illuminate\View\View;
 
 class ColorController extends Controller
