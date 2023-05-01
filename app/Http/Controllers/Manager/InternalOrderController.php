@@ -1,7 +1,12 @@
 <?php
 
+<<<<<<< Updated upstream:app/Http/Controllers/Manger/InternalOrderController.php
 namespace App\Http\Controllers\Manger;
 use App\Models\Order;
+=======
+namespace App\Http\Controllers\Manager;
+
+>>>>>>> Stashed changes:app/Http/Controllers/Manager/InternalOrderController.php
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
