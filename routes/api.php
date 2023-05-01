@@ -1,14 +1,15 @@
 <?php
 
-
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
+use App\Http\Controllers\Api\GetCountryController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
-|---------------------------------------------------------p-----------------
+|--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
 |
@@ -21,13 +22,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::middleware('auth:sanctum')->post('/logout', LogoutController::class);
-Route::post('/register', RegisterController::class);
-Route::post('/login', LoginController::class);
 
+
+Route::get('countries/index', GetCountryController::class);
 
 Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
     Route::name('account.')->prefix('account')->group(function () {
+
         Route::post(
             'register',
             RegisterController::class

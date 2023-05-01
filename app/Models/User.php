@@ -10,15 +10,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+
+use Spatie\Permission\Traits\HasRoles;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasSlug;
+    use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
+    use HasSlug;
 
     /**
      * The attributes that are mass assignable.
@@ -26,9 +29,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'is_super_admin',
+        'fullname',
+        'avatar',
+        'number_tasks',
+        'category_id',
+        'is_active',
     ];
 
     /**
@@ -61,12 +70,15 @@ class User extends Authenticatable
 
     /**
      * Get the route key for the model.
-     *
-     * @return string
      */
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
     }
 
     public function category(): BelongsTo
@@ -78,22 +90,27 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Order::class);
     }
+
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
     }
+
     public function points(): MorphMany
     {
         return $this->morphMany(Point::class, 'creatable');
     }
+
     public function historypoints(): HasMany
     {
         return $this->hasMany(HistoryPoint::class);
     }
+
     public function notifications(): BelongsToMany
     {
         return $this->belongsToMany(Notification::class);
     }
+
     public function days(): BelongsToMany
     {
         return $this->belongsToMany(Day::class);

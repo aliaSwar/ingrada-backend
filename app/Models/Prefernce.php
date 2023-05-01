@@ -26,18 +26,22 @@ class Prefernce extends Model
     {
         return 'slug';
     }
+
     public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }
+
     public function preferncevalues(): HasMany
     {
         return $this->hasMany(PrefernceValue::class);
     }
+
     public function items(): HasMany
     {
         return $this->hasMany(Item::class);
     }
+
     public function getImageAttribute($value)
     {
         return asset("storage/{$value}");

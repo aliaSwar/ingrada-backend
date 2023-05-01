@@ -8,10 +8,7 @@ use Illuminate\Http\JsonResponse;
 /**
  * Returns a success HTTP JSON response.
  *
- * @param string $message
- * @param array|Arrayable|JsonSerializable|null $data
- * @param int $status_code
- * @return JsonResponse
+ * @param  array|Arrayable|JsonSerializable|null  $data
  */
 function sendSuccessResponse(
     string $message = 'OK',
@@ -34,10 +31,7 @@ function sendSuccessResponse(
 /**
  * Returns a failed HTTP JSON response.
  *
- * @param string $message
- * @param array|Arrayable|JsonSerializable|null $data
- * @param int $status_code
- * @return JsonResponse
+ * @param  array|Arrayable|JsonSerializable|null  $data
  */
 function sendFailedResponse(
     string $message = 'Error',
@@ -48,7 +42,7 @@ function sendFailedResponse(
         'success' => false,
         'message' => $message,
         'data' => $data,
-        'status_code' => $status_code
+        'status_code' => $status_code,
     ];
 
     return response()->json(

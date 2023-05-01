@@ -15,12 +15,10 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug'];
 
-
     public function users(): HasMany
     {
         return $this->hasMany(User::class);
     }
-
 
     /**
      * Get the options for generating the slug.
@@ -34,8 +32,6 @@ class Category extends Model
 
     /**
      * Get the route key for the model.
-     *
-     * @return string
      */
     public function getRouteKeyName(): string
     {

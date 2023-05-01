@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Point extends Model
 {
     use HasFactory;
+
     /**
      * Get the parent ceatable model (user or customer).
      */
@@ -17,6 +18,7 @@ class Point extends Model
     {
         return $this->morphTo();
     }
+
     public function historypoint(): HasOne
     {
         return $this->hasOne(HistoryPoint::class);

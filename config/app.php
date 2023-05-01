@@ -15,7 +15,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'ingrada'),
+
+    'name' => env('APP_NAME', 'Engrada-Creative'),
 
     /*
     |--------------------------------------------------------------------------
@@ -181,8 +182,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
 
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -196,6 +197,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
 
     ],
 
@@ -212,7 +214,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-
     ])->toArray(),
 
 ];
