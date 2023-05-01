@@ -62,7 +62,12 @@
 
         <x-nav-bar />
         <x-side-bar />
-        {{ $slot }}
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <x-hero />
+            {{ $slot }}
+        </div>
         <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}">
         </script>
         <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}">
@@ -148,6 +153,7 @@
                 formatter: function(val) {
                     return val + "%";
                 },
+
 
 
        
