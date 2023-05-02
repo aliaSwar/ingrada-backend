@@ -14,26 +14,27 @@
                     <div class="card-body">
 
 
-                        <form>
-                            <form class="row g-3">
+                        <form action="{{ route('roles.store') }}" method="POST" class="row g-3">
+                            @csrf
                                 <label>JOB TITLE:</label>
 
                                 <div class="col-auto">
                                     <br>
                                     <label for="inputPassword2"
                                         class="visually-hidden">ADD NEW ROLE!</label>
-                                    <input type="text"
-                                        class="form-control input-sm"
+                                    <input type="text" name="name"
+                                        class="form-control
+                                        col-xs-4"
                                         placeholder="ADD NEW ROLE!">
                                 </div>
                                 <hr>
-                                <label id="text">PERMISSION FOR THIS ROLE:</label>
+                                <label>PERMISSION FOR THIS ROLE:</label>
                                 <br>
                                 <br>
                                 @foreach ($permissions as $permission)
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input"
-                                        type="checkbox"
+                                    <input class="form-check-input" name="permissions[]"
+                                        type="checkbox" value="{{$permission}}"
                                         value="option2"
                                         checked>
                                     <label class="form-check-label"
@@ -49,13 +50,13 @@
                                         >Save</button>
                                 </div>
 
-                            </form>
+
                         </form>
 
 
                     </div>
                 </div>
-                </di v>
+                </div>
             </div>
         </div>
     </div>
