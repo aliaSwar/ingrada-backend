@@ -17,8 +17,9 @@ class RoleController extends Controller
      */
     public function index(): View
     {
+
         $roles = Role::query()->with('users', 'permissions')->get();
-        return $roles;
+        dd($roles);
         return view('setting.roles.index', ['roles' => $roles]);
     }
 
@@ -27,7 +28,8 @@ class RoleController extends Controller
      */
     public function create(): View
     {
-        $permissions = Permission::query()->pluck('name');
+        $permissions = Permission::query()->pluck('name','id');
+        //dd($permissions);
         return view('setting.roles.create', [
             'permissions'  => $permissions
         ]);
@@ -42,7 +44,7 @@ class RoleController extends Controller
             'name' => $request->name
         ]);
         $role->save();
-        $role->syncPermissions($request->permissions);
+        $role->givePermissionTo($request->permissions);
         return redirect()->route('roles.index')->with([
             'message' => __('messages.create_data')
         ]);
