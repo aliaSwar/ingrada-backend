@@ -25,6 +25,8 @@
     <link rel="stylesheet"
         href="{{ asset('ssets/libs/chart.js/dist/apex-charts.css') }}" />
     <!-- Custom CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css') }}"
@@ -48,6 +50,15 @@
 </head>
 
 <body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -156,8 +167,8 @@
 
 
 
-       
-         offsetY: -20,
+
+                offsetY: -20,
                 style: {
                     fontSize: '12px',
                     color: ["#FFF0BB"]

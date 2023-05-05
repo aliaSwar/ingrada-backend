@@ -1,28 +1,31 @@
 <x-layouts.app>
     <x-slot name="styles">
         <style type="text/css">
-            body {
+        body {
             color: #404E67;
             background: #F5F7FA;
             font-family: 'Open Sans', sans-serif;
+        }
 
-            }
-            .table-wrapper {
+        .table-wrapper {
             width: 1090px;
             margin: 1x auto;
             background: #fff;
             padding: 20px;
-            box-shadow: 0 1px 1px rgba(0,0,0,.05);
-            }
-            .table-title {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        }
+
+        .table-title {
             padding-bottom: 10px;
             margin: 0 0 10px;
-            }
-            .table-title h2 {
+        }
+
+        .table-title h2 {
             margin: 6px 0 0;
             font-size: 22px;
-            }
-            .table-title .add-new {
+        }
+
+        .table-title .add-new {
             float: right;
             height: 30px;
             font-weight: bold;
@@ -31,235 +34,204 @@
             min-width: 100px;
             border-radius: 50px;
             line-height: 13px;
-            }
-            .table-title .add-new i {
+        }
+
+        .table-title .add-new i {
             margin-right: 4px;
-            }
-            table.table {
+        }
+
+        table.table {
             table-layout: fixed;
-            }
-            table.table tr th, table.table tr td {
+        }
+
+        table.table tr th,
+        table.table tr td {
             border-color: #e9e9e9;
-            }
-            table.table th i {
+        }
+
+        table.table th i {
             font-size: 13px;
             margin: 0 5px;
             cursor: pointer;
-            }
-            table.table th:last-child {
+        }
+
+        table.table th:last-child {
             width: 100px;
-            }
-            table.table td a {
+        }
+
+        table.table td a {
             cursor: pointer;
             display: inline-block;
             margin: 0 5px;
             min-width: 24px;
-            }
-            table.table td a.add {
-            color: #63f1a1;
-            }
-            table.table td a.edit {
-            color: #18131a;
-            }
-            table.table td a.delete {
-            color: #141310;
-            }
-            table.table td a.details {
-            color: #7509e0;
-            }
+        }
 
-            table.table td i {
+        table.table td a.add {
+            color: #63f1a1;
+        }
+
+        table.table td a.edit {
+            color: #18131a;
+        }
+
+        table.table td a.delete {
+            color: #141310;
+        }
+
+        table.table td a.details {
+            color: #7509e0;
+        }
+
+        table.table td i {
             font-size: 19px;
-            }
-            table.table td a.add i {
+        }
+
+        table.table td a.add i {
             font-size: 24px;
             margin-right: -1px;
             position: relative;
             top: 3px;
-            }
-            table.table .form-control {
+        }
+
+        table.table .form-control {
             height: 32px;
             line-height: 32px;
             box-shadow: none;
             border-radius: 2px;
-            }
-            table.table .form-control.error {
+        }
+
+        table.table .form-control.error {
             border-color: #f50000;
-            }
-            table.table td .add {
+        }
+
+        table.table td .add {
             display: none;
-            }
-            button
-            {
-                margin: 10px auto;
-            }
-            #myTable
-            {
-                margin-top: 30px;
-            }
-            </style>
-    </x-slot>
-    <div class="container-fluid">
+        }
 
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
+        button {
+            margin: 10px auto;
+        }
 
-                    <div class="card-body">
+        #myTable {
+            margin-top: 30px;
+        }
+        </style>
+        </slot>
+        <div class="container-fluid">
 
-                        <div class="table-responsive">
-                            <table class="table no-wrap v-middle mb-0">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
 
-                                <div class="row">
-                                    <form>
-                                        <div class="customize-input">
-                                            <input class="form-control custom-shadow custom-radius border-0 bg-white" id="myInput" onkeyup="myFunction()" type="search" placeholder="Search" aria-label="Search">
-                                        </div>
-                                    </form>
-                                </div>
-                                <table class="table table-bordered" id="myTable">
-                                    <thead>
-                                        <tr>
-                                            <td>Image </td>
-                                            <th>Name</th>
-                                            <th>Username</th>
-                                            <th>Task</th>
-                                            <th>Category</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>Password</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="text-align: center;">
-                                                <div><img src="../assets/images/users/widget-table-pic1.jpg" alt="user" class="rounded-circle" width="45" height="45" /></div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex no-block align-items-center">
+                        <div class="card-body">
 
-                                                    <div class="">
-                                                        <h5 class="text-dark mb-0 font-16 font-weight-medium">Hanna Gover
-                                                        </h5>
+                            <div class="table-responsive">
+                                <table class="table no-wrap v-middle mb-0">
 
+                                    <div class="row">
+                                        <form>
+                                            <div class="customize-input">
+                                                <input
+                                                    class="form-control custom-shadow custom-radius border-1 bg-white"
+                                                    id="myInput"
+                                                    onkeyup="myFunction()"
+                                                    type="search"
+                                                    placeholder="Search"
+                                                    aria-label="Search">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <table class="table table-bordered"
+                                        id="myTable">
+                                        <thead>
+                                            <tr>
+                                                <td>USERS </td>
+                                                <th>RULE</th>
+                                                <th>PERMISSION</th>
+                                                <th>ACTIONS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($roles as $role)
+                                                
+                                            
+                                            <tr>
+                                                <td style="text-align: center;">
+
+                                                    <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                                                        @foreach ($role->users as $user)
+                                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                data-bs-placement="top" class="avatar avatar-sm pull-up" title
+                                                                data-bs-original-title="{{ $user->fullname }}">
+                                                                <img src="{{ is_null($user->avatar) ? 'assets/images/users/profile-pic.jpg': Storage::url($user->avatar) }}"
+                                                                    alt="Avatar" class="rounded-circle" />
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex no-block align-items-center">
+
+                                                        <div class="">
+                                                            <h5 class="text-dark mb-0 font-16 font-weight-medium">{{$role->name}}
+                                                            </h5>
+
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td>John-Doe</td>
-                                            <td>8</td>
-                                            <td>fast</td>
-                                            <td>bb99@gmail.com</td>
-                                            <td>desiger</td>
-                                            <td>nana66</td>
-                                            <td>
-                                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">check_circle</i></a>
-                                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">gesture</i></a>
-                                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">event_busy</i></a>
-                                                <a class="details" title="details" data-toggle="tooltip" href="details.html"><i class="material-icons">content_paste</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align: center;">
-                                                <div><img src="../assets/images/users/widget-table-pic1.jpg" alt="user" class="rounded-circle" width="45" height="45" /></div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex no-block align-items-center">
+                                                </td>
+                                                <td>
+                                                    
+                                                    @foreach ($role->permissions as $permission)
+                                                   
+                                                {{ $permission->name }} -
+                                                   
+                                                    @endforeach
+                                                
+                                                </td>
+                                                <td>
+                                               
+                                                    <a class="edit" href="{{ route('roles.edit', $role ) }}"
+                                                        title="Edit"
+                                                        data-toggle="tooltip"><i class="material-icons">gesture</i></a>
+                                                    <a class="delete"
+                                                        title="Delete"
+                                                        data-toggle="tooltip"><i
+                                                            class="material-icons">event_busy</i></a>
+                                                    <a class="details"
+                                                        title="details"
+                                                        data-toggle="tooltip"
+                                                        href="{{ route('roles.show',$role) }}"><i
+                                                            class="material-icons">content_paste</i></a>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                            </tbody>
 
-                                                    <div class="">
-                                                        <h5 class="text-dark mb-0 font-16 font-weight-medium">Hanna Gover
-                                                        </h5>
 
-                                                    </div>
-                                                </div>
-                                            </td>
 
-                                            <td>John-Doe</td>
-                                            <td>8</td>
-                                            <td>fast</td>
 
-                                            <td>bb99@gmail.com</td>
-                                            <td>desiger</td>
-                                            <td>nana66</td>
-                                            <td>
-                                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">check_circle</i></a>
-                                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">gesture</i></a>
-                                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">event_busy</i></a>
-                                                <a class="details" title="details" data-toggle="tooltip" href="details.html"><i class="material-icons">content_paste</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align: center;">
-
-                                                <div><img src="../assets/images/users/widget-table-pic1.jpg" alt="user" class="rounded-circle" width="45" height="45" /></div>
-                                            </td>
-                                            <td>
-
-                                                <div class="">
-                                                    <h5 class="text-dark mb-0 font-16 font-weight-medium">Hanna Gover
-                                                    </h5>
-
-                                                </div>
+                            </table>
+                            </table>
                         </div>
-                        </td>
-
-                        <td>John-Doe</td>
-                        <td>8</td>
-                        <td>fast</td>
-
-                        <td>bb99@gmail.com</td>
-                        <td>desiger</td>
-                        <td>nana66</td>
-                        <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">check_circle</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">gesture</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">event_busy</i></a>
-                            <a class="details" title="details" data-toggle="tooltip" href="details.html"><i class="material-icons">content_paste</i></a>
-                        </td>
-                        </tr>
-                        </tbody>
-
-
-
-
-                        </table>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</div>
-<!-- *************************************************************** -->
-<!-- End Top Leader Table -->
-<!-- *************************************************************** -->
-</div>
-<!-- ============================================================== -->
-<!-- End Container fluid  -->
-<x-slot name="script">
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip();
-            var actions = $("table td:last-child").html();
-            // Append table with add row form on add new button click
-            $(".add-new").click(function() {
-                $(this).attr("disabled", "disabled");
-                var index = $("table tbody tr:last-child").index();
-                var row = '<tr>' +
-                    '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-                    '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-                    '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
-                    '<td><input type="text" class="form-control" name="Date" id="Date"></td>' +
-                    '<td><input type="text" class="form-control" name="Type" id="Type"></td>' +
-                    '<td><input type="text" class="form-control" name="Email" id="Email"></td>' +
-                    '<td><input type="text" class="form-control" name="Country" id="Country"></td>' +
-                    '<td>' + actions + '</td>' +
-                    '</tr>';
-                $("table").append(row);
-                $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
-                $('[data-toggle="tooltip"]').tooltip();
-            });
+        </div>
+        </div>
+        <!-- *************************************************************** -->
+        <!-- End Top Leader Table -->
+        <!-- *************************************************************** -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+
+
+
+        <script type="text/javascript">
+  
             // Add row on add button click
             $(document).on("click", ".add", function() {
                 var empty = false;
@@ -284,7 +256,8 @@
             // Edit row on edit button click
             $(document).on("click", ".edit", function() {
                 $(this).parents("tr").find("td:not(:last-child)").each(function() {
-                    $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                    $(this).html('<input type="text" class="form-control" value="' + $(this)
+                        .text() + '">');
                 });
                 $(this).parents("tr").find(".add, .edit").toggle();
                 $(".add-new").attr("disabled", "disabled");
@@ -295,8 +268,8 @@
                 $(".add-new").removeAttr("disabled");
             });
         });
-    </script>
-    <script>
+        </script>
+        <script>
         function myFunction() {
             var input, filter, table, tr, td, cell, i, j;
             input = document.getElementById("myInput");
@@ -319,8 +292,5 @@
                 }
             }
         }
-    </script>
-</x-slot>
-
-
+        </script>
 </x-layouts.app>
