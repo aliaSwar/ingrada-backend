@@ -46,9 +46,11 @@ $(function () {
     // income
     // ============================================================== 
     var data = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        labels: ['syria', 'Iraq', 'Mar', 'Apr', 'May', 'Jun'],
         series: [
-            [5, 4, 3, 7, 5, 10]
+            [5, 4, 3, 7, 5, 10],
+            
+            
         ]
     };
 
