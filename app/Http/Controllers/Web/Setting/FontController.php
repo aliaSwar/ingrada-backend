@@ -27,7 +27,7 @@ class FontController extends Controller
      */
     public function create(): View
     {
-        return view('setting.fonts.create');
+        return view('setting.fonts.create', ['fonts' => Font::query()->paginate(7)]);
     }
 
     /**
