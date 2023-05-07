@@ -12,12 +12,12 @@ class Color extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $fillable = ['name', 'slug', 'code'];
+    protected $fillable = ['slug', 'code'];
 
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name')
+            ->generateSlugsFrom('code')
             ->saveSlugsTo('slug');
     }
 

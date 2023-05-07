@@ -35,4 +35,8 @@ class Font extends Model
     {
         return $this->belongsToMany(Scope::class);
     }
+    public function getFileAttribute($value)
+    {
+        return asset("storage/{$value}");
+    }
 }

@@ -115,7 +115,7 @@
     {{ csrf_field() }}
     <div class="input-group mb-3">
         <input type="text" input name="name" class="form-control" placeholder="ADD NEW FONT!"  >
-        <input type="file" input name="path" class="form-control">
+        <input type="file" input name="file" class="form-control">
         <button class="btn btn-warning" type="submit">save</button>
       </div>
     </form>
@@ -141,7 +141,7 @@
     @foreach ($fonts as $font)
     <tr>
         <td>{{ $font->name }}</td>
-        <td><img src="{{ asset('fonts'.$font->image) }}" width="100px"></td>
+        <td><img src="{{Storage::url($font->file)  }}" width="100px"></td>
 <td>
 <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">event_busy</i></a>
 </td>

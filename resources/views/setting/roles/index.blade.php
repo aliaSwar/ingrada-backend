@@ -153,8 +153,8 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($roles as $role)
-                                                
-                                            
+
+
                                             <tr>
                                                 <td style="text-align: center;">
 
@@ -180,16 +180,16 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    
+
                                                     @foreach ($role->permissions as $permission)
-                                                   
+
                                                 {{ $permission->name }} -
-                                                   
+
                                                     @endforeach
-                                                
+
                                                 </td>
                                                 <td>
-                                               
+
                                                     <a class="edit" href="{{ route('roles.edit', $role ) }}"
                                                         title="Edit"
                                                         data-toggle="tooltip"><i class="material-icons">gesture</i></a>
@@ -231,7 +231,7 @@
 
 
         <script type="text/javascript">
-  
+
             // Add row on add button click
             $(document).on("click", ".add", function() {
                 var empty = false;

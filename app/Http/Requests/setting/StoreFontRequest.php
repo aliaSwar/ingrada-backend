@@ -25,7 +25,7 @@ class StoreFontRequest extends FormRequest
     {
         return [
             'name'      =>      ['required', 'string', 'unique:fonts,name'],
-            'path'      =>      ['required', 'file', 'image'],
+            'file'      =>      ['required', 'file', 'image'],
         ];
     }
 
