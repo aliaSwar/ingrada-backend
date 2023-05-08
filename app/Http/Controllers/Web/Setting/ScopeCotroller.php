@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\setting\StoreScopeRequest;
 use App\Http\Requests\setting\UpdateScopeRequest;
 use App\Models\Scope;
+use App\Models\Font;
+use App\Models\Color;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,7 +28,9 @@ class ScopeCotroller extends Controller
      */
     public function create(): View
     {
-        return view('setting.scopes.create');
+        return view('setting.scopes.create', [
+            'fonts' => Font::all()
+        ]);
     }
 
     /**
@@ -34,9 +38,15 @@ class ScopeCotroller extends Controller
      */
     public function store(StoreScopeRequest $request): RedirectResponse
     {
-        $scope = scope::create($request->validated());
+        //dd($request->all());
+       // $scope = scope::create($request->validated());
+       $colors=Color::where(function ($query) use ($request) {
+
+        $query->whereNotIn('code', $request->colors);
+    })->get();
+       dd($colors);
         $scope->colors()->sync($request->colors);
-        $scope->fonts()->sync($request->fonts);
+        //$scope->fonts()->sync($request->fonts);
         return redirect()->route('scopes.index')->with(['message' => __("messages.create_data")]);
     }
 

@@ -9,5 +9,5 @@ declare(strict_types=1);
  */
 function uploadFile($file, string $naming)
 {
-    return is_null($file) ? null : $file->storePublicly($naming . '-images');
+    return is_null($file) ? null : $file->store($naming.'-images', 'public');
 }

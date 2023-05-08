@@ -19,7 +19,7 @@ class RoleController extends Controller
     {
 
         $roles = Role::query()->with('users', 'permissions')->get();
-        //dd($roles);
+        dd($roles);
         return view('setting.roles.index', ['roles' => $roles]);
     }
 
@@ -61,9 +61,9 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit( Role $role):View
+    public function edit(string $id)
     {
-        return view('setting.roles.edit');
+//
     }
 
     /**

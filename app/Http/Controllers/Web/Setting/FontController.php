@@ -18,7 +18,7 @@ class FontController extends Controller
      */
     public function index(): View
     {
-        return view('setting.fonts.index', ['fonts' => Font::query()->paginate(7)]);
+        return view('setting.fonts.index', ['fonts' => Font::query()->paginate(100)]);
     }
 
 
@@ -27,7 +27,7 @@ class FontController extends Controller
      */
     public function create(): View
     {
-        return view('setting.fonts.create');
+        return view('setting.fonts.create', ['fonts' => Font::query()->paginate(7)]);
     }
 
     /**
@@ -36,10 +36,9 @@ class FontController extends Controller
     public function store(StoreFontRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $data = Arr::add($data, 'file', uploadFile($request->path, 'fonts'));
-
+        $data['file']=uploadFile($request->file,'fonts');
         Font::create($data);
-        return redirect()->route('fonts.index')->with(['message' => __("messages.create_data")]);
+        return redirect()->back()->with(['message' => __("messages.create_data")]);
     }
 
     /**
@@ -83,6 +82,6 @@ class FontController extends Controller
     public function destroy(Font $font): RedirectResponse
     {
         $font->delete();
-        return redirect()->route('fonts.index')->with(['message' => __("messages.delete_data")]);
+        return redirect()->back()->with(['message' => __("messages.delete_data")]);
     }
 }

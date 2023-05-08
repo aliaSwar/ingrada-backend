@@ -5,8 +5,9 @@ use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\Setting\ColorController;
 use App\Http\Controllers\Web\Setting\FontController;
 use App\Http\Controllers\Web\Setting\RoleController;
+use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,7 @@ Route::prefix('admin/')->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('colors', ColorController::class);
     Route::resource('fonts', FontController::class);
+    Route::resource('scopes', ScopeCotroller::class);
 });
 // Admin Route
 Route::prefix('manager/')->group(function () {
@@ -40,7 +42,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::get('ds', function () {
+    $users = User::whereNotIn('id', [1, 2, 3])
+    ->get();
+    return $users ;
+});
 
 
 require __DIR__ . '/auth.php';
