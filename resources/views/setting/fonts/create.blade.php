@@ -165,22 +165,27 @@
                                             <td><img src="{{$font->file  }}"
                                                     width="50px"></td>
                                             <td>
-                                            <form action="{{ route('fonts.destroy',$font) }}"method="POST">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="submit" style="border: none; background-color: inherit;">                                              <a class="delete"
-                                                    title="Delete"
-                                                    data-toggle="tooltip"><i class="material-icons">event_busy</i></a>
-                                                </button>
+                                                <form action="{{ route('fonts.destroy',$font) }}"
+                                                    method="POST">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="submit"
+                                                        style="border: none; background-color: inherit;"> <a
+                                                            class="delete"
+                                                            title="Delete"
+                                                            data-toggle="tooltip"><i
+                                                                class="material-icons">event_busy</i></a>
+                                                    </button>
 
                                                 </form>
-                                                </td>
+                                            </td>
                                         </tr>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </table>
+
                         </div>
                     </div>
                 </div>

@@ -27,7 +27,7 @@ class RegisterRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'avatar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif'],
-            'country_id' => ['numeric', 'exists:countries,id', 'required'],
+            'country' => ['string', 'required'],
             'company' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'string', new PhoneNumber()],
             'email' => ['required', 'unique:customers,email', 'email'],

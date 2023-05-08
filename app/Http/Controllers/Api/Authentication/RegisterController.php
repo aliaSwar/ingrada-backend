@@ -13,7 +13,7 @@ class RegisterController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(RegisterRequest $request): JsonResponse
+    public function __invoke(RegisterRequest $request)/* : JsonResponse */
     {
         $customer = (new RegisterCustomerAction)($request);
 

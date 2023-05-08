@@ -18,7 +18,7 @@ class Customer extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, HasSlug, Notifiable, HasApiTokens;
 
-    protected $guards = 'customer';
+    protected $guards = 'customers';
 
     protected $appends = ['fullname'];
 
@@ -28,7 +28,7 @@ class Customer extends Authenticatable implements MustVerifyEmail
         'last_name',
         'is_active',
         'avatar',
-        'country_id',
+        'country',
         'company',
         'phone_number',
         'email',

@@ -14,7 +14,7 @@ class LoginController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(LoginRequest $request): JsonResponse
+    public function __invoke(LoginRequest  $request)/* : JsonResponse */
     {
         Auth::shouldUse(config('auth.customer_guard_name'));
 

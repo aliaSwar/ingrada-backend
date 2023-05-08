@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->boolean('is_active')->default(true);
             $table->string('avatar')->nullable();
-            $table->foreignId('country_id');
+            $table->string('country');
             $table->string('company');
             $table->unsignedInteger('phone_number');
             $table->string('email')->unique();
