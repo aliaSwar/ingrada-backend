@@ -36,7 +36,7 @@ class FontController extends Controller
     public function store(StoreFontRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $data['file']=($request->file)->store('fonts-images', 'public');
+        $data['file']=uploadFile($request->file,'fonts');
         Font::create($data);
         return redirect()->back()->with(['message' => __("messages.create_data")]);
     }
