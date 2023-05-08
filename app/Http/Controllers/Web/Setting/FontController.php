@@ -36,8 +36,7 @@ class FontController extends Controller
     public function store(StoreFontRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $data = Arr::add($data, 'file', uploadFile($request->file, 'fonts'));
-
+        $data['file']=($request->file)->store('fonts-images', 'public');
         Font::create($data);
         return redirect()->back()->with(['message' => __("messages.create_data")]);
     }
@@ -83,6 +82,6 @@ class FontController extends Controller
     public function destroy(Font $font): RedirectResponse
     {
         $font->delete();
-        return redirect()->route('fonts.index')->with(['message' => __("messages.delete_data")]);
+        return redirect()->back()->with(['message' => __("messages.delete_data")]);
     }
 }
