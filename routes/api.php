@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
-
+use App\Http\Controllers\Design\ShowDesignController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
     Route::name('account.')->prefix('account')->group(function () {
-
         Route::post(
             'register',
             RegisterController::class
@@ -42,9 +41,20 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
      * Protected endpoints.
      */
     Route::middleware(['auth:sanctum'])->group(function () {
+        //Logout
         Route::get(
             'logout',
             LogoutController::class
         )->name('logout');
+
+        //Design
+        Route::name('design.')->prefix('design')->group(function () {
+            Route::get(
+                'designers',
+                ShowDesignController::class
+            )->name('index');
+        });
     });
+
+
 });
