@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\Setting\ColorController;
 use App\Http\Controllers\Web\Setting\FontController;
 use App\Http\Controllers\Web\Setting\RoleController;
 use App\Http\Controllers\Web\Setting\ScopeCotroller;
+use App\Http\Controllers\Web\Setting\TypeCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 /*
@@ -27,6 +28,7 @@ Route::prefix('admin/')->group(function () {
     Route::resource('colors', ColorController::class);
     Route::resource('fonts', FontController::class);
     Route::resource('scopes', ScopeCotroller::class);
+    Route::resource('types', TypeCotroller::class);
 });
 // Admin Route
 Route::prefix('manager/')->group(function () {
