@@ -79,7 +79,7 @@
 
                                               </tr>
                                             </table>
-                                            <text type="text" name="add" id="add" class="text-primary" > + Enter to Add More for this! </text>
+                                            <input type="text" name="add" id="add" class="text-primary" > + Enter to Add More for this!
 
                                           <input type="submit" id="submittype" class="btn btn-primary" name="submit" id="submit" value="Submit">
 

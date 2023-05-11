@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Item;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ShowDesignController extends Controller
 {
@@ -16,9 +17,10 @@ class ShowDesignController extends Controller
      */
     public function __invoke(): JsonResponse
     {
-        $data=Item::query()
+        $data=DB::table('items')->query()
                     ->with('types','scopes','colors','fonts','prefernces','prefernce_values')
                     ->where('is_display_items',true)
+                    ->orderBy('likes', 'desc')
                     ->get();
 
         return sendSuccessResponse(
