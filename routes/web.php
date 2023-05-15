@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\Web\Manager\ExternalOrderController;
 use App\Http\Controllers\Web\Manager\InternalCustomerController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\Setting\ColorController;
@@ -8,7 +10,7 @@ use App\Http\Controllers\Web\Setting\RoleController;
 use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,9 +32,11 @@ Route::prefix('admin/')->group(function () {
     Route::resource('scopes', ScopeCotroller::class);
     Route::resource('types', TypeCotroller::class);
 });
-// Admin Route
+
+// Manager Route
 Route::prefix('manager/')->group(function () {
     Route::resource('internal-customers', InternalCustomerController::class);
+    Route::resource('external-orders', ExternalOrderController::class);
 });
 
 Route::get('/', function () {
@@ -44,11 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('ds', function () {
-    $users = User::whereNotIn('id', [1, 2, 3])
-    ->get();
-    return $users ;
-});
+
 
 
 require __DIR__ . '/auth.php';

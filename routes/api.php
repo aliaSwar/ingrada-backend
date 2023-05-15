@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
-use App\Http\Controllers\Design\ShowDesignController;
+use App\Http\Controllers\Api\Design\ShowDesignsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,7 +51,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
         Route::name('design.')->prefix('design')->group(function () {
             Route::get(
                 'designers',
-                ShowDesignController::class
+                ShowDesignsController::class
             )->name('index');
         });
     });
