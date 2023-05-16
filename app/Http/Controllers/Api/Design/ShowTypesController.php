@@ -20,7 +20,7 @@ class ShowTypesController extends Controller
     {
         return sendSuccessResponse(
             __('messages.get_data'),
-            Type::query()->get(['name','image'])
+            Type::query()->get()
         );
     }
 }
