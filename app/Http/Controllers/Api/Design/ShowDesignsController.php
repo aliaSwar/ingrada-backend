@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Design;
 
 use App\Http\Controllers\Controller;
+use App\Models\Item;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,8 +18,8 @@ class ShowDesignsController extends Controller
      */
         public function __invoke(): JsonResponse
         {
-            $data=DB::table('items')->query()
-                        ->with('types','scopes','colors','fonts','prefernces','prefernce_values')
+            $data=Item::query()
+                        ->with('type','scope','colors','fonts')
                         ->where('is_display_items',true)
                         ->orderBy('likes', 'desc')
                         ->get();
