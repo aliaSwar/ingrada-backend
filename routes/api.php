@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Design\ShowDesignsTypeController;
 use App\Http\Controllers\Api\Design\ShowDesignsTypeFontController;
 use App\Http\Controllers\Api\Design\ShowDesignsTypeScopeController;
 use App\Http\Controllers\Api\Design\ShowTypesController;
+use App\Http\Controllers\Api\Order\CustomizeOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +46,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
     /**
      * Protected endpoints.
      */
-   // Route::middleware(['auth:sanctum'])->group(function () {
+    Route::middleware(['auth:sanctum'])->group(function () {
         //Logout
         Route::get(
             'logout',
@@ -78,7 +79,14 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
                 'font/{type}/{font}',
                 ShowDesignsTypeFontController::class
             );
-       // });
+        });
+
+        //Order
+        Route::name('order.')->prefix('order')->group(function () {
+            
+                Route::get('types',[CustomizeOrderController::class, 'getTypes']);
+                Route::post('types',[CustomizeOrderController::class, 'storeTypes']);
+        });
     });
 
 

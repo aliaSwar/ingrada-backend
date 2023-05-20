@@ -32,7 +32,7 @@ class Prefernce extends Model
         return $this->belongsTo(Type::class);
     }
 
-    public function preferncevalues(): HasMany
+    public function prefernce_values(): HasMany
     {
         return $this->hasMany(PrefernceValue::class);
     }
