@@ -3,7 +3,12 @@
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
-use App\Http\Controllers\Design\ShowDesignController;
+use App\Http\Controllers\Api\Design\ShowDesignsController;
+use App\Http\Controllers\Api\Design\ShowDesignsTypeColorController;
+use App\Http\Controllers\Api\Design\ShowDesignsTypeController;
+use App\Http\Controllers\Api\Design\ShowDesignsTypeFontController;
+use App\Http\Controllers\Api\Design\ShowDesignsTypeScopeController;
+use App\Http\Controllers\Api\Design\ShowTypesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +45,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
     /**
      * Protected endpoints.
      */
-    Route::middleware(['auth:sanctum'])->group(function () {
+   // Route::middleware(['auth:sanctum'])->group(function () {
         //Logout
         Route::get(
             'logout',
@@ -50,10 +55,30 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
         //Design
         Route::name('design.')->prefix('design')->group(function () {
             Route::get(
-                'designers',
-                ShowDesignController::class
-            )->name('index');
-        });
+                'designs',
+                ShowDesignsController::class
+            );
+            Route::get(
+                'types',
+                ShowTypesController::class
+            );
+            Route::get(
+                'designs/{type}',
+                ShowDesignsTypeController::class
+            );
+            Route::get(
+                'scope/{type}/{scope}',
+                ShowDesignsTypeScopeController::class
+            );
+            Route::get(
+                'color/{type}/{color}',
+                ShowDesignsTypeColorController::class
+            );
+            Route::get(
+                'font/{type}/{font}',
+                ShowDesignsTypeFontController::class
+            );
+       // });
     });
 
 
