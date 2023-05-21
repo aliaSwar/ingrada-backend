@@ -7,6 +7,7 @@ use App\Actions\Orders\StoreTypeAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Order\PrefernceRequest;
 use App\Http\Requests\Api\Order\TypeRequest;
+use App\Http\Requests\InformationRequest;
 use App\Models\Prefernce;
 use App\Models\Type;
 use Illuminate\Contracts\Session\Session;
@@ -29,9 +30,8 @@ class CustomizeOrderController extends Controller
      *
      * @return  JsonResponse
      */
-    public function getTypes()/* :JsonResponse */
+    public function getTypes():JsonResponse
     {
-        //return  Cache::get();
         return sendSuccessResponse(
             __('messages.get_data'),
             Type::query()->get()
@@ -42,19 +42,13 @@ class CustomizeOrderController extends Controller
      *
      * @param  Request  $request
      */
-    public function storeTypes(TypeRequest $request)/* :JsonResponse */
+    public function storeTypes(TypeRequest $request):JsonResponse
     {
-      /*   (new StoreTypeAction)($request,$this->order);
+        (new StoreTypeAction)($request,$this->order);
         
         return sendSuccessResponse(
             __('messages.create_data'),
-        ); */
-
-        // Store a piece of data in the session...
-        Cache::rememberForever('o', fn()=>
-                'fgf'
         );
-
 
     }
     /**
@@ -62,7 +56,7 @@ class CustomizeOrderController extends Controller
      *
      * @param  Request  $request
      */
-    public function storecolores(Request $request):JsonResponse
+    public function storeInformation(InformationRequest $request):JsonResponse
     {
         (new StoreTypeAction)($request,$this->order);
         
