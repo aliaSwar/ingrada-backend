@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\Setting\FontController;
 use App\Http\Controllers\Web\Setting\RoleController;
 use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/d', function () {
+    dd(Carbon::now());
+});
 // Setting Route
 
 // Admin Route
