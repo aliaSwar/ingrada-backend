@@ -14,8 +14,9 @@ class TaskController extends Controller
      */
     public function index(): View
     {
-        return "ff";
-       // return view('designer.task.index');
+
+        return view('designer.task.index',
+        ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]);
     }
 
     /**
@@ -41,7 +42,7 @@ class TaskController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('designer.task.show');
     }
 
     /**

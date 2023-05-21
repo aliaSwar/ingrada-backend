@@ -21,7 +21,10 @@ class Task extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    public function order(): BelongsTo
+    {
+        return $this->belongsTo(order::class);
+    }
     public function filestask(): HasMany
     {
         return $this->hasMany(FileTask::class);

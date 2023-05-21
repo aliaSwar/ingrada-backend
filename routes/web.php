@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\Setting\RoleController;
 use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\Designer\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/d', function () {
-    dd(Carbon::now());
-});
 // Setting Route
 
 // Admin Route
@@ -43,7 +41,7 @@ Route::prefix('manager/')->group(function () {
 });
 //designer Route
 Route::prefix('designer/')->group(function () {
-    Route::resource('task', TaskController::class);
+    Route::resource('tasks', TaskController::class);
 });
 
 
