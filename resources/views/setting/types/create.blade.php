@@ -266,7 +266,5 @@
     <script src="multiple-select.js"></script>
     <script src="https://cdn.rawgit.com/wenzhixin/multiple-select/e14b36de/multiple-select.js"></script>
 
-</body>
 
-</html>
 </x-layouts.app>

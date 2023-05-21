@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\Setting\FontController;
 use App\Http\Controllers\Web\Setting\RoleController;
 use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
+use App\Http\Controllers\Web\Designer\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 /*
@@ -34,6 +35,11 @@ Route::prefix('admin/')->group(function () {
 Route::prefix('manager/')->group(function () {
     Route::resource('internal-customers', InternalCustomerController::class);
 });
+//designer Route
+Route::prefix('designer/')->group(function () {
+    Route::resource('task', TaskController::class);
+});
+
 
 Route::get('/', function () {
     return view('dashboard');
