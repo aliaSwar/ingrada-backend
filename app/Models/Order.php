@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -26,6 +27,10 @@ class Order extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
     public function item(): BelongsTo
     {
         return $this->belongsTo(Item::class);

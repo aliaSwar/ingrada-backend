@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Api\Order;
+namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class TypeRequest extends FormRequest
+class InformationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class TypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'     =>   ['required','string','exists:types,name'],
-            'type_id'  =>   ['required','exists:types,id'],
-            'price'    =>   ['required']
+            //
         ];
     }
 

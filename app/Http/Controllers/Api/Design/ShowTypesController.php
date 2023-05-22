@@ -21,7 +21,7 @@ class ShowTypesController extends Controller
         return sendSuccessResponse(
             __('messages.get_data'),
             Type::query()
-                    ->all()
+                    ->get()
         );
     }
 }
