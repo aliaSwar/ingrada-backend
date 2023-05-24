@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Order;
 
+use App\Actions\Orders\StoreInformationAction;
 use App\Actions\Orders\StorePrefernceAction;
 use App\Actions\Orders\StoreTypeAction;
 use App\Http\Controllers\Controller;
@@ -55,7 +56,7 @@ class CustomizeOrderController extends Controller
      */
     public function storeInformation(InformationRequest $request):JsonResponse
     {
-        (new StoreTypeAction)($request);
+        (new StoreInformationAction)($request);
         
         return sendSuccessResponse(
             __('messages.create_data'),

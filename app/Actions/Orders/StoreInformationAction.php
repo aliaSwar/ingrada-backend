@@ -2,19 +2,19 @@
 
 namespace App\Actions\Orders;
 
-use App\Http\Requests\InformationRequest;
+use App\Http\Requests\Api\Order\PrefernceRequest;
+use Illuminate\Support\Facades\Cache;
 
 class StoreInformationAction
 {
-    public function __invoke(InformationRequest $request)
+    
+    public function __invoke(PrefernceRequest $request):void
     {
-        $order['pereferce_ides']   = $request->pereferce_ides;
-        $order['pereferce']        = $request->pereferce;
-        
-        foreach ($request->prices as $price) {
-            $order['total_price']=$order['total_price']+ $price;
-        }
-        
-        return $order;
+        Cache::put('is_idea',$request->is_idea);
+        Cache::put('description',$request->description);
+        Cache::put('file',uploadFile($request->file,'orders'));
+        Cache::put('expected_limit_date',$request->expected_limit_date);
+
+
     }
 }

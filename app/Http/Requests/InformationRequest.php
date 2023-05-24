@@ -24,7 +24,11 @@ class InformationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'is_idea'                               =>  ['required','boolean'],
+            'description'                           =>  ['nullable','string'],
+            'file'                                  =>  ['file'],
+            'size'                                  =>  ['nullable','numeric'],
+            'expected_limit_date'                   =>  ['required','date'],
         ];
     }
 
