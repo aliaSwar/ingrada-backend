@@ -24,9 +24,12 @@ class PrefernceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'pereferce_ides'     =>   ['array','string','exists:prefernces,name'],
-            'pereferce'          =>   ['array','numaric','exists:prefernces,id'],
-            'prices'             =>   ['array','numaic']
+            'pereferce_id'             =>   ['required','exists:prefernces,id'],
+            'value_ides'               =>   ['array','exists:prefernce_values,id'],
+            'value'                    =>   ['array','exists:prefernce_values,name'],
+            'pereferce'                =>   ['required','string','exists:prefernces,name'],
+            'price'                    =>   ['required'],
+            'prices_value'             =>   ['array']
         ];
     }
 

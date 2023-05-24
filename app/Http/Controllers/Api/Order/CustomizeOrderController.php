@@ -10,15 +10,12 @@ use App\Http\Requests\Api\Order\TypeRequest;
 use App\Http\Requests\InformationRequest;
 use App\Models\Prefernce;
 use App\Models\Type;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class CustomizeOrderController extends Controller
 {
-    public $order=[];
-
 
     public function __construct()
     {
@@ -44,7 +41,7 @@ class CustomizeOrderController extends Controller
      */
     public function storeTypes(TypeRequest $request):JsonResponse
     {
-        (new StoreTypeAction)($request,$this->order);
+        (new StoreTypeAction)($request);
         
         return sendSuccessResponse(
             __('messages.create_data'),
@@ -58,7 +55,7 @@ class CustomizeOrderController extends Controller
      */
     public function storeInformation(InformationRequest $request):JsonResponse
     {
-        (new StoreTypeAction)($request,$this->order);
+        (new StoreTypeAction)($request);
         
         return sendSuccessResponse(
             __('messages.create_data'),
@@ -75,7 +72,8 @@ class CustomizeOrderController extends Controller
         return sendSuccessResponse(
             __('messages.get_data'),
             Prefernce::query()
-                        ->where('type_id',$this->order['type_id']) 
+                        ->with('prefernce_values')
+                        ->where('type_id',Cache::get('type_id')) 
                         ->get()
         );
     }
@@ -84,10 +82,11 @@ class CustomizeOrderController extends Controller
     *
     * @param  Request  $request
     */
-    public function storePrefernces(PrefernceRequest $request):JsonResponse
+    public function storePrefernces(PrefernceRequest $request)/* :JsonResponse */
     {
-        (new StorePrefernceAction)($request,$this->order);
+        (new StorePrefernceAction)($request);
         
+        return Cache::get('value');
         return sendSuccessResponse(
             __('messages.create_data'),
         );
