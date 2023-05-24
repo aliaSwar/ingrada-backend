@@ -9,16 +9,11 @@ use Illuminate\Support\Facades\Cache;
 
 class StoreTypeAction
 {
-    public function __invoke(TypeRequest $request, $order):void
+    public function __invoke(TypeRequest $request):void
     {
-                // Store a piece of data in the session...
-        Cache::put('o', fn()=>
-                'fgf'
-        );
-        $order['type_id'] = $request->type_id;
-        $order['type'] = $request->type;
-        $order['total_price'] = $request->price;
 
-
+        Cache::put('type_id',$request->type_id);
+        Cache::put('type',$request->type);
+        Cache::put('total_price',$request->price);
     }
-}
+} 

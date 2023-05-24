@@ -3,19 +3,27 @@
 namespace App\Actions\Orders;
 
 use App\Http\Requests\Api\Order\PrefernceRequest;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
 
 class StorePrefernceAction
 {
-    public function __invoke(PrefernceRequest $request,Arr $order)
+    protected $total_price=0;
+    
+    public function __invoke(PrefernceRequest $request):void
     {
-        $order['pereferce_ides']   = $request->pereferce_ides;
-        $order['pereferce']        = $request->pereferce;
+        Cache::put('pereferce_id',$request->pereferce_id);
+        Cache::put('value_ides',$request->value_ides);
+        Cache::put('value',$request->value);
+        Cache::put('total_price',$request->prices);
         
-        foreach ($request->prices as $price) {
-            $order['total_price']=$order['total_price']+ $price;
+
+        foreach ($request->prices_value as $price) {
+            $this->total_price=$this->total_price + $price;
         }
-        
-        return $order;
+        if ($this->total_price>0) {
+            
+            Cache::put('total_price',$this->total_price);
+        }
+
     }
 }
