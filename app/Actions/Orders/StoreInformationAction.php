@@ -2,13 +2,14 @@
 
 namespace App\Actions\Orders;
 
-use App\Http\Requests\Api\Order\PrefernceRequest;
+
+use App\Http\Requests\InformationRequest;
 use Illuminate\Support\Facades\Cache;
 
 class StoreInformationAction
 {
     
-    public function __invoke(PrefernceRequest $request):void
+    public function __invoke(InformationRequest $request):void
     {
         Cache::put('is_idea',$request->is_idea);
         Cache::put('description',$request->description);
