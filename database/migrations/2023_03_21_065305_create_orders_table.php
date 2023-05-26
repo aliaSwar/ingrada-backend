@@ -20,16 +20,20 @@ return new class extends Migration
             $table->boolean('is_accept')->default(0);
             $table->boolean('is_enternal')->default(false);
             $table->double('primary_price');
-            $table->double('final_price');
+            $table->double('final_sprice');
             $table->string('type');
             $table->string('scope');
             $table->json('colors');
             $table->json('fonts');
             $table->string('file');
             //TODO::is_order_designer
+            $table->boolean('is_order_designer')->default(0);
             //TODO::id_designer
+            $table->unsignedInteger('designer_id')->nullable();
+            $table->unsignedDouble('size')->nullable();
             $table->date('limit_date', 'y-m-d');
-            $table->enum('status', ['Initiated', 'InProgress', 'Completed', 'Failed']);
+            $table->date('expected_limit_date', 'y-m-d');//المتوقع
+            $table->enum('status', ['Ordered','Initiated', 'InProgress', 'Completed', 'Failed']);
             $table->text('notes'); // notes the contect writer
             $table->timestamps();
         });

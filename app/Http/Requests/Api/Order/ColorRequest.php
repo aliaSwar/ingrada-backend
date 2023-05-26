@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api\Order;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class InformationRequest extends FormRequest
+class ColorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class InformationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'colors'    =>   'array|string|distinct'
         ];
     }
 
