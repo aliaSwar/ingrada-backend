@@ -12,7 +12,10 @@ class Category extends Model
 {
     use HasFactory;
     use HasSlug;
-
+    const   CATEGORY_CREATIVE   = "Creative";
+    const   CATEGORY_FAST       = "Fast"; 
+    const   CATEGORY_EXTUTABLE  = "Extutable"; 
+    
     protected $fillable = ['name', 'slug'];
 
     public function users(): HasMany
