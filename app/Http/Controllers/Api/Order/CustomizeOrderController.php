@@ -201,10 +201,12 @@ class CustomizeOrderController extends Controller
     */
     public function storeOrder(DesignerRequest $request):JsonResponse
     {
-        (new StoreOrderAction)($request);
+        $order=(new StoreOrderAction)($request);
         
         return senDSuccessResponse(
+            $order,
             __('messages.create_data'),
+            
         );
     }
 } 

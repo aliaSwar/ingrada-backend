@@ -14,8 +14,6 @@ class StoreInformationAction
         $user_id=Auth::guard('customers')->id;
         Cache::put($user_id.'is_idea',$request->is_idea);
         Cache::put($user_id.'description',$request->description);
-        Cache::put($user_id.'is_idea',$request->is_idea);
-        Cache::put($user_id.'description',$request->description);
         Cache::put($user_id.'file',uploadFile($request->file,'orders'));
         Cache::put($user_id.'expected_limit_date',$request->expected_limit_date);
         Cache::put($user_id.'size',$request->size);

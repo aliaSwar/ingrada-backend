@@ -6,7 +6,7 @@ use App\Http\Requests\Api\Order\PrefernceRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
-class  StorePrefernceAction
+class   StorePrefernceAction
 {
     protected $total_price=0;
     
