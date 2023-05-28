@@ -35,4 +35,18 @@ trait HasDefaultDumpData
                 'file'     =>   'img3.jpg'
         ];
     }
+    protected function customers(): array
+    {
+        return [
+                'name'           =>   'alia',
+                'slug'           =>   'alia',
+                'first_name'     =>   'alia',
+                'last_name'      =>   'sewar',
+                'country'        =>   'syria',
+                'company'        =>   'evo',
+                'phone_number'   =>   '134567897',
+                'email'          =>   'swar@app.com',
+                'password'       =>  defaultHashedPassword('134567')
+        ];
+    }
 }

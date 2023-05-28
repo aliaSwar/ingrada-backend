@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('file');
             //TODO::is_order_designer
             $table->boolean('is_order_designer')->default(0);
-            //TODO::id_designer
+            //TODO::designer_id
             $table->unsignedInteger('designer_id')->nullable();
             $table->unsignedDouble('size')->nullable();
             $table->date('limit_date', 'y-m-d');

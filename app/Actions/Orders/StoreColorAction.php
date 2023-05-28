@@ -3,6 +3,7 @@
 namespace App\Actions\Orders;
 
 use App\Http\Requests\Api\Order\ColorRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class StoreColorAction
@@ -10,6 +11,7 @@ class StoreColorAction
     
     public function __invoke(ColorRequest $request):void
     {
-        Cache::put('colors',$request->colors);
+        $user_id=Auth::guard('customers')->id;
+        Cache::put($user_id.'colors',$request->colors);
     }
 }

@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\Design\ShowDesignsTypeScopeController;
 use App\Http\Controllers\Api\Design\ShowTypesController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+Route::get('/test', function () {
+    return Cache::get('type');
+});
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -102,7 +105,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
                 Route::post('fonts',[CustomizeOrderController::class, 'storeFonts']);
                 //Designer
                 Route::get('designers',[CustomizeOrderController::class, 'getDesigners']);
-                Route::post('designers',[CustomizeOrderController::class, 'storeDesigner']);
+                Route::post('orders',[CustomizeOrderController::class, 'storeOrder']);
             });
         });
     });

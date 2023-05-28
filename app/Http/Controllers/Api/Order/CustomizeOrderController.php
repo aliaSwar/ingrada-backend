@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api\Order;
 
 use App\Actions\Orders\StoreColorAction;
-use App\Actions\Orders\StoreDesignerAction;
 use App\Actions\Orders\StoreFontAction;
 use App\Actions\Orders\StoreInformationAction;
+use App\Actions\Orders\StoreOrderAction;
 use App\Actions\Orders\StorePrefernceAction;
 use App\Actions\Orders\StoreTypeAction;
 use App\Http\Controllers\Controller;
@@ -199,9 +199,9 @@ class CustomizeOrderController extends Controller
     *
     * @param  FontRequest  $request
     */
-    public function storeDesigner(DesignerRequest $request):JsonResponse
+    public function storeOrder(DesignerRequest $request):JsonResponse
     {
-        (new StoreDesignerAction)($request);
+        (new StoreOrderAction)($request);
         
         return senDSuccessResponse(
             __('messages.create_data'),
