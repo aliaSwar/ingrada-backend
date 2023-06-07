@@ -36,7 +36,7 @@ class StoreOrderAction
             'is_order_designer'            =>    $extists,
             'size'                         =>    Cache::get( $user_id.'size'),
             'expected_limit_date'          =>    Cache::get( $user_id.'expected_limit_date'),
-            'status'                       =>    'Ordered',
+            'status'                       =>    Order::ORDERED_STATUS,
             'colors'                       =>    Cache::get( $user_id.'colors'),
             'fonts'                        =>    Cache::get( $user_id.'fonts'), 
             'primary_price'                =>    Cache::get( $user_id.'total_price'), 
