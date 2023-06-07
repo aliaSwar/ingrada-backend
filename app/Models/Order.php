@@ -11,6 +11,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Order extends Model
 {
     use HasFactory;
+    const ORDERED_STATUS    = "Ordered";
+    const INITIATED_STATUS  = "Initiated";
+    const INPROGRESS_STATUS = "InProgress";
+    const COMPLETED_STATUS  = "Completed";
+    const FAILED_STATUS     = "Failed";
+
 
     protected $fillable = [
         'customers_id', 'item_id', 'description', 'is_idea', 'is_accept', 'type_order', 'primary_price', 'final_price', 'type',
