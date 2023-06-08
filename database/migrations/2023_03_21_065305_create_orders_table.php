@@ -20,14 +20,14 @@ return new class extends Migration
             $table->boolean('is_accept')->default(0);
             $table->boolean('is_enternal')->default(false);
             $table->double('primary_price');
-            $table->double('final_sprice');
+            $table->double('final_price');
             $table->string('type');
             $table->string('scope');
             $table->json('colors');
             $table->json('fonts');
             $table->string('pereferce');
-            $table->json('value');
-            $table->string('file');
+            $table->json('value')->nullable();
+            $table->string('file')->nullable();
             //TODO::is_order_designer
             $table->boolean('is_order_designer')->default(0);
             //TODO::designer_id
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->unsignedDouble('size')->nullable();
             $table->date('limit_date', 'y-m-d');
             $table->date('expected_limit_date', 'y-m-d');//المتوقع
-            $table->enum('status', ['Ordered','Initiated', 'InProgress', 'Completed', 'Failed']);
+            $table->enum('status', ['Pendning','Initiated', 'InProgress', 'Completed', 'Failed']);
             $table->text('notes')->nullable(); // notes the contect writer
             $table->timestamps();
         });

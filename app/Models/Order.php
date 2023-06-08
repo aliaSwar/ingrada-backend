@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Order extends Model
 {
     use HasFactory;
-    const ORDERED_STATUS    = "Ordered";
+    const PENDNING_STATUS    = "Pendning";
     const INITIATED_STATUS  = "Initiated";
     const INPROGRESS_STATUS = "InProgress";
     const COMPLETED_STATUS  = "Completed";

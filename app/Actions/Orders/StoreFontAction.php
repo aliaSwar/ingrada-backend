@@ -12,6 +12,6 @@ class StoreFontAction
     
     public function __invoke(FontRequest $request):void
     {
-        Cache::put(Auth::guard('customers')->id.'fonts',$request->fonts);
+        Cache::put(Auth::user()->id.'fonts',$request->fonts);
     }
 }
