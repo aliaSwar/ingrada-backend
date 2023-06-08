@@ -24,7 +24,7 @@ class TypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'     =>   ['required','string','exists:types,name'],
+            'type'     =>   ['required','string','exists:types,name'],
             'type_id'  =>   ['required','exists:types,id'],
             'price'    =>   ['required']
         ];
