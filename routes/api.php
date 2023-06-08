@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\Design\ShowDesignsTypeScopeController;
 use App\Http\Controllers\Api\Design\ShowTypesController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
      * Protected endpoints.
      */
     Route::middleware(['auth:sanctum'])->group(function () {
+        Route::get('/test', function () {
+            $user_id=Auth::user()->id;
+    return Cache::Keys('*');
+});
         //Logout
         Route::get(
             'logout',
