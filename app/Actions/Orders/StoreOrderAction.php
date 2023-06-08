@@ -14,7 +14,7 @@ class StoreOrderAction
     
     public function __invoke(DesignerRequest $request)
     {
-        $user_id=Auth::guard('customers')->id;
+        $user_id=Auth::user()->id;
         $extists=false;
         $designer=User::query()
                     ->role('designer')
@@ -36,7 +36,7 @@ class StoreOrderAction
             'is_order_designer'            =>    $extists,
             'size'                         =>    Cache::get( $user_id.'size'),
             'expected_limit_date'          =>    Cache::get( $user_id.'expected_limit_date'),
-            'status'                       =>    'Ordered',
+            'status'                       =>    Order::ORDERED_STATUS,
             'colors'                       =>    Cache::get( $user_id.'colors'),
             'fonts'                        =>    Cache::get( $user_id.'fonts'), 
             'primary_price'                =>    Cache::get( $user_id.'total_price'), 
@@ -45,7 +45,7 @@ class StoreOrderAction
             'is_idea'                      =>    Cache::get( $user_id.'is_idea'),
             'description'                  =>    Cache::get( $user_id.'description'),
             'file'                         =>    Cache::get( $user_id.'file'),
-            'customers_id'                 =>    Auth::guard('customers')->id,
+            'customers_id'                 =>    $user_id,
             'value'                        =>    Cache::get( $user_id.'value'),
             'pereferce'                    =>    Cache::get( $user_id.'pereferce'),
         ];

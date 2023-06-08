@@ -13,6 +13,27 @@ trait HasDefaultDumpData
                 'image'    =>   'img3.jpg'
         ];
     }
+    
+    protected function prefernces(): array
+    {
+        return [
+                'name'     =>  'write',
+                'slug'     =>  'write',
+                'price'    =>   55,
+                'image'    =>   'img3.jpg',
+                'type_id'  =>   1
+        ];
+    }
+    protected function values(): array
+    {
+        return [
+                'name'          =>  'facebook post',
+                'slug'          =>  'facebook-post',
+                'price'         =>   55,
+                'image'         =>   'img3.jpg',
+                'prefernce_id'  =>   1
+        ];
+    }
     protected function scopes(): array
     {
         return [

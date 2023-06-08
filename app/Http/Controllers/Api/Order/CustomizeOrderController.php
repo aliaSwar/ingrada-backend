@@ -24,6 +24,7 @@ use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class CustomizeOrderController extends Controller
@@ -117,7 +118,7 @@ class CustomizeOrderController extends Controller
      */
     public function getSuggestColors():JsonResponse
     {
-        $data=Scope::find(Cache::get('scope_id'))->colors();
+        $data=Scope::find(Cache::get(Auth::id().'scope_id'))->colors;
         return sendSuccessResponse(
             __('messages.get_data'),
             $data
@@ -157,7 +158,7 @@ class CustomizeOrderController extends Controller
      */
     public function getSuggestFonts():JsonResponse
     {
-        $data=Scope::find(Cache::get('scope_id'))->fonts();
+        $data=Scope::find(Cache::get(Auth::id().'scope_id'))->fonts;
         return sendSuccessResponse(
             __('messages.get_data'),
             $data
