@@ -14,6 +14,7 @@ class   StorePrefernceAction
     {
         $user_id=Auth::user()->id;
         Cache::put($user_id.'pereferce_id',$request->pereferce_id);
+        Cache::put($user_id.'pereferce',$request->pereferce);
         Cache::put($user_id.'value_ides',$request->value_ides);
         Cache::put($user_id.'value',$request->value);
         Cache::put($user_id.'total_price',$request->prices);

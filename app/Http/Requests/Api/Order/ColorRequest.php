@@ -23,7 +23,7 @@ class ColorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'colors'    =>   'array|string|distinct'
+            'colors'    =>   'array'
         ];
     }
 

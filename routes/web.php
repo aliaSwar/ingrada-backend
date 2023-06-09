@@ -11,6 +11,7 @@ use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Designer\TaskController;
+use App\Http\Controllers\Web\Manager\InternalOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::prefix('admin/')->group(function () {
 Route::prefix('manager/')->group(function () {
     Route::resource('internal-customers', InternalCustomerController::class);
     Route::resource('external-orders', ExternalOrderController::class);
+    Route::resource('internal-orders', InternalOrderController::class);
 });
 //designer Route
 Route::prefix('designer/')->group(function () {

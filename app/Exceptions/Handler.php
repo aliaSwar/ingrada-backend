@@ -35,14 +35,6 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
-    public function render($request, Throwable $exception)
-    {
-        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface) {
-            return response()->json(['error' => 'Server Error'], 500);
-        }
-    
-        return parent::render($request, $exception);
-    }
     /**
      * Register the exception handling callbacks for the application.
      */

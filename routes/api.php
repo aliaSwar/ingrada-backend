@@ -53,7 +53,8 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/test', function () {
             $user_id=Auth::user()->id;
-    return Cache::Keys('*');
+            //Cache::put($user_id.'type', 'logo');
+    return Cache::get($user_id.'pereferce', 'default');
 });
         //Logout
         Route::get(
