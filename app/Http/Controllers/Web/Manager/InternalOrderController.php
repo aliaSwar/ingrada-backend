@@ -23,6 +23,7 @@ class InternalOrderController extends Controller
             ->where('status','!=',Order::COMPLETED_STATUS)
             ->where('is_enternal',true)
             ->paginate(7);
+            
         return view('manager.internal-orders.index', ['orders' => $order ]);
     }
 
