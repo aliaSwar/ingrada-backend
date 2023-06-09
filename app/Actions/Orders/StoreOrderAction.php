@@ -47,26 +47,8 @@ class StoreOrderAction
             'pereferce'                    =>    Cache::get( $user_id.'pereferce'),
         ];
         
-        $order=Order::create([
-            'type'                         =>    Cache::get( $user_id.'type'),
-            'designer_id'                  =>    $request->designer_id,
-            'is_order_designer'            =>    $request->designer_id ? true:false,
-            'size'                         =>    Cache::get( $user_id.'size'),
-            'expected_limit_date'          =>    Cache::get( $user_id.'expected_limit_date'),
-            'status'                       =>    Order::PENDNING_STATUS,
-            'colors'                       =>    Cache::get( $user_id.'colors'),
-            'fonts'                        =>    Cache::get( $user_id.'fonts'), 
-            'primary_price'                =>    Cache::get( $user_id.'total_price'), 
-            'final_price'                  =>    Cache::get( $user_id.'total_price'),
-            'is_enternal'                  =>    false,
-            'is_idea'                      =>    Cache::get( $user_id.'is_idea'),
-            'description'                  =>    Cache::get( $user_id.'description'),
-            'file'                         =>    Cache::get( $user_id.'file'),
-            'customers_id'                 =>    $user_id,
-            'value'                        =>    Cache::get( $user_id.'value'),
-            'pereferce'                    =>    Cache::get( $user_id.'pereferce'),
-        ]);
-        $order= new Order();
+        $order=Order::create($attributes);
+/*         $order= new Order();
         $order->type=Cache::get( $user_id.'type');
         $order->designer_id=$request->designer_id;
         $order->is_order_designer=$request->designer_id ? true:false;
@@ -84,7 +66,7 @@ class StoreOrderAction
         $order->customers_id=$user_id;
         // $order->value =    json_encode(Cache::get( $user_id.'value'));
         $order->pereferce =    Cache::get( $user_id.'pereferce');    
-        $order->save();
+        $order->save(); */
         return $order;
     }
 }

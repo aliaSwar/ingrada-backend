@@ -11,7 +11,7 @@
                         -->
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link active" href="/" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span class="hide-menu">HOME</span></a></li>
                 <li class="list-divider"></li>
-                <li class="sidebar-item"> <a class="sidebar-link" href="Employee.html" aria-expanded="false"><i data-feather="user" class="feather-icon"></i><span class="hide-menu">EMPLOYEE
+                <li class="sidebar-item"> <a class="sidebar-link" href="" aria-expanded="false"><i data-feather="user" class="feather-icon"></i><span class="hide-menu">EMPLOYEE
                         </span></a>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link " href="permission.html" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">PERMISSION </span></a>

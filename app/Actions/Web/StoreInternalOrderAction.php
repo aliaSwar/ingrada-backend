@@ -11,7 +11,7 @@ class StoreInternalOrderAction{
           $attributes = $request->validated();
           
           if ($request->hasFile('file')) {
-               $attributes['file'] = $request->storePublicly('internal-orders');
+               $attributes['file'] = $request->file->store('internal-orders','public');
           }
           $attributes['is_enternal']        = true;
           $attributes['is_accept']          = true;

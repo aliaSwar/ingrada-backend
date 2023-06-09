@@ -9,6 +9,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Order;
+use App\Models\Type;
 use Illuminate\View\View;
 
 class InternalOrderController extends Controller
@@ -23,6 +24,7 @@ class InternalOrderController extends Controller
             ->where('status','!=',Order::COMPLETED_STATUS)
             ->where('is_enternal',true)
             ->paginate(7);
+            
         return view('manager.internal-orders.index', ['orders' => $order ]);
     }
 
@@ -32,7 +34,7 @@ class InternalOrderController extends Controller
     public function create(): View
     {
         return view('manager.internal-orders.create',[
-            'customers'    =>  Customer::query()->get()
+            'types'    =>  Type::query()->get()
         ]);
     }
 
@@ -43,7 +45,7 @@ class InternalOrderController extends Controller
     {
         (new StoreInternalOrderAction)($request);
         
-        return redirect()->route('manager.internal-customers.index')->with(['message' => __("messages.create_data")]);
+        return redirect()->route('internal-orders.index')->with(['message' => __("messages.create_data")]);
     }
 
     /**
