@@ -28,15 +28,11 @@ class StoreInternalOrderRequest extends FormRequest
             'file'              =>    'required|file',
             'limit_date'        =>    'required|date',
             'final_price'       =>    'required|numeric',
-            'notes'             =>    'nullable|string'
+            'notes'             =>    'nullable|string',
+            'description'       =>    'nullable|string'
         ];
     }
 
 
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(
-            sendFailedResponse($validator->errors()->first(), null, 422)
-        );
-    }
+
 }
