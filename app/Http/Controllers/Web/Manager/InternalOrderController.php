@@ -20,10 +20,10 @@ class InternalOrderController extends Controller
     public function index(): View
     {
         $order=Order::query()
-            //->with('tasks','customer')
+            //->with('tasks'/* ,'customer','users' */)
             ->where('status','!=',Order::COMPLETED_STATUS)
             //->where('is_enternal',true)
-            ->paginate(7);
+            ->paginate(1);
             
         return view('manager.internal-orders.index', [
             'orders' => $order ,

@@ -45,17 +45,7 @@
                                                   <div class="card card-list task-card"
                                                        >
                                                        <hr>
-                                                       <div class="card-body">
-                                                            <div class="form-group mb-3 position-relative">
-
-                                                                 <input type="text"
-                                                                      class=" form-control bg-white  "
-                                                                      style="border-radius: 10px;"
-                                                                      value="Design landing page of webkit">
-                                                                 <a href="#"
-                                                                      class="task-edit task-simple-edit text-body"><i
-                                                                           class="ri-edit-box-line"></i></a>
-                                                            </div>
+                                                       
                                                             @foreach ($orders as $order)
                                                             <form method="POST"
                                                                  action="{{ route('internal-orders.update',$order) }}"
@@ -143,8 +133,8 @@
                                                                            <div class="form-group mb-0">
                                                                                 <i class="ri-attachment-2"></i>
                                                                                 <label for="exampleInputText01"
-                                                                                     class="h5">Upload
-                                                                                     Attachments</label>
+                                                                                     class="h5">Change 
+                                                                                     Attachments File</label>
                                                                                 <input type="file"
                                                                                      name="file"
                                                                                      class=" form-control bg-white"
@@ -174,14 +164,7 @@
                                                   </div>
                                              </div>
                                         </div>
-
-
-
-
-
-
-
-
+                                        <div class="column  align-items-center" >{{ $orders->links() }}</div>
                                    </div>
                               </div>
                          </div>
