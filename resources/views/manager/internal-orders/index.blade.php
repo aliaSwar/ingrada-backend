@@ -31,34 +31,19 @@
                                         <div class="col-12">
                                              <div class="card card-widget task-card">
                                                   <div class="card-body">
-                                                       <div
-                                                            class="d-flex flex-wrap align-items-center justify-content-between">
-                                                            <div class="d-flex align-items-center">
+                                                       
                                                                  <div>
-                                                                      <h5 class="mb-2">Design landing page of webki
+                                                                      <h5 class="mb-2">Orders
                                                                       </h5>
                                                                  </div>
                                                             </div>
-                                                            <div class="media align-items-center mt-md-0 mt-3">
-                                                                 <a href="#"
-                                                                      class="btn bg-info-light mr-3">start</a>
-                                                                 <a class="btn bg-info-light"
-                                                                      data-toggle="collapse"
-                                                                      href="#collapseEdit1"
-                                                                      role="button"
-                                                                      aria-expanded="false"
-                                                                      aria-controls="collapseEdit1"><i
-                                                                           class="ri-edit-box-line m-0"></i></a>
-                                                            </div>
-                                                       </div>
+                                                            
+                                                       
                                                   </div>
                                              </div>
                                              
                                                   <div class="card card-list task-card"
-                                                       id="edit">
-                                                       <div style="margin-top: 20px; margin-left: 16px;">
-
-                                                       </div>
+                                                       >
                                                        <hr>
                                                        <div class="card-body">
                                                             <div class="form-group mb-3 position-relative">
@@ -71,9 +56,12 @@
                                                                       class="task-edit task-simple-edit text-body"><i
                                                                            class="ri-edit-box-line"></i></a>
                                                             </div>
-                                                            @foreach ($collection as $item)
-                                                                
-
+                                                            @foreach ($orders as $order)
+                                                            <form method="POST"
+                                                                 action="{{ route('internal-orders.update',$order) }}"
+                                                                 enctype="multipart/form-data">
+                                                                 @method('PUT')
+                                                                 @csrf
                                                             <div class="card mb-3"
                                                                  style="border-radius: 20px;">
                                                                  <div class="card-body">
@@ -82,15 +70,15 @@
                                                                                 <div class="form-group mb-0">
                                                                                      <label for="exampleInputText2"
                                                                                           class="h5">Status</label>
-                                                                                     <select name="type"
+                                                                                          <select name="status"
                                                                                           class="selectpicker custom-select form-control bg-white custom-radius"
                                                                                           data-style="py-0">
-                                                                                          <option>Kianna Septimus
-                                                                                          </option>
-                                                                                          <option>Jaxson Herwitz
-                                                                                          </option>
-                                                                                          <option>Ryan Schleifer
-                                                                                          </option>
+                                                                                               <option selected>{{ $order->status }}</option>
+                                                                                               <option value="Pendning"> Pendning </option>
+                                                                                               <option value="Initiated">Initiated</option>
+                                                                                               <option value="InProgress">InProgress</option>
+                                                                                               <option value="Completed">Completed</option>
+                                                                                               <option value="Failed">Failed</option>
                                                                                      </select>
                                                                                 </div>
                                                                            </div>
@@ -102,9 +90,10 @@
                                                                                      <select name="type"
                                                                                           class="selectpicker custom-select form-control bg-white custom-radius"
                                                                                           data-style="py-0">
-                                                                                          <option>logo</option>
-                                                                                          <option>somthing</option>
-                                                                                          <option>somthing</option>
+                                                                                          <option selected>{{ $order->type }}</option>
+                                                                                          @foreach ($types as $type)
+                                                                                               <option value="{{ $type }}">{{ $type }}</option>
+                                                                                          @endforeach
                                                                                      </select>
                                                                                 </div>
                                                                            </div>
@@ -115,17 +104,23 @@
                                                                                      <input type="date"
                                                                                           class="custom-select form-control bg-white custom-radius "
                                                                                           id="exampleInputText3"
-                                                                                          value="">
+                                                                                          value="{{ old('limit_date', $order->limit_date) }}">
+                                                                                          @error('limit_date')
+                                                                                          <div>
+                                                                                               <div class="alert alert-danger">
+                                                                                                    {{ $message }}</div>
+                                                                                          </div>
+                                                                                          @enderror
                                                                                 </div>
                                                                            </div>
                                                                            <div class="col-lg-3">
                                                                                 <div class="form-group mb-0">
                                                                                      <label for="exampleInputText3"
                                                                                           class="h5">Price</label>
-                                                                                     <input type="text"
+                                                                                     <input type="text" name="final_price"
                                                                                           class=" form-control bg-white custom-radius "
                                                                                           id="exampleInputText3"
-                                                                                          value="10$">
+                                                                                          value="{{ old('final_price', $order->final_price) }}">
                                                                                 </div>
                                                                            </div>
                                                                       </div>
@@ -137,11 +132,7 @@
                                                                       <div class="row">
                                                                            <h5 style="color: #333; "
                                                                                 class="mb-2">Description :</h5>
-                                                                           <p class="mb-0">Amet minim mollit non
-                                                                                deserunt ullamco est sit aliqua dolor do
-                                                                                amet sint. Velit officia consequat duis
-                                                                                enim velit mollit. Exercitation veniam
-                                                                                consequat sunt nostrud amet.</p>
+                                                                           <p class="mb-0">{{ $order->description }}</p>
                                                                       </div>
                                                                  </div>
                                                             </div>
@@ -155,12 +146,29 @@
                                                                                      class="h5">Upload
                                                                                      Attachments</label>
                                                                                 <input type="file"
-                                                                                     class=" form-control bg-white  "
-                                                                                     style="border-radius: 10px;">
+                                                                                     name="file"
+                                                                                     class=" form-control bg-white"
+                                                                                     style="border-radius: 10px;"
+                                                                                     value="{{ old('file', $order->file) }}"
+                                                                                     >
                                                                            </div>
                                                                       </div>
                                                                  </div>
                                                             </div>
+                                                            <div class="card mb-3"
+                                                            style="border-radius: 20px;">
+                                                            <div class="card-body">
+                                                                 <div class="row">
+                                                                      <div class="form-group mb-0">
+                                                                      
+                                                                           <input type="submit"
+                                                                           value="create"
+                                                                           class="btn btn-warning mr-3"
+                                                                                >
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
                                                             @endforeach
                                                        </div>
                                                   </div>

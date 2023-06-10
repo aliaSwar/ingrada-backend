@@ -20,12 +20,15 @@ class InternalOrderController extends Controller
     public function index(): View
     {
         $order=Order::query()
-            ->with('tasks','users','customer')
+            //->with('tasks','customer')
             ->where('status','!=',Order::COMPLETED_STATUS)
-            ->where('is_enternal',true)
+            //->where('is_enternal',true)
             ->paginate(7);
             
-        return view('manager.internal-orders.index', ['orders' => $order ]);
+        return view('manager.internal-orders.index', [
+            'orders' => $order ,
+            'types' => Type::query()->get()
+        ]);
     }
 
     /**
@@ -73,8 +76,9 @@ class InternalOrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order): RedirectResponse
+    public function update(Request $request, Order $order)/* : RedirectResponse */
     {
+        dd($request->validated());
         $order->query()->update($request->validated());
         return redirect()->route('manger.internalorders.show', ['order' => $order])
             ->with(['message' => __("messages.update_data")]);
