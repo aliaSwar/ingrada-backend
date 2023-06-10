@@ -82,7 +82,7 @@
                                                                                           data-style="py-0">
                                                                                           <option selected>{{ $order->type }}</option>
                                                                                           @foreach ($types as $type)
-                                                                                               <option value="{{ $type }}">{{ $type }}</option>
+                                                                                               <option value="{{ $type->name }}">{{ $type->name }}</option>
                                                                                           @endforeach
                                                                                      </select>
                                                                                 </div>
@@ -113,9 +113,77 @@
                                                                                           value="{{ old('final_price', $order->final_price) }}">
                                                                                 </div>
                                                                            </div>
-                                                                      </div>
+                                                                      </div> 
                                                                  </div>
                                                             </div>
+                                                            @if ($order->users()->count() === 0)
+                                                                 <div class="card mb-3"
+                                                                 style="border-radius: 20px;">
+                                                                 <div class="card-body">
+                                                                      <div class="row">
+                                                                           <div class="col-lg-3">
+                                                                                <div class="form-group mb-0">
+                                                                                     <label for="exampleInputText2"
+                                                                                          class="h5">Category Content Writer</label>
+                                                                                          <select name="status"
+                                                                                          class="selectpicker custom-select form-control bg-white custom-radius"
+                                                                                          data-style="py-0">
+                                                                                          @foreach ($categories_user as $category)
+                                                                                               <option >{{ $category }}</option>
+                                                                                          @endforeach
+                                                  
+                                                                                     </select>
+                                                                                </div>
+                                                                           </div>
+                                                                           <div class="col-lg-3">
+                                                                                <div class="form-group mb-0">
+                                                                                     <label for="exampleInputText3"
+                                                                                          class="h5">Start Dates*</label>
+                                                                                     <input type="date" name="start_date"
+                                                                                          class="custom-select form-control bg-white custom-radius "
+                                                                                          id="exampleInputText3"
+                                                                                          >
+                                                                                          @error('start_date')
+                                                                                          <div>
+                                                                                               <div class="alert alert-danger">
+                                                                                                    {{ $message }}</div>
+                                                                                          </div>
+                                                                                          @enderror
+                                                                                </div>
+                                                                           </div>
+                                                                           <div class="col-lg-3">
+                                                                                <div class="form-group mb-0">
+                                                                                     <label for="exampleInputText3"
+                                                                                          class="h5">End Date*</label>
+                                                                                     <input type="date" name="end_date"
+                                                                                          class="custom-select form-control bg-white custom-radius "
+                                                                                          >
+                                                                                          @error('end_date')
+                                                                                          <div>
+                                                                                               <div class="alert alert-danger">
+                                                                                                    {{ $message }}</div>
+                                                                                          </div>
+                                                                                          @enderror
+                                                                                </div>
+                                                                           </div>
+                                                                           <div class="col-lg-3">
+                                                                                <div class="form-group mb-0">
+                                                                                     <label for="exampleInputText3"
+                                                                                          class="h5">Prority</label>
+                                                                                          <select name="prority"
+                                                                                          class="selectpicker custom-select form-control bg-white custom-radius"
+                                                                                          data-style="py-0">
+                                                                                               <option value="high"> High </option>
+                                                                                               <option value="normal">Normal</option>
+                                                                                               <option value="low">Low</option>
+                                                                                          </select>
+                                                                                </div>
+                                                                           </div>
+                                                                      </div> 
+                                                                 </div>
+                                                            </div>
+                                                            
+                                                       @endif
                                                             <div class="card mb-3"
                                                                  style="border-radius: 20px;">
                                                                  <div class="card-body">
@@ -141,6 +209,8 @@
                                                                                      style="border-radius: 10px;"
                                                                                      value="{{ old('file', $order->file) }}"
                                                                                      >
+                                                                                     <br>
+                                                                                     <a  class="column  align-items-center" href={{ $order->file }}><h3>press to download file</h3></a>
                                                                            </div>
                                                                       </div>
                                                                  </div>

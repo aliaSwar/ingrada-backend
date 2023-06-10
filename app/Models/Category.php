@@ -12,9 +12,12 @@ class Category extends Model
 {
     use HasFactory;
     use HasSlug;
-    const   CATEGORY_CREATIVE   = "Creative";
-    const   CATEGORY_FAST       = "Fast"; 
-    const   CATEGORY_EXTUTABLE  = "Extutable"; 
+    const   CATEGORY_DESIGNER_CREATIVE      = "Creative";
+    const   CATEGORY_DESIGNER_FAST          = "Fast"; 
+    const   CATEGORY_DESIGNER_EXTUTABLE     = "Extutable"; 
+    const   CATEGORY_CONTENT_WRITER_BIG     = "Big";
+    const   CATEGORY_CONTENT_WRITER_SMALL   = "Small"; 
+    const   CATEGORY_CONTENT_WRITER_MEDIUM  = "Medium"; 
     
     protected $fillable = ['name', 'slug'];
 
