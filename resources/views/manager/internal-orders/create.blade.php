@@ -50,8 +50,7 @@
                                                                                 class="h5">Due Dates*</label>
                                                                            <input type="date"
                                                                                 class="custom-select form-control bg-white custom-radius @error('limit_date') border-light-danger @enderror"
-                                                                                name="
-                                                                                limit_date">
+                                                                                name="limit_date">
                                                                            @error('limit_date')
                                                                            <div>
                                                                                 <div class="alert alert-danger">
