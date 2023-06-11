@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\Setting\TypeCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Designer\TaskController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::prefix('admin/')->group(function () {
     Route::resource('fonts', FontController::class);
     Route::resource('scopes', ScopeCotroller::class);
     Route::resource('types', TypeCotroller::class);
+    Route::resource('users', RegisteredUserController::class);
+
+
 });
 
 // Manager Route
