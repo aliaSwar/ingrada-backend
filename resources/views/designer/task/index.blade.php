@@ -34,57 +34,18 @@
     </tr>
     </thead>
     <tbody>
+        @foreach ($tasks as $task)
     <tr  >
-    <td>logo customiz</td>
-    <td> logo </td>
-    <td> In progress </td>
+    <td>{{ $task->name}}</td>
+    <td> {{ $task->type}} </td>
+    <td>{{ $task->status}} </td>
     <td>
-        <a class="Details"  data-toggle="Details" href="logo customiz.html"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
+        <a class="Details"  data-toggle="Details" href="{{ route('tasks.show', $task->order_id) }}"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
     </td>
     </tr>
-    <tr  >
-        <td>logo similer</td>
-        <td> logo </td>
-        <td> In progress </td>
-        <td>
-            <a class="Details"  data-toggle="Details" href="logo similer.html"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
-        </td>
-        </tr>
-        <tr  >
-            <td>social media similler</td>
-            <td> logo </td>
-            <td> In progress </td>
-            <td>
-                <a class="Details"  data-toggle="Details" href="social media similler.html"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
-            </td>
-            </tr>
-            <tr  >
-                <td>social media customiz</td>
-                <td> logo </td>
-                <td> In progress </td>
-                <td>
-                    <a class="Details"  data-toggle="Details" href="social media customiz.html"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
-                </td>
-                </tr>
-                <tr  >
-                    <td>rest designes similer</td>
-                    <td> logo </td>
-                    <td> In progress </td>
-                    <td>
-                        <a class="Details"  data-toggle="Details" href="rest designes similer.html"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
-                    </td>
-                    </tr>
-                    <tr  >
-                        <td>rest designes customiz</td>
-                        <td> logo </td>
-                        <td> In progress </td>
-                        <td>
-                            <a class="Details"  data-toggle="Details" href="rest designes customiz.html"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
-                        </td>
-                        </tr>
+    @endforeach
     </tbody>
     </table>
-                                    </table>
                                 </div>
                             </div>
                                 </div>

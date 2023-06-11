@@ -68,4 +68,21 @@ class TaskController extends Controller
     {
         //
     }
+    public function get_todotask()
+    {
+        $Progress=Task::where('user_id', auth()->user()->id)->where('status','Progress')->get();
+        $Tests=Task::where('user_id', auth()->user()->id)->where('status','Test')->get();
+        $Fixs=Task::where('user_id', auth()->user()->id)->where('status','Fix')->get();
+        $Completeds=Task::where('user_id', auth()->user()->id)->where('status','Completed')->get();
+
+        return view('designer.task.to_do'
+        , ['Progress'=>$Progress,
+            'Tests'=>$Tests,
+            'Fixs'=>$Fixs,
+            'Completeds'=>$Completeds,
+
+    ]);
+
+    }
+
 }

@@ -3,43 +3,43 @@
 namespace App\Http\Controllers\Web\Setting;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Setting\StoreTypeRequest;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
-use App\Models\Type;
 use App\Models\Prefernce;
-
-class TypeCotroller extends Controller
+use App\Models\Type;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\setting\StorePrefernceRequest;
+class PrefernceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
-        return view('setting.types.index', ['types' => Type::query()->paginate(7)]);
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create()
     {
-        return view('setting.types.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTypeRequest $request): RedirectResponse
+    public function store(StorePrefernceRequest $request,Type $type)
     {
-        $num=0;
-        $data = $request->validated();
-        $type=Type::create($data);
-        if ($num >= 1) {
-            return redirect()->route('prefernces.create',  ['type' => $type]);
-        }
-
+        $image = $request->preImage;
+        $path = $image->store('pre-images', 'public');
+        $Prefernce = new Prefernce([
+            'name' => $request->prename,
+            'price' => $request->preprice,
+            'image' => $path,
+            'type_id'=>$type->id
+        ]);
         return redirect()->route('types.index')->with(['message' => __("messages.create_data")]);
     }
 
@@ -70,9 +70,8 @@ class TypeCotroller extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Type $type): RedirectResponse
+    public function destroy(string $id)
     {
-        $type->delete();
-        return redirect()->route('types.index')->with(['message' => __("messages.delete_data")]);
+        //
     }
 }

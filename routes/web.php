@@ -44,6 +44,7 @@ Route::prefix('manager/')->group(function () {
 //designer Route
 Route::prefix('designer/')->group(function () {
     Route::resource('tasks', TaskController::class);
+    Route::get('/todo', [TaskController::class, 'get_todotask']);
 });
 
 

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
+            //add num_pro
             $table->string('name')->unique();
             $table->string('slug');
             $table->string('image')->nullable();

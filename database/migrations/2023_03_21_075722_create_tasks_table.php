@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->enum('status', ['Initiated', 'Progress' . 'Test', 'Fix', 'Completed']);
+            $table->enum('status', ['Initiated', 'Progress' ,'Test', 'Fix', 'Completed']);
             $table->date('start_date');
             $table->date('end_date');
             $table->date('real_end_date');
-            $table->time('tasks_hour');//TODO::search type time
+            $table->time('tasks_hour')->nullable();//TODO::search type time
             $table->foreignId('user_id');
             $table->foreignId('order_id');
             $table->string('type');
