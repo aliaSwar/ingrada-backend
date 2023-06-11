@@ -4,37 +4,27 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
           <ul id="sidebarnav">
-              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/"
+              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
                       aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                           class="hide-menu">HOME</span></a></li>
               <li class="list-divider"></li>
-              <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="designers.html"
                   aria-expanded="false"><i data-feather="user" class="feather-icon"></i><span
-                      class="hide-menu">EMPLOYEE </span></a>
-              <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                  <li class="sidebar-item"><a href="" class="sidebar-link"><span
-                              class="hide-menu"> SHOW
-                          </span></a>
-                  </li>
-                  <li class="sidebar-item"><a href="addNew.html" class="sidebar-link"><span
-                              class="hide-menu"> ADD NEW
-                          </span></a>
-                  </li>
-
-              </ul>
+                      class="hide-menu">DEIGNERS
+                  </span></a>
           </li>
           <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
               aria-expanded="false"><i data-feather="sliders" class="feather-icon"></i><span
-                  class="hide-menu">PERMISSION </span></a>
+                  class="hide-menu">ORDERS </span></a>
           <ul aria-expanded="false" class="collapse  first-level base-level-line">
-              <li class="sidebar-item"><a href="permission.html" class="sidebar-link"><span
-                          class="hide-menu"> SHOW & ADD
-                      </span></a>
-              </li>
-              <li class="sidebar-item"><a href="Editpermition.html" class="sidebar-link"><span
-                          class="hide-menu">EDIT
-                      </span></a>
-              </li>
+              <li class="sidebar-item"><a href="enternal.html" class="sidebar-link"><span
+                  class="hide-menu"> ENTENAL ORDERS
+              </span></a>
+      </li>
+      <li class="sidebar-item"><a href="external.html" class="sidebar-link"><span
+                  class="hide-menu">EXTERNAL ORDERS
+              </span></a>
+      </li>
 
           </ul>
           </li>
@@ -61,7 +51,7 @@
                       </li>
                       <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                           aria-expanded="false"><i data-feather="trello" class="feather-icon"></i><span
-                              class="hide-menu">RULE MANGMENT </span></a>
+                              class="hide-menu">DEPLOYMENT </span></a>
                       <ul aria-expanded="false" class="collapse  first-level base-level-line">
                           <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
                                       class="hide-menu"> CLASS TASK
@@ -81,6 +71,45 @@
                   </li>
                       </ul>
                   </li>
+                  <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                      aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                          class="hide-menu">DOMAINS & FONTS </span></a>
+                  <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                      <li class="sidebar-item"><a href="FONT.html" class="sidebar-link"><span
+                                  class="hide-menu"> SHOW & ADD FONTS
+                              </span></a>
+                      </li>
+                      <li class="sidebar-item"><a href="domain.html" class="sidebar-link"><span
+                                  class="hide-menu">
+                                 ADD DOMAIN
+                              </span></a>
+                      </li>
+                      <li class="sidebar-item"><a href="showdomain.html" class="sidebar-link"><span
+                          class="hide-menu">
+                         SHOW DOMAIN
+                      </span></a>
+              </li>
+
+                  </ul>
+              </li>
+              <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                  aria-expanded="false"><i data-feather="slack" class="feather-icon"></i><span
+                      class="hide-menu">TYPES OF DESIGNES </span></a>
+              <ul aria-expanded="false" class="collapse  first-level base-level-line">
+
+                  <li class="sidebar-item"><a href="showtypes.html" class="sidebar-link"><span
+                              class="hide-menu"> SHOW TYPES
+                          </span></a>
+                  </li>
+                  <li class="sidebar-item"><a href="addtype(no-js).html" class="sidebar-link"><span
+                              class="hide-menu">
+                              ADD TYPE
+                          </span></a>
+                  </li>
+
+
+              </ul>
+          </li>
 
               <li class="list-divider"></li>
 

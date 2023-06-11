@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->id();
             //add num_pro
+            $table->integer('num_pro')->default(0);
             $table->string('name')->unique();
             $table->string('slug');
             $table->string('image')->nullable();

@@ -13,7 +13,7 @@ class CreateSuperAdminAccountSeeder extends Seeder
     public function run(): void
     {
         if (User::query()->where('email', '=', 'admin@admin.app')->doesntExist()) {
-            User::query()->create([
+            $user=User::query()->create([
                 'username' => 'super_admin',
                 'slug' => 'super-admin',
                 'fullname' => 'Super Admin',
@@ -22,6 +22,7 @@ class CreateSuperAdminAccountSeeder extends Seeder
                 'email' => 'admin@admin.app',
                 'password' => "admin",
             ]);
+            $user->assignRole('admin');
         }
     }
 }

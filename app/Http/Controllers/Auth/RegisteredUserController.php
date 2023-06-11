@@ -13,6 +13,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -21,7 +22,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+
+        return view('users.create',['roles'  => Role::all()]);
     }
 
     /**
@@ -37,7 +39,7 @@ class RegisteredUserController extends Controller
 
         $user = new User($data);
         $user->save();
-        $user->assignRole(/* $request->role */'designer');
+        $user->assignRole( $request->role );
         if (!$user) {
             return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
         }
