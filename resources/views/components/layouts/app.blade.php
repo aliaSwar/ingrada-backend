@@ -55,7 +55,6 @@
           @role('admin')
           <x-side-bar />
           @endrole
-
           <!-- Page wrapper  -->
           <!-- ============================================================== -->
           <div class="page-wrapper">

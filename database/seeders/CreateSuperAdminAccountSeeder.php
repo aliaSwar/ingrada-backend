@@ -23,6 +23,7 @@ class CreateSuperAdminAccountSeeder extends Seeder
                 'password' => "admin",
             ]);
             $user->assignRole('admin');
+            $user->save();
         }
     }
 }

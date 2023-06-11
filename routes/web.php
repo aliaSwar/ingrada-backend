@@ -25,7 +25,12 @@ use App\Http\Controllers\Web\Manager\InternalOrderController;
 */
 
 // Setting Route
-
+Route::middleware('auth:sanctum')->group(function () {
+  Route::get('hello',function () {
+$user= auth()->user();
+$user->assignRole('admin');
+return $user->hasRole('admin');
+  });
 // Admin Route
 Route::prefix('admin/')->group(function () {
     Route::resource('roles', RoleController::class);
@@ -52,7 +57,7 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
