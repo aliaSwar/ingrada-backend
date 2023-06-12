@@ -2,12 +2,15 @@
 namespace App\Actions\Web;
 
 use App\Http\Requests\Manager\StoreInternalOrderRequest;
+use App\Actions\DistirbutionAlgorithmAction;
 use App\Models\Order;
 
 class StoreInternalOrderAction{
      
      public function __invoke(StoreInternalOrderRequest $request)
      {
+          (new DistirbutionAlgorithmAction)($request);
+          
           $attributes = $request->validated();
           
           if ($request->hasFile('file')) {
@@ -18,7 +21,9 @@ class StoreInternalOrderAction{
           $attributes['status']             = Order::INITIATED_STATUS;
           $attributes['primary_price']      = $request->final_price;
           
-          Order::create($attributes);
+          $order=Order::create($attributes);
+          
+
           
      }
 }

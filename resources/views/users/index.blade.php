@@ -1,10 +1,32 @@
 <x-layouts.app>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+    <title>Freedash Template - The Ultimate Multipurpose admin template</title>
 
+    <link rel="stylesheet" href="../assets/libs/chart.js/dist/apex-charts.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!doctype html>
-    <html lang="en">
-
+    <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <link type="text/css" href="@@path/vendor/apexcharts/dist/apexcharts.css" rel="stylesheet">
+    </head>
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
             <div class="container-fluid">
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -13,39 +35,49 @@
 
                                 <div class="table-responsive">
                                     <table class="table no-wrap v-middle mb-0">
-    <div class="row">
 
-
+<div class="row">
     <form>
         <div class="customize-input">
             <input class="form-control custom-shadow custom-radius border-0 bg-white"
             id="myInput" onkeyup="myFunction()" type="search" placeholder="Search" aria-label="Search">
         </div>
-
     </form>
-    </div>
-    <table class="table table-bordered" id="myTable">
-    <thead>
-    <tr>
-    <th>Task</th>
-    <th>Type</th>
-    <th>Status</th>
-    <th>Details</th>
-    </tr>
-    </thead>
-    <tbody>
-        @foreach ($tasks as $task)
-    <tr  >
-    <td>{{ $task->name}}</td>
-    <td> {{ $task->type}} </td>
-    <td>{{ $task->status}} </td>
-    <td>
-        <a class="Details"  data-toggle="Details" href="{{ route('tasks.show', $task->order_id) }}"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
-    </td>
-    </tr>
-    @endforeach
-    </tbody>
-    </table>
+</div>
+<table class="table table-bordered" id="myTable">
+<thead>
+<tr>
+
+<th class="text-dark mb-0 font-16 font-weight-medium"> Name</th>
+<th class="text-dark mb-0 font-16 font-weight-medium">Username</th>
+<th class="text-dark mb-0 font-16 font-weight-medium">Task</th>
+<th class="text-dark mb-0 font-16 font-weight-medium">Category</th>
+<th class="text-dark mb-0 font-16 font-weight-medium">Role</th>
+<th class="text-dark mb-0 font-16 font-weight-medium">Actions</th>
+</tr>
+</thead>
+<tbody>
+  @foreach ($users as $user)
+  <tr  >
+  <td>{{ $user->username}}</td>
+  <td> {{$user->fullname}} </td>
+  <td>{{ $user->number_tasks}} </td>
+  <td></td>
+  <td></td>
+
+  <td>
+<a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">event_busy</i></a>
+<a class="details" title="details" data-toggle="tooltip" href=""><i class="material-icons">event_note</i></a>
+  </td>
+</tr>
+@endforeach
+</tbody>
+
+
+
+
+</table>
+                                    </table>
                                 </div>
                             </div>
                                 </div>
@@ -108,7 +140,7 @@
       <!-- Page JS -->
       <script src="../assets/js/dashboards-analytics.js"></script>
 
-         <script>
+      <script type="text/javascript">
         $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
         var actions = $("table td:last-child").html();
@@ -118,8 +150,12 @@
         var index = $("table tbody tr:last-child").index();
         var row = '<tr>' +
         '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-        '<td><input type="text" class="form-control" name="department" id="avargePrice"></td>' +
-
+        '<td><input type="text" class="form-control" name="department" id="department"></td>' +
+        '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+        '<td><input type="text" class="form-control" name="Date" id="Date"></td>' +
+        '<td><input type="text" class="form-control" name="Type" id="Type"></td>' +
+        '<td><input type="text" class="form-control" name="Email" id="Email"></td>' +
+        '<td><input type="text" class="form-control" name="Country" id="Country"></td>' +
         '<td>' + actions + '</td>' +
         '</tr>';
         $("table").append(row);
@@ -162,30 +198,28 @@
         });
         });
         </script>
-         <script>
-            function myFunction() {
-     var input, filter, table, tr, td, cell, i, j;
-     input = document.getElementById("myInput");
-     filter = input.value.toUpperCase();
-     table = document.getElementById("myTable");
-     tr = table.getElementsByTagName("tr");
-     for (i = 1; i < tr.length; i++) {
-       // Hide the row initially.
-       tr[i].style.display = "none";
+        <script>
+         function myFunction() {
+  var input, filter, table, tr, td, cell, i, j;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    // Hide the row initially.
+    tr[i].style.display = "none";
 
-       td = tr[i].getElementsByTagName("td");
-       for (var j = 0; j < td.length; j++) {
-         cell = tr[i].getElementsByTagName("td")[j];
-         if (cell) {
-           if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
-             tr[i].style.display = "";
-             break;
-           }
-         }
-       }
-     }
+    td = tr[i].getElementsByTagName("td");
+    for (var j = 0; j < td.length; j++) {
+      cell = tr[i].getElementsByTagName("td")[j];
+      if (cell) {
+        if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+          break;
+        }
+      }
     }
-           </script>
-    </html>
+  }
+}
+        </script>
 </x-layouts.app>
-
