@@ -43,7 +43,18 @@
           data-boxed-layout="full">
 
           <x-nav-bar />
+          @role('designer')
+          <x-side-bar-designer/>
+          @endrole
+          @role('content writer')
+          <x-side-bar-content-writer/>
+          @endrole
+          @role('manager')
+          <x-side-bar-manager/>
+          @endrole
+          @role('admin')
           <x-side-bar />
+          @endrole
           <!-- Page wrapper  -->
           <!-- ============================================================== -->
           <div class="page-wrapper">

@@ -14,7 +14,7 @@ class CreateSuperAdminAccountSeeder extends Seeder
     public function run(): void
     {
         if (User::query()->where('email', '=', 'admin@admin.app')->doesntExist()) {
-            User::query()->create([
+            $user=User::query()->create([
                 'username' => 'super_admin',
                 'slug' => 'super-admin',
                 'fullname' => 'Super Admin',
@@ -23,6 +23,7 @@ class CreateSuperAdminAccountSeeder extends Seeder
                 'email' => 'admin@admin.app',
                 'password' => "admin",
             ]);
+<<<<<<< HEAD
             User::query()->create([
                 'username' => 'Alia',
                 'slug' => 'alia',
@@ -34,6 +35,10 @@ class CreateSuperAdminAccountSeeder extends Seeder
                 'category'=> Category::CATEGORY_CONTENT_WRITER_SMALL,
                 'number_tasks'=>3,
             ]);
+=======
+            $user->assignRole('admin');
+            $user->save();
+>>>>>>> d39dd2ea1530f9c0612783ca706d3e24e398874e
         }
     }
 }

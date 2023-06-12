@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthUser\RegisteredUserRequest;
 use App\Models\User;
+use App\Models\Category;
 use App\Notifications\UserPublish;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -13,15 +14,25 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
+
+  public function index(): View
+    {
+       return view('users.index', ['users' => User::whereNotNull('category_id')->with('category')->paginate(4)]);
+    }
+
     /**
      * Display the registration view.
      */
     public function create(): View
     {
-        return view('auth.register');
+
+        return view('users.create',
+        [ 'roles'       => Role::all(),
+          'categories'  =>  Category::all() ]);
     }
 
     /**
@@ -37,12 +48,12 @@ class RegisteredUserController extends Controller
 
         $user = new User($data);
         $user->save();
-        $user->assignRole(/* $request->role */'designer');
+        $user->assignRole($request->role);
         if (!$user) {
             return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
         }
 
-        Notification::send($user, new UserPublish($user));
+       // Notification::send($user, new UserPublish($user));
 
 
         return redirect(RouteServiceProvider::HOME);

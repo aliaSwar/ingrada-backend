@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\Setting\TypeCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Designer\TaskController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,12 @@ use App\Http\Controllers\Web\Manager\InternalOrderController;
 */
 
 // Setting Route
-
+Route::middleware('auth:sanctum')->group(function () {
+  Route::get('hello',function () {
+$user= auth()->user();
+$user->assignRole('admin');
+return $user->hasRole('admin');
+  });
 // Admin Route
 Route::prefix('admin/')->group(function () {
     Route::resource('roles', RoleController::class);
@@ -33,6 +39,9 @@ Route::prefix('admin/')->group(function () {
     Route::resource('fonts', FontController::class);
     Route::resource('scopes', ScopeCotroller::class);
     Route::resource('types', TypeCotroller::class);
+    Route::resource('users', RegisteredUserController::class);
+
+
 });
 
 // Manager Route
@@ -44,6 +53,7 @@ Route::prefix('manager/')->group(function () {
 //designer Route
 Route::prefix('designer/')->group(function () {
     Route::resource('tasks', TaskController::class);
+    Route::get('/todo', [TaskController::class, 'get_todotask']);
 });
 
 
@@ -51,7 +61,7 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
