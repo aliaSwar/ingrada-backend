@@ -25,13 +25,13 @@ class InternalOrderController extends Controller
             ->where('status','!=',Order::COMPLETED_STATUS)
             //->where('is_enternal',true)
             ->paginate(1);
-            
-        $categories_user=[
+
+       $categories_user=[
             Category::CATEGORY_CONTENT_WRITER_BIG,
             Category::CATEGORY_CONTENT_WRITER_SMALL,
             Category::CATEGORY_CONTENT_WRITER_MEDIUM,
         ];
-        
+
         return view('manager.internal-orders.index', [
             'orders'          => $order ,
             'types'           => Type::query()->get(),
@@ -51,7 +51,7 @@ class InternalOrderController extends Controller
         ];
         return view('manager.internal-orders.create',[
             'types'    =>  Type::query()->get(),
-            'categories_user' => $categories_user, 
+            'categories_user' => $categories_user,
         ]);
     }
 
@@ -60,9 +60,9 @@ class InternalOrderController extends Controller
      */
     public function store(StoreInternalOrderRequest $request)/* : RedirectResponse */
     {
-        
+
         (new StoreInternalOrderAction)($request);
-        
+
         return redirect()->route('internal-orders.index')->with(['message' => __("messages.create_data")]);
     }
 

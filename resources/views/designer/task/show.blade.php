@@ -73,11 +73,12 @@
                                                                         <div class="form-group mb-0">
                                                                             <label for="exampleInputText2"   class="h5">content creator</label>
                                                                             <select  name="type" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
-                                                                                <option>For Small Project</option>
-                                                                                <option> For Meduim Project </option>
-                                                                                <option>For Huge Project</option>
-                                                                            </select>
-                                                                        </div>
+                                                                              <option>For Small Project</option>
+                                                                              <option> For Meduim Project </option>
+                                                                              <option>For Huge Project</option>
+                                                                          </select>
+
+                                                                        </div>s
                                                                     </div>
                                                                     <div class="col-lg-3">
                                                                         <div class="form-group mb-0">
@@ -91,38 +92,33 @@
                                                                     <div class="col-lg-3">
                                                                         <div class="form-group mb-0">
                                                                             <label for="exampleInputText3" class="h5">Due Dates</label>
-                                                                            <input type="date" class="custom-select form-control bg-white custom-radius " id="exampleInputText3" value="">
+                                                                            <input type="date" name="start_date" class="custom-select form-control bg-white custom-radius " id="exampleInputText3" value="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-3">
                                                                         <div class="form-group mb-0">
                                                                             <label for="exampleInputText3" class="h5">Price</label>
-                                                                            <input type="text" class=" form-control bg-white custom-radius " id="exampleInputText3" value="10$">
+                                                                            <input type="text" name="primary_price" class=" form-control bg-white custom-radius " id="exampleInputText3" value="0$">
                                                                         </div>
                                                                     </div>
                                                                     <hr style="margin-top: 12px;">
                                                                     <div class="col-lg-3">
                                                                         <div class="form-group mb-0">
                                                                             <label for="exampleInputText2"   class="h5"> Design</label>
-                                                                            <select  name="type" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
-                                                                                <option>Logo</option>
-                                                                                <option>Somthing</option>
-                                                                                <option>Somthing</option>
-                                                                                <option>Somthing</option>
-                                                                            </select>
+                                                                            <input type="text" name="pereferce" class=" form-control bg-white custom-radius " id="exampleInputText3" value={{ old('pereferce', $order->pereferce) }}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-3">
                                                                         <div class="form-group mb-0">
                                                                             <label for="exampleInputText2"   class="h5">Type Of Design</label>
-                                                                            <input type="text" class=" form-control bg-white custom-radius " id="exampleInputText3" value="symbol">
+                                                                            <input type="text" name="value" class=" form-control bg-white custom-radius " id="exampleInputText3" value="symbol">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="col-lg-3">
                                                                         <div class="form-group mb-0">
                                                                             <label for="exampleInputText3" class="h5">Domain</label>
-                                                                            <input type="text" class=" form-control bg-white custom-radius " id="exampleInputText3" value="sport">
+                                                                            <input type="text" name ="scope" class=" form-control bg-white custom-radius " id="exampleInputText3" value={{ old('scope', $order->scope) }}>
                                                                         </div>
                                                                     </div>
 

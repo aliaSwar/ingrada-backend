@@ -40,7 +40,7 @@
     <td> {{ $task->type}} </td>
     <td>{{ $task->status}} </td>
     <td>
-        <a class="Details"  data-toggle="Details" href="{{ route('tasks.show', $task->order_id) }}"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
+        <a class="Details"  data-toggle="Details" href="{{ route('tasks.show', $task) }}"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
     </td>
     </tr>
     @endforeach
