@@ -23,22 +23,6 @@ class CreateSuperAdminAccountSeeder extends Seeder
                 'email' => 'admin@admin.app',
                 'password' => "admin",
             ]);
-<<<<<<< HEAD
-            User::query()->create([
-                'username' => 'Alia',
-                'slug' => 'alia',
-                'fullname' => 'Alia Swar',
-                'is_super_admin' => false,
-                'is_active' => true,
-                'email' => 'alia@alia.app',
-                'password' => "admin",
-                'category'=> Category::CATEGORY_CONTENT_WRITER_SMALL,
-                'number_tasks'=>3,
-            ]);
-=======
-            $user->assignRole('admin');
-            $user->save();
->>>>>>> d39dd2ea1530f9c0612783ca706d3e24e398874e
         }
     }
 }
