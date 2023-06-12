@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,17 @@ class CreateSuperAdminAccountSeeder extends Seeder
                 'is_active' => true,
                 'email' => 'admin@admin.app',
                 'password' => "admin",
+            ]);
+            User::query()->create([
+                'username' => 'Alia',
+                'slug' => 'alia',
+                'fullname' => 'Alia Swar',
+                'is_super_admin' => false,
+                'is_active' => true,
+                'email' => 'alia@alia.app',
+                'password' => "admin",
+                'category'=> Category::CATEGORY_CONTENT_WRITER_SMALL,
+                'number_tasks'=>3,
             ]);
         }
     }

@@ -9,7 +9,6 @@ class StoreInternalOrderAction{
      
      public function __invoke(StoreInternalOrderRequest $request)
      {
-          (new DistirbutionAlgorithmAction)($request);
           
           $attributes = $request->validated();
           
@@ -22,7 +21,7 @@ class StoreInternalOrderAction{
           $attributes['primary_price']      = $request->final_price;
           
           $order=Order::create($attributes);
-          
+          (new DistirbutionAlgorithmAction)($request);
 
           
      }
