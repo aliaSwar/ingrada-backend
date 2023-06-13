@@ -12,11 +12,11 @@
                   aria-expanded="false"><i data-feather="user" class="feather-icon"></i><span
                       class="hide-menu">EMPLOYEE </span></a>
               <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                  <li class="sidebar-item"><a href="" class="sidebar-link"><span
+                  <li class="sidebar-item"><a href="{{ route('users.index') }}" class="sidebar-link"><span
                               class="hide-menu"> SHOW
                           </span></a>
                   </li>
-                  <li class="sidebar-item"><a href="addNew.html" class="sidebar-link"><span
+                  <li class="sidebar-item"><a href="{{ route('users.create') }}" class="sidebar-link"><span
                               class="hide-menu"> ADD NEW
                           </span></a>
                   </li>

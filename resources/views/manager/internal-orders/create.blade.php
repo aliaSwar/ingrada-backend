@@ -76,7 +76,7 @@
                                                                       </div>
                                                                  </div>
                                                             </div>
-                                                       </div> 
+                                                       </div>
                                                   </div>
                                                   <div class="card mb-3"
                                                   style="border-radius: 20px;">
@@ -145,10 +145,10 @@
                                                                            @enderror
                                                                  </div>
                                                             </div>
-                                                       </div> 
+                                                       </div>
                                                   </div>
                                              </div>
-                                             
+
                                                   <div class="card mb-3"
                                                        style="border-radius: 20px;">
                                                        <div class="card-body">
@@ -196,6 +196,47 @@
                                                             </div>
                                                        </div>
                                                   </div>
+                                                  <div class="col-12">
+                                                    <table class="table table-bordered" id="myTable" style="margin-top: 12px;">
+                                                      <thead>
+                                                        <tr>
+                                                          <th scope="col">Select </th>
+                                                          <th scope="col">First Name</th>
+                                                          <th scope="col">Last Name</th>
+                                                          <th scope="col">Company</th>
+                                                          <th scope="col">Country</th>
+
+                                                          <th scope="col">Email</th>
+                                                          <th scope="col">Phone</th>
+                                                          <th scope="col">Active</th>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                        @foreach ($internal_customers as $internal_customer)
+
+                                                          <td>
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" name="customers_id" value="{{ $internal_customer->id }}" >
+                                                                <label class="custom-control-label" for="customCheck1">1</label>
+                                                            </div>
+                                                          </td>
+
+                                                          <td>{{ $internal_customer->first_name}}</td>
+                                                          <td> {{ $internal_customer->last_name}} </td>
+                                                          <td>{{ $internal_customer->company}} </td>
+                                                          <td>{{ $internal_customer->country}} </td>
+                                                          <td>{{ $internal_customer->email}} </td>
+                                                          <td>{{ $internal_customer->phone_number}} </td>
+                                                          <td>{{ $internal_customer->is_active}} </td>
+
+                                                        @endforeach
+
+                                                      </tbody>
+                                                    </table>
+                                                  </div>
+                                                </div>
+                                              </div>
+
                                                   <div class="card mb-3"
                                                        style="border-radius: 20px;">
                                                        <div class="card-body">

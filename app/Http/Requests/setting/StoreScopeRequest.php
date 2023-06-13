@@ -24,6 +24,7 @@ class StoreScopeRequest extends FormRequest
     public function rules(): array
     {
         return [
+          'name'      =>      ['required', 'string', 'unique:types,name'],
            // 'colors' => ['requird','array']
         ];
     }

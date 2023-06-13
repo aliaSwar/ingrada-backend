@@ -43,8 +43,8 @@ class TaskController extends Controller
     public function show(Task $task)
     {
      // $order=$task->order()->paginate(1);
-     $order = Order::where('id', $task->id)->get();
-      return $order->scope;
+     $ordeer = Order::where('id', $task->id)->get();
+      return $ordeer->id;
 
       $categories_user=[
         Category::CATEGORY_CONTENT_WRITER_BIG,

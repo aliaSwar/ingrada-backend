@@ -20,23 +20,32 @@ class InternalOrderController extends Controller
      */
     public function index(): View
     {
-        $order=Order::query()
+      //  $order=Order::query()
             // ->with('tasks'/* ,'customer','users' */)
-            ->where('status','!=',Order::COMPLETED_STATUS)
+      //      ->where('status','!=',Order::COMPLETED_STATUS)
             //->where('is_enternal',true)
-            ->paginate(1);
+      //      ->paginate(1);
 
-       $categories_user=[
-            Category::CATEGORY_CONTENT_WRITER_BIG,
-            Category::CATEGORY_CONTENT_WRITER_SMALL,
-            Category::CATEGORY_CONTENT_WRITER_MEDIUM,
-        ];
+      // $categories_user=[
+      //      Category::CATEGORY_CONTENT_WRITER_BIG,
+      //      Category::CATEGORY_CONTENT_WRITER_SMALL,
+      //      Category::CATEGORY_CONTENT_WRITER_MEDIUM,
+      //  ];
 
-        return view('manager.internal-orders.index', [
-            'orders'          => $order ,
-            'types'           => Type::query()->get(),
-            'categories_user' => $categories_user,
-        ]);
+      //  return view('manager.internal-orders.index', [
+      //      'orders'          => $order ,
+      //      'types'           => Type::query()->get(),
+      //      'categories_user' => $categories_user,
+      //  ]);
+      $ordeer = Order::where('is_enternal', true)->get();
+      //return $ordeer;
+
+      return view(
+        'manager.internal-orders.index',
+        ['orders' => $ordeer]
+    );
+
+
     }
 
     /**
@@ -52,6 +61,7 @@ class InternalOrderController extends Controller
         return view('manager.internal-orders.create',[
             'types'    =>  Type::query()->get(),
             'categories_user' => $categories_user,
+            'internal_customers' => Customer::query()->get()
         ]);
     }
 
@@ -60,8 +70,10 @@ class InternalOrderController extends Controller
      */
     public function store(StoreInternalOrderRequest $request)/* : RedirectResponse */
     {
+      //return $request;
 
         (new StoreInternalOrderAction)($request);
+
 
         return redirect()->route('internal-orders.index')->with(['message' => __("messages.create_data")]);
     }

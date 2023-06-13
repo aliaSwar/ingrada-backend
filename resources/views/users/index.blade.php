@@ -62,7 +62,7 @@
   <td>{{ $user->username}}</td>
   <td> {{$user->fullname}} </td>
   <td>{{ $user->number_tasks}} </td>
-  <td>{{ $user->category->name}} </td>
+
 
 
   <td></td>
