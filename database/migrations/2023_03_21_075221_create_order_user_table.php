@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('order_id');
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

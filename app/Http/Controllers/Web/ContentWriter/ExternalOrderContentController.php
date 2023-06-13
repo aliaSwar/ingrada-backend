@@ -5,57 +5,44 @@ namespace App\Http\Controllers\Web\ContentWriter;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class ExternalOrderController extends Controller
+class ExternalOrderContentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index():View
     {
-        $data=Auth::user()->hasRole('content_writer')->orders;
-        return view('content_writer.external_order.index', ['orders'=>$data]);
+        $user=Auth::user();
+        $ordres=$user->orders;
+        return view('content-writer.external-order.index', ['orders'=>$ordres]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+      $order=Order::findOrFail($id);
+      $designer_name=User::where('id',$order->designer_id)->select('fullname')->first();
+        return view('content-writer.external-order.show',[
+          'order'          =>   $order,
+          'designer_name' =>   $designer_name
+      ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request->all());
     }
 
     /**

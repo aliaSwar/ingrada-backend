@@ -90,7 +90,7 @@
                                                                            class="selectpicker custom-select form-control bg-white custom-radius"
                                                                            data-style="py-0">
                                                                            @foreach ($categories_user as $category)
-                                                                                <option >{{ $category }}</option>
+                                                                                <option>{{ $category }}</option>
                                                                            @endforeach
                                                                       </select>
                                                                  </div>

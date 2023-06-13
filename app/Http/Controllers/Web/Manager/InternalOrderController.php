@@ -57,6 +57,7 @@ class InternalOrderController extends Controller
             Category::CATEGORY_CONTENT_WRITER_BIG,
             Category::CATEGORY_CONTENT_WRITER_SMALL,
             Category::CATEGORY_CONTENT_WRITER_MEDIUM,
+            'fast'
         ];
         return view('manager.internal-orders.create',[
             'types'    =>  Type::query()->get(),

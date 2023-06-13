@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Web\Manager\ExternalOrderController;
+use App\Http\Controllers\Web\ContentWriter\ExternalOrderContentController;
 use App\Http\Controllers\Web\Manager\InternalCustomerController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\Setting\ColorController;
@@ -57,7 +58,10 @@ Route::prefix('designer/')->group(function () {
     Route::resource('tasks', TaskController::class);
     Route::get('/todo', [TaskController::class, 'get_todotask']);
 });
+Route::name('content-writer.')->prefix('content-writer/')->group(function () {
+  Route::resource('external-orders', ExternalOrderContentController::class);
 
+});
 
 Route::get('/', function () {
     return view('dashboard');

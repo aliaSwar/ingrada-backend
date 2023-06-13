@@ -1,9 +1,6 @@
 <x-layouts.app>
 
 
-  <!doctype html>
-  <html lang="en">
-
           <div class="container-fluid">
               <div class="row">
                   <div class="col-12">
@@ -27,20 +24,21 @@
   <table class="table table-bordered" id="myTable">
   <thead>
   <tr>
-  <th>Task</th>
+
   <th>Type</th>
+  <th>Price</th>
   <th>Status</th>
-  <th>Status</th>
+  <th>Customer Name</th>
   <th>Details</th>
   </tr>
   </thead>
   <tbody>
       @foreach ($orders as $order)
   <tr  >
-  <td>{{ $order->id}}</td>
-  <td> {{ $order->type}} </td>
-  <td>{{ $order->category}} </td>
-  <td>{{ $order->prority}} </td>
+  <td>{{ $order->type}}</td>
+  <td> {{ $order->final_price}} </td>
+  <td>{{ $order->status}} </td>
+  <td>{{ $order->customers->name}} </td>
   <td>
       <a class="Details"  data-toggle="Details" href=""><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
   </td>

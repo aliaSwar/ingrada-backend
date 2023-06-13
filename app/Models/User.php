@@ -88,7 +88,7 @@ class User extends Authenticatable
 
     public function orders(): BelongsToMany
     {
-        return $this->belongsToMany(Order::class)->withPivot('is_active');
+        return $this->belongsToMany(Order::class);
     }
 
     public function tasks(): HasMany
