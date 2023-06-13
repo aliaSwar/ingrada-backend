@@ -21,7 +21,8 @@ class StoreInternalOrderAction{
           $attributes['primary_price']      = $request->final_price;
           //dd($attributes);
           $order=Order::create($attributes);
-          (new DistirbutionAlgorithmAction)($request);
+          $users=(new DistirbutionAlgorithmAction)($request);
+          
 
           
      }
