@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
 
   public function index(): View
     {
-       return view('users.index', ['users' => User::whereNotNull('category_id')->with('category')->paginate(4)]);
+       return view('users.index', ['users' => User::with('categories')->paginate(4)]);
     }
 
     /**
@@ -30,9 +30,10 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
 
-        return view('users.create',
-        [ 'roles'       => Role::all(),
-          'categories'  =>  Category::all() ]);
+        return view('users.create',[
+          'roles'       => Role::all(),
+          'categories'  =>  Category::all() 
+        ]);
     }
 
     /**
@@ -56,6 +57,6 @@ class RegisteredUserController extends Controller
        // Notification::send($user, new UserPublish($user));
 
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('users.index');
     }
 }

@@ -30,10 +30,11 @@ class StoreInternalOrderRequest extends FormRequest
             'final_price'       =>    'required|numeric',
             'notes'             =>    'nullable|string',
             'description'       =>    'nullable|string',
-            'start_date'        =>    'required|date|before_or_equal:end_date',
-            'end_date'          =>    'required|date|after_or_equal:start_date',
+            // 'start_date'        =>    'required|date|before_or_equal:end_date',
+            // 'end_date'          =>    'required|date|after_or_equal:start_date',
             'category'          =>    'required|string',
-            'prority'           =>    'required|string'
+            'prority'           =>    'required|string',
+            'customers_id'     =>    'required|numeric'
 
 
 

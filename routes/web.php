@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Web\Manager\ExternalOrderController;
+use App\Http\Controllers\Web\ContentWriter\ExternalOrderContentController;
 use App\Http\Controllers\Web\Manager\InternalCustomerController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\Setting\ColorController;
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Designer\TaskController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Web\Setting\CategoryController;
+use App\Models\Category;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +31,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 // Setting Route
 Route::middleware('auth:sanctum')->group(function () {
-  Route::get('hello',function () {
-$user= auth()->user();
-$user->assignRole('admin');
-return $user->hasRole('admin');
-  });
+    Route::get('hello',function () {
+        //dd(Category::find(4)->users);
+        dd(User::findOrFail(2)->categories);
+    });
 // Admin Route
 Route::prefix('admin/')->group(function () {
     Route::resource('roles', RoleController::class);
@@ -40,7 +43,7 @@ Route::prefix('admin/')->group(function () {
     Route::resource('scopes', ScopeCotroller::class);
     Route::resource('types', TypeCotroller::class);
     Route::resource('users', RegisteredUserController::class);
-
+    Route::resource('categories', CategoryController::class);
 
 });
 
@@ -55,7 +58,10 @@ Route::prefix('designer/')->group(function () {
     Route::resource('tasks', TaskController::class);
     Route::get('/todo', [TaskController::class, 'get_todotask']);
 });
+Route::name('content-writer.')->prefix('content-writer/')->group(function () {
+  Route::resource('external-orders', ExternalOrderContentController::class);
 
+});
 
 Route::get('/', function () {
     return view('dashboard');

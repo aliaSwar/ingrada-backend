@@ -18,7 +18,7 @@ class InternalCustomerController extends Controller
      */
     public function index(): View
     {
-        return view('manager.internal-customers.index', ['internal-customers' => Customer::query()->paginate(7)]);
+        return view('manager.internal-customers.index', ['internal_customers' => Customer::query()->paginate(7)]);
     }
 
     /**
@@ -35,9 +35,9 @@ class InternalCustomerController extends Controller
     public function store(StoreInternalCustomerRequest $request)
     {
         $data = $request->validated();
-        $data = Arr::add($data, 'avatar', uploadFile($request->path, 'internal-customers'));
+      //  $data = Arr::add($data, 'avatar', uploadFile($request->path, 'internal-customers'));
         Customer::create($data);
-        return redirect()->route('customers.index')->with(['message' => __('messages.create_data')]);
+        return redirect()->route('manager.internal-customers.index')->with(['message' => __('messages.create_data')]);
     }
 
     /**

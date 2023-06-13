@@ -1,242 +1,191 @@
 <x-layouts.app>
-     <hr>
-     <div class="content-page">
+
+
           <div class="container-fluid">
-               <div class="row">
+              <div class="row">
+                  <div class="col-12">
+                      <div class="card">
 
-                    <div class="col-12">
-                         <div class="card">
-                              <div class="card-body">
-                                   <div
-                                        class="d-flex flex-wrap align-items-center justify-content-between breadcrumb-content">
-                                        <h5>
-                                             All Enternal Orders.
-                                        </h5>
-                                        <div class="d-flex flex-wrap align-items-center">
+                          <div class="card-body">
 
-                                             <a href="{{ route('internal-orders.create') }} "
-                                                  class="btn btn-outline-warning"
-                                                  data-target="#new-task-modal"
-                                                  data-toggle="modal">New Orders</a>
-                                        </div>
-                                   </div>
+                              <div class="table-responsive">
+                                  <table class="table no-wrap v-middle mb-0">
+  <div class="row">
+
+
+  <form>
+      <div class="customize-input">
+          <input class="form-control custom-shadow custom-radius border-0 bg-white"
+          id="myInput" onkeyup="myFunction()" type="search" placeholder="Search" aria-label="Search">
+      </div>
+
+  </form>
+  </div>
+  <table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+
+  <th>Type</th>
+  <th>Price</th>
+  <th>Status</th>
+  <th>Customer Name</th>
+  <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+      @foreach ($orders as $order)
+  <tr  >
+  <td>{{ $order->type}}</td>
+  <td> {{ $order->final_price}} </td>
+  <td>{{ $order->status}} </td>
+  <td>{{ $order->customers->name}} </td>
+  <td>
+      <a class="Details"  data-toggle="Details" href=""><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
+  </td>
+  </tr>
+  @endforeach
+  </tbody>
+  </table>
                               </div>
-                         </div>
-                    </div>
-                    <div class="col-12">
-                         <div class="card"
-                         >
-                              <div class="card-body">
-                                   <div class="row">
-                                        <div class="col-12">
-                                             <div class="card card-widget task-card">
-                                                  <div class="card-body">
-                                                       
-                                                                 <div>
-                                                                      <h5 class="mb-2">Orders
-                                                                      </h5>
-                                                                 </div>
-                                                            </div>
-                                                            
-                                                       
-                                                  </div>
-                                             </div>
-                                             
-                                                  <div class="card card-list task-card"
-                                                       >
-                                                       <hr>
-                                                       
-                                                            @foreach ($orders as $order)
-                                                            <form method="POST"
-                                                                 action="{{ route('internal-orders.update',$order) }}"
-                                                                 enctype="multipart/form-data">
-                                                                 @method('PUT')
-                                                                 @csrf
-                                                            <div class="card mb-3"
-                                                                 style="border-radius: 20px;">
-                                                                 <div class="card-body">
-                                                                      <div class="row">
-                                                                           <div class="col-lg-3">
-                                                                                <div class="form-group mb-0">
-                                                                                     <label for="exampleInputText2"
-                                                                                          class="h5">Status</label>
-                                                                                          <select name="status"
-                                                                                          class="selectpicker custom-select form-control bg-white custom-radius"
-                                                                                          data-style="py-0">
-                                                                                               <option selected>{{ $order->status }}</option>
-                                                                                               <option value="Pendning"> Pendning </option>
-                                                                                               <option value="Initiated">Initiated</option>
-                                                                                               <option value="InProgress">InProgress</option>
-                                                                                               <option value="Completed">Completed</option>
-                                                                                               <option value="Failed">Failed</option>
-                                                                                     </select>
-                                                                                </div>
-                                                                           </div>
-                                                                           <div class="col-lg-3">
-                                                                                <div class="form-group mb-0">
-                                                                                     <label for="exampleInputText2"
-                                                                                          class="h5">Type Of
-                                                                                          Designe</label>
-                                                                                     <select name="type"
-                                                                                          class="selectpicker custom-select form-control bg-white custom-radius"
-                                                                                          data-style="py-0">
-                                                                                          <option selected>{{ $order->type }}</option>
-                                                                                          @foreach ($types as $type)
-                                                                                               <option value="{{ $type->name }}">{{ $type->name }}</option>
-                                                                                          @endforeach
-                                                                                     </select>
-                                                                                </div>
-                                                                           </div>
-                                                                           <div class="col-lg-3">
-                                                                                <div class="form-group mb-0">
-                                                                                     <label for="exampleInputText3"
-                                                                                          class="h5">Due Dates*</label>
-                                                                                     <input type="date"
-                                                                                          class="custom-select form-control bg-white custom-radius "
-                                                                                          id="exampleInputText3"
-                                                                                          value="{{ old('limit_date', $order->limit_date) }}">
-                                                                                          @error('limit_date')
-                                                                                          <div>
-                                                                                               <div class="alert alert-danger">
-                                                                                                    {{ $message }}</div>
-                                                                                          </div>
-                                                                                          @enderror
-                                                                                </div>
-                                                                           </div>
-                                                                           <div class="col-lg-3">
-                                                                                <div class="form-group mb-0">
-                                                                                     <label for="exampleInputText3"
-                                                                                          class="h5">Price</label>
-                                                                                     <input type="text" name="final_price"
-                                                                                          class=" form-control bg-white custom-radius "
-                                                                                          id="exampleInputText3"
-                                                                                          value="{{ old('final_price', $order->final_price) }}">
-                                                                                </div>
-                                                                           </div>
-                                                                      </div> 
-                                                                 </div>
-                                                            </div>
-                                                            @if ($order->users()->count() === 0)
-                                                                 <div class="card mb-3"
-                                                                 style="border-radius: 20px;">
-                                                                 <div class="card-body">
-                                                                      <div class="row">
-                                                                           <div class="col-lg-3">
-                                                                                <div class="form-group mb-0">
-                                                                                     <label for="exampleInputText2"
-                                                                                          class="h5">Category Content Writer</label>
-                                                                                          <select name="status"
-                                                                                          class="selectpicker custom-select form-control bg-white custom-radius"
-                                                                                          data-style="py-0">
-                                                                                          @foreach ($categories_user as $category)
-                                                                                               <option >{{ $category }}</option>
-                                                                                          @endforeach
-                                                  
-                                                                                     </select>
-                                                                                </div>
-                                                                           </div>
-                                                                           <div class="col-lg-3">
-                                                                                <div class="form-group mb-0">
-                                                                                     <label for="exampleInputText3"
-                                                                                          class="h5">Start Dates*</label>
-                                                                                     <input type="date" name="start_date"
-                                                                                          class="custom-select form-control bg-white custom-radius "
-                                                                                          id="exampleInputText3"
-                                                                                          >
-                                                                                          @error('start_date')
-                                                                                          <div>
-                                                                                               <div class="alert alert-danger">
-                                                                                                    {{ $message }}</div>
-                                                                                          </div>
-                                                                                          @enderror
-                                                                                </div>
-                                                                           </div>
-                                                                           <div class="col-lg-3">
-                                                                                <div class="form-group mb-0">
-                                                                                     <label for="exampleInputText3"
-                                                                                          class="h5">End Date*</label>
-                                                                                     <input type="date" name="end_date"
-                                                                                          class="custom-select form-control bg-white custom-radius "
-                                                                                          >
-                                                                                          @error('end_date')
-                                                                                          <div>
-                                                                                               <div class="alert alert-danger">
-                                                                                                    {{ $message }}</div>
-                                                                                          </div>
-                                                                                          @enderror
-                                                                                </div>
-                                                                           </div>
-                                                                           <div class="col-lg-3">
-                                                                                <div class="form-group mb-0">
-                                                                                     <label for="exampleInputText3"
-                                                                                          class="h5">Prority</label>
-                                                                                          <select name="prority"
-                                                                                          class="selectpicker custom-select form-control bg-white custom-radius"
-                                                                                          data-style="py-0">
-                                                                                               <option value="high"> High </option>
-                                                                                               <option value="normal">Normal</option>
-                                                                                               <option value="low">Low</option>
-                                                                                          </select>
-                                                                                </div>
-                                                                           </div>
-                                                                      </div> 
-                                                                 </div>
-                                                            </div>
-                                                            
-                                                       @endif
-                                                            <div class="card mb-3"
-                                                                 style="border-radius: 20px;">
-                                                                 <div class="card-body">
-                                                                      <div class="row">
-                                                                           <h5 style="color: #333; "
-                                                                                class="mb-2">Description :</h5>
-                                                                           <p class="mb-0">{{ $order->description }}</p>
-                                                                      </div>
-                                                                 </div>
-                                                            </div>
-                                                            <div class="card mb-3"
-                                                                 style="border-radius: 20px;">
-                                                                 <div class="card-body">
-                                                                      <div class="row">
-                                                                           <div class="form-group mb-0">
-                                                                                <i class="ri-attachment-2"></i>
-                                                                                <label for="exampleInputText01"
-                                                                                     class="h5">Change 
-                                                                                     Attachments File</label>
-                                                                                <input type="file"
-                                                                                     name="file"
-                                                                                     class=" form-control bg-white"
-                                                                                     style="border-radius: 10px;"
-                                                                                     value="{{ old('file', $order->file) }}"
-                                                                                     >
-                                                                                     <br>
-                                                                                     <a  class="column  align-items-center" href={{ $order->file }}><h3>press to download file</h3></a>
-                                                                           </div>
-                                                                      </div>
-                                                                 </div>
-                                                            </div>
-                                                            <div class="card mb-3"
-                                                            style="border-radius: 20px;">
-                                                            <div class="card-body">
-                                                                 <div class="row">
-                                                                      <div class="form-group mb-0">
-                                                                      
-                                                                           <input type="submit"
-                                                                           value="create"
-                                                                           class="btn btn-warning mr-3"
-                                                                                >
-                                                                      </div>
-                                                                 </div>
-                                                            </div>
-                                                       </div>
-                                                            @endforeach
-                                                       </div>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="column  align-items-center" >{{ $orders->links() }}</div>
-                                   </div>
+                          </div>
                               </div>
-                         </div>
-                         <!-- Page end  -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- *************************************************************** -->
+              <!-- End Top Leader Table -->
+              <!-- *************************************************************** -->
+          </div>
+          <!-- ============================================================== -->
+          <!-- End Container fluid  -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- footer -->
+          <!-- ============================================================== -->
+
+          <!-- ============================================================== -->
+          <!-- End footer -->
+          <!-- ============================================================== -->
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Page wrapper  -->
+      <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Wrapper -->
+  <!-- ============================================================== -->
+  <!-- End Wrapper -->
+  <!-- ============================================================== -->
+  <!-- All Jquery -->
+  <!-- ============================================================== -->
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- apps -->
+  <!-- apps -->
+  <script src="../dist/js/app-style-switcher.js"></script>
+  <script src="../dist/js/feather.min.js"></script>
+  <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../dist/js/sidebarmenu.js"></script>
+  <!--Custom JavaScript -->
+  <script src="../dist/js/custom.min.js"></script>
+  <!--This page JavaScript -->
+  <script src="../assets/extra-libs/c3/d3.min.js"></script>
+
+  <script src="../assets/extra-libs/c3/c3.min.js"></script>
+  <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
+  <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+  <script src="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+  <script src="../assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
+    <!-- Vendors JS -->
+    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="../assets/js/dashboards-analytics.js"></script>
+
+       <script>
+      $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+      var actions = $("table td:last-child").html();
+      // Append table with add row form on add new button click
+      $(".add-new").click(function(){
+      $(this).attr("disabled", "disabled");
+      var index = $("table tbody tr:last-child").index();
+      var row = '<tr>' +
+      '<td><input type="text" class="form-control" name="name" id="name"></td>' +
+      '<td><input type="text" class="form-control" name="department" id="avargePrice"></td>' +
+
+      '<td>' + actions + '</td>' +
+      '</tr>';
+      $("table").append(row);
+      $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+      $('[data-toggle="tooltip"]').tooltip();
+      });
+      // Add row on add button click
+      $(document).on("click", ".add", function(){
+      var empty = false;
+      var input = $(this).parents("tr").find('input[type="text"]');
+      input.each(function(){
+      if(!$(this).val()){
+      $(this).addClass("error");
+      empty = true;
+      } else{
+      $(this).removeClass("error");
+      }
+      });
+      $(this).parents("tr").find(".error").first().focus();
+      if(!empty){
+      input.each(function(){
+      $(this).parent("td").html($(this).val());
+      });
+      $(this).parents("tr").find(".add, .edit").toggle();
+      $(".add-new").removeAttr("disabled");
+      }
+      });
+      // Edit row on edit button click
+      $(document).on("click", ".edit", function(){
+      $(this).parents("tr").find("td:not(:last-child)").each(function(){
+      $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+      });
+      $(this).parents("tr").find(".add, .edit").toggle();
+      $(".add-new").attr("disabled", "disabled");
+      });
+      // Delete row on delete button click
+      $(document).on("click", ".delete", function(){
+      $(this).parents("tr").remove();
+      $(".add-new").removeAttr("disabled");
+      });
+      });
+      </script>
+       <script>
+          function myFunction() {
+   var input, filter, table, tr, td, cell, i, j;
+   input = document.getElementById("myInput");
+   filter = input.value.toUpperCase();
+   table = document.getElementById("myTable");
+   tr = table.getElementsByTagName("tr");
+   for (i = 1; i < tr.length; i++) {
+     // Hide the row initially.
+     tr[i].style.display = "none";
+
+     td = tr[i].getElementsByTagName("td");
+     for (var j = 0; j < td.length; j++) {
+       cell = tr[i].getElementsByTagName("td")[j];
+       if (cell) {
+         if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+           tr[i].style.display = "";
+           break;
+         }
+       }
+     }
+   }
+  }
+         </script>
+  </html>
 </x-layouts.app>
+

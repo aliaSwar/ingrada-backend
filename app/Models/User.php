@@ -81,9 +81,9 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($password);
     }
 
-    public function category(): BelongsTo
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id','id');
     }
 
     public function orders(): BelongsToMany

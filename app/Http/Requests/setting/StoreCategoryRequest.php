@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreScopeRequest extends FormRequest
+class StoreCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class StoreScopeRequest extends FormRequest
     public function rules(): array
     {
         return [
-          'name'      =>      ['required', 'string', 'unique:types,name'],
-           // 'colors' => ['requird','array']
+            'name'   =>  'required|string|max:255',
         ];
     }
 

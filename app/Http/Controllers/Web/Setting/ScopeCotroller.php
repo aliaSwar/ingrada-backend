@@ -39,13 +39,14 @@ class ScopeCotroller extends Controller
     public function store(StoreScopeRequest $request): RedirectResponse
     {
         //dd($request->all());
-       // $scope = scope::create($request->validated());
+        $scope = scope::create($request->validated());
        $colors=Color::where(function ($query) use ($request) {
 
         $query->whereNotIn('code', $request->colors);
     })->get();
-       dd($colors);
+      // dd($colors);
         $scope->colors()->sync($request->colors);
+        Scope::create($scope);
         //$scope->fonts()->sync($request->fonts);
         return redirect()->route('scopes.index')->with(['message' => __("messages.create_data")]);
     }

@@ -23,7 +23,7 @@ class Order extends Model
         'scope', 'colors', 'fonts', 'file', 'limit_date', 'status', 'notes',
     ];
 
-    public function customer(): BelongsTo
+    public function customers(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
     }

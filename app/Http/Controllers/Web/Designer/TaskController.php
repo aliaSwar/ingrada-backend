@@ -6,7 +6,7 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
-
+use App\Models\Order;
 class TaskController extends Controller
 {
     /**
@@ -40,9 +40,19 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Task $task)
     {
-        return view('designer.task.show');
+     // $order=$task->order()->paginate(1);
+     $ordeer = Order::where('id', $task->id)->get();
+      return $ordeer->id;
+
+      $categories_user=[
+        Category::CATEGORY_CONTENT_WRITER_BIG,
+        Category::CATEGORY_CONTENT_WRITER_SMALL,
+        Category::CATEGORY_CONTENT_WRITER_MEDIUM,
+   ];
+
+      //  return view('designer.task.show',  ['order'=>$order ]);
     }
 
     /**

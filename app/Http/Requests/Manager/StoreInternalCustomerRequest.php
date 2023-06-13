@@ -25,15 +25,15 @@ class StoreInternalCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'                     => ['required', 'unique:customers,name', 'max:255', 'regex:/\w*$/', 'string'],
+            //'name'                     => ['required', 'unique:customers,name', 'max:255', 'regex:/\w*$/', 'string'],
             'first_name'               => ['required', 'string', 'max:255'],
             'last_name'                => ['required', 'string', 'max:255'],
-            'avatar'                   => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif'],
-            'country_id'               => ['numeric', 'exists:countries,id', 'required'],
+            //'avatar'                   => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif'],
+            'country'               => ['required', 'string', 'max:255'],
             'company'                  => ['required', 'string', 'max:255'],
             'phone_number'             => ['required', 'string', new PhoneNumber()],
             'email'                    => ['required', 'unique:customers,email', 'email'],
-            'password'                 => ['required',  'string'],
+            //'password'                 => ['required',  'string'],
             'is_active'                => ['required', 'boolean']
         ];
     }

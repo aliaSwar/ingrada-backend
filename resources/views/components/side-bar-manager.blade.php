@@ -8,7 +8,7 @@
                       aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                           class="hide-menu">HOME</span></a></li>
               <li class="list-divider"></li>
-              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="designers.html"
+              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('users.index') }}"
                   aria-expanded="false"><i data-feather="user" class="feather-icon"></i><span
                       class="hide-menu">DEIGNERS
                   </span></a>
