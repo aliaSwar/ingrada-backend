@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable(); //description the customers
             $table->boolean('is_idea')->default(0);
             $table->boolean('is_accept')->default(0);
-            $table->boolean('is_enternal')->default(false);
+            $table->boolean('is_enternal')->default(0);
             $table->double('primary_price');
             $table->double('final_price');
             $table->string('type')->nullable();

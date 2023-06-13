@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Designer\TaskController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Web\Setting\CategoryController;
+use App\Models\Category;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +30,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 // Setting Route
 Route::middleware('auth:sanctum')->group(function () {
-  Route::get('hello',function () {
-$user= auth()->user();
-$user->assignRole('admin');
-return $user->hasRole('admin');
-  });
+    Route::get('hello',function () {
+        //dd(Category::find(4)->users);
+        dd(User::findOrFail(2)->categories);
+    });
 // Admin Route
 Route::prefix('admin/')->group(function () {
     Route::resource('roles', RoleController::class);
@@ -40,7 +42,7 @@ Route::prefix('admin/')->group(function () {
     Route::resource('scopes', ScopeCotroller::class);
     Route::resource('types', TypeCotroller::class);
     Route::resource('users', RegisteredUserController::class);
-
+    Route::resource('categories', CategoryController::class);
 
 });
 
