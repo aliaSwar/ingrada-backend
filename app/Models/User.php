@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -75,7 +77,20 @@ class User extends Authenticatable
     {
         return 'slug';
     }
-
+    public function scopeWithTaskCountInProgressAndStartDateBetween($query, $start_date)
+    {
+        return $query->whereHas('tasks',
+            fn (Builder $query) =>
+                $query->where('status', 'Progress')
+                    // ->where('start_date', '>=',$start_date)
+                    // ->where('end_date', '<=',$start_date)
+            )->withCount(['tasks' => fn (Builder $query) =>
+                $query->where('status', 'Progress')
+                // ->where('start_date', '>=',$start_date)
+                // ->where('end_date', '<=',$start_date)
+        ])  ;
+    }
+    
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);

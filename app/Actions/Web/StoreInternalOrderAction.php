@@ -19,9 +19,9 @@ class StoreInternalOrderAction{
           $attributes['is_accept']          = true;
           $attributes['status']             = Order::INITIATED_STATUS;
           $attributes['primary_price']      = $request->final_price;
-          //dd($attributes);
+
           $order=Order::create($attributes);
-         // $users=(new DistirbutionAlgorithmAction)($request);
+          $order->users()->attach($request->user_id);
 
 
      }

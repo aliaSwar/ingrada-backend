@@ -6,51 +6,35 @@ use App\Models\User;
 use DateTime;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class DistirbutionAlgorithmAction{
 
-     public function __invoke(StoreInternalOrderRequest $request)
-     {
-          // $users =User::query()
-          //           ->with('orders')
-          //           ->role('content writer')
-          //           ->where('is_deleted',false)
-          //           //->where('category',$request->category)
-          //           ->join('order_user', function (JoinClause $join) {
-          //                $join->on('users.id', '=', 'order_user.user_id')
-          //                     ->where('order_user.is_active', true)
-          //                     ->where('users.is_active', true);
-          //                     //->where('users.is_active', true);
-          //           })
-          //           ->select('users.*')
-          //           ->get();
-          //dd($request->category);
-          $users =User::query()
-                     ->with('tasks')
-                     ->role('content writer')
-                     ->where('is_deleted',false)
-                     ->where('category',$request->category)
-                     ->where('is_active',true)
+    public function __invoke(Request $request)
+    {
+        $users = User::with('tasks')
+                    ->role('designer')
+                    ->where('is_deleted',false)
+                    ->where('category',$request->category)
+                    ->where('is_active',true)
+                    ->get();
+        if ($users->isEmpty() ) {
+            return view('errors.404');
+        }
 
-                     ->get();
+        $users_with_task_in_progress =$users->withTaskCountInProgressAndStartDateBetween($request->start_date)
+                    ->orderBy('number_tasks_progress', 'asc')
+                    ->get();
 
+        //dont have any task in progress
+        if ($users_with_task_in_progress->isEmpty() and $request->prority=='high') {
 
-                foreach ($users as $user) {
-                  $count=0;
-                  foreach ($user->tasks  as $task) {
-                      if ($task->status=='Progress' and $task->start_date<=$request->start_date and $task->end_date>=$request->start_date) {
-                        $count++;
-                      }
-
-
-                  }
-
-                }
-
-
-                dd($users);
-
-
-     }
+            return $users->first();
+        }
+        // have task in progress
+        if ($users_with_task_in_progress->isNotEmpty()) {
+            return $users_with_task_in_progress->first();
+        }
+    }
 }

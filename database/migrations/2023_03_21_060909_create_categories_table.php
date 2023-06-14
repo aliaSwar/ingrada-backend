@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->boolean('is_designer')->default(true);
             $table->string('slug');
             $table->timestamps();
         });
