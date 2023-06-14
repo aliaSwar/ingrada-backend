@@ -40,7 +40,7 @@ class ExternalOrderContentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Order $orde6r)
     {
         dd($request->all());
     }
