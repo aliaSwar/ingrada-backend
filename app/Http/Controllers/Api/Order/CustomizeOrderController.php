@@ -189,7 +189,7 @@ class CustomizeOrderController extends Controller
                     ->role('designer')
                     ->where('is_active',true)
                     ->where('is_deleted',false)
-                    ->where('category',Category::CATEGORY_CREATIVE)
+                    ->where('category',Category::CATEGORY_DESIGNER_CREATIVE)
                     ->get();
         return sendSuccessResponse(
             __('messages.get_data'),

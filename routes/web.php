@@ -32,8 +32,8 @@ use App\Models\User;
 // Setting Route
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('hello',function () {
-        //dd(Category::find(4)->users);
-        dd(User::findOrFail(2)->categories);
+        User::findOrFail(1)->assignRole('admin');
+        dd();
     });
 // Admin Route
 Route::prefix('admin/')->group(function () {
