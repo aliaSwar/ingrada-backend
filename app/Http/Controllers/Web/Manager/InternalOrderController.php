@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Order;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\View\View;
 
 class InternalOrderController extends Controller
@@ -20,23 +21,7 @@ class InternalOrderController extends Controller
      */
     public function index(): View
     {
-      //  $order=Order::query()
-            // ->with('tasks'/* ,'customer','users' */)
-      //      ->where('status','!=',Order::COMPLETED_STATUS)
-            //->where('is_enternal',true)
-      //      ->paginate(1);
 
-      // $categories_user=[
-      //      Category::CATEGORY_CONTENT_WRITER_BIG,
-      //      Category::CATEGORY_CONTENT_WRITER_SMALL,
-      //      Category::CATEGORY_CONTENT_WRITER_MEDIUM,
-      //  ];
-
-      //  return view('manager.internal-orders.index', [
-      //      'orders'          => $order ,
-      //      'types'           => Type::query()->get(),
-      //      'categories_user' => $categories_user,
-      //  ]);
       $ordeer = Order::where('is_enternal', true)->get();
       //return $ordeer;
 
@@ -53,16 +38,15 @@ class InternalOrderController extends Controller
      */
     public function create(): View
     {
-        $categories_user=[
-            Category::CATEGORY_CONTENT_WRITER_BIG,
-            Category::CATEGORY_CONTENT_WRITER_SMALL,
-            Category::CATEGORY_CONTENT_WRITER_MEDIUM,
-            'fast'
-        ];
+        $users = User::role('content writer')
+                    ->where('is_deleted',false)
+                    ->where('is_active',true)
+                    ->get();
+    
         return view('manager.internal-orders.create',[
-            'types'    =>  Type::query()->get(),
-            'categories_user' => $categories_user,
-            'internal_customers' => Customer::query()->get()
+            'types'              =>  Type::query()->get(),
+            'internal_customers' => Customer::query()->get(),
+            'categories_user'=>  $users,
         ]);
     }
 

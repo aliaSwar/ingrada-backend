@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->boolean('is_deleted')->default(false);
             $table->integer('number_tasks')->unsigned()->nullable();
+            $table->integer('number_tasks_progress')->unsigned()->nullable();
             $table->foreignId('category_id')->nullable(); //category users['creative','fast','extutable']
             $table->string('category')->nullable();
             $table->string('email')->unique();
