@@ -30,7 +30,7 @@
                                                     <div class="card card-list task-card" id="edit" style="margin-top: 12px;">
                                                         <div  style="margin-top: 20px; margin-left: 16px;">
 
-                                              <form action="{{ route('content-writer.external-orders.update',$order->id) }}" method="POST">
+                                              <form action="{{ route('content-writer.external-orders.update',$order) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-group mb-0" style="margin: 19px;">

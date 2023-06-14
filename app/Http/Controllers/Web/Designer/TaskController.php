@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Order;
+use App\Models\User;
 class TaskController extends Controller
 {
     /**
@@ -17,6 +18,19 @@ class TaskController extends Controller
 
         return view('designer.task.index',
         ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]);
+    }
+
+
+    public function index_external(): View
+    {
+      $order=Order::query()
+      ->where('is_enternal',false)
+      ->where('is_order_designer',true)
+      ->where('designer_id', auth()->user()->id)
+      ->paginate(7);
+      return view('designer.task.index_external', [
+        'orders'          => $order ,
+    ]);
     }
 
     /**
@@ -40,11 +54,18 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task)
+    public function show($id)
     {
-     // $order=$task->order()->paginate(1);
-     $ordeer = Order::where('id', $task->id)->get();
-      return $ordeer->id;
+      $order=Task::findOrFail($id);
+
+
+        return view(
+            'designer.task.show',
+            ['order' => $order]
+        );
+
+
+
 
       $categories_user=[
         Category::CATEGORY_CONTENT_WRITER_BIG,
@@ -54,6 +75,22 @@ class TaskController extends Controller
 
       //  return view('designer.task.show',  ['order'=>$order ]);
     }
+
+    public function show_external($id)
+    {
+      //return 1;
+    $order=Order::findOrFail($id);
+    $designer_name=User::where('id',$order->designer_id)->select('fullname')->first();
+      return view('designer.task.show_external',[
+        'order'          =>   $order,
+        'designer_name' =>   $designer_name
+    ]);}
+
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.

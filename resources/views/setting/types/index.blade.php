@@ -1,4 +1,21 @@
 <x-layouts.app>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+    <title>Freedash Template - The Ultimate Multipurpose admin template</title>
+
+    <link rel="stylesheet" href="../assets/libs/chart.js/dist/apex-charts.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">

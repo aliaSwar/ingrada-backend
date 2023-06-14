@@ -45,24 +45,20 @@
                                                   <tr>
 
 <th class="text-dark mb-0 font-16 font-weight-medium"> Name</th>
-<th class="text-dark mb-0 font-16 font-weight-medium">Username</th>
 <th class="text-dark mb-0 font-16 font-weight-medium">Task</th>
 <th class="text-dark mb-0 font-16 font-weight-medium">Category</th>
-<th class="text-dark mb-0 font-16 font-weight-medium">Role</th>
+<th class="text-dark mb-0 font-16 font-weight-medium">Is Active</th>
 <th class="text-dark mb-0 font-16 font-weight-medium">Actions</th>
 </tr>
 </thead>
 <tbody>
   @foreach ($users as $user)
   <tr  >
-  <td>{{ $user->username}}</td>
   <td> {{$user->fullname}} </td>
   <td>{{ $user->number_tasks}} </td>
   <td>{{ $user->categories->name??""}} </td>
-
-
-                                                       <td></td>
-                                                       <td></td>
+  <td>{{ $user->is_active}} </td>
+=
 
                                                        <td>
                                                             <a class="delete"
@@ -72,7 +68,7 @@
                                                             <a class="details"
                                                                  title="details"
                                                                  data-toggle="tooltip"
-                                                                 href=""><i class="material-icons">event_note</i></a>
+                                                                 href="{{ route('users.show', $user) }}"><i class="material-icons">event_note</i></a>
                                                        </td>
                                                   </tr>
                                                   @endforeach

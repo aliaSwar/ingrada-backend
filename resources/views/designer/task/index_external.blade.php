@@ -55,7 +55,7 @@
   <td>{{ $order->status}} </td>
   <td>{{ $order->customers->first_name}}</td>
   <td>
-      <a class="Details"  data-toggle="Details" href={{ route('internal-orders.show', $order->id) }}><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
+      <a class="Details"  data-toggle="Details" href={{ route('to', $order->id) }}><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
   </td>
   </tr>
   @endforeach

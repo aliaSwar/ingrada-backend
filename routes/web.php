@@ -56,7 +56,12 @@ Route::prefix('manager/')->group(function () {
 //designer Route
 Route::prefix('designer/')->group(function () {
     Route::resource('tasks', TaskController::class);
-    Route::get('/todo', [TaskController::class, 'get_todotask']);
+    Route::get('/todo', [TaskController::class, 'get_todotask'])->name('to_do');
+    Route::get('/index_external', [TaskController::class, 'index_external'])->name('in_ex');
+    Route::get('/showexternal/{id}', [TaskController::class, 'show_external'])->name('to');
+
+
+
 });
 Route::name('content-writer.')->prefix('content-writer/')->group(function () {
   Route::resource('external-orders', ExternalOrderContentController::class);

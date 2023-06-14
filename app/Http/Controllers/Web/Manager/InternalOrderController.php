@@ -71,23 +71,28 @@ class InternalOrderController extends Controller
      */
     public function store(StoreInternalOrderRequest $request)/* : RedirectResponse */
     {
-      //return $request;
 
-        (new StoreInternalOrderAction)($request);
+     // (new StoreInternalOrderAction)($request);
+      return $request;
 
 
-        return redirect()->route('internal-orders.index')->with(['message' => __("messages.create_data")]);
+  //      return redirect()->route('internal-orders.index')->with(['message' => __("messages.create_data")]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Order $order): View
+    public function show( $id)
     {
+      $order=Order::findOrFail($id);
+
+
         return view(
             'manager.internal-orders.show',
             ['order' => $order]
         );
+
+
     }
 
     /**

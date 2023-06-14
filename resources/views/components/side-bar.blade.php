@@ -81,14 +81,27 @@
                   </li>
                       </ul>
                   </li>
+                  <li class="menu-item">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+
+                        <a href="" class="menu-link menu-toggle">
+                            <i class="bx bx-power-off me-2"></i>
+
+                            <input type="submit" style="border:none;background:none;padding: 0"
+                                value="تسجيل خروج"></span>
+                            <a>
+                    </form>
+                </li>
 
               <li class="list-divider"></li>
 
-              <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
-              <li class="sidebar-item"> <a class="sidebar-link " href="authentication-login1.html"
-                  aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
-                      class="hide-menu">LOGOUT </span></a>
-          </li>
+
+
+
+
+
+
           </ul>
       </nav>
       <!-- End Sidebar navigation -->

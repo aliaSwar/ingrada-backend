@@ -19,7 +19,7 @@ class ScopeCotroller extends Controller
      */
     public function index(): View
     {
-        return view('setting.scopes.index', ['scopes' => Scope::query()->paginate(7)]);
+        return view('setting.scopes.index');
     }
 
 
