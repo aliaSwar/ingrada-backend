@@ -2,6 +2,15 @@
 
 
     <!doctype html>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+    <title>Freedash Template - The Ultimate Multipurpose admin template</title>
+
+    <link rel="stylesheet" href="../assets/libs/chart.js/dist/apex-charts.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <html lang="en">
 
             <div class="container-fluid">
@@ -40,7 +49,7 @@
     <td> {{ $task->type}} </td>
     <td>{{ $task->status}} </td>
     <td>
-        <a class="Details"  data-toggle="Details" href="{{ route('tasks.show', $task) }}"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
+        <a class="Details"  data-toggle="Details" href="{{ route('tasks.show', $task->id) }}"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
     </td>
     </tr>
     @endforeach

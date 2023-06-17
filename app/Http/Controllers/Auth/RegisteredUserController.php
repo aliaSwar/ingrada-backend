@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
 
   public function index(): View
     {
-       return view('users.index', ['users' => User::with('categories')->paginate(4)]);
+       return view('users.index', ['users' => User::with('categories')->where('category_id','!=','null')->paginate(4)]);
     }
 
     /**
@@ -32,8 +32,16 @@ class RegisteredUserController extends Controller
 
         return view('users.create',[
           'roles'       => Role::all(),
-          'categories'  =>  Category::all() 
+          'categories'  =>  Category::all()
         ]);
+    }
+
+
+    public function show(User $user): View
+    {
+        return view(
+            'users.show'
+        );
     }
 
     /**
