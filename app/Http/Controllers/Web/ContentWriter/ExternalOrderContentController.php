@@ -41,7 +41,7 @@ class ExternalOrderContentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $orde6r)
     {
       $order=Order::findOrFail($id);
         $order->update($request->all());
