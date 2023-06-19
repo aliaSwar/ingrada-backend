@@ -26,7 +26,7 @@ class ExternalOrderController extends Controller
 
 
 
-      return view('manager.internal-orders.index', [
+      return view('manager.external-orders.index', [
           'orders'          => $order ,
       ]);
     }
@@ -37,7 +37,7 @@ class ExternalOrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

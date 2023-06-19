@@ -16,7 +16,7 @@
                       class="hide-menu"> ENTENAL ORDERS
                   </span></a>
           </li>
-          <li class="sidebar-item"><a href="external.html" class="sidebar-link"><span
+          <li class="sidebar-item"><a href="{{ route('content-writer.external-orders.index') }}" class="sidebar-link"><span
                       class="hide-menu">EXTERNAL ORDERS
                   </span></a>
           </li>
@@ -54,13 +54,18 @@
 
 
 
-              <li class="list-divider"></li>
+                      <li class="menu-item">
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
 
-              <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
-              <li class="sidebar-item"> <a class="sidebar-link " href="authentication-login1.html"
-                  aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
-                      class="hide-menu">LOGOUT </span></a>
-          </li>
+                            <a href="" class="menu-link menu-toggle">
+                                <i class="bx bx-power-off me-2"></i>
+
+                                <input type="submit" style="border:none;background:none;padding: 0"
+                                    value=" Logout"></span>
+                                <a>
+                        </form>
+                    </li>
           </ul>
       </nav>
       <!-- End Sidebar navigation -->

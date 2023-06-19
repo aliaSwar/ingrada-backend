@@ -17,36 +17,34 @@
               aria-expanded="false"><i data-feather="sliders" class="feather-icon"></i><span
                   class="hide-menu">ORDERS </span></a>
           <ul aria-expanded="false" class="collapse  first-level base-level-line">
-              <li class="sidebar-item"><a href="enternal.html" class="sidebar-link"><span
+              <li class="sidebar-item"><a href="{{ route('internal-orders.index') }}" class="sidebar-link"><span
                   class="hide-menu"> ENTENAL ORDERS
               </span></a>
       </li>
-      <li class="sidebar-item"><a href="external.html" class="sidebar-link"><span
+      <li class="sidebar-item"><a href="{{ route('external-orders.index') }}" class="sidebar-link"><span
                   class="hide-menu">EXTERNAL ORDERS
               </span></a>
       </li>
-
+      <li class="sidebar-item"><a href="{{ route('internal-orders.create') }}" class="sidebar-link"><span
+        class="hide-menu"> Create ENTENAL ORDERS
+    </span></a>
+</li>
           </ul>
           </li>
-              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
-                      aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
-                          class="hide-menu">Calendar</span></a></li>
-                          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href=""
+                      aria-expanded="false">
+                          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href=""
                               aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                                  class="hide-menu">REPORTS </span></a>
+                                  class="hide-menu">ENTERNAL CUSTOMER </span></a>
                           <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                              <li class="sidebar-item"><a href="DailyReport.html" class="sidebar-link"><span
-                                          class="hide-menu"> DAILY
+                              <li class="sidebar-item"><a href="{{ route('internal-customers.create') }}" class="sidebar-link"><span
+                                          class="hide-menu"> Create
                                       </span></a>
                               </li>
-                              <li class="sidebar-item"><a href="monthlyReport.html" class="sidebar-link"><span
-                                          class="hide-menu"> MONTHLY
-                                      </span></a>
-                              </li>
-                              <li class="sidebar-item"><a href="AnnulyReport.html" class="sidebar-link"><span
-                                          class="hide-menu"> ANNUAL
-                                      </span></a>
-                              </li>
+                              <li class="sidebar-item"><a href="{{ route('internal-customers.index') }}" class="sidebar-link"><span
+                                class="hide-menu"> Show
+                            </span></a>
+                    </li>
                           </ul>
                       </li>
                       <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"

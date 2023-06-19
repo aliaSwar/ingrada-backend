@@ -1,4 +1,3 @@
-
 <x-layouts.app>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,7 +55,7 @@
   <td>{{ $order->status}} </td>
   <td>{{ $order->customers->first_name}}</td>
   <td>
-      <a class="Details"  data-toggle="Details" href={{ route('content-writer.external-orders.show', $order->id) }}><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
+      <a class="Details"  data-toggle="Details" href={{ route('external-orders.show', $order->id) }}><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
   </td>
   </tr>
   @endforeach
