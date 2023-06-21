@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
+use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 
 class ExternalOrderContentController extends Controller
@@ -42,7 +43,10 @@ class ExternalOrderContentController extends Controller
      */
     public function update(Request $request, Order $orde6r)
     {
-        dd($request->all());
+      $order=Order::findOrFail($id);
+        $order->update($request->all());
+
+        return redirect()->route('content-writer.tasks.create',$order);
     }
 
     /**

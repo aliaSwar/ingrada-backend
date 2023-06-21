@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Order;
 use App\Models\User;
+use App\Actions\DistirbutionAlgorithmAction;
 class TaskController extends Controller
 {
     /**
@@ -36,19 +37,50 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create($id): View
     {
-       // return "ff";
-        return view('designer.task.index',
-       ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]);
+      $order=Order::findOrFail($id);
+       if ($order->status ==='Failed') {
+
+        return  redirect()->route('content-writer.external-orders.index')->with(['message'=>'the order refused!']);
+      }
+$designer=User::find($order->designer_id);
+        return view('designer.task.create',['order'=>$order,'designer'=>$designer]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+      $order=Order::find($id);
+      $task=New Task();
+      $task->start_date=$request->start_date;
+      $task->end_date=$request->end_date;
+      $task->real_end_date=$request->end_date;
+      $task->name=$request->name;
+      $task->status="Progress";
+      $task->description=$request->description;
+      $task->order_id=$order->id;
+      $task->type=$order->type;
+      $task->category="fast";
+
+        if ($order->designer_id) {
+           $task->user_id=$order->designer_id;
+           $task->save();
+           $user=User::find($order->designer_id);
+           $user->number_tasks_progress=$user->number_tasks_progress+1;
+           $user->save();
+           $user->orders()->attach($order->id);
+           return back();
+        }
+        $user=(new DistirbutionAlgorithmAction)($request);
+        $task->user_id=$user->id;
+        $task->save();
+        $user->number_tasks_progress=$user->number_tasks_progress+1;
+        $user->save();
+        $user->orders()->attach($order->id);
+        return back();
     }
 
     /**
@@ -83,8 +115,14 @@ class TaskController extends Controller
     $designer_name=User::where('id',$order->designer_id)->select('fullname')->first();
       return view('designer.task.show_external',[
         'order'          =>   $order,
-        'designer_name' =>   $designer_name
-    ]);}
+        'designer_name' =>   $designer_name,
+        'users'         =>   User::query()
+        ->role('content writer')
+                                  ->where('is_deleted',false)
+                                  ->where('is_active',true)
+                                  ->get()
+    ]);
+  }
 
 
 
@@ -111,9 +149,11 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function store_external(Request $request,Order $order)
     {
-        //
+      $order->update($request->all());
+      $order->users()->attach($request->user_id);
+      return redirect()->route('in_ex');
     }
     public function get_todotask()
     {
