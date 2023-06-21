@@ -23,9 +23,9 @@
 
               </ul>
           </li>
-          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="{{ route('scopes.index') }}"
               aria-expanded="false"><i data-feather="sliders" class="feather-icon"></i><span
-                  class="hide-menu">PERMISSION </span></a>
+                  class="hide-menu">Scopes </span></a>
           <ul aria-expanded="false" class="collapse  first-level base-level-line">
               <li class="sidebar-item"><a href="permission.html" class="sidebar-link"><span
                           class="hide-menu"> SHOW & ADD
@@ -41,9 +41,9 @@
               <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
                       aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
                           class="hide-menu">Calendar</span></a></li>
-                          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="{{ route('fonts.index') }}"
                               aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                                  class="hide-menu">REPORTS </span></a>
+                                  class="hide-menu">Fonts </span></a>
                           <ul aria-expanded="false" class="collapse  first-level base-level-line">
                               <li class="sidebar-item"><a href="DailyReport.html" class="sidebar-link"><span
                                           class="hide-menu"> DAILY
@@ -89,7 +89,7 @@
                             <i class="bx bx-power-off me-2"></i>
 
                             <input type="submit" style="border:none;background:none;padding: 0"
-                                value="تسجيل خروج"></span>
+                                value=" Logout"></span>
                             <a>
                     </form>
                 </li>

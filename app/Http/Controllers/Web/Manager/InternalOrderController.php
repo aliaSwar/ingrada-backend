@@ -42,7 +42,7 @@ class InternalOrderController extends Controller
                     ->where('is_deleted',false)
                     ->where('is_active',true)
                     ->get();
-    
+
         return view('manager.internal-orders.create',[
             'types'              =>  Type::query()->get(),
             'internal_customers' => Customer::query()->get(),
@@ -56,7 +56,7 @@ class InternalOrderController extends Controller
     public function store(StoreInternalOrderRequest $request)/* : RedirectResponse */
     {
 
-     // (new StoreInternalOrderAction)($request);
+     (new StoreInternalOrderAction)($request);
       return $request;
 
 
