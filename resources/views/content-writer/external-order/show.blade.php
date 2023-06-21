@@ -26,7 +26,7 @@
                                                   style="margin-top: 12px;">
                                                   <div style="margin-top: 20px; margin-left: 16px;">
 
-                                                       <form action="{{ route('content-writer.external-orders.update',$order) }}"
+                                                       <form action="{{ route('content-writer.external-orders.update',$order  ) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('PUT')
