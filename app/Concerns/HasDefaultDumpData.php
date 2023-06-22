@@ -70,4 +70,26 @@ trait HasDefaultDumpData
                 'password'       =>  defaultHashedPassword('134567')
         ];
     }
+    protected function sizes(): array
+    {
+        return [
+                'length'            =>  196,
+                'width'             =>  196,
+        ];
+    }
+    protected function items(): array
+    {
+        return [
+                'image'              =>  asset('assets/images/background/beauty.jpg'),
+                'price'              =>  196,
+                'likes'              => 1,
+                'is_enable_post'     => 1,
+                'prefernce_value_id' => 1,
+                'prefernce_id'       => 1,
+                'prefernce_value_id' => 1,
+                'type_id'            => 1,
+                'scope_id'           => 1,
+                
+        ];
+    }
 }
