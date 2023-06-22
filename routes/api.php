@@ -96,6 +96,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
                 //Types
                 Route::get('types',[CustomizeOrderController::class, 'getTypes']);
                 Route::post('types',[CustomizeOrderController::class, 'storeTypes']);
+                Route::get('sizes',[CustomizeOrderController::class, 'getSizes']);
                 //values Type
                 Route::get('prefernces',[CustomizeOrderController::class, 'getPrefernces']);
                 Route::post('prefernces',[CustomizeOrderController::class, 'storePrefernces']);

@@ -19,7 +19,7 @@ class ShowDesignsController extends Controller
         public function __invoke(): JsonResponse
         {
             $data=Item::query()
-                        ->with('type','scope','colors','fonts')
+                        ->with('type','scope','colors')
                         ->where('is_display_items',true)
                         ->orderBy('likes', 'desc')
                         ->get();

@@ -70,4 +70,11 @@ trait HasDefaultDumpData
                 'password'       =>  defaultHashedPassword('134567')
         ];
     }
+    protected function sizes(): array
+    {
+        return [
+                'length'            =>  196,
+                'width'             =>  196,
+        ];
+    }
 }

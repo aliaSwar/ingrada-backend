@@ -9,6 +9,7 @@ use App\Models\Font;
 use App\Models\Prefernce;
 use App\Models\PrefernceValue;
 use App\Models\Scope;
+use App\Models\Size;
 use App\Models\Type;
 use Illuminate\Database\Seeder;
 
@@ -28,6 +29,7 @@ class DumpDataSeeder extends Seeder
             $scope=Scope::query()->create($this->scopes());
             Prefernce::query()->create($this->prefernces());
             PrefernceValue::query()->create($this->values());
+            Size::query()->create($this->sizes());
             $scope->colors()->sync([$color->id]);
             $scope->fonts()->sync([$font->id]);
 

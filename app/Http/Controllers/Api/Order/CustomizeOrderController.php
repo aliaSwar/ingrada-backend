@@ -20,6 +20,7 @@ use App\Models\Color;
 use App\Models\Font;
 use App\Models\Prefernce;
 use App\Models\Scope;
+use App\Models\Size;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -96,6 +97,21 @@ class CustomizeOrderController extends Controller
         
         return sendSuccessResponse(
             __('messages.create_data'),
+        );
+    }
+    
+    /**
+     * Returns  colors for choose to order.
+     *
+     * @return   JsonResponse  $data
+     */
+    public function getSizes():JsonResponse
+    {
+        
+        return sendSuccessResponse(
+            __('messages.get_data'),
+            Size::query()
+                        ->get()
         );
     }
     /**
@@ -201,10 +217,10 @@ class CustomizeOrderController extends Controller
     *
     * @param  FontRequest  $request
     */
-    public function storeOrder(DesignerRequest $request)/* :JsonResponse */
+    public function storeOrder(DesignerRequest $request):JsonResponse
     {
+        
         $order=(new StoreOrderAction)($request);
-        return $order;
         return sendSuccessResponse(
             $order,
             __('messages.create_data'),
