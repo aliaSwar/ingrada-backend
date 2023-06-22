@@ -33,15 +33,18 @@
 
 
                                                       <div class="form-group mb-0" style="margin: 19px;">
-
+                                                        <form action="{{ route('content-writer.external-orders.update',$order->id) }}"
+                                                          method="POST">
+                                                          @csrf
+                                                          @method('PUT')
 
                                                           <i class="ri-pencil-ruler-2-line"></i>
-                                                          <label for="exampleInputText01" class="h5"> Priorty This Task</label>
+                                                          <label for="exampleInputText01" class="h5"> Status This Task</label>
                                                           <select  name="status" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
-                                                              <option selected> High</option>
-                                                              <option> Low</option>
-                                                              <option> Middle</option>
-
+                                                              <option selected> Initiated</option>
+                                                              <option> InProgress</option>
+                                                              <option> Completed</option>
+                                                              <option>Failed</option>
 
                                                           </select>
                                                       </div>
@@ -49,55 +52,37 @@
                                                           </div>
 
                                                       <div class="card-body">
-                                                      <form action="{{ route('content-writer.tasks.store', $order) }}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
 
-                                                            @if ($order->is_order_designer)
-                                                            <div class="card mb-3" style="border-radius: 20px;">
-                                                              <div class="card-body">
-                                                                  <div class="row">
-                                                                    <label for="exampleInputText01" class="h5">Desginer</label>
-                                                              <h3> {{ $designer_name}}</h3>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                          @else
                                                           <div class="card mb-3" style="border-radius: 20px;">
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                            <h3> Auto Distrbuited Task on Designer </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                            @endif
-                                                            <div class="card mb-3" style="border-radius: 20px;">
                                                               <div class="card-body">
                                                                   <div class="row">
 
                                                                       <div class="col-lg-3">
                                                                           <div class="form-group mb-0">
-                                                                              <label for="exampleInputText2"   class="h5">Name </label>
-                                                                              <input type="text" name="name" class="custom-select form-control bg-white custom-radius "  value="{{$order->type??'' }}">
+                                                                              <label for="exampleInputText2"   class="h5">Type </label>
+                                                                              <input type="text" name="type" class="custom-select form-control bg-white custom-radius "  value="{{$order->type??'' }}">
                                                                           </div>
                                                                       </div>
                                                                       <div class="col-lg-3">
                                                                           <div class="form-group mb-0">
-                                                                              <label for="exampleInputText3" class="h5">Start Dates</label>
-                                                                              <input type="date" name="start_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->start_date }}">
+                                                                              <label for="exampleInputText3" class="h5">limit Dates</label>
+                                                                              <input type="date" name="start_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->limit_date }}">
                                                                           </div>
                                                                       </div>
 
                                                                       <div class="col-lg-3">
-                                                                        <div class="form-group mb-0">
-                                                                            <label for="exampleInputText3" class="h5">End Dates</label>
-                                                                            <input type="date" name="end_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->end_date }}">
-                                                                        </div>
-                                                                    </div>
+                                                                          <div class="form-group mb-0">
+                                                                              <label for="exampleInputText3" class="h5">Price</label>
+                                                                              <input type="text" name="final_price" class=" form-control bg-white custom-radius "  value="{{$order->final_price}}">
+                                                                          </div>
+                                                                      </div>
+
+
 
                                                                       <hr style="margin-top: 12px;">
                                                                       <div class="col-lg-3">
                                                                           <div class="form-group mb-0">
-                                                                              <label for="exampleInputText3" class="h5">File From manger</label>
+                                                                              <label for="exampleInputText3" class="h5">Illustration From Client</label>
                                                                               <div class="form-control bg-white custom-radius" style="text-align:justify;">
                                                                                   <a href="C:\Users\ABC\Desktop\cpp">
                                                                                       Click to open Image
@@ -121,15 +106,8 @@
                                                           <div class="card mb-3" style="border-radius: 20px;">
                                                               <div class="card-body">
                                                                   <div class="row">
-                                                                    <label for="exampleInputText040"
-                                                                      class="h5">Description</label>
-                                                                    <textarea name="description"
-                                                                    class="form-control bg-white "
-                                                                    style="
-                                                                    border-radius:
-                                                                    4px;"
-                                                                    id="exampleInputText040"
-                                                                    rows="2"></textarea>
+                                                                          <h5 style="color: #333; " class="mb-2">Description :</h5>
+                                                                          <p class="mb-0">{{ $order->description }}</p>
                                                                   </div>
                                                               </div>
                                                           </div>
@@ -145,14 +123,12 @@
                                                                   </div>
                                                               </div>
                                                           </div>
-
-
                                                           <div class="card mb-3" style="border-radius: 20px;">
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                   <div class="form-group mb-0">
                                                                     <input type="submit"
-                                                                         value="submit"
+                                                                         value="create"
                                                                          class="btn btn-warning mr-3">
                                                                   </div>
                                                                </div>
@@ -160,9 +136,8 @@
                                                             </div>
                                                         </div>
                                                       </div>
-                                                    </form>
                                                   </div>
-
+                                                </form>
                                           </div>
                                       </div>
                                   </div>
