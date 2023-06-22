@@ -6,6 +6,7 @@ use App\Concerns\HasDefaultDumpData;
 use App\Models\Color;
 use App\Models\Customer;
 use App\Models\Font;
+use App\Models\Item;
 use App\Models\Prefernce;
 use App\Models\PrefernceValue;
 use App\Models\Scope;
@@ -30,6 +31,7 @@ class DumpDataSeeder extends Seeder
             Prefernce::query()->create($this->prefernces());
             PrefernceValue::query()->create($this->values());
             Size::query()->create($this->sizes());
+            Item::query()->create($this->items());
             $scope->colors()->sync([$color->id]);
             $scope->fonts()->sync([$font->id]);
 

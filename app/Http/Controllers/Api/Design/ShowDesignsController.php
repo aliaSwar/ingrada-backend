@@ -20,7 +20,7 @@ class ShowDesignsController extends Controller
         {
             $data=Item::query()
                         ->with('type','scope','colors')
-                        ->where('is_display_items',true)
+                        ->where('is_enable_post',true)
                         ->orderBy('likes', 'desc')
                         ->get();
 
