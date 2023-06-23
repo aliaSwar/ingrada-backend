@@ -34,6 +34,10 @@ class Item extends Model
     {
         return $this->belongsTo(Prefernce::class);
     }
+    public function size(): BelongsTo
+    {
+        return $this->belongsTo(Size::class);
+    }
 
     public function preferncevalue(): BelongsTo
     {
