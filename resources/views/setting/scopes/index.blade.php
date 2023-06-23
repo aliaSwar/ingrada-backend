@@ -36,97 +36,17 @@
 </tr>
 </thead>
 <tbody>
+  @foreach ($scopes as $scope)
 <tr  >
-<td>sport</td>
+<td>{{$scope->name }}</td>
 <td>
-<span class="dot" style="height: 25px; width: 25px;  background-color: #c99696; border-radius: 50%; display: inline-block;"></span>
-<span class="dot" style="height: 25px; width: 25px;  background-color: #a7c920; border-radius: 50%; display: inline-block;"></span>
-<span class="dot" style="height: 25px; width: 25px;  background-color: rgb(51, 168, 88); border-radius: 50%; display: inline-block;"></span>
-<span class="dot" style="height: 25px; width: 25px;  background-color: #520a0a; border-radius: 50%; display: inline-block;"></span>
-
+<span class="dot" style="height: 25px; width: 25px;  background-color: {{ $scope->collors->code??""}}; border-radius: 50%; display: inline-block;"></span>
 </td>
 <td>
 <a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
 </td>
 </tr>
-<tr  >
-<td>developer</td>
-<td>
-<span class="dot" style="height: 25px; width: 25px;  background-color: #d24040; border-radius: 50%; display: inline-block;"></span>
-<span class="dot" style="height: 25px; width: 25px;  background-color: #4220c9; border-radius: 50%; display: inline-block;"></span>
-<span class="dot" style="height: 25px; width: 25px;  background-color: rgb(14, 43, 23); border-radius: 50%; display: inline-block;"></span>
-<span class="dot" style="height: 25px; width: 25px;  background-color: #e9d3d3; border-radius: 50%; display: inline-block;"></span>
-
-</td>
-<td>
-<a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
-</td>
-</tr>
-<tr  >
-<td>restaurant</td>
-<td>
-  <span class="dot" style="height: 25px; width: 25px;  background-color: #c996b9; border-radius: 50%; display: inline-block;"></span>
-  <span class="dot" style="height: 25px; width: 25px;  background-color: #a3b55c; border-radius: 50%; display: inline-block;"></span>
-  <span class="dot" style="height: 25px; width: 25px;  background-color: rgb(168, 121, 51); border-radius: 50%; display: inline-block;"></span>
-  <span class="dot" style="height: 25px; width: 25px;  background-color: #0a4652; border-radius: 50%; display: inline-block;"></span>
-
-</td>
-<td>
-<a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
-</td>
-</tr>
-<tr  >
-  <td>flower</td>
-  <td>
-      <span class="dot" style="height: 25px; width: 25px;  background-color: #cb4040; border-radius: 50%; display: inline-block;"></span>
-      <span class="dot" style="height: 25px; width: 25px;  background-color: #8ad17a; border-radius: 50%; display: inline-block;"></span>
-      <span class="dot" style="height: 25px; width: 25px;  background-color: rgb(179, 186, 243); border-radius: 50%; display: inline-block;"></span>
-      <span class="dot" style="height: 25px; width: 25px;  background-color: #c850d0; border-radius: 50%; display: inline-block;"></span>
-
-  </td>
-  <td>
-  <a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
-  </td>
-  </tr>
-  <tr  >
-      <td>dentist</td>
-      <td>
-          <span class="dot" style="height: 25px; width: 25px;  background-color: #4b3c8f; border-radius: 50%; display: inline-block;"></span>
-          <span class="dot" style="height: 25px; width: 25px;  background-color: #9bb1ee; border-radius: 50%; display: inline-block;"></span>
-          <span class="dot" style="height: 25px; width: 25px;  background-color: rgb(9, 14, 11); border-radius: 50%; display: inline-block;"></span>
-          <span class="dot" style="height: 25px; width: 25px;  background-color: #f1ecec; border-radius: 50%; display: inline-block;"></span>
-
-      </td>
-      <td>
-      <a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
-      </td>
-      </tr>
-      <tr  >
-          <td>low</td>
-          <td>
-              <span class="dot" style="height: 25px; width: 25px;  background-color: #2d2626; border-radius: 50%; display: inline-block;"></span>
-              <span class="dot" style="height: 25px; width: 25px;  background-color: #a1b64d; border-radius: 50%; display: inline-block;"></span>
-              <span class="dot" style="height: 25px; width: 25px;  background-color: rgb(208, 219, 212); border-radius: 50%; display: inline-block;"></span>
-              <span class="dot" style="height: 25px; width: 25px;  background-color: #daeb9b; border-radius: 50%; display: inline-block;"></span>
-
-          </td>
-          <td>
-          <a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
-          </td>
-          </tr>
-          <tr  >
-              <td>cooking</td>
-              <td>
-                  <span class="dot" style="height: 25px; width: 25px;  background-color: #66efe8; border-radius: 50%; display: inline-block;"></span>
-                  <span class="dot" style="height: 25px; width: 25px;  background-color: #6ae3bf; border-radius: 50%; display: inline-block;"></span>
-                  <span class="dot" style="height: 25px; width: 25px;  background-color: rgb(224, 131, 193); border-radius: 50%; display: inline-block;"></span>
-                  <span class="dot" style="height: 25px; width: 25px;  background-color: #e1dada; border-radius: 50%; display: inline-block;"></span>
-
-              </td>
-              <td>
-              <a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
-              </td>
-              </tr>
+@endforeach
 </tbody>
 </table>
                           </table>
