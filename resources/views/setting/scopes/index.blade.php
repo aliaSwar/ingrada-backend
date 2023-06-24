@@ -39,9 +39,13 @@
   @foreach ($scopes as $scope)
 <tr  >
 <td>{{$scope->name }}</td>
+
 <td>
-<span class="dot" style="height: 25px; width: 25px;  background-color: {{ $scope->collors->code??""}}; border-radius: 50%; display: inline-block;"></span>
+@foreach ($scope->collors as $color)
+<span class="dot" style="height: 25px; width: 25px;  background-color: {{ $color->code??""}}; border-radius: 50%; display: inline-block;"></span>
+@endforeach
 </td>
+
 <td>
 <a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
 </td>
