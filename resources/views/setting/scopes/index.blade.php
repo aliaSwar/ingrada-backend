@@ -39,7 +39,6 @@
   @foreach ($scopes as $scope)
 <tr  >
 <td>{{$scope->name }}</td>
-
 <td>
 @foreach ($scope->collors as $color)
 <span class="dot" style="height: 25px; width: 25px;  background-color: {{ $color->code??""}}; border-radius: 50%; display: inline-block;"></span>

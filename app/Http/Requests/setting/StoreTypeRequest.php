@@ -24,9 +24,10 @@ class StoreTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'      =>      ['required', 'string', 'unique:types,name'],
+            'name'             =>      ['required', 'string', 'unique:types,name'],
           //  'image'     =>      ['required', 'image', 'file'],
-            'price'     =>      ['numeric', 'required']
+            'price'            =>      ['numeric', 'required'],
+            'proprtiesnumber'  =>      ['numeric', 'required'],
         ];
     }
 

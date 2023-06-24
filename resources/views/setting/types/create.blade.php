@@ -50,7 +50,12 @@
                                 <label>TYPE TITLE:</label>
                                 <div class="col-auto" id="typ1">
                                   <label for="inputPassword2" class="visually-hidden">ADD NEW TYPE!</label>
-                                  <input type="text" name="name" class="form-control" id="permission" style="margin-top: 12px;" placeholder="ADD NEW TYPE OF DEIGNS TO COMPANY!">
+                                  <input type="text" name="name" class="form-control" id="permission" style="margin-top: 12px;" placeholder="ADD NEW TYPE OF DESIGNS TO COMPANY!">
+                                </div>
+                                <label>NUMBER OF PROPRTIES:</label>
+                                <div class="col-auto" id="typ1">
+                                  <label for="inputPassword2" class="visually-hidden">ADD NUMBER!</label>
+                                  <input type="number" name="proprtiesnumber" class="form-control" id="permission" style="margin-top: 12px;" placeholder="ADD NUMBER!!">
                                 </div>
                                 <label id="ava1" style="margin-top: 12px; margin-bottom: 12px;">AVARAGE PRICE:</label>
                                 <div class="input-group" id="ava2" >

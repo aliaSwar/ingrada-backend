@@ -16,6 +16,7 @@ use App\Http\Controllers\Web\Manager\InternalOrderController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Web\Setting\CategoryController;
 use App\Models\Category;
+use App\Http\Controllers\Web\Setting\PrefernceController;
 use App\Models\User;
 
 /*
@@ -44,6 +45,11 @@ Route::prefix('admin/')->group(function () {
     Route::resource('types', TypeCotroller::class);
     Route::resource('users', RegisteredUserController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('prefernces', PrefernceController::class);
+    Route::get('prefernces-create/{type}', [PrefernceController::class, 'create'])->name('prefernc.create');
+    Route::post('prefernces-store/{type}', [PrefernceController::class, 'store'])->name('prefernc.store');
+
 
 });
 
@@ -62,6 +68,7 @@ Route::prefix('designer/')->group(function () {
     Route::get('/index_external', [TaskController::class, 'index_external'])->name('in_ex');
     Route::get('/showexternal/{id}', [TaskController::class, 'show_external'])->name('to');
     Route::post('/showexternal/{order}', [TaskController::class, 'store_external'])->name('showexternal');
+
 
 
 

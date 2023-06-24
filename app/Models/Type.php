@@ -12,7 +12,7 @@ class Type extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $fillable = ['name', 'slug', 'price', 'image'];
+    protected $fillable = ['name', 'slug', 'price', 'image','proprtiesnumber','proprties_current'];
 
     public function getSlugOptions(): SlugOptions
     {

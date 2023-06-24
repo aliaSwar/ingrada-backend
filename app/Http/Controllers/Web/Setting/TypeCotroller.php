@@ -31,13 +31,13 @@ class TypeCotroller extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTypeRequest $request): RedirectResponse
+    public function store(StoreTypeRequest $request)//: RedirectResponse
     {
-        $num=0;
+
         $data = $request->validated();
         $type=Type::create($data);
-        if ($num >= 1) {
-            return redirect()->route('prefernces.create',  ['type' => $type]);
+        if ($request->proprtiesnumber >= 1) {
+           return redirect()->route('prefernc.create',  ['type' => $type]);
         }
 
         return redirect()->route('types.index')->with(['message' => __("messages.create_data")]);
