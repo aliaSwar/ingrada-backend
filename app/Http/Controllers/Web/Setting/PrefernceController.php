@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Prefernce;
 use App\Models\Type;
+use App\Models\PrefernceValue;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\setting\StorePrefernceRequest;
@@ -54,9 +55,10 @@ class PrefernceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Prefernce $Prefernce)
     {
-        //
+      $PrefernceValue= PrefernceValue::where('prefernce_id',$Prefernce->id)->get();
+      return view ('setting.preferncesvalue.index',  ['PrefernceValues' => $PrefernceValue]);
     }
 
     /**

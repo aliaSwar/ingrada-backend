@@ -17,7 +17,7 @@ class TypeCotroller extends Controller
      */
     public function index(): View
     {
-        return view('setting.types.index', ['types' => Type::query()->paginate(7)]);
+        return view('setting.types.index', ['types' => Type::query()->paginate(100)]);
     }
 
     /**
@@ -46,9 +46,11 @@ class TypeCotroller extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Type $type)
     {
-        //
+      $prefernce= Prefernce::where('type_id',$type->id)->get();
+      return view ('setting.prefernces.index',  ['prefernces' => $prefernce]);
+
     }
 
     /**
