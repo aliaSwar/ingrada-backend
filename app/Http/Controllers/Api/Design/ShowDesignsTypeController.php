@@ -20,7 +20,7 @@ class ShowDesignsTypeController extends Controller
     {
 
         $data=Item::query()
-        ->with('colors','fonts','scope')
+        ->with('colors','scope')
         ->where('type_id',$type->id)
         ->get();
         return sendSuccessResponse(

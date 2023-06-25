@@ -35,9 +35,8 @@ class CustomizeOrderController extends Controller
      *
      * @return  JsonResponse
      */
-    public function getTypes()/* :JsonResponse */
+    public function getTypes():JsonResponse
     {
-        return Cache::get(Auth::id().'type');
         return sendSuccessResponse(
             __('messages.get_data'),
             Type::query()->get()
@@ -222,8 +221,8 @@ class CustomizeOrderController extends Controller
         
         $order=(new StoreOrderAction)($request);
         return sendSuccessResponse(
-            $order,
             __('messages.create_data'),
+            $order,
             
         );
     }

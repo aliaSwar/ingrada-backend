@@ -37,7 +37,7 @@ class ExternalOrderController extends Controller
      */
     public function show(string $id)
     {
-        
+        /* return  */ 
     }
 
     /**

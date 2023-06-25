@@ -31,8 +31,10 @@ class DumpDataSeeder extends Seeder
             Prefernce::query()->create($this->prefernces());
             PrefernceValue::query()->create($this->values());
             Size::query()->create($this->sizes());
-            Item::query()->create($this->items());
-            $scope->colors()->sync([$color->id]);
+            $item=Item::query()->create($this->items());
+            $scope->colors()->attach([$color->id]);
+            $item->colors()->attach($color->id);
+            $item->fonts()->attach($font->id);
             $scope->fonts()->sync([$font->id]);
 
     }

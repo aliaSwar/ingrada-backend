@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api\Design;
 
 use App\Http\Controllers\Controller;
-use App\Models\Color;
 use App\Models\Item;
 use App\Models\Scope;
 use App\Models\Type;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+
 
 class ShowDesignsTypeScopeController extends Controller
 {
@@ -18,18 +18,19 @@ class ShowDesignsTypeScopeController extends Controller
      * @param Type $request,Scope $scope
      * @return JsonResponse
      */
-    public function __invoke(Type $type,Color $color)/* : JsonResponse */
+    public function __invoke(Type $type,Scope $scope): JsonResponse
     {
-        $data=$color->items();
-        return $data;
+
         $designs=Item::query()
-                    ->where('is_display_items',true)
+                    ->with('colors','scope','type','fonts')
+                    ->where('is_enable_post',true)
                     ->where('type_id',$type->id)
+                    ->where('scope_id',$scope->id)
                     ->orderBy('likes', 'desc')
                     ->get();
         return sendSuccessResponse(
             __('messages.get_data'),
-            $data
+            $designs
         );
     }
 }

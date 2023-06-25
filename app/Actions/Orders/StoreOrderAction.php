@@ -29,7 +29,7 @@ class StoreOrderAction
             //'colors'                       =>    $request->colors,
             //'fonts'                        =>    $request->fonts, 
             'primary_price'                =>    $request->primary_price, 
-            'final_price'                  =>    $request->final_price,
+            'final_price'                  =>    $request->primary_price,
             'is_enternal'                  =>    false,
             'is_idea'                      =>    $request->is_idea,
             //'file'                         =>    uploadFile($request->file,'orders'),

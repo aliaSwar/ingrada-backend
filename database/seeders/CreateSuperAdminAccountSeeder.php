@@ -23,7 +23,7 @@ class CreateSuperAdminAccountSeeder extends Seeder
                 'email' => 'admin@admin.app',
                 'password' => "admin",
             ]);
-            $user->assignRole('admin');
+            
             $user->save();
         }
     }

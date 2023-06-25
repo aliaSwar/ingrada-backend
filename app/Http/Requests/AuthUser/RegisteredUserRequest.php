@@ -28,7 +28,7 @@ class RegisteredUserRequest extends FormRequest
             'username' => ['required', 'unique:users,username', 'max:255', 'regex:/\w*$/', 'string'],
             'fullname' => ['required', 'string', 'max:255'],
             'number_tasks' => ['nullable', 'numeric'],
-            'category_id' => ['nullable', 'numeric', 'exists:categories,id'],
+            'category_id' => ['nullable'],
             'path' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,bmp,ico'],
             'email' => ['required',  'max:255', 'email', 'unique:users,email'],
             'password' => ['required', Rules\Password::defaults()],

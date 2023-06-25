@@ -3,7 +3,9 @@
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
+use App\Http\Controllers\APi\Design\ShowDesignsColorController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
+use App\Http\Controllers\APi\Design\ShowDesignsScopeController;
 use App\Http\Controllers\Api\Design\ShowDesignsTypeColorController;
 use App\Http\Controllers\Api\Design\ShowDesignsTypeController;
 use App\Http\Controllers\Api\Design\ShowDesignsTypeFontController;
@@ -77,8 +79,16 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
                 ShowDesignsTypeController::class
             );
             Route::get(
+                'scope/{scope}',
+                ShowDesignsScopeController::class
+            );
+            Route::get(
                 'scope/{type}/{scope}',
                 ShowDesignsTypeScopeController::class
+            );
+            Route::get(
+                'color/{color}',
+                ShowDesignsColorController::class
             );
             Route::get(
                 'color/{type}/{color}',

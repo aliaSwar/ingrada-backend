@@ -32,7 +32,7 @@ class Scope extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function collors(): BelongsToMany
+    public function colors(): BelongsToMany
     {
         return $this->belongsToMany(Color::class);
     }
