@@ -18,7 +18,9 @@ use App\Http\Controllers\Web\Setting\CategoryController;
 use App\Http\Controllers\Web\Setting\PrefernceValueController;
 use App\Models\Category;
 use App\Http\Controllers\Web\Setting\PrefernceController;
+use App\Models\Task;
 use App\Models\User;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +36,10 @@ use App\Models\User;
 // Setting Route
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('hello',function () {
-        User::findOrFail(1)->assignRole('admin');
-        dd();
+        $totalHours = Task::query()
+                  ->whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])
+                  ->sum('tasks_hour');
+                  dd($totalHours);
     });
 // Admin Route
 Route::prefix('admin/')->group(function () {

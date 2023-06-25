@@ -19,13 +19,13 @@ class ShowDesignsColorController extends Controller
      */
     public function __invoke(Color $color)/* : JsonResponse */
     {
-        return $color->items();
+
         $designs=Item::query()
                 ->with('colors','scope','type','fonts')
                 ->where('is_enable_post',true)
-                ->whereHas('colors ', 
+                ->whereHas('colors', 
                 fn(Builder $builder) => 
-                            $builder->where('id','=',$color->id)
+                            $builder->where('id',$color->id)
                 )
                 ->orderBy('likes', 'desc')
                 ->get();
