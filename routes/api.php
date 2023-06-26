@@ -55,8 +55,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/test', function () {
             $user_id=Auth::user()->id;
-            //Cache::put($user_id.'type', 'logo');
-    return Cache::get($user_id.'file', 'default');
+
 });
         //Logout
         Route::get(
@@ -66,7 +65,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
 
         //Design
         Route::name('design.')->prefix('design')->group(function () {
-            Route::get(
+            Route::post(
                 'designs',
                 ShowDesignsController::class
             );
@@ -74,30 +73,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
                 'types',
                 ShowTypesController::class
             );
-            Route::get(
-                'designs/{type}',
-                ShowDesignsTypeController::class
-            );
-            Route::get(
-                'scope/{scope}',
-                ShowDesignsScopeController::class
-            );
-            Route::get(
-                'scope/{type}/{scope}',
-                ShowDesignsTypeScopeController::class
-            );
-            Route::get(
-                'color/{color}',
-                ShowDesignsColorController::class
-            );
-            Route::get(
-                'color/{type}/{color}',
-                ShowDesignsTypeColorController::class
-            );
-            Route::get(
-                'font/{type}/{font}',
-                ShowDesignsTypeFontController::class
-            );
+
         });
 
         //Order

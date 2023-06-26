@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api\Design;
 
+use App\Actions\Designs\GetFilterDesignAction;
 use App\Http\Controllers\Controller;
-use App\Models\Item;
+use App\Http\Requests\Api\FilterRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class ShowDesignsController extends Controller
 {
@@ -16,17 +17,13 @@ class ShowDesignsController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-        public function __invoke(): JsonResponse
+        public function __invoke(FilterRequest $request): JsonResponse
         {
-            $data=Item::query()
-                        ->with('type','scope','colors','size')
-                        ->where('is_enable_post',true)
-                        ->orderBy('likes', 'desc')
-                        ->get();
 
+            $design=(new GetFilterDesignAction)($request);
             return sendSuccessResponse(
                 __('messages.get_data'),
-            $data
+            $design
             );
         }
 }

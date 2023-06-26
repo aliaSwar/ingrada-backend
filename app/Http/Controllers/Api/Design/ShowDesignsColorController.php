@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class ShowDesignsColorController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Handle the incoming request. 
      *
      * @param Request $request
      * @return JsonResponse
