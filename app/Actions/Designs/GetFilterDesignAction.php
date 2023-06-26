@@ -2,6 +2,7 @@
 
 namespace App\Actions\Designs;
 use App\Http\Requests\Api\FilterRequest;
+use App\Models\Color;
 use App\Models\Item;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -9,6 +10,7 @@ class GetFilterDesignAction{
      
      public function __invoke(FilterRequest $request)
      {
+
           $data=Item::query()
           ->where('is_enable_post',true)
           ->when($request->type_id,
@@ -22,11 +24,11 @@ class GetFilterDesignAction{
                     $builder->where('prefernce_id',$request->prefernce_id)
           )->when($request->colors,fn(Builder $builder) =>
                     $builder->whereHas('colors',fn(Builder $builder) =>
-                         $builder->whereIn('id',$request->colors)
+                         $builder->whereIn('colors.id',$request->colors)
                     )
           )->when($request->fonts,fn(Builder $builder) =>
           $builder->whereHas('fonts',fn(Builder $builder) =>
-               $builder->whereIn('id',$request->fonts)
+               $builder->whereIn('fonts.id',$request->fonts)
           ))->orderBy('likes', 'desc')
           ->get();
 
