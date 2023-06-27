@@ -3,7 +3,9 @@
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
+use App\Http\Controllers\APi\Design\ShowDesignsColorController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
+use App\Http\Controllers\APi\Design\ShowDesignsScopeController;
 use App\Http\Controllers\Api\Design\ShowDesignsTypeColorController;
 use App\Http\Controllers\Api\Design\ShowDesignsTypeController;
 use App\Http\Controllers\Api\Design\ShowDesignsTypeFontController;
@@ -53,8 +55,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/test', function () {
             $user_id=Auth::user()->id;
-            //Cache::put($user_id.'type', 'logo');
-    return Cache::get($user_id.'file', 'default');
+
 });
         //Logout
         Route::get(
@@ -64,7 +65,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
 
         //Design
         Route::name('design.')->prefix('design')->group(function () {
-            Route::get(
+            Route::post(
                 'designs',
                 ShowDesignsController::class
             );
@@ -72,22 +73,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
                 'types',
                 ShowTypesController::class
             );
-            Route::get(
-                'designs/{type}',
-                ShowDesignsTypeController::class
-            );
-            Route::get(
-                'scope/{type}/{scope}',
-                ShowDesignsTypeScopeController::class
-            );
-            Route::get(
-                'color/{type}/{color}',
-                ShowDesignsTypeColorController::class
-            );
-            Route::get(
-                'font/{type}/{font}',
-                ShowDesignsTypeFontController::class
-            );
+
         });
 
         //Order
@@ -96,6 +82,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
                 //Types
                 Route::get('types',[CustomizeOrderController::class, 'getTypes']);
                 Route::post('types',[CustomizeOrderController::class, 'storeTypes']);
+                Route::get('sizes',[CustomizeOrderController::class, 'getSizes']);
                 //values Type
                 Route::get('prefernces',[CustomizeOrderController::class, 'getPrefernces']);
                 Route::post('prefernces',[CustomizeOrderController::class, 'storePrefernces']);

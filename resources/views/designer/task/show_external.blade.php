@@ -241,7 +241,7 @@
                                                           <div class="row">
                                                                <div class="form-group mb-0">
                                                                     <input type="submit"
-                                                                         value="create"
+                                                                         value="submit"
                                                                          class="btn btn-warning mr-3">
                                                                </div>
                                                           </div>

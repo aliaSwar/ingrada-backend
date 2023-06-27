@@ -21,6 +21,8 @@ class StoreInternalOrderAction{
           $attributes['primary_price']      = $request->final_price;
 
           $order=Order::create($attributes);
+          $order->is_enternal=true;
+          $order->save();
           $order->users()->attach($request->user_id);
 
 

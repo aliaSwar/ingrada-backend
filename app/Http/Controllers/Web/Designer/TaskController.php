@@ -90,20 +90,22 @@ $designer=User::find($order->designer_id);
     {
       $order=Task::findOrFail($id);
 
-
-        return view(
+  if(Order::where('id',$order->order_id)->where('is_enternal',true)->exists()){
+    return view(
             'designer.task.show',
             ['order' => $order]
         );
-
-
-
+}
+  else
+  return $this->show_external($order->order_id);
 
       $categories_user=[
         Category::CATEGORY_CONTENT_WRITER_BIG,
         Category::CATEGORY_CONTENT_WRITER_SMALL,
         Category::CATEGORY_CONTENT_WRITER_MEDIUM,
    ];
+
+
 
       //  return view('designer.task.show',  ['order'=>$order ]);
     }

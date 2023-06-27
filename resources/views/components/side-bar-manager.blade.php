@@ -31,10 +31,9 @@
 </li>
           </ul>
           </li>
-              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href=""
+              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="javascript:void(0)"
                       aria-expanded="false">
-                          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href=""
-                              aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                          <i data-feather="file-text" class="feather-icon"></i><span
                                   class="hide-menu">ENTERNAL CUSTOMER </span></a>
                           <ul aria-expanded="false" class="collapse  first-level base-level-line">
                               <li class="sidebar-item"><a href="{{ route('internal-customers.create') }}" class="sidebar-link"><span
@@ -44,7 +43,7 @@
                               <li class="sidebar-item"><a href="{{ route('internal-customers.index') }}" class="sidebar-link"><span
                                 class="hide-menu"> Show
                             </span></a>
-                    </li>
+
                           </ul>
                       </li>
                       <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"

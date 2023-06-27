@@ -17,7 +17,7 @@ class TypeCotroller extends Controller
      */
     public function index(): View
     {
-        return view('setting.types.index', ['types' => Type::query()->paginate(7)]);
+        return view('setting.types.index', ['types' => Type::query()->paginate(100)]);
     }
 
     /**
@@ -31,13 +31,13 @@ class TypeCotroller extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTypeRequest $request): RedirectResponse
+    public function store(StoreTypeRequest $request)//: RedirectResponse
     {
-        $num=0;
+
         $data = $request->validated();
         $type=Type::create($data);
-        if ($num >= 1) {
-            return redirect()->route('prefernces.create',  ['type' => $type]);
+        if ($request->proprtiesnumber >= 1) {
+           return redirect()->route('prefernc.create',  ['type' => $type]);
         }
 
         return redirect()->route('types.index')->with(['message' => __("messages.create_data")]);
@@ -46,9 +46,11 @@ class TypeCotroller extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Type $type)
     {
-        //
+      $prefernce= Prefernce::where('type_id',$type->id)->get();
+      return view ('setting.prefernces.index',  ['prefernces' => $prefernce]);
+
     }
 
     /**

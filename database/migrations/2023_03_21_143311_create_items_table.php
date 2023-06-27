@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('type_id');
             $table->foreignId('prefernce_id');
             $table->foreignId('prefernce_value_id')->nullable();
+            $table->foreignId('size_id')->nullable();
             $table->boolean('is_enable_post')->default(0);
             $table->unsignedBigInteger('likes');
             $table->double('price')->unsigned();

@@ -1,5 +1,5 @@
-
 <x-layouts.app>
+
   <!-- ============================================================== -->
   <!-- End Bread crumb and right sidebar toggle -->
   <!-- ============================================================== -->
@@ -30,26 +30,25 @@
 <table class="table table-bordered" id="myTable">
 <thead>
 <tr>
-<th>Domain</th>
-<th>Colors</th>
+<th>Properties</th>
+<th>Price-properties</th>
+<th>Image-properties</th>
 <th>Actions</th>
 </tr>
 </thead>
 <tbody>
-  @foreach ($scopes as $scope)
 <tr  >
-<td>{{$scope->name }}</td>
+  @foreach ($PrefernceValues as $PrefernceValue)
+  <td>{{$PrefernceValue->name }}</td>
+  <td>{{$PrefernceValue->price }} $</td>
+  <td><img src="{{$PrefernceValue->image  }}"
+    width="50px"></td>
 <td>
-@foreach ($scope->collors as $color)
-<span class="dot" style="height: 25px; width: 25px;  background-color: {{ $color->code??""}}; border-radius: 50%; display: inline-block;"></span>
-@endforeach
-</td>
+  <a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
 
-<td>
-<a class="delete" title="Delete" data-toggle="tooltip"><i data-feather="trash" class="svg-icon"></i></a>
-</td>
-</tr>
-@endforeach
+  </td>
+  </tr>
+  @endforeach
 </tbody>
 </table>
                           </table>

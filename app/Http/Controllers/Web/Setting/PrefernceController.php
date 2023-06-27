@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Prefernce;
 use App\Models\Type;
+use App\Models\PrefernceValue;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\setting\StorePrefernceRequest;
@@ -22,9 +23,9 @@ class PrefernceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Type $type)
     {
-        //
+     return view ('setting.prefernces.create',  ['type' => $type]);
     }
 
     /**
@@ -32,23 +33,32 @@ class PrefernceController extends Controller
      */
     public function store(StorePrefernceRequest $request,Type $type)
     {
-        $image = $request->preImage;
-        $path = $image->store('pre-images', 'public');
+      //dd($request->all());
+        $image = $request->image;
+        $path = $image->store('pre_images', 'public');
+       // dd($type->id);
         $Prefernce = new Prefernce([
-            'name' => $request->prename,
-            'price' => $request->preprice,
+            'name' => $request->name,
+            'price' => $request->price,
             'image' => $path,
             'type_id'=>$type->id
         ]);
+        $Prefernce->save();
+        $type->increment('proprties_current');
+        $type->save();
+        if($type->proprties_current==$type->proprtiesnumber){
         return redirect()->route('types.index')->with(['message' => __("messages.create_data")]);
     }
+    return redirect()->route('prefernc.create',  ['type' => $type]);
+  }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Prefernce $Prefernce)
     {
-        //
+      $PrefernceValue= PrefernceValue::where('prefernce_id',$Prefernce->id)->get();
+      return view ('setting.preferncesvalue.index',  ['PrefernceValues' => $PrefernceValue]);
     }
 
     /**

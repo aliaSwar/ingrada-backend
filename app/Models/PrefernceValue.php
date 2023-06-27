@@ -13,7 +13,7 @@ class PrefernceValue extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $fillable = ['name', 'slug', 'price', 'image', 'type_id'];
+    protected $fillable = ['name', 'slug', 'price', 'image', 'prefernce_id'];
 
     public function getSlugOptions(): SlugOptions
     {

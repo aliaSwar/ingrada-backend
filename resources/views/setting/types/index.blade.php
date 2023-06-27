@@ -53,14 +53,14 @@
     @foreach ($types as $type)
        <td>{{$type->name }}</td>
        <td>{{$type->price }} $</td>
-       <td>4</td>
+       <td>{{ $type->proprtiesnumber }}</td>
 
 
 <td>
 <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">check_circle</i></a>
 <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">gesture</i></a>
 <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">event_busy</i></a>
-<a class="details" title="details" data-toggle="tooltip" href="detailsType.html"><i class="material-icons">content_paste</i></a>
+<a class="details" title="details" data-toggle="tooltip" href="{{ route('types.show', $type) }}"><i class="material-icons">content_paste</i></a>
 </td>
 </tr>
 @endforeach

@@ -78,11 +78,9 @@
                                              class="form-label">Category</label>
                                         <select id="inputState"
                                              name="category_id"
-                                             class="form-select"
-                                             required>
-                                             <option selected>Choose.. </option>
-                                             @foreach ($categories as $category)
-                                             <option value="{{ $category->id  }}">{{ $category->name }}</option>
+                                             class="form-select">
+                                             @foreach($categories as $category)
+                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                              @endforeach
                                         </select>
                                    </div>
@@ -93,8 +91,8 @@
                                              name="role"
                                              class="form-select"
                                              required>
-                                             <option selected>Choose... </option>
-                                             @foreach ($roles as $role)
+
+                                             @foreach($roles as $role)
                                              <option value="{{ $role->name }}">{{ $role->name }}</option>
                                              @endforeach
                                         </select>

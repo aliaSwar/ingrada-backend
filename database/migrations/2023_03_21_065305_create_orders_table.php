@@ -32,7 +32,7 @@ return new class extends Migration
             $table->boolean('is_order_designer')->default(0);
             //TODO::designer_id
             $table->unsignedInteger('designer_id')->nullable();
-            $table->unsignedDouble('size')->nullable();
+            $table->foreignId('size_id')->nullable();
             $table->date('limit_date', 'y-m-d');
             $table->date('expected_limit_date', 'y-m-d')->nullable();//المتوقع
             $table->enum('status', ['Pendning','Initiated', 'InProgress', 'Completed', 'Failed']);

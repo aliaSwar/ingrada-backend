@@ -16,11 +16,11 @@ class DistirbutionAlgorithmAction{
         $users = User::with('tasks')
                     ->role('designer')
                     ->where('is_deleted',false)
-                   // ->where('category',$request->category)
+                   //->where('category',$request->category)
                     ->where('is_active',true)
                     ->get();
         if ($users->isEmpty() ) {
-            return view('errors.404');
+            return dd('errors.404');
         }
 
         $users_with_task_in_progress =$users->withTaskCountInProgressAndStartDateBetween($request->start_date)

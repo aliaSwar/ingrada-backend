@@ -26,7 +26,9 @@ class StorePrefernceRequest extends FormRequest
         return [
 
                 'name'      =>      ['required', 'string', 'unique:types,name'],
-                'price'     =>      ['numeric', 'required']
+                'price'     =>      ['numeric', 'required'],
+                'image'      =>      ['required', 'file', 'image'],
+
 
         ];
     }

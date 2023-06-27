@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Api\Controller;
-use App\Http\Requests\StoreItemRequest;
+use App\Http\Controllers\Controller;
+
 use App\Models\Item;
 use Illuminate\Http\Request;
 

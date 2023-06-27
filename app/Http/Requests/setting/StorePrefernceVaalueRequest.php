@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreTypeRequest extends FormRequest
+class StorePrefernceVaalueRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class StoreTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'             =>      ['required', 'string', 'unique:types,name'],
-          //  'image'     =>      ['required', 'image', 'file'],
-            'price'            =>      ['numeric', 'required'],
-            'proprtiesnumber'  =>      ['numeric', 'required'],
+            //
         ];
     }
 

@@ -15,8 +15,12 @@ use App\Http\Controllers\Web\Designer\TaskController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Web\Setting\CategoryController;
+use App\Http\Controllers\Web\Setting\PrefernceValueController;
 use App\Models\Category;
+use App\Http\Controllers\Web\Setting\PrefernceController;
+use App\Models\Task;
 use App\Models\User;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +36,10 @@ use App\Models\User;
 // Setting Route
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('hello',function () {
-        User::findOrFail(1)->assignRole('admin');
-        dd();
+        $totalHours = Task::query()
+                  ->whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])
+                  ->sum('tasks_hour');
+                  dd($totalHours);
     });
 // Admin Route
 Route::prefix('admin/')->group(function () {
@@ -44,6 +50,14 @@ Route::prefix('admin/')->group(function () {
     Route::resource('types', TypeCotroller::class);
     Route::resource('users', RegisteredUserController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('prefernces', PrefernceController::class);
+    Route::get('prefernces-create/{type}', [PrefernceController::class, 'create'])->name('prefernc.create');
+    Route::post('prefernces-store/{type}', [PrefernceController::class, 'store'])->name('prefernc.store');
+    Route::resource('preferncesvalues', PrefernceValueController::class);
+    Route::get('preferncesvalues-create/{prefernce}', [PrefernceValueController::class, 'create'])->name('preferncesvalues.create');
+    Route::post('preferncesvalues-store/{prefernce}', [PrefernceValueController::class, 'store'])->name('preferncesvalues.store');
+
 
 });
 
@@ -62,6 +76,7 @@ Route::prefix('designer/')->group(function () {
     Route::get('/index_external', [TaskController::class, 'index_external'])->name('in_ex');
     Route::get('/showexternal/{id}', [TaskController::class, 'show_external'])->name('to');
     Route::post('/showexternal/{order}', [TaskController::class, 'store_external'])->name('showexternal');
+
 
 
 

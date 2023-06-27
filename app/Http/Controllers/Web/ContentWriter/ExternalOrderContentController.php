@@ -31,22 +31,31 @@ class ExternalOrderContentController extends Controller
     {
       $order=Order::findOrFail($id);
       $designer_name=User::where('id',$order->designer_id)->select('fullname')->first();
+
+      if(Order::where('id',$order->order_id)->where('is_enternal',false)->exists()){
         return view('content-writer.external-order.show',[
           'order'          =>   $order,
           'designer_name' =>   $designer_name
-      ]);
-    }
+      ]);}
+else{
+      return view(
+        'content-writer.internal-order.show',
+        ['order' => $order]
+    );
+    }}
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $orde6r)
+    public function update(Request $request, $id)
     {
       $order=Order::findOrFail($id);
         $order->update($request->all());
+        $designer_name=User::where('id',$order->designer_id)->select('fullname')->first();
 
-        return redirect()->route('content-writer.tasks.create',$order);
+        return view('designer.task.create',['order'=>$order,
+        'designer_name' =>   $designer_name]);
     }
 
     /**

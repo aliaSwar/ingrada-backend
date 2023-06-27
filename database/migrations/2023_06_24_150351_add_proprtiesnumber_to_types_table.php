@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('items', function (Blueprint $table) {
-            $table->boolean('is_display_items')->default(false);
+        Schema::table('types', function (Blueprint $table) {
+          $table->integer('proprtiesnumber')->default(0);
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('items', function (Blueprint $table) {
-            $table->dropColumn('is_display_items');
+        Schema::table('types', function (Blueprint $table) {
+
         });
     }
 };

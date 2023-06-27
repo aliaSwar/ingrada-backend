@@ -34,22 +34,24 @@ class Item extends Model
     {
         return $this->belongsTo(Prefernce::class);
     }
+    public function size(): BelongsTo
+    {
+        return $this->belongsTo(Size::class);
+    }
 
     public function preferncevalue(): BelongsTo
     {
         return $this->belongsTo(Preferncevalue::class);
     }
 
-    public function colors(): BelongsToMany
-    {
-        return $this->belongsToMany(Color::class);
-    }
-
     public function fonts(): BelongsToMany
     {
         return $this->belongsToMany(Font::class);
     }
-
+    public function colors(): BelongsToMany
+    {
+        return $this->belongsToMany(Color::class);
+    }
     public function imageitems(): HasMany
     {
         return $this->hasMany(ImageItem::class);
