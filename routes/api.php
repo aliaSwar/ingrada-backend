@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
+use App\Http\Controllers\Api\Configuration\ShowColorsController;
+use App\Http\Controllers\Api\Configuration\ShowFontsController;
 use App\Http\Controllers\Api\Configuration\ShowPreferncesController;
 use App\Http\Controllers\Api\Configuration\ShowPrefernceValuesController;
 use App\Http\Controllers\Api\Configuration\ShowScopesController;
@@ -77,6 +79,14 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
             Route::post(
                 'values',
                 ShowPrefernceValuesController::class
+            );
+            Route::post(
+                'colors',
+                ShowColorsController::class
+            );
+            Route::post(
+                'fonts',
+                ShowFontsController::class
             );
         });
         //Order
