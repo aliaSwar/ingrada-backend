@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\Design;
+namespace App\Http\Controllers\Api\Configuration;
 
 use App\Http\Controllers\Controller;
-use App\Models\Type;
+use App\Models\Color;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-
-class ShowTypesController extends Controller
+class ShowColorsController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -18,10 +17,10 @@ class ShowTypesController extends Controller
      */
     public function __invoke(Request $request): JsonResponse
     {
+        $colors=Color::query()->get();
         return sendSuccessResponse(
             __('messages.get_data'),
-            Type::query()
-                    ->get()
+            $colors
         );
     }
 }

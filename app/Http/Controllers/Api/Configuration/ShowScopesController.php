@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\Design;
+namespace App\Http\Controllers\Api\Configuration;
 
 use App\Http\Controllers\Controller;
+use App\Models\Scope;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ShowDesignsTypeFontController extends Controller
+class ShowScopesController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -16,7 +17,10 @@ class ShowDesignsTypeFontController extends Controller
      */
     public function __invoke(Request $request): JsonResponse
     {
-        return sendSuccessResponse(__('messages.get_data'));
+        $scopes=Scope::query()->get();
+        return sendSuccessResponse(
+            __('messages.get_data'),
+            $scopes
+        );
     }
 }
-
