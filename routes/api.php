@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\Configuration\ShowSuggestColorsController;
 use App\Http\Controllers\Api\Configuration\ShowSuggestFontsController;
 use App\Http\Controllers\Api\Configuration\ShowTypesController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
+use App\Http\Controllers\Api\Design\ShowDetailsDesignController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +63,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
             Route::post(
                 'designs',
                 ShowDesignsController::class
+            );
+            Route::post(
+                'designs/{id}',
+                ShowDetailsDesignController::class
             );
         });
         //Configuration
