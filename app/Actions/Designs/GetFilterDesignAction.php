@@ -27,8 +27,8 @@ class GetFilterDesignAction{
                          $builder->whereIn('colors.id',$request->colors)
                     )
           )->when($request->fonts,fn(Builder $builder) =>
-          $builder->whereHas('fonts',fn(Builder $builder) =>
-               $builder->whereIn('fonts.id',$request->fonts)
+                    $builder->whereHas('fonts',fn(Builder $builder) =>
+                         $builder->whereIn('fonts.id',$request->fonts)
           ))->orderBy('likes', 'desc')
           ->get();
 
