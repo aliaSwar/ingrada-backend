@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\Configuration\ShowFontsController;
 use App\Http\Controllers\Api\Configuration\ShowPreferncesController;
 use App\Http\Controllers\Api\Configuration\ShowPrefernceValuesController;
 use App\Http\Controllers\Api\Configuration\ShowScopesController;
+use App\Http\Controllers\Api\Configuration\ShowSuggestColorsController;
+use App\Http\Controllers\Api\Configuration\ShowSuggestFontsController;
 use App\Http\Controllers\Api\Configuration\ShowTypesController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
@@ -85,8 +87,16 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
                 ShowColorsController::class
             );
             Route::post(
+                'suggest_colors',
+                ShowSuggestColorsController::class
+            );
+            Route::post(
                 'fonts',
                 ShowFontsController::class
+            );
+            Route::post(
+                'suggest_fonts',
+                ShowSuggestFontsController::class
             );
         });
         //Order
