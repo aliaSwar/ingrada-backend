@@ -50,7 +50,6 @@ Route::prefix('admin/')->group(function () {
     Route::resource('types', TypeCotroller::class);
     Route::resource('users', RegisteredUserController::class);
     Route::resource('categories', CategoryController::class);
-    Route::resource('categories', CategoryController::class);
     Route::resource('prefernces', PrefernceController::class);
     Route::get('prefernces-create/{type}', [PrefernceController::class, 'create'])->name('prefernc.create');
     Route::post('prefernces-store/{type}', [PrefernceController::class, 'store'])->name('prefernc.store');

@@ -4,10 +4,12 @@ use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
 use App\Http\Controllers\Api\Configuration\ShowColorsController;
+use App\Http\Controllers\Api\Configuration\ShowDesignersController;
 use App\Http\Controllers\Api\Configuration\ShowFontsController;
 use App\Http\Controllers\Api\Configuration\ShowPreferncesController;
 use App\Http\Controllers\Api\Configuration\ShowPrefernceValuesController;
 use App\Http\Controllers\Api\Configuration\ShowScopesController;
+use App\Http\Controllers\Api\Configuration\ShowSizesController;
 use App\Http\Controllers\Api\Configuration\ShowSuggestColorsController;
 use App\Http\Controllers\Api\Configuration\ShowSuggestFontsController;
 use App\Http\Controllers\Api\Configuration\ShowTypesController;
@@ -88,6 +90,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
                 ShowPrefernceValuesController::class
             );
             Route::post(
+                'sizes',
+                ShowSizesController::class
+            );
+            Route::post(
                 'colors',
                 ShowColorsController::class
             );
@@ -102,6 +108,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
             Route::post(
                 'suggest_fonts',
                 ShowSuggestFontsController::class
+            );
+            Route::post(
+                'designers',
+                ShowDesignersController::class
             );
         });
         //Order

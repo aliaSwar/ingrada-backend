@@ -16,7 +16,6 @@ class StoreOrderAction
     {
         $user_id=Auth::user()->id;
 
-//return $user_id;
         
         $attributes=[
             'type'                         =>    $request->type,
@@ -32,11 +31,11 @@ class StoreOrderAction
             'final_price'                  =>    $request->primary_price,
             'is_enternal'                  =>    false,
             'is_idea'                      =>    $request->is_idea,
-            //'file'                         =>    uploadFile($request->file,'orders'),
+            'file'                         =>    uploadFile($request->file,'orders'),
             'description'                  =>    $request->description,
             'customers_id'                 =>    $user_id,
             'value'                        =>    $request->value,
-            //'pereferce'                    =>    $request->pereferce,
+            'pereferce'                    =>    $request->pereferce,
         ];
         
         $order=Order::create($attributes);

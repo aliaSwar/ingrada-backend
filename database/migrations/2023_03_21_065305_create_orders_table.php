@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('scope')->nullable();
             $table->json('colors')->nullable();
+            $table->integer('number_pages')->nullable();
             $table->json('fonts')->nullable();
             $table->string('pereferce')->nullable();
             $table->json('value')->nullable();

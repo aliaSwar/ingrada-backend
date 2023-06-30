@@ -54,8 +54,9 @@ class RegisteredUserController extends Controller
 
         $data = $request->validated();
         $data = Arr::add($data, 'avatar', uploadFile($request->path, 'users'));
-
+        $data['category']=Category::findOrFail($request->category_id)->name;
         $user = new User($data);
+        $user->category=$data['category'];
         $user->save();
         $user->assignRole($request->role);
         if (!$user) {
