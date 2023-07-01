@@ -36,10 +36,9 @@ use Carbon\Carbon;
 // Setting Route
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('hello',function () {
-        $totalHours = Task::query()
-                  ->whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])
-                  ->sum('tasks_hour');
-                  dd($totalHours);
+        $user=auth()->user();
+        $user->assignRole('admin');
+        return ;
     });
 // Admin Route
 Route::prefix('admin/')->group(function () {
