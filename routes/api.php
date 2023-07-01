@@ -118,7 +118,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
         Route::name('order.')->prefix('order')->group(function () {
             Route::name('customize.')->prefix('customize')->group(function () {
 
-                Route::post('orders',[CustomizeOrderController::class, 'storeOrder']);
+                Route::post(
+                    'orders',
+                CustomizeOrderController::class
+                );
             });
         });
     });

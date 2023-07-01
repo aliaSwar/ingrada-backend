@@ -19,9 +19,11 @@ return new class extends Migration
             $table->boolean('is_idea')->default(0);
             $table->boolean('is_accept')->default(0);
             $table->boolean('is_enternal')->default(0);
+            $table->boolean('is_visual_identity')->default(0);
             $table->double('primary_price');
             $table->double('final_price');
             $table->string('type')->nullable();
+            $table->string('title')->nullable();
             $table->string('scope')->nullable();
             $table->json('colors')->nullable();
             $table->integer('number_pages')->nullable();
@@ -29,9 +31,10 @@ return new class extends Migration
             $table->string('pereferce')->nullable();
             $table->json('value')->nullable();
             $table->string('file')->nullable();
+            $table->string('image')->nullable();
             //TODO::is_order_designer
             $table->boolean('is_order_designer')->default(0);
-            //TODO::designer_id
+            //TODO::designer_id 
             $table->unsignedInteger('designer_id')->nullable();
             $table->foreignId('size_id')->nullable();
             $table->date('limit_date', 'y-m-d');

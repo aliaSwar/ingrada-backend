@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api\Order;
 
+use App\Actions\Orders\StoreOrderAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Order\OrderRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -14,9 +16,13 @@ class CustomizeOrderController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(OrderRequest $request): JsonResponse
     {
-        return sendSuccessResponse(__('messages.get_data'));
+        $order=(new StoreOrderAction)($request);
+        
+        return sendSuccessResponse(
+            __('messages.get_data'),
+            $order
+        );
     }
 }
-
