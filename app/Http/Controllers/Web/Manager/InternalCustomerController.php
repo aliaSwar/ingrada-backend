@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Web\Manager;
 
 use App\Http\Controllers\Controller;
@@ -8,10 +10,9 @@ use App\Http\Requests\Manager\UpdateInternalCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
-class InternalCustomerController extends Controller
+final class InternalCustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,8 +36,9 @@ class InternalCustomerController extends Controller
     public function store(StoreInternalCustomerRequest $request)
     {
         $data = $request->validated();
-      //  $data = Arr::add($data, 'avatar', uploadFile($request->path, 'internal-customers'));
+        //  $data = Arr::add($data, 'avatar', uploadFile($request->path, 'internal-customers'));
         Customer::create($data);
+
         return redirect()->route('manager.internal-customers.index')->with(['message' => __('messages.create_data')]);
     }
 
@@ -71,6 +73,7 @@ class InternalCustomerController extends Controller
         $data['is_enter'] = true;
         $data = Arr::add($data, 'avatar', uploadFile($request->path, 'internal-customers'));
         Customer::create($data);
+
         return redirect()->route('customers.index')->with(['message' => __('messages.create_data')]);
     }
 
@@ -82,6 +85,7 @@ class InternalCustomerController extends Controller
         $customer->update([
             'is_active'   => false,
         ]);
+
         return redirect()->route('manager.internal-customers.index');
     }
 }

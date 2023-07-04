@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Authentication;
 
 use App\Actions\Authentication\CreateTokenAction;
@@ -9,7 +11,7 @@ use App\Http\Resources\AuthenticationResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+final class LoginController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -21,7 +23,7 @@ class LoginController extends Controller
         if (Auth::attempt($request->validated())) {
             $customer = Auth::user();
 
-            $customer = (new CreateTokenAction())($customer);
+            $customer = (new CreateTokenAction)($customer);
 
             return sendSuccessResponse(
                 __('auth.success_login'),

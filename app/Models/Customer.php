@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -14,9 +16,12 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Customer extends Authenticatable implements MustVerifyEmail
+final class Customer extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, HasSlug, Notifiable, HasApiTokens;
+    use HasApiTokens;
+    use HasFactory;
+    use HasSlug;
+    use Notifiable;
 
     protected $guards = 'customers';
 
@@ -89,6 +94,6 @@ class Customer extends Authenticatable implements MustVerifyEmail
 
     public function getFullNameAttribute()
     {
-        return $this->first_name.' '.$this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

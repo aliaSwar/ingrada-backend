@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Web\Setting;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Setting\StoreTypeRequest;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
-use App\Models\Type;
 use App\Models\Prefernce;
+use App\Models\Type;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
-class TypeCotroller extends Controller
+final class TypeCotroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,8 +38,9 @@ class TypeCotroller extends Controller
 
         $data = $request->validated();
         $type=Type::create($data);
+
         if ($request->proprtiesnumber >= 1) {
-           return redirect()->route('prefernc.create',  ['type' => $type]);
+            return redirect()->route('prefernc.create', ['type' => $type]);
         }
 
         return redirect()->route('types.index')->with(['message' => __("messages.create_data")]);
@@ -48,25 +51,26 @@ class TypeCotroller extends Controller
      */
     public function show(Type $type)
     {
-      $prefernce= Prefernce::where('type_id',$type->id)->get();
-      return view ('setting.prefernces.index',  ['prefernces' => $prefernce]);
+        $prefernce= Prefernce::where('type_id', $type->id)->get();
+
+        return view('setting.prefernces.index', ['prefernces' => $prefernce]);
 
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): void
     {
-        //
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): void
     {
-        //
+
     }
 
     /**
@@ -75,6 +79,7 @@ class TypeCotroller extends Controller
     public function destroy(Type $type): RedirectResponse
     {
         $type->delete();
+
         return redirect()->route('types.index')->with(['message' => __("messages.delete_data")]);
     }
 }

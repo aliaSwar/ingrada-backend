@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Configuration;
 
 use App\Http\Controllers\Controller;
@@ -8,7 +10,7 @@ use App\Models\Scope;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ShowSuggestFontsController extends Controller
+final class ShowSuggestFontsController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -19,6 +21,7 @@ class ShowSuggestFontsController extends Controller
     public function __invoke(StoreScopeIdRequest $request): JsonResponse
     {
         $fonts=Scope::findOrFail($request->scope_id)->fonts;
+
         return sendSuccessResponse(
             __('messages.get_data'),
             $fonts

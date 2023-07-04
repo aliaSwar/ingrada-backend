@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\setting;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreScopeRequest extends FormRequest
+final class StoreScopeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +26,13 @@ class StoreScopeRequest extends FormRequest
     public function rules(): array
     {
         return [
-          'name'      =>      ['required', 'string', 'unique:types,name'],
-           // 'colors' => ['requird','array']
+            'name'      =>      ['required', 'string', 'unique:types,name'],
+            // 'colors' => ['requird','array']
         ];
     }
 
 
-    protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator): void
     {
         throw new HttpResponseException(
             sendFailedResponse($validator->errors()->first(), null, 422)

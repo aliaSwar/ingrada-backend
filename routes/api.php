@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
@@ -30,14 +32,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:sanctum')->get('/user', fn (Request $request) => $request->user());
 
 
 
-Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
-    Route::name('account.')->prefix('account')->group(function () {
+Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): void {
+    Route::name('account.')->prefix('account')->group(function (): void {
         Route::post(
             'register',
             RegisterController::class
@@ -52,7 +52,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
     /**
      * Protected endpoints.
      */
-    Route::middleware(['auth:sanctum'])->group(function () {
+    Route::middleware(['auth:sanctum'])->group(function (): void {
 
         //Logout
         Route::get(
@@ -61,7 +61,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
         )->name('logout');
 
         //Design
-        Route::name('design.')->prefix('design')->group(function () {
+        Route::name('design.')->prefix('design')->group(function (): void {
             Route::post(
                 'designs',
                 ShowDesignsController::class
@@ -72,7 +72,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
             );
         });
         //Configuration
-        Route::name('config.')->prefix('config')->group(function () {
+        Route::name('config.')->prefix('config')->group(function (): void {
             Route::post(
                 'types',
                 ShowTypesController::class
@@ -115,12 +115,12 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
             );
         });
         //Order
-        Route::name('order.')->prefix('order')->group(function () {
-            Route::name('customize.')->prefix('customize')->group(function () {
+        Route::name('order.')->prefix('order')->group(function (): void {
+            Route::name('customize.')->prefix('customize')->group(function (): void {
 
                 Route::post(
                     'orders',
-                CustomizeOrderController::class
+                    CustomizeOrderController::class
                 );
             });
         });

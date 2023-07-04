@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\AuthUser;
 
 use Illuminate\Auth\Events\Lockout;
@@ -9,7 +11,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
-class LoginUserRequest extends FormRequest
+final class LoginUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -42,7 +44,7 @@ class LoginUserRequest extends FormRequest
 
         $this->ensureIsNotRateLimited();
         //dd(Auth::attempt($this->validated()));
-        if (!Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))) {
+        if ( ! Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -61,7 +63,7 @@ class LoginUserRequest extends FormRequest
      */
     public function ensureIsNotRateLimited(): void
     {
-        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if ( ! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 

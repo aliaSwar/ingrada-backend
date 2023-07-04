@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
@@ -7,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
-class ItemController extends Controller
+final class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,15 +34,16 @@ class ItemController extends Controller
     {
         $item=new Item($request->validated());
         $item->save();
+
         return $item;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): void
     {
-        //
+
     }
 
     /**
@@ -54,9 +57,9 @@ class ItemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): void
     {
-        //
+
     }
 
     /**
