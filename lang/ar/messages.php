@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'get_data' => 'تم جلب البيانات بنجاح.',
     'create_data' => 'تم حفظ البيانات بنجاح.',

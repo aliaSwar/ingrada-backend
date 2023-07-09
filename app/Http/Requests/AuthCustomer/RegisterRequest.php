@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\AuthCustomer;
 
 use App\Rules\PhoneNumber;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+final class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +31,7 @@ class RegisterRequest extends FormRequest
             'avatar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif'],
             'country' => ['string', 'required'],
             'company' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'string', new PhoneNumber()],
+            'phone_number' => ['required', 'string', new PhoneNumber],
             'email' => ['required', 'unique:customers,email', 'email'],
             'password' => ['required', 'min:8', 'string'],
         ];

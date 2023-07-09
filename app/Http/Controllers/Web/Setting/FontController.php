@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Web\Setting;
 
 use App\Http\Controllers\Controller;
@@ -8,10 +10,9 @@ use App\Http\Requests\setting\UpdateFontRequest;
 use App\Models\Font;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
-class FontController extends Controller
+final class FontController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,8 +37,9 @@ class FontController extends Controller
     public function store(StoreFontRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $data['file']=uploadFile($request->file,'fonts');
+        $data['file']=uploadFile($request->file, 'fonts');
         Font::create($data);
+
         return redirect()->back()->with(['message' => __("messages.create_data")]);
     }
 
@@ -72,6 +74,7 @@ class FontController extends Controller
         $data = Arr::add($data, 'file', uploadFile($request->path, 'fonts'));
 
         $font->query()->update($data);
+
         return redirect()->route('fonts.show', ['font' => $font])
             ->with(['message' => __("messages.update_data")]);
     }
@@ -82,6 +85,7 @@ class FontController extends Controller
     public function destroy(Font $font): RedirectResponse
     {
         $font->delete();
+
         return redirect()->back()->with(['message' => __("messages.delete_data")]);
     }
 }

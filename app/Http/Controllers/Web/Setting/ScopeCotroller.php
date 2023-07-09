@@ -1,25 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Web\Setting;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\setting\StoreScopeRequest;
 use App\Http\Requests\setting\UpdateScopeRequest;
-use App\Models\Scope;
-use App\Models\Font;
 use App\Models\Color;
+use App\Models\Font;
+use App\Models\Scope;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
-class ScopeCotroller extends Controller
+final class ScopeCotroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        return view('setting.scopes.index',['scopes'=>Scope::all()]);
+        return view('setting.scopes.index', ['scopes'=>Scope::all()]);
     }
 
 
@@ -42,12 +43,13 @@ class ScopeCotroller extends Controller
     {
 
         $scope = scope::create($request->validated());
-    //   $colors=Color::where(function ($query) use ($request) {
+        //   $colors=Color::where(function ($query) use ($request) {
 
-      //  $query->whereNotIn('code', $request->colors);
-    //})->get();
+        //  $query->whereNotIn('code', $request->colors);
+        //})->get();
 
         $scope->collors()->sync($request->colors);
+
         return redirect()->route('scopes.index')->with(['message' => __("messages.create_data")]);
     }
 
@@ -79,6 +81,7 @@ class ScopeCotroller extends Controller
     public function update(UpdateScopeRequest $request, scope $scope): RedirectResponse
     {
         $scope->query()->update($request->validated());
+
         return redirect()->route('scopes.show', ['scope' => $scope])
             ->with(['message' => __("messages.update_data")]);
     }
@@ -89,6 +92,7 @@ class ScopeCotroller extends Controller
     public function destroy(scope $scope): RedirectResponse
     {
         $scope->delete();
+
         return redirect()->route('scopes.index')->with(['message' => __("messages.delete_data")]);
     }
 }

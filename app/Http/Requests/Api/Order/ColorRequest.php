@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Api\Order;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ColorRequest extends FormRequest
+final class ColorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +30,7 @@ class ColorRequest extends FormRequest
     }
 
 
-    protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator): void
     {
         throw new HttpResponseException(
             sendFailedResponse($validator->errors()->first(), null, 422)

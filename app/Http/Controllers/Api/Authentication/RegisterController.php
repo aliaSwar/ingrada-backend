@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Authentication;
 
 use App\Actions\Authentication\RegisterCustomerAction;
@@ -8,7 +10,7 @@ use App\Http\Requests\AuthCustomer\RegisterRequest;
 use App\Http\Resources\AuthenticationResource;
 use Illuminate\Http\JsonResponse;
 
-class RegisterController extends Controller
+final class RegisterController extends Controller
 {
     /**
      * Handle the incoming request.

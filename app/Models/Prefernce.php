@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,9 +11,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Prefernce extends Model
+final class Prefernce extends Model
 {
-    use HasFactory, HasSlug;
+    use HasFactory;
+    use HasSlug;
 
     protected $fillable = ['name', 'slug', 'price', 'image', 'type_id'];
 

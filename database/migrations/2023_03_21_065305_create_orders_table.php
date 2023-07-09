@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('customers_id')->nullable();
             $table->foreignId('item_id')->nullable();
@@ -19,15 +21,19 @@ return new class extends Migration
             $table->boolean('is_idea')->default(0);
             $table->boolean('is_accept')->default(0);
             $table->boolean('is_enternal')->default(0);
+            $table->boolean('is_visual_identity')->default(0);
             $table->double('primary_price');
             $table->double('final_price');
             $table->string('type')->nullable();
+            $table->string('title')->nullable();
             $table->string('scope')->nullable();
             $table->json('colors')->nullable();
+            $table->integer('number_pages')->nullable();
             $table->json('fonts')->nullable();
             $table->string('pereferce')->nullable();
             $table->json('value')->nullable();
             $table->string('file')->nullable();
+            $table->string('image')->nullable();
             //TODO::is_order_designer
             $table->boolean('is_order_designer')->default(0);
             //TODO::designer_id

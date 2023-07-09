@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\Authentication;
 
 use App\Models\Customer;
 
-class CreateTokenAction
+final class CreateTokenAction
 {
     public function __invoke(Customer $customer)
     {

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Api\Order;
+declare(strict_types=1);
+
+namespace App\Http\Requests\Api\Configuration;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class DesignerRequest extends FormRequest
+final class StoreScopeIdRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +26,12 @@ class DesignerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'designer_id'     =>    'nullable|numeric|exists:users,id'
+            'scope_id'      =>   ['required','exists:scopes,id']
         ];
     }
 
 
-    protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator): void
     {
         throw new HttpResponseException(
             sendFailedResponse($validator->errors()->first(), null, 422)

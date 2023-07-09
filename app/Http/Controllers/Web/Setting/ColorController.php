@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Web\Setting;
+declare(strict_types=1);
 
+namespace App\Http\Controllers\Web\Setting;
 
 use App\Http\Requests\Setting\StoreColorRequest;
 use App\Http\Requests\Setting\UpdateColorRequest;
@@ -10,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\View\View;
 
-class ColorController extends Controller
+final class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,6 +36,7 @@ class ColorController extends Controller
     public function store(StoreColorRequest $request): RedirectResponse
     {
         Color::create($request->validated());
+
         return redirect()->route('colors.index')->with(['message' => __("messages.create_data")]);
     }
 
@@ -66,6 +68,7 @@ class ColorController extends Controller
     public function update(UpdateColorRequest $request, Color $color): RedirectResponse
     {
         $color->query()->update($request->validated());
+
         return redirect()->route('colors.show', ['color' => $color])
             ->with(['message' => __("messages.update_data")]);
     }
@@ -76,6 +79,7 @@ class ColorController extends Controller
     public function destroy(Color $color): RedirectResponse
     {
         $color->delete();
+
         return redirect()->route('colors.index')->with(['message' => __("messages.delete_data")]);
     }
 }

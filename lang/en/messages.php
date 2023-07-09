@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'get_data' => 'Resource fetched successfully.',
     'create_data' => 'Resource created successfully.',

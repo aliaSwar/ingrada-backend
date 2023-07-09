@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,14 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Order extends Model
+final class Order extends Model
 {
     use HasFactory;
-    const PENDNING_STATUS    = "Pendning";
-    const INITIATED_STATUS  = "Initiated";
-    const INPROGRESS_STATUS = "InProgress";
-    const COMPLETED_STATUS  = "Completed";
-    const FAILED_STATUS     = "Failed";
+    public const PENDNING_STATUS    = "Pendning";
+    public const INITIATED_STATUS  = "Initiated";
+    public const INPROGRESS_STATUS = "InProgress";
+    public const COMPLETED_STATUS  = "Completed";
+    public const FAILED_STATUS     = "Failed";
 
 
     protected $fillable = [
@@ -27,7 +29,7 @@ class Order extends Model
     {
         return $this->belongsTo(Customer::class);
     }
-    
+
     public function size(): BelongsTo
     {
         return $this->belongsTo(Size::class);
