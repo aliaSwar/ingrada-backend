@@ -114,16 +114,13 @@ final class User extends Authenticatable
     {
         return $this->hasMany(Task::class);
     }
-
-    public function points(): MorphMany
+    
+    public function points()
     {
-        return $this->morphMany(Point::class, 'creatable');
+        return $this->hasMany(Point::class);
     }
 
-    public function historypoints(): HasMany
-    {
-        return $this->hasMany(HistoryPoint::class);
-    }
+
 
     public function notifications(): BelongsToMany
     {

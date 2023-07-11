@@ -18,29 +18,29 @@ final class GetFilterDesignAction
             ->when(
                 $request->type_id,
                 fn (Builder $builder) =>
-                      $builder->where('type_id', $request->type_id)
+                        $builder->where('type_id', $request->type_id)
             )->when(
             $request->scope_id,
             fn (Builder $builder) =>
-                  $builder->where('scope_id', $request->scope_id)
+                    $builder->where('scope_id', $request->scope_id)
         )->when(
             $request->prefernce_id,
             fn (Builder $builder) =>
-                  $builder->where('prefernce_id', $request->prefernce_id)
+                    $builder->where('prefernce_id', $request->prefernce_id)
         )->when(
             $request->colors,
             fn (Builder $builder) =>
-                  $builder->whereHas(
-                      'colors',
-                      fn (Builder $builder) =>
-                       $builder->whereIn('colors.id', $request->colors)
-                  )
+                    $builder->whereHas(
+                        'colors',
+                        fn (Builder $builder) =>
+                        $builder->whereIn('colors.id', $request->colors)
+                    )
         )->when($request->fonts, fn (Builder $builder) =>
-                  $builder->whereHas(
-                      'fonts',
-                      fn (Builder $builder) =>
-                       $builder->whereIn('fonts.id', $request->fonts)
-                  ))->orderBy('likes', 'desc')
+                    $builder->whereHas(
+                        'fonts',
+                        fn (Builder $builder) =>
+                        $builder->whereIn('fonts.id', $request->fonts)
+                    ))->orderBy('likes', 'desc')
             ->get();
 
 

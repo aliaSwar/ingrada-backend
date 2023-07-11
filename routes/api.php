@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Api\Configuration\ShowTypesController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
 use App\Http\Controllers\Api\Design\ShowDetailsDesignController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
+use App\Http\Controllers\Api\Order\RatingDesignerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -126,6 +128,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 Route::post(
                     'orders',
                     CustomizeOrderController::class
+                );
+                Route::post(
+                    'rating-designer',
+                    RatingDesignerController::class
                 );
             });
         });
