@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\Configuration\ShowScopesController;
 use App\Http\Controllers\Api\Configuration\ShowSizesController;
 use App\Http\Controllers\Api\Configuration\ShowSuggestColorsController;
 use App\Http\Controllers\Api\Configuration\ShowSuggestFontsController;
+use App\Http\Controllers\Api\Configuration\ShowTypePrefernecesController;
 use App\Http\Controllers\Api\Configuration\ShowTypesController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
 use App\Http\Controllers\Api\Design\ShowDetailsDesignController;
@@ -80,6 +81,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
             Route::post(
                 'scopes',
                 ShowScopesController::class
+            );
+            Route::post(
+                'type_prefernces',
+                ShowTypePrefernecesController::class
             );
             Route::post(
                 'prefernces',
