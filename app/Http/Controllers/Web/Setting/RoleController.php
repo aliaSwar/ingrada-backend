@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Web\Setting;
 
 use App\Http\Controllers\Controller;
@@ -10,7 +12,7 @@ use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class RoleController extends Controller
+final class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,6 +22,7 @@ class RoleController extends Controller
 
         $roles = Role::query()->with('users', 'permissions')->get();
         dd($roles);
+
         return view('setting.roles.index', ['roles' => $roles]);
     }
 
@@ -28,7 +31,7 @@ class RoleController extends Controller
      */
     public function create(): View
     {
-        $permissions = Permission::query()->pluck('name','id');
+        $permissions = Permission::query()->pluck('name', 'id');
         //dd($permissions);
         return view('setting.roles.create', [
             'permissions'  => $permissions
@@ -45,6 +48,7 @@ class RoleController extends Controller
         ]);
         $role->save();
         $role->givePermissionTo($request->permissions);
+
         return redirect()->route('roles.index')->with([
             'message' => __('messages.create_data')
         ]);
@@ -53,32 +57,32 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): void
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): void
     {
-//
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): void
     {
-        //
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): void
     {
-        //
+
     }
 }

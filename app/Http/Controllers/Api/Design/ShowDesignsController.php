@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Design;
 
+use App\Actions\Designs\GetFilterDesignAction;
 use App\Http\Controllers\Controller;
-use App\Models\Item;
+use App\Http\Requests\Api\FilterRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class ShowDesignsController extends Controller
+final class ShowDesignsController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -16,17 +18,14 @@ class ShowDesignsController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-        public function __invoke(): JsonResponse
-        {
-            $data=Item::query()
-                        ->with('type','scope','colors')
-                        ->where('is_enable_post',true)
-                        ->orderBy('likes', 'desc')
-                        ->get();
+    public function __invoke(FilterRequest $request): JsonResponse
+    {
 
-            return sendSuccessResponse(
-                __('messages.get_data'),
-            $data
-            );
-        }
+        $design=(new GetFilterDesignAction)($request);
+
+        return sendSuccessResponse(
+            __('messages.get_data'),
+            $design
+        );
+    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,9 +11,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Scope extends Model
+final class Scope extends Model
 {
-    use HasFactory, HasSlug;
+    use HasFactory;
+    use HasSlug;
 
     protected $fillable = ['name', 'slug'];
 
@@ -32,7 +35,7 @@ class Scope extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function collors(): BelongsToMany
+    public function colors(): BelongsToMany
     {
         return $this->belongsToMany(Color::class);
     }

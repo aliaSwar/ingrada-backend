@@ -1,18 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
+
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
+use App\Http\Controllers\Api\Configuration\ShowColorsController;
+use App\Http\Controllers\Api\Configuration\ShowDesignersController;
+use App\Http\Controllers\Api\Configuration\ShowFontsController;
+use App\Http\Controllers\Api\Configuration\ShowPreferncesController;
+use App\Http\Controllers\Api\Configuration\ShowPrefernceValuesController;
+use App\Http\Controllers\Api\Configuration\ShowScopesController;
+use App\Http\Controllers\Api\Configuration\ShowSizesController;
+use App\Http\Controllers\Api\Configuration\ShowSuggestColorsController;
+use App\Http\Controllers\Api\Configuration\ShowSuggestFontsController;
+use App\Http\Controllers\Api\Configuration\ShowTypePrefernecesController;
+use App\Http\Controllers\Api\Configuration\ShowTypesController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
-use App\Http\Controllers\Api\Design\ShowDesignsTypeColorController;
-use App\Http\Controllers\Api\Design\ShowDesignsTypeController;
-use App\Http\Controllers\Api\Design\ShowDesignsTypeFontController;
-use App\Http\Controllers\Api\Design\ShowDesignsTypeScopeController;
-use App\Http\Controllers\Api\Design\ShowTypesController;
+use App\Http\Controllers\Api\Design\ShowDetailsDesignController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
+use App\Http\Controllers\Api\Order\RatingDesignerController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,17 +34,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/test', function () {
-    return Cache::get('type');
-});
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::middleware('auth:sanctum')->get('/user', fn (Request $request) => $request->user());
 
 
 
-Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
-    Route::name('account.')->prefix('account')->group(function () {
+Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): void {
+    Route::name('account.')->prefix('account')->group(function (): void {
         Route::post(
             'register',
             RegisterController::class
@@ -50,12 +55,8 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
     /**
      * Protected endpoints.
      */
-    Route::middleware(['auth:sanctum'])->group(function () {
-        Route::get('/test', function () {
-            $user_id=Auth::user()->id;
-            //Cache::put($user_id.'type', 'logo');
-    return Cache::get($user_id.'file', 'default');
-});
+    Route::middleware(['auth:sanctum'])->group(function (): void {
+
         //Logout
         Route::get(
             'logout',
@@ -63,56 +64,75 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function () {
         )->name('logout');
 
         //Design
-        Route::name('design.')->prefix('design')->group(function () {
-            Route::get(
+        Route::name('design.')->prefix('design')->group(function (): void {
+            Route::post(
                 'designs',
                 ShowDesignsController::class
             );
-            Route::get(
+            Route::post(
+                'designs/{id}',
+                ShowDetailsDesignController::class
+            );
+        });
+        //Configuration
+        Route::name('config.')->prefix('config')->group(function (): void {
+            Route::post(
                 'types',
                 ShowTypesController::class
             );
-            Route::get(
-                'designs/{type}',
-                ShowDesignsTypeController::class
+            Route::post(
+                'scopes',
+                ShowScopesController::class
             );
-            Route::get(
-                'scope/{type}/{scope}',
-                ShowDesignsTypeScopeController::class
+            Route::post(
+                'type_prefernces',
+                ShowTypePrefernecesController::class
             );
-            Route::get(
-                'color/{type}/{color}',
-                ShowDesignsTypeColorController::class
+            Route::post(
+                'prefernces',
+                ShowPreferncesController::class
             );
-            Route::get(
-                'font/{type}/{font}',
-                ShowDesignsTypeFontController::class
+            Route::post(
+                'values',
+                ShowPrefernceValuesController::class
+            );
+            Route::post(
+                'sizes',
+                ShowSizesController::class
+            );
+            Route::post(
+                'colors',
+                ShowColorsController::class
+            );
+            Route::post(
+                'suggest_colors',
+                ShowSuggestColorsController::class
+            );
+            Route::post(
+                'fonts',
+                ShowFontsController::class
+            );
+            Route::post(
+                'suggest_fonts',
+                ShowSuggestFontsController::class
+            );
+            Route::post(
+                'designers',
+                ShowDesignersController::class
             );
         });
-
         //Order
-        Route::name('order.')->prefix('order')->group(function () {
-            Route::name('customize.')->prefix('customize')->group(function () {
-                //Types
-                Route::get('types',[CustomizeOrderController::class, 'getTypes']);
-                Route::post('types',[CustomizeOrderController::class, 'storeTypes']);
-                Route::get('sizes',[CustomizeOrderController::class, 'getSizes']);
-                //values Type
-                Route::get('prefernces',[CustomizeOrderController::class, 'getPrefernces']);
-                Route::post('prefernces',[CustomizeOrderController::class, 'storePrefernces']);
-                //Information Order
-                Route::post('informations',[CustomizeOrderController::class, 'storeInformation']);
-                //Colors
-                Route::get('colors',[CustomizeOrderController::class, 'getColors']);
-                Route::get('suggest-colors',[CustomizeOrderController::class, 'getSuggestColors']);
-                Route::post('colors',[CustomizeOrderController::class, 'storeColors']);
-                //Fonts
-                Route::get('fonts',[CustomizeOrderController::class, 'getFonts']);
-                Route::get('suggest-fonts',[CustomizeOrderController::class, 'getSuggestFonts']);
-                Route::post('fonts',[CustomizeOrderController::class, 'storeFonts']);
-                //Designer
-                Route::get('designers',[CustomizeOrderController::class, 'getDesigners']);
-                Route::post('orders',[CustomizeOrderController::class, 'storeOrder']);
+        Route::name('order.')->prefix('order')->group(function (): void {
+            Route::name('customize.')->prefix('customize')->group(function (): void {
+
+                Route::post(
+                    'orders',
+                    CustomizeOrderController::class
+                );
+                Route::post(
+                    'rating-designer',
+                    RatingDesignerController::class
+                );
             });
         });
     });

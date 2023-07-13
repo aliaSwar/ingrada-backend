@@ -1,20 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Web\Manager;
 
 use App\Actions\Web\StoreInternalOrderAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\StoreInternalOrderRequest;
-use App\Models\Category;
 use App\Models\Customer;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 use App\Models\Order;
 use App\Models\Type;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class InternalOrderController extends Controller
+final class InternalOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +23,13 @@ class InternalOrderController extends Controller
     public function index(): View
     {
 
-      $ordeer = Order::where('is_enternal', true)->get();
-      //return $ordeer;
+        $ordeer = Order::where('is_enternal', true)->get();
+        //return $ordeer;
 
-      return view(
-        'manager.internal-orders.index',
-        ['orders' => $ordeer]
-    );
+        return view(
+            'manager.internal-orders.index',
+            ['orders' => $ordeer]
+        );
 
 
     }
@@ -39,11 +40,11 @@ class InternalOrderController extends Controller
     public function create(): View
     {
         $users = User::role('content writer')
-                    ->where('is_deleted',false)
-                    ->where('is_active',true)
-                    ->get();
+            ->where('is_deleted', false)
+            ->where('is_active', true)
+            ->get();
 
-        return view('manager.internal-orders.create',[
+        return view('manager.internal-orders.create', [
             'types'              =>  Type::query()->get(),
             'internal_customers' => Customer::query()->get(),
             'categories_user'=>  $users,
@@ -56,8 +57,8 @@ class InternalOrderController extends Controller
     public function store(StoreInternalOrderRequest $request)/* : RedirectResponse */
     {
 
-     (new StoreInternalOrderAction)($request);
-      //return $request;
+        (new StoreInternalOrderAction)($request);
+        //return $request;
 
 
         return redirect()->route('internal-orders.index')->with(['message' => __("messages.create_data")]);
@@ -66,9 +67,9 @@ class InternalOrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( $id)
+    public function show($id)
     {
-      $order=Order::findOrFail($id);
+        $order=Order::findOrFail($id);
 
 
         return view(
@@ -97,6 +98,7 @@ class InternalOrderController extends Controller
     {
         //sdd($request->all());
         $order->update($request->all());
+
         return redirect()->route('internal-orders.index', ['order' => $order])
             ->with(['message' => __("messages.update_data")]);
     }
@@ -107,6 +109,7 @@ class InternalOrderController extends Controller
     public function destroy(Order $order): RedirectResponse
     {
         $order->delete();
+
         return redirect()->route('manger.internalorders.index')->with(['message' => __("messages.delete_data")]);
     }
 }

@@ -1,21 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Web\Setting;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\setting\StoreCategoryRequest;
-use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+final class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('setting.category.index',['cateogries'=> Category::all()]);
+        return view('setting.category.index', ['cateogries'=> Category::all()]);
     }
 
     /**
@@ -33,41 +34,41 @@ class CategoryController extends Controller
     {
         $category=new Category($request->validated());
         $category->save();
-        
+
 
         return redirect()->route('categories.index')->with(['message' => __("messages.create_data")]);
-        
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): void
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): void
     {
-        //
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): void
     {
-        //
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): void
     {
-        //
+
     }
 }

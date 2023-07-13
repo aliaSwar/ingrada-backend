@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Concerns\HasDefaultCountries;
 use App\Models\Country;
 use Illuminate\Database\Seeder;
 
-class CountrySeeder extends Seeder
+final class CountrySeeder extends Seeder
 {
     use HasDefaultCountries;
 

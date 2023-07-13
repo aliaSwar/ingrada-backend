@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Item extends Model
+final class Item extends Model
 {
     use HasFactory;
 
@@ -44,16 +46,14 @@ class Item extends Model
         return $this->belongsTo(Preferncevalue::class);
     }
 
-    public function colors(): BelongsToMany
-    {
-        return $this->belongsToMany(Color::class);
-    }
-
     public function fonts(): BelongsToMany
     {
         return $this->belongsToMany(Font::class);
     }
-
+    public function colors(): BelongsToMany
+    {
+        return $this->belongsToMany(Color::class);
+    }
     public function imageitems(): HasMany
     {
         return $this->hasMany(ImageItem::class);

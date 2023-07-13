@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -19,11 +20,13 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class User extends Authenticatable
+final class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
     use HasRoles;
     use HasSlug;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -79,26 +82,27 @@ class User extends Authenticatable
     }
     public function scopeWithTaskCountInProgressAndStartDateBetween($query, $start_date)
     {
-        return $query->whereHas('tasks',
+        return $query->whereHas(
+            'tasks',
             fn (Builder $query) =>
                 $query->where('status', 'Progress')
-                    // ->where('start_date', '>=',$start_date)
-                    // ->where('end_date', '<=',$start_date)
-            )->withCount(['tasks' => fn (Builder $query) =>
+            // ->where('start_date', '>=',$start_date)
+            // ->where('end_date', '<=',$start_date)
+        )->withCount(['tasks' => fn (Builder $query) =>
                 $query->where('status', 'Progress')
-                // ->where('start_date', '>=',$start_date)
-                // ->where('end_date', '<=',$start_date)
+            // ->where('start_date', '>=',$start_date)
+            // ->where('end_date', '<=',$start_date)
         ])  ;
     }
-    
-    public function setPasswordAttribute($password)
+
+    public function setPasswordAttribute($password): void
     {
         $this->attributes['password'] = Hash::make($password);
     }
 
     public function categories()
     {
-        return $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function orders(): BelongsToMany
@@ -110,16 +114,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class);
     }
-
-    public function points(): MorphMany
+    
+    public function points()
     {
-        return $this->morphMany(Point::class, 'creatable');
+        return $this->hasMany(Point::class);
     }
 
-    public function historypoints(): HasMany
-    {
-        return $this->hasMany(HistoryPoint::class);
-    }
+
 
     public function notifications(): BelongsToMany
     {

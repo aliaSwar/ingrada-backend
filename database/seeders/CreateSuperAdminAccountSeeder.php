@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
-use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class CreateSuperAdminAccountSeeder extends Seeder
+final class CreateSuperAdminAccountSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -23,7 +24,7 @@ class CreateSuperAdminAccountSeeder extends Seeder
                 'email' => 'admin@admin.app',
                 'password' => "admin",
             ]);
-            $user->assignRole('admin');
+
             $user->save();
         }
     }

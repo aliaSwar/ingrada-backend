@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\Authentication;
 
 use App\Http\Requests\AuthCustomer\RegisterRequest;
@@ -13,7 +15,7 @@ final class RegisterCustomerAction
         Auth::shouldUse(config('auth.guards.customer'));
 
         $attributes = $request->only(
-            (new Customer())->getFillable()
+            (new Customer)->getFillable()
         );
 
         if ($request->hasFile('avatar')) {

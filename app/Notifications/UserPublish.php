@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications;
 
 use App\Models\User;
@@ -7,7 +9,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserPublish extends Notification
+final class UserPublish extends Notification
 {
     use Queueable;
 
@@ -50,7 +52,7 @@ class UserPublish extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+
         ];
     }
 }
