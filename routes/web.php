@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\Setting\FontController;
 use App\Http\Controllers\Web\Setting\RoleController;
 use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
+use App\Http\Controllers\ChartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Designer\TaskController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Web\Setting\PrefernceValueController;
 use App\Models\Category;
 use App\Http\Controllers\Web\Setting\PrefernceController;
 use App\Models\User;
+use App\Models\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +58,7 @@ Route::prefix('admin/')->group(function () {
 
 
 });
+Route::get('/chart', [ChartController::class,'index']);
 
 // Manager Route
 Route::prefix('manager/')->group(function () {
@@ -83,9 +86,22 @@ Route::name('content-writer.')->prefix('content-writer/')->group(function () {
 });
 
 Route::get('/', function () {
+//  $tasks = Task::whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])->get();
+   // $dailyCounts = Task::byDay()->get();
+   // return $dailyCounts;
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/a', function () {
+  //  $tasks = Task::whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])->get();
+      $dailyCounts = Task::byDay()->get();
+      $weeklyCounts = Task::byWeek()->get();
+      //return $dailyCounts;
+     // $dailyCounts = $dailyCounts->toArray();
+     return view('e', [
+      'dailyCounts' => $dailyCounts,
+      'weeklyCounts' => $weeklyCounts
+  ]);
+  });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
