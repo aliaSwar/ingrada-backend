@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
@@ -14,10 +15,12 @@ use App\Http\Controllers\Api\Configuration\ShowScopesController;
 use App\Http\Controllers\Api\Configuration\ShowSizesController;
 use App\Http\Controllers\Api\Configuration\ShowSuggestColorsController;
 use App\Http\Controllers\Api\Configuration\ShowSuggestFontsController;
+use App\Http\Controllers\Api\Configuration\ShowTypePrefernecesController;
 use App\Http\Controllers\Api\Configuration\ShowTypesController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
 use App\Http\Controllers\Api\Design\ShowDetailsDesignController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
+use App\Http\Controllers\Api\Order\RatingDesignerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -82,6 +85,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 ShowScopesController::class
             );
             Route::post(
+                'type_prefernces',
+                ShowTypePrefernecesController::class
+            );
+            Route::post(
                 'prefernces',
                 ShowPreferncesController::class
             );
@@ -121,6 +128,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 Route::post(
                     'orders',
                     CustomizeOrderController::class
+                );
+                Route::post(
+                    'rating-designer',
+                    RatingDesignerController::class
                 );
             });
         });

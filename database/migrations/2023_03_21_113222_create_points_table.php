@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('points', function (Blueprint $table): void {
             $table->id();
             $table->tinyInteger('point');
-            $table->morphs('creatable');
+            $table->foreignId('giver_id')->nullable();
+            $table->foreignId('customer_id')->nullable();
+            $table->foreignId('desginer_id');
             $table->timestamps();
         });
     }

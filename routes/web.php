@@ -18,7 +18,17 @@ use App\Http\Controllers\Web\Setting\PrefernceValueController;
 use App\Http\Controllers\Web\Setting\RoleController;
 use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
+use App\Http\Controllers\ChartController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\Designer\TaskController;
+use App\Http\Controllers\Web\Manager\InternalOrderController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Web\Setting\CategoryController;
+use App\Http\Controllers\Web\Setting\PrefernceValueController;
+use App\Models\Category;
+use App\Http\Controllers\Web\Setting\PrefernceController;
+use App\Models\User;
+use App\Models\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +66,8 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::post('preferncesvalues-store/{prefernce}', [PrefernceValueController::class, 'store'])->name('preferncesvalues.store');
 
 
+});
+Route::get('/chart', [ChartController::class,'index']);
     });
 
     // Manager Route
@@ -83,8 +95,23 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
     });
 
-    Route::get('/', fn () => view('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/', function () {
+//  $tasks = Task::whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])->get();
+   // $dailyCounts = Task::byDay()->get();
+   // return $dailyCounts;
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/a', function () {
+  //  $tasks = Task::whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])->get();
+      $dailyCounts = Task::byDay()->get();
+      $weeklyCounts = Task::byWeek()->get();
+      //return $dailyCounts;
+     // $dailyCounts = $dailyCounts->toArray();
+     return view('e', [
+      'dailyCounts' => $dailyCounts,
+      'weeklyCounts' => $weeklyCounts
+  ]);
+  });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

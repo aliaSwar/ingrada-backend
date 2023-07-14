@@ -22,49 +22,48 @@ final class RegisteredUserController extends Controller
         return view('users.index', ['users' => User::with('categories')->where('category_id', '!=', 'null')->paginate(4)]);
     }
 
-      /**
-     * Display the registration view.
-     */
-      public function create(): View
-      {
+        /**
+         * Display the registration view.
+         */
+        public function create(): View
+        {
 
-          return view('users.create', [
-              'roles'       => Role::all(),
-              'categories'  =>  Category::all()
-          ]);
-      }
+            return view('users.create', [
+                'roles'       => Role::all(),
+                'categories'  =>  Category::all()
+            ]);
+        }
 
 
-      public function show(User $user): View
-      {
-          return view(
-              'users.show'
-          );
-      }
+        public function show(User $user): View
+        {
+            return view(
+                'users.show'
+            );
+        }
 
-      /**
+    /**
        * Handle an incoming registration request.
        *
        * @throws \Illuminate\Validation\ValidationException
        */
-      public function store(RegisteredUserRequest $request): RedirectResponse
-      {
+        public function store(RegisteredUserRequest $request): RedirectResponse
+        {
 
-          $data = $request->validated();
-          $data = Arr::add($data, 'avatar', uploadFile($request->path, 'users'));
-          $data['category']=Category::findOrFail($request->category_id)->name;
-          $user = new User($data);
-          $user->category=$data['category'];
-          $user->save();
-          $user->assignRole($request->role);
+            $data = $request->validated();
+            $data = Arr::add($data, 'avatar', uploadFile($request->path, 'users'));
+            $data['category']=Category::findOrFail($request->category_id)->name;
+            $user = new User($data);
+            $user->category=$data['category'];
+            $user->save();
+            $user->assignRole($request->role);
+            if (!$user) {
+                return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
+            }
 
-          if ( ! $user) {
-              return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
-          }
-
-          // Notification::send($user, new UserPublish($user));
+            // Notification::send($user, new UserPublish($user));
 
 
-          return redirect()->route('users.index');
-      }
+            return redirect()->route('users.index');
+        }
 }
