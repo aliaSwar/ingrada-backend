@@ -20,15 +20,7 @@ use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
 use App\Http\Controllers\ChartController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Web\Designer\TaskController;
-use App\Http\Controllers\Web\Manager\InternalOrderController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Web\Setting\CategoryController;
-use App\Http\Controllers\Web\Setting\PrefernceValueController;
-use App\Models\Category;
-use App\Http\Controllers\Web\Setting\PrefernceController;
-use App\Models\User;
-use App\Models\Task;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,12 +35,7 @@ use App\Models\Task;
 
 // Setting Route
 Route::middleware('auth:sanctum')->group(function (): void {
-    Route::get('hello', function (): void {
-        $user=auth()->user();
-        $user->assignRole('admin');
 
-        return ;
-    });
     // Admin Route
     Route::prefix('admin/')->group(function (): void {
         Route::resource('roles', RoleController::class);
@@ -64,10 +51,6 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::resource('preferncesvalues', PrefernceValueController::class);
         Route::get('preferncesvalues-create/{prefernce}', [PrefernceValueController::class, 'create'])->name('preferncesvalues.create');
         Route::post('preferncesvalues-store/{prefernce}', [PrefernceValueController::class, 'store'])->name('preferncesvalues.store');
-
-
-});
-Route::get('/chart', [ChartController::class,'index']);
     });
 
     // Manager Route
@@ -86,32 +69,16 @@ Route::get('/chart', [ChartController::class,'index']);
         Route::get('/showexternal/{id}', [TaskController::class, 'show_external'])->name('to');
         Route::post('/showexternal/{order}', [TaskController::class, 'store_external'])->name('showexternal');
 
-
-
-
     });
     Route::name('content-writer.')->prefix('content-writer/')->group(function (): void {
         Route::resource('external-orders', ExternalOrderContentController::class);
 
     });
 
-Route::get('/', function () {
-//  $tasks = Task::whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])->get();
-   // $dailyCounts = Task::byDay()->get();
-   // return $dailyCounts;
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/a', function () {
-  //  $tasks = Task::whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])->get();
-      $dailyCounts = Task::byDay()->get();
-      $weeklyCounts = Task::byWeek()->get();
-      //return $dailyCounts;
-     // $dailyCounts = $dailyCounts->toArray();
-     return view('e', [
-      'dailyCounts' => $dailyCounts,
-      'weeklyCounts' => $weeklyCounts
-  ]);
-  });
+    Route::get('/', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

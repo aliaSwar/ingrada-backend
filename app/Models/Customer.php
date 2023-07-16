@@ -96,4 +96,8 @@ final class Customer extends Authenticatable implements MustVerifyEmail
     {
         return $this->first_name . ' ' . $this->last_name;
     }
+    public function likes(): HasMany
+    {
+        return $this->hasMany(LikeDesign::class);
+    }
 }
