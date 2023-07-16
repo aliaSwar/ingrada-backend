@@ -10,11 +10,24 @@ use Illuminate\Support\Facades\Auth;
 
 final class AddLikeToDesignAction
 {
-     public function __invoke(StoreLikedDesignRequest $request): void
+     public function __invoke(StoreLikedDesignRequest $request)
      {
-          LikeDesign::create([
+          if(
+               LikeDesign::query()
+                         ->where('customer_id',Auth::id())
+                         ->where('item_id',$request->item_id)
+                         ->exists()
+          )
+               return null;
+          $like=LikeDesign::create([
                'item_id'       =>       $request->item_id,
                'customer_id'   =>       Auth::id(),
           ]);
+          
+          $item=$like->item;
+          $item->increment('likes');
+          $item->save();
+          
+          return $item;
      }
 }

@@ -16,13 +16,16 @@ class LikedDesignController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function __invoke(StoreLikedDesignRequest $request)
+    public function __invoke(StoreLikedDesignRequest $request):JsonResponse
     {
 
-        (new AddLikeToDesignAction)($request);    
-        
+        $item=(new AddLikeToDesignAction)($request);    
+        if (is_null($item)) {
+            return sendFailedResponse(__('messages.error'));
+        }
         return sendSuccessResponse(
             __('messages.create_data'),
+            $item
         );  
     }
 }
