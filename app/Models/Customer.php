@@ -73,7 +73,10 @@ final class Customer extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(country::class);
     }
-
+    public function chatRooms():HasMany
+    {
+        return $this->hasMany(ChatRoom::class);
+    }
     /**
      * Get the options for generating the slug.
      */
