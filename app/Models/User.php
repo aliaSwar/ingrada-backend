@@ -120,7 +120,10 @@ final class User extends Authenticatable
         return $this->hasMany(Point::class);
     }
 
-
+    public function chatRooms():HasMany
+    {
+        return $this->hasMany(ChatRoom::class);
+    }
 
     public function notifications(): BelongsToMany
     {

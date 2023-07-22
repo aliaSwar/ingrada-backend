@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Requests\Api\Design;
 
 use Illuminate\Contracts\Validation\Validator;
@@ -24,7 +24,7 @@ class StoreLikedDesignRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'item_id' => 'required|integer|exists:items,id'
         ];
     }
 
