@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
 // Setting Route
 Route::middleware('auth:sanctum')->group(function (): void {
 Route::get('use', function () {
-    auth()->user()->assignRole('admin');
+    return auth()->user()->hasRole('admin');
 });
     // Admin Route
     Route::prefix('admin/')->group(function (): void {
@@ -88,5 +88,5 @@ Route::get('use', function () {
 });
 
 
-Route::view('/chat', 'chat')->name('chart');
+Route::view('/chat', 'chat')->name('chat');
 require __DIR__ . '/auth.php';
