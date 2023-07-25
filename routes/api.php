@@ -6,6 +6,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
+use App\Http\Controllers\Api\Chat\ChatCustomerController;
 use App\Http\Controllers\Api\Configuration\ShowColorsController;
 use App\Http\Controllers\Api\Configuration\ShowDesignersController;
 use App\Http\Controllers\Api\Configuration\ShowFontsController;
@@ -145,7 +146,12 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 );
             });
         });
+        //Chat
+        Route::name('chat.')->prefix('chat')->group(function (): void {
+            Route::post(
+                'send_message',
+                ChatCustomerController::class
+            );
+        });
     });
-
-
 });

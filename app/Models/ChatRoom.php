@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class ChatRoom extends Model
 {
     use HasFactory;
-    protected $fillable = ['customer_id','sender_id'];
+    protected $fillable = ['customer_id','user_id'];
     public function customer():BelongsTo
     {
         return $this->belongsTo(Customer::class);
