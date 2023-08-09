@@ -73,7 +73,10 @@ final class Customer extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(country::class);
     }
-
+    public function chatRooms():HasMany
+    {
+        return $this->hasMany(ChatRoom::class);
+    }
     /**
      * Get the options for generating the slug.
      */
@@ -95,5 +98,9 @@ final class Customer extends Authenticatable implements MustVerifyEmail
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+    public function likes(): HasMany
+    {
+        return $this->hasMany(LikeDesign::class);
     }
 }

@@ -6,6 +6,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
+use App\Http\Controllers\Api\Chat\ChatCustomerController;
 use App\Http\Controllers\Api\Configuration\ShowColorsController;
 use App\Http\Controllers\Api\Configuration\ShowDesignersController;
 use App\Http\Controllers\Api\Configuration\ShowFontsController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\Api\Configuration\ShowSuggestColorsController;
 use App\Http\Controllers\Api\Configuration\ShowSuggestFontsController;
 use App\Http\Controllers\Api\Configuration\ShowTypePrefernecesController;
 use App\Http\Controllers\Api\Configuration\ShowTypesController;
+use App\Http\Controllers\Api\Configuration\ShowValuesPreferneceController;
+use App\Http\Controllers\Api\Design\LikedDesignController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
 use App\Http\Controllers\Api\Design\ShowDetailsDesignController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
@@ -73,6 +76,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 'designs/{id}',
                 ShowDetailsDesignController::class
             );
+            Route::post(
+                'add_like',
+                LikedDesignController::class
+            );
         });
         //Configuration
         Route::name('config.')->prefix('config')->group(function (): void {
@@ -95,6 +102,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
             Route::post(
                 'values',
                 ShowPrefernceValuesController::class
+            );
+            Route::post(
+                'values_prefernce',
+                ShowValuesPreferneceController::class
             );
             Route::post(
                 'sizes',
@@ -135,7 +146,12 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 );
             });
         });
+        //Chat
+        Route::name('chat.')->prefix('chat')->group(function (): void {
+            Route::post(
+                'send_message',
+                ChatCustomerController::class
+            );
+        });
     });
-
-
 });

@@ -7,4 +7,5 @@ return [
     'create_data' => 'Resource created successfully.',
     'update_data' => 'Resource updated successfully.',
     'delete_data' => 'Resource deleted successfully.',
+    'error'       => 'Something went wrong.'
 ];

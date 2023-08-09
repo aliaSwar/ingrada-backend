@@ -54,8 +54,13 @@ final class Item extends Model
     {
         return $this->belongsToMany(Color::class);
     }
+    public function likes(): HasMany
+    {
+        return $this->hasMany(LikeDesign::class);
+    }
     public function imageitems(): HasMany
     {
         return $this->hasMany(ImageItem::class);
     }
+
 }
