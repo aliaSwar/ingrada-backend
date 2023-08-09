@@ -33,12 +33,15 @@ final class Task extends Model
         return $this->hasMany(FileTask::class);
     }
 
-    public function scopeByDay($query) {
-      return $query
-          ->select(DB::raw('DATE(start_date) as date'), DB::raw('SUM(tasks_hour) as hours'))
-          ->groupBy('date')
-          ->orderBy('date');
-  }
+    public function scopeByDay($query)
+    {
+        return $query
+            ->select(DB::raw('DATE(start_date) as date'), DB::raw('SUM(tasks_hour) as hours'), DB::raw('COUNT(*) as task_count'), DB::raw('GROUP_CONCAT(id) as task_ids'))
+            ->groupBy('date')
+            ->orderBy('date');
+    }
+
+
 
 
   public function scopeByWeek($query) {
@@ -48,4 +51,16 @@ final class Task extends Model
         ->orderBy('year', 'desc')
         ->orderBy('week', 'desc');
 }
+
+
+public function scopeByMonth($query)
+    {
+        return $query
+            ->select(DB::raw('DATE_FORMAT(start_date, "%Y-%m") as month'), DB::raw('SUM(tasks_hour) as hours'), DB::raw('COUNT(*) as task_count'), DB::raw('GROUP_CONCAT(id) as task_ids'))
+            ->groupBy('month')
+            ->orderBy('month', 'desc');
+    }
+
+
+
 }

@@ -8,20 +8,10 @@
                       aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                           class="hide-menu">HOME</span></a></li>
               <li class="list-divider"></li>
-              <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+              <li class="sidebar-item"> <a class="sidebar-link " href="{{ route('content-writer.external-orders.index') }}"
                   aria-expanded="false"><i data-feather="sliders" class="feather-icon"></i><span
                       class="hide-menu">ORDERS </span></a>
-              <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                  <li class="sidebar-item"><a href="enternal.html" class="sidebar-link"><span
-                      class="hide-menu"> ENTENAL ORDERS
-                  </span></a>
-          </li>
-          <li class="sidebar-item"><a href="{{ route('content-writer.external-orders.index') }}" class="sidebar-link"><span
-                      class="hide-menu">EXTERNAL ORDERS
-                  </span></a>
-          </li>
 
-              </ul>
               </li>
               <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="review.html"
                   aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
@@ -38,7 +28,7 @@
                           <ul aria-expanded="false" class="collapse  first-level base-level-line">
                               <li class="sidebar-item"><a href="DailyReport.html" class="sidebar-link"><span
                                           class="hide-menu"> DAILY
-                                      </span></a>
+                                    </span></a>
                               </li>
                               <li class="sidebar-item"><a href="monthlyReport.html" class="sidebar-link"><span
                                           class="hide-menu"> MONTHLY
@@ -54,7 +44,7 @@
 
 
 
-                      
+
                       <li class="menu-item">
                         <form action="{{ route('logout') }}" method="post">
                             @csrf

@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Web\ContentWriter\ExternalOrderContentController;
 use App\Http\Controllers\Web\Designer\TaskController;
 use App\Http\Controllers\Web\Manager\ExternalOrderController;
+use App\Http\Controllers\Web\Manager\DesignerReportController;
+use App\Http\Controllers\Web\Manager\TaskReportController;
 use App\Http\Controllers\Web\Manager\InternalCustomerController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
 use App\Http\Controllers\Web\ProfileController;
@@ -20,13 +22,7 @@ use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
 use App\Http\Controllers\ChartController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Web\Designer\TaskController;
-use App\Http\Controllers\Web\Manager\InternalOrderController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Web\Setting\CategoryController;
-use App\Http\Controllers\Web\Setting\PrefernceValueController;
 use App\Models\Category;
-use App\Http\Controllers\Web\Setting\PrefernceController;
 use App\Models\User;
 use App\Models\Task;
 
@@ -75,6 +71,14 @@ Route::get('/chart', [ChartController::class,'index']);
         Route::resource('internal-customers', InternalCustomerController::class);
         Route::resource('external-orders', ExternalOrderController::class);
         Route::resource('internal-orders', InternalOrderController::class);
+        Route::get('report/designers',DesignerReportController::class)->name('report.designers');
+        Route::get('report/all_task/{taskIds}',[DesignerReportController::class,'Show_task'])->name('all_task');
+
+        Route::get('dailyreport/designers/{designer}',[DesignerReportController::class,'Daily_report'])->name('Daily_designers');
+        Route::get('monthlyreport/designers/{designer}',[DesignerReportController::class,'Monthly_report'])->name('Monthly_designers');
+        Route::get('dailyreport/tasks',[TaskReportController::class,'Daily_report'])->name('Monthly_tasks');
+        Route::get('monthlyreport/tasks',[TaskReportController::class,'Monthly_report'])->name('Monthly_tasks');
+
     });
     //designer Route
     Route::prefix('designer/')->group(function (): void {
@@ -101,23 +105,14 @@ Route::get('/', function () {
    // return $dailyCounts;
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/a', function () {
-  //  $tasks = Task::whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])->get();
-      $dailyCounts = Task::byDay()->get();
-      $weeklyCounts = Task::byWeek()->get();
-      //return $dailyCounts;
-     // $dailyCounts = $dailyCounts->toArray();
-     return view('e', [
-      'dailyCounts' => $dailyCounts,
-      'weeklyCounts' => $weeklyCounts
-  ]);
-  });
-
+Route::post('/design', function () {
+  return view('dashboard');
+  })->name('design');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-
+//filter_date
+    Route::get('filters/{designer}',[DesignerReportController::class,'Filterdate'])->name('filters');
+    Route::get('filters/task',[TaskReportController::class,'Filterdate'])->name('filters_task');
 
 require __DIR__ . '/auth.php';

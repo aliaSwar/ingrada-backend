@@ -388,6 +388,7 @@
       <!-- Page JS -->
       <script src="../assets/js/dashboards-analytics.js"></script>
       <script>
+
            var options = {
           series: [{
             color:"#E4E0F2",
@@ -395,10 +396,10 @@
           name: 'Inflation',
           data: [{
 
-      x: {{ $internal_count }},
-      y: 10
+      x: 'ss',
+      y: $external_count
     }, {
-      x: 'Hannaa',
+      x: 'aya',
       y: 18
     }, {
       x: 'Boushra',
@@ -461,23 +462,25 @@
       <script>
        var ctx = document.getElementById("myChart").getContext('2d');
        const data = <?php echo $internal_count ?>;
+       const dataa = <?php echo $external_count ?>;
+
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ["Advertising and social media",	"Logo and visual identity",	"Covers of books and magazines",	"Drawing of products and packages"],
+        labels: ["Advertising and social media",	"Logo and visual identity"],
         datasets: [{
-            data: [ data,	20,	30,	30], // Specify the data values array
+            data: [ data,	dataa], // Specify the data values array
 
-            borderColor: ['rgb(255, 222, 135)', 'rgb(97, 97, 97)', 'rgb(200, 200, 200)', 'rgb(247, 231, 190)'], // Add custom color border
-            backgroundColor: ['rgb(255, 222, 135)', 'rgb(97, 97, 97)', 'rgb(200, 200, 200)', 'rgb(247, 231, 190)'], // Add custom color background (Points and Fill)
+            borderColor: ['rgb(255, 222, 135)', 'rgb(97, 97, 97)'], // Add custom color border
+            backgroundColor: ['rgb(255, 222, 135)', 'rgb(97, 97, 97)'], // Add custom color background (Points and Fill)
             borderWidth: 0.5 // Specify bar border width
         }]},
 
 });
       </script>
 
-
-</body>
+      <script>
+      </body>
 
 </html>
 </x-layouts.app>
