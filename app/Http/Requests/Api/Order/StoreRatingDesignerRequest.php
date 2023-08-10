@@ -24,8 +24,9 @@ class StoreRatingDesignerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'desginer_id'     =>     'required|integer|exists:users,id',
-            'point'           =>     'required|integer|between:1,5'
+            //'desginer_id'    =>     'required|integer|exists:users,id',
+            'order_id'       =>     'required|integer|exists:orders,id',
+            'point'          =>     'required|integer|between:1,5'
         ];
     }
 

@@ -114,10 +114,10 @@ final class User extends Authenticatable
     {
         return $this->hasMany(Task::class);
     }
-    
+
     public function points()
     {
-        return $this->hasMany(Point::class);
+            return $this->hasMany(Point::class,'id','desginer_id');
     }
 
     public function chatRooms():HasMany

@@ -19,7 +19,7 @@ final class RegisteredUserController extends Controller
 {
     public function index(): View
     {
-        return view('users.index', ['users' => User::with('categories')->where('category_id', '!=', 'null')->paginate(4)]);
+        return view('users.index', ['users' => User::with('categories')->where('is_super_admin',false)->paginate(7)]);
     }
 
         /**

@@ -40,6 +40,7 @@ use App\Models\Task;
 // Setting Route
 Route::middleware('auth:sanctum')->group(function (): void {
     Route::get('use', function () {
+      auth()->user()->assignRole('admin');
         return auth()->user()->hasRole('admin');
     });
 
@@ -55,14 +56,14 @@ Route::middleware('auth:sanctum')->group(function (): void {
     });
 
 Route::get('/', function () {
-//  $tasks = Task::whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()])->get();
-   // $dailyCounts = Task::byDay()->get();
-   // return $dailyCounts;
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::post('/design', function () {
   return view('dashboard');
   })->name('design');
+
+  Route::get('/chart', [ChartController::class,'index']);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

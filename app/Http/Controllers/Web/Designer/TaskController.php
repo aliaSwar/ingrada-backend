@@ -88,6 +88,7 @@ final class TaskController extends Controller
         $task->save();
         $user->number_tasks_progress=$user->number_tasks_progress+1;
         $user->save();
+        $order->designer_id=$user->id;
         $user->orders()->attach($order->id);
 
         return back();

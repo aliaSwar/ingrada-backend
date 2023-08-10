@@ -12,6 +12,8 @@ use App\Models\User;
 use App\Models\Task;
 use Cache;
 use DB;
+use App\Actions\Web\GetPointLastMonthAction;
+use App\Actions\Web\GetPointLastMonthTotalAction;
 
 class DesignerReportController extends Controller
 {
@@ -41,13 +43,22 @@ class DesignerReportController extends Controller
 
     public function Monthly_report( $id)
     {
-
-
+      $is_show_rating=false;
+      $points=(new GetPointLastMonthAction)($id);
+      if (!$points->isEmpty()) {
+           $is_show_rating=true;
+      }
+      $average_points=(new GetPointLastMonthTotalAction)($id);
       $tasks_by_month = Task::byMonth()->where('user_id', $id)->get();
 
         return view(
             'manager.reports.monthly.designers-report',
-            ['tasks_by_month'=>$tasks_by_month,'user_id'=>$id]
+            [
+              'tasks_by_month'=>$tasks_by_month,
+              'user_id'=>$id,
+              'is_show_rating'=>$is_show_rating,
+              'average_points'=> $average_points
+            ]
         );
     }
 

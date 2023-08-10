@@ -60,7 +60,7 @@
                                              name="number_tasks"
                                              class="form-control"
                                              id="inputTask4"
-                                             required>
+                                             >
                                    </div>
                                    <div class="col-12">
                                         <label for="inputAddress"

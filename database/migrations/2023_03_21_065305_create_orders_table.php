@@ -43,6 +43,7 @@ return new class extends Migration
             $table->date('expected_limit_date', 'y-m-d')->nullable();//المتوقع
             $table->enum('status', ['Pendning','Initiated', 'InProgress', 'Completed', 'Failed']);
             $table->text('notes')->nullable(); // notes the contect writer
+            $table->tinyInteger('points')->nullable();
             $table->timestamps();
         });
     }
