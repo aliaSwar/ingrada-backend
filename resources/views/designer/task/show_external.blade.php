@@ -10,7 +10,7 @@
                                   <div class="card-body">
                                        <div class="form-group mb-3 position-relative">
 
-                                            <h2>Display New External Order To Designer <a href="#">{{$designer_name->fullname}}</a></h2>
+                                            <h2>Display New External Order To Designer <a href="#">{{$designer_name->fullname??''}}</a></h2>
                                        </div>
 
                                         <div class="media align-items-center mt-md-0 mt-3">

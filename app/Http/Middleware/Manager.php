@@ -15,7 +15,7 @@ class Manager
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->hasRole('manager')) 
+        if (auth()->user()->hasRole('manager'))
             return $next($request);
         return view('errors.403');
     }

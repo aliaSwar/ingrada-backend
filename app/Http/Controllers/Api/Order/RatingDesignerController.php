@@ -16,10 +16,10 @@ class RatingDesignerController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function __invoke(StoreRatingDesignerRequest $request)/* : JsonResponse */
+    public function __invoke(StoreRatingDesignerRequest $request): JsonResponse
     {
         $point=(new RatingDesignerAction)($request);
-        return $point;
+        //return $point;
         return sendSuccessResponse(
             $point,
             __('messages.create_data')

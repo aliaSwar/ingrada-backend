@@ -7,10 +7,11 @@ namespace App\Actions\Orders;
 use App\Http\Requests\Api\Order\OrderRequest;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 final class StoreOrderAction
 {
-    public function __invoke(OrderRequest $request)
+    public function __invoke(Request $request)
     {
         $user_id=Auth::user()->id;
 
@@ -24,8 +25,8 @@ final class StoreOrderAction
             'expected_limit_date'          =>    $request->expected_limit_date,
             'limit_date'                   =>    $request->expected_limit_date,
             'status'                       =>    Order::PENDNING_STATUS,
-            'colors'                       =>    json_encode($request->colors, true),
-            'fonts'                        =>    json_encode($request->fonts, true),
+            'colors'                       =>    json_encode($request->colors),
+            'fonts'                        =>    json_encode($request->fonts),
             'primary_price'                =>    $request->primary_price,
             'final_price'                  =>    $request->primary_price,
             'is_enternal'                  =>    false,
@@ -35,7 +36,7 @@ final class StoreOrderAction
             'image'                        =>    uploadFile($request->image, 'orders'),
             'description'                  =>    $request->description,
             'customers_id'                 =>    $user_id,
-            'value'                        =>    json_encode($request->value, true),
+            'value'                        =>    json_encode($request->value),
             'pereferce'                    =>    $request->pereferce,
         ];
         $order=Order::create($attributes);

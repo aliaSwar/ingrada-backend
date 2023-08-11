@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('number_tasks_progress')->unsigned()->nullable();
             $table->foreignId('category_id')->nullable(); //category users['creative','fast','extutable']
             $table->string('category')->nullable();
+            $table->tinyInteger('points')->nullable();//divied on two
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

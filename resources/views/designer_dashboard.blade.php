@@ -1,5 +1,4 @@
 <x-layouts.app>
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -21,6 +20,7 @@
     <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+
     <!-- Custom CSS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="../dist/css/style.min.css" rel="stylesheet">
@@ -43,9 +43,6 @@
 </head>
 
 
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
@@ -100,7 +97,6 @@
                                         <div class="d-inline-flex align-items-center">
                                             <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
 
-
                                         </div>
                                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate"> Assigned tasks
                                         </h6>
@@ -138,32 +134,28 @@
                 <!-- Start Sales Charts Section -->
                 <!-- *************************************************************** -->
                 <div class="row">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title mb-4">The most requested designers</h4>
-                                <canvas  id="myChart" ></canvas>
-
-
-                        </div>
+                  <div class="col-lg-4 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">The most requested designes</h4>
+                            <canvas id="Chart3"></canvas>
                     </div>
                 </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Demand for each region</h4>
-                                <div class="net-income mt-4 position-relative" style="height:294px;"></div>
-                                <ul class="list-inline text-center mt-5 mb-2">
+            </div>
 
-                                </ul>
-                            </div>
-                        </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">The most requested designers</h4>
+                            <canvas id="Chart1"></canvas>
                     </div>
+                </div>
+            </div>
                     <div class="col-lg-4 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
+                        <div class="card" >
+                            <div class="card-body" >
                                 <h4 class="card-title mb-4">The most requested designers</h4>
-                               <div id="chart"></div>
+                                <canvas id="Chart2"></canvas>
                         </div>
                     </div>
                 </div>
@@ -387,100 +379,110 @@
 
       <!-- Page JS -->
       <script src="../assets/js/dashboards-analytics.js"></script>
-      <script>
-
-           var options = {
-          series: [{
-            color:"#E4E0F2",
-
-          name: 'Inflation',
-          data: [{
-
-      x: 'ss',
-      y: $external_count
-    }, {
-      x: 'aya',
-      y: 18
-    }, {
-      x: 'Boushra',
-      y: 13
-
-    },
-    {
-      x: 'Owais',
-      y: 13 },
-      {
-        x: 'Nada',
-      y: 13
-    }
-     ]
-        }],
-          chart: {
-          height: 350,
-          type: 'bar',
-        },
-        plotOptions: {
-          bar: {
-                  horizontal: true,
-            borderRadius: 10,
-
-            dataLabels: {
-             position: 'bottom', // top, center, bottom
-
-            },
-          }
-        },
-        dataLabels: {
-            enabled:false,
-          formatter: function (val) {
-            return val + "%";
-          },
-          offsetY: -20,
-          style: {
-            fontSize: '12px',
-            color: ["#FFF0BB"]
-          }
-        },
 
 
-        title: {
-
-          floating: true,
-          offsetY: 330,
-          align: 'center',
-          style: {
-            color: '#444'
-          }
-        }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
-      </script>
-
-
-      <script>
-       var ctx = document.getElementById("myChart").getContext('2d');
-       const data = <?php echo $internal_count ?>;
-       const dataa = <?php echo $external_count ?>;
-
-var myChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-        labels: ["Advertising and social media",	"Logo and visual identity"],
-        datasets: [{
-            data: [ data,	dataa], // Specify the data values array
-
-            borderColor: ['rgb(255, 222, 135)', 'rgb(97, 97, 97)'], // Add custom color border
-            backgroundColor: ['rgb(255, 222, 135)', 'rgb(97, 97, 97)'], // Add custom color background (Points and Fill)
-            borderWidth: 0.5 // Specify bar border width
-        }]},
-
+   <script>
+    var ctx = document.getElementById('Chart2').getContext('2d');
+    const socialmedia = <?php echo $data['social_media_count'] ?>;
+       const Logo = <?php echo $data['Logo_count'] ?>;
+       const Covers  = <?php echo $data['Covers_count'] ?>;
+       const Drawing = <?php echo $data['Drawing_count'] ?>;
+var Chart1 = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [' social media ','Logo ','Covers  ','Drawing '],
+    datasets: [{
+      label: 'the least',
+      data: [socialmedia,Logo,Covers ,Drawing],
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+       'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderWidth: 0.5
+    }]
+}
 });
-      </script>
+</script>
 
-      <script>
-      </body>
+
+
+<script>
+    var ctx = document.getElementById('Chart1').getContext('2d');
+    const internal_count = <?php echo $data['internal_count'] ?>;
+       const external_count = <?php echo $data['external_count'] ?>;
+var Chart1 = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Internal order','External order'],
+    datasets: [{
+      label: 'the least',
+      data: [internal_count,external_count],
+      backgroundColor: [
+       'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+       'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderWidth: 0.5
+    }]
+}
+});
+</script>
+
+
+
+<script>
+    var ctx = document.getElementById('Chart3').getContext('2d');
+var Chart1 = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [' social media ','Logo ','Covers  ','Drawing '],
+    datasets: [{
+      label: 'the least',
+      data: [10,20,15,30],
+      backgroundColor: [
+       'rgba(255, 99, 132, 0.2)',
+        'rgb(60, 60, 60)',
+       'rgb(60, 60, 60)',
+        'rgb(60, 60, 60)'
+
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgb(60, 60, 60)',
+        'rgb(60, 60, 60)',
+        'rgb(60, 60, 60)'
+
+      ],
+      borderWidth: 0.5
+    }]
+}
+});
+</script>
+
+</body>
 
 </html>
 </x-layouts.app>

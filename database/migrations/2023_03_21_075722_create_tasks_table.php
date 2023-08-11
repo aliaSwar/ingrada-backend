@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->date('real_end_date');
             $table->time('tasks_hour')->nullable();//TODO::search type time
+            //$table->int('tasks_minutes')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('order_id');
             $table->string('type');

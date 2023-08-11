@@ -18,9 +18,10 @@ final class CustomizeOrderController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function __invoke(OrderRequest $request): JsonResponse
+    public function __invoke(Request $request): JsonResponse
     {
         $order=(new StoreOrderAction)($request);
+
 
         return sendSuccessResponse(
             __('messages.get_data'),

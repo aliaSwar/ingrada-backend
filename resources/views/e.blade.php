@@ -4,13 +4,20 @@
         <tr>
             <th>Date</th>
             <th>Hours</th>
+            <th>Hours</th>
+            <th>Hours</th>
+
         </tr>
     </thead>
     <tbody>
-        @foreach ($dailyCounts as $count)
+        @foreach ($dailyCounts as $task)
             <tr>
-                <td>{{ $count->date }}</td>
-                <td>{{ $count->hours }}</td>
+                <td>{{ $task->date }}</td>
+                <td>{{ $task->hours  }}</td>
+                <td>{{ $task->task_count  }}</td>
+                <td>{{  $task->task_ids   }}</td>
+
+
             </tr>
         @endforeach
     </tbody>
@@ -26,13 +33,16 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($weeklyCounts as $count)
-            <tr>
-                <td>{{ $count->week }}</td>
-                <td>{{ $count->year }}</td>
-                <td>{{ $count->hours }}</td>
-            </tr>
-        @endforeach
+      @foreach ($tasks_by_month as $tasks)
+      <tr>
+          <td>{{ $tasks->month }}</td>
+          <td>{{ $tasks->hours  }}</td>
+          <td>{{ $tasks->task_count  }}</td>
+          <td>{{  $tasks->task_ids   }}</td>
+
+
+      </tr>
+  @endforeach
     </tbody>
 </table>
 

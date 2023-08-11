@@ -27,11 +27,11 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('title')->nullable();
             $table->string('scope')->nullable();
-            $table->json('colors')->nullable();
+            $table->text('colors')->nullable();
             $table->integer('number_pages')->nullable();
-            $table->json('fonts')->nullable();
+            $table->text('fonts')->nullable();
             $table->string('pereferce')->nullable();
-            $table->json('value')->nullable();
+            $table->text('value')->nullable();
             $table->string('file')->nullable();
             $table->string('image')->nullable();
             //TODO::is_order_designer
@@ -43,6 +43,7 @@ return new class extends Migration
             $table->date('expected_limit_date', 'y-m-d')->nullable();//المتوقع
             $table->enum('status', ['Pendning','Initiated', 'InProgress', 'Completed', 'Failed']);
             $table->text('notes')->nullable(); // notes the contect writer
+            $table->tinyInteger('points')->nullable();
             $table->timestamps();
         });
     }
