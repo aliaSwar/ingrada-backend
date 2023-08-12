@@ -14,7 +14,6 @@ use Cache;
 use DB;
 use App\Actions\Web\GetPointLastMonthAction;
 use App\Actions\Web\GetPointLastMonthTotalAction;
-
 class DesignerReportController extends Controller
 {
     /**
@@ -35,6 +34,12 @@ class DesignerReportController extends Controller
       ->where('user_id', $id)
       ->get();
 
+      foreach ($tasks_by_day  as $task) {
+        $delimiter = ','; // or '-'
+        $digits = str_split($task->hours, 2);
+        $task->hours = implode($delimiter, $digits);
+
+    }
         return view(
             'manager.reports.daily.designers-report',
             ['tasks_by_day' =>  $tasks_by_day,'user_id'=>$id]
@@ -50,6 +55,12 @@ class DesignerReportController extends Controller
       }
       $average_points=(new GetPointLastMonthTotalAction)($id);
       $tasks_by_month = Task::byMonth()->where('user_id', $id)->get();
+
+      foreach ($tasks_by_month  as $task) {
+        $delimiter = '-'; // or '-'
+        $digits = str_split($task->hours, 2);
+        $task->hours = implode($delimiter, $digits);
+    }
 
         return view(
             'manager.reports.monthly.designers-report',
@@ -103,6 +114,12 @@ class DesignerReportController extends Controller
         );
 
     }
+
+    function formatNumberWithDelimiter($number, $delimiter)
+{
+    $digits = str_split($number, 2);
+    return implode($delimiter, $digits);
+}
 
 }
 

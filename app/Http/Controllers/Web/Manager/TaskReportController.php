@@ -26,7 +26,11 @@ class TaskReportController extends Controller
     public function Daily_report()
     {
       $tasks_by_day = Task::byDay()->get();
-
+      foreach ($tasks_by_day  as $task) {
+        $delimiter = '-'; // or '-'
+        $digits = str_split($task->hours, 2);
+        $task->hours = implode($delimiter, $digits);
+    }
         return view(
             'manager.reports.daily.orders-report',
             ['tasks_by_day' =>  $tasks_by_day]
@@ -37,6 +41,11 @@ class TaskReportController extends Controller
     {
 
       $tasks_by_month = Task::byMonth()->get();
+      foreach ($tasks_by_month  as $task) {
+        $delimiter = '-'; // or '-'
+        $digits = str_split($task->hours, 2);
+        $task->hours = implode($delimiter, $digits);
+    }
 
         return view(
             'manager.reports.monthly.orders-report',

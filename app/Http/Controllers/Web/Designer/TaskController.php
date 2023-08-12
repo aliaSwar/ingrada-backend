@@ -172,7 +172,7 @@ final class TaskController extends Controller
     }
     public function get_todotask()
     {
-        $Progress=Task::where('user_id', auth()->user()->id)->where('status', 'Progress')->get();
+        $Progress=Task::where('user_id', auth()->user()->id)->where('status', 'InProgress')->get();
         $Tests=Task::where('user_id', auth()->user()->id)->where('status', 'Test')->get();
         $Fixs=Task::where('user_id', auth()->user()->id)->where('status', 'Fix')->get();
         $Completeds=Task::where('user_id', auth()->user()->id)->where('status', 'Completed')->get();

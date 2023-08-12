@@ -8,7 +8,7 @@
                       aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                           class="hide-menu">HOME</span></a></li>
               <li class="list-divider"></li>
-              <li class="sidebar-item"> <a class="sidebar-link " href="{{ route('content-writer.external-orders.index') }}"
+              <li class="sidebar-item"> <a class="sidebar-link " href="{{ route('external-order.index') }}"
                   aria-expanded="false"><i data-feather="sliders" class="feather-icon"></i><span
                       class="hide-menu">ORDERS </span></a>
 

@@ -15,7 +15,7 @@ class ContentWriter
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->hasRole('content-writer')) 
+        if (auth()->user()->hasRole('content writer'))
             return $next($request);
         return view('errors.403');
     }

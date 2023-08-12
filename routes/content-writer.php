@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
            * Protected endpoints.
           */
           Route::middleware(['content-writer'])->group(function (): void {
-               Route::resource('external-orders', ExternalOrderContentController::class);
-               
+               Route::resource('external-order', ExternalOrderContentController::class);
+
           });
      });
