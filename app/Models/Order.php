@@ -52,4 +52,5 @@ final class Order extends Model
     {
         return asset("storage/{$value}");
     }
+
 }

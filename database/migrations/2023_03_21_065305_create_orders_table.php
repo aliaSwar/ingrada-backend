@@ -27,11 +27,11 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('title')->nullable();
             $table->string('scope')->nullable();
-            $table->json('colors')->nullable();
+            $table->text('colors')->nullable();
             $table->integer('number_pages')->nullable();
-            $table->json('fonts')->nullable();
+            $table->text('fonts')->nullable();
             $table->string('pereferce')->nullable();
-            $table->json('value')->nullable();
+            $table->text('value')->nullable();
             $table->string('file')->nullable();
             $table->string('image')->nullable();
             //TODO::is_order_designer
