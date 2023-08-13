@@ -17,6 +17,6 @@ class Designer
     {
         if (auth()->user()->hasRole('designer')) 
             return $next($request);
-        return view('errors.403');
+        abort(403);
     }
 }

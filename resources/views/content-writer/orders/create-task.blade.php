@@ -1,11 +1,7 @@
 <x-layouts.app>
   <br>
   <br>
-                              <!--logo customiz-->
-                              <div class="col-12">
-                                  <div class="card">
-                                      <div class="card-body">
-                                          <div class="row">
+
                               <div class="col-12">
                                   <div class="card card-widget task-card">
                                       <div class="card-body">
@@ -48,8 +44,8 @@
                                                                <hr>
                                                           </div>
 
-                                                      <div class="card-body">
-                                                      <form action="{{ route('content-writer.tasks.store', $order) }}" method="POST" enctype="multipart/form-data">
+                                                    <div class="card-body">
+                                                    <form action="{{ route('content-writer.create-tasks.store', $order->id) }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
 
                                                             @if ($order->is_order_designer)
@@ -162,13 +158,12 @@
                                                       </div>
                                                     </form>
                                                   </div>
-
                                           </div>
                                       </div>
                                   </div>
                               </div>
-                  </div>
-              </div>
-          </div>
+                              
+        
+
 
       </x-layouts.app>

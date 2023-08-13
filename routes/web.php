@@ -2,29 +2,12 @@
 
 declare(strict_types=1);
 
-
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Web\ContentWriter\ExternalOrderContentController;
-use App\Http\Controllers\Web\Designer\TaskController;
-use App\Http\Controllers\Web\Manager\ExternalOrderController;
+use App\Http\Controllers\Web\ProfileController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
 use App\Http\Controllers\Web\Manager\TaskReportController;
-use App\Http\Controllers\Web\Manager\InternalCustomerController;
-use App\Http\Controllers\Web\Manager\InternalOrderController;
-use App\Http\Controllers\Web\ProfileController;
-use App\Http\Controllers\Web\Setting\CategoryController;
-use App\Http\Controllers\Web\Setting\ColorController;
-use App\Http\Controllers\Web\Setting\FontController;
-use App\Http\Controllers\Web\Setting\PrefernceController;
-use App\Http\Controllers\Web\Setting\PrefernceValueController;
-use App\Http\Controllers\Web\Setting\RoleController;
-use App\Http\Controllers\Web\Setting\ScopeCotroller;
-use App\Http\Controllers\Web\Setting\TypeCotroller;
-use App\Http\Controllers\ChartController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Category;
-use App\Models\User;
-use App\Models\Task;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,15 +28,16 @@ Route::middleware('auth:sanctum')->group(function (): void {
     });
 
 
+    });
+    Route::post('/hello', function () {
+        return "Fdfd";
+    })->name('hello');
+
     Route::get('/', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
 
-    });
-    Route::name('content-writer.')->prefix('content-writer/')->group(function (): void {
-        Route::resource('external-orders', ExternalOrderContentController::class);
 
-    });
 
 Route::get('/', function () {
     return view('dashboard');

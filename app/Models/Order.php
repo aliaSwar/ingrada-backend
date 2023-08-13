@@ -25,9 +25,9 @@ final class Order extends Model
         'scope', 'colors', 'fonts', 'file', 'limit_date', 'status', 'notes',
     ];
 
-    public function customers(): BelongsTo
+    public function customer(): BelongsTo
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class,'customers_id','id');
     }
 
     public function size(): BelongsTo

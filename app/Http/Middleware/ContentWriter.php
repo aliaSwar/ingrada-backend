@@ -17,6 +17,6 @@ class ContentWriter
     {
         if (auth()->user()->hasRole('content writer'))
             return $next($request);
-        return view('errors.403');
+        abort(403);
     }
 }

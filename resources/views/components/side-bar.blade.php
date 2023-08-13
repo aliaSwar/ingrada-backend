@@ -81,6 +81,7 @@
                   </li>
                       </ul>
                   </li>
+                  <li class="list-divider"></li>
                   <li class="menu-item">
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
@@ -89,12 +90,12 @@
                             <i class="bx bx-power-off me-2"></i>
 
                             <input type="submit" style="border:none;background:none;padding: 0"
-                                value=" Logout"></span>
+                                value=" Logout">
                             <a>
                     </form>
                 </li>
 
-              <li class="list-divider"></li>
+
 
 
 

@@ -19,9 +19,9 @@ final class ExternalOrderContentController extends Controller
     public function index(): View
     {
         $user=Auth::user();
-        $ordres=$user->orders;
-
-        return view('content-writer.external-order.index', ['orders'=>$ordres]);
+        $orders=$user->orders()->paginate(15);
+        //dd($orders);
+        return view('content-writer.orders.index',['orders'=>$orders]);
     }
 
 

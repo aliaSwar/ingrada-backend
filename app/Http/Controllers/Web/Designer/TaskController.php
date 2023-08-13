@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Web\Designer;
 
 use App\Actions\DistirbutionAlgorithmAction;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Task;
 use App\Models\User;
@@ -61,6 +62,7 @@ final class TaskController extends Controller
      */
     public function store(Request $request, $id)
     {
+        dd($request->all());
         $order=Order::find($id);
         $task=new Task;
         $task->start_date=$request->start_date;

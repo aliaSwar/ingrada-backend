@@ -3,10 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Web\ContentWriter\ExternalOrderContentController;
-
-
-
-
+use App\Http\Controllers\Web\ContentWriter\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +23,9 @@ use Illuminate\Support\Facades\Route;
            * Protected endpoints.
           */
           Route::middleware(['content-writer'])->group(function (): void {
-               Route::resource('external-order', ExternalOrderContentController::class);
+               Route::resource('orders', ExternalOrderContentController::class);
+               Route::post('orders/create-tasks/{order}', [TaskController::class,'store'])->name('content-writer.create-tasks.store');
+               Route::get('tasks/create/{order}', [TaskController::class,'create'])->name('content-writer.tasks.create');
 
           });
      });
