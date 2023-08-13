@@ -38,10 +38,4 @@ final class RegisteredUserRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator): void
-    {
-        throw new HttpResponseException(
-            sendFailedResponse($validator->errors()->first(), null, 422)
-        );
-    }
 }

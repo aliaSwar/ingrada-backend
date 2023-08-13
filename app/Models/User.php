@@ -80,19 +80,13 @@ final class User extends Authenticatable
     {
         return 'slug';
     }
-    public function scopeWithTaskCountInProgressAndStartDateBetween($query, $start_date)
+    public function scopeWithTaskCountInProgress($query, $start_date,$end_date)
     {
-        return $query->whereHas(
-            'tasks',
-            fn (Builder $query) =>
+        return $query->withCount(['tasks' => fn (Builder $query) =>
                 $query->where('status', 'Progress')
-            // ->where('start_date', '>=',$start_date)
-            // ->where('end_date', '<=',$start_date)
-        )->withCount(['tasks' => fn (Builder $query) =>
-                $query->where('status', 'Progress')
-            // ->where('start_date', '>=',$start_date)
-            // ->where('end_date', '<=',$start_date)
-        ])  ;
+                ->whereBetween('start_date', [$start_date, $end_date])
+                ->whereBetween('end_date', [$start_date, $end_date])
+        ]);
     }
 
     public function setPasswordAttribute($password): void

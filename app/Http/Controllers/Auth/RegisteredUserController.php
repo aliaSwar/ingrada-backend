@@ -49,19 +49,23 @@ final class RegisteredUserController extends Controller
        */
         public function store(RegisteredUserRequest $request): RedirectResponse
         {
-
+            
             $data = $request->validated();
-            $data = Arr::add($data, 'avatar', uploadFile($request->path, 'users'));
-            $data['category']=Category::findOrFail($request->category_id)->name;
+            $data['avatar'] =  uploadFile($request->path, 'users');
+            if ($request->category_id) {
+                $data['category']=Category::findOrFail($request->category_id)->name;
+                $data['category_id']=$request->category_id;
+            }
             $user = new User($data);
-            $user->category=$data['category'];
             $user->save();
+            
             $user->assignRole($request->role);
+            
             if (!$user) {
                 return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
             }
-
-            // Notification::send($user, new UserPublish($user));
+            
+            Notification::send($user, new UserPublish($user));
 
 
             return redirect()->route('users.index');

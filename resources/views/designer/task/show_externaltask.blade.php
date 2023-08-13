@@ -26,9 +26,10 @@
 
                                                 </div>
 
-                                                <form action="{{ route('showexternal',$order) }}"
+                                                <form action="{{ route('tasks.update',$task_id) }}"
                                                 method="POST">
                                                 @csrf
+                                                @method('PUT')
                                                 <div class="form-group mb-0"
                                                      style="margin: 19px;">
 

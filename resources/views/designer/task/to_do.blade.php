@@ -211,7 +211,7 @@
                                                     <p class="mb-3"><i data-feather="watch" class="svg-icon" style="margin-right: 5px;"></i>{{ $Completed->real_end_date}}</p>
                                                     <p class="mb-3" style="color: rgb(144, 224, 159) ;"><i data-feather="check-circle" class="svg-icon" style="margin-right: 5px; color: rgb(144, 224, 159);"></i>Done</p>
 
-                                                   
+
                                                 </div>
                                             </div>
                                            @endforeach
