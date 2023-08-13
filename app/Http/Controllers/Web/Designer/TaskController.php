@@ -101,26 +101,22 @@ final class TaskController extends Controller
      */
     public function show($id)
     {
-        $order=Task::findOrFail($id);
+        $task=Task::findOrFail($id);
+        $order=Order::findOrFail($task->order_id);
 
-        if(Order::where('id', $order->order_id)->where('is_enternal', true)->exists()) {
+
+        if(Order::where('id', $task->order_id)->where('is_enternal', true)->exists()) {
             return view(
                 'designer.task.show',
-                ['order' => $order]
+                ['order' => $order,
+                'task_id'=>$id
+                ]
             );
         }
 
-        return $this->show_external($order->order_id);
-
-        $categories_user=[
-            Category::CATEGORY_CONTENT_WRITER_BIG,
-            Category::CATEGORY_CONTENT_WRITER_SMALL,
-            Category::CATEGORY_CONTENT_WRITER_MEDIUM,
-        ];
+        return $this->show_external_task($task->order_id,$id);
 
 
-
-        //  return view('designer.task.show',  ['order'=>$order ]);
     }
 
     public function show_external($id)
@@ -131,8 +127,8 @@ final class TaskController extends Controller
 
         return view('designer.task.show_external', [
             'order'          =>   $order,
-            'designer_name' =>   $designer_name,
-            'users'         =>   User::query()
+            'designer_name'  =>   $designer_name,
+            'users'          =>   User::query()
                 ->role('content writer')
                 ->where('is_deleted', false)
                 ->where('is_active', true)
@@ -140,8 +136,23 @@ final class TaskController extends Controller
         ]);
     }
 
+    public function show_external_task($id,$task_id)
+    {
+        //return 1;
+        $order=Order::findOrFail($id);
+        $designer_name=User::where('id', $order->designer_id)->select('fullname')->first();
 
-
+        return view('designer.task.show_externaltask', [
+            'order'          =>   $order,
+            'designer_name'  =>   $designer_name,
+            'task_id'        =>          $task_id,
+            'users'          =>   User::query()
+                ->role('content writer')
+                ->where('is_deleted', false)
+                ->where('is_active', true)
+                ->get()
+        ]);
+    }
 
 
 
@@ -157,9 +168,19 @@ final class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): void
+    public function update(Request $request, $id)
     {
+    //  dd($request->status);
+      $task=Task::findOrFail($id);
+      $task->status=$request->status;
+      $task->save();
 
+      $order=Order::findOrFail($task->order_id);
+      $order->update($request->all());
+      return view(
+        'designer.task.index',
+        ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]
+    );
     }
 
     /**
@@ -172,6 +193,8 @@ final class TaskController extends Controller
 
         return redirect()->route('in_ex');
     }
+
+
     public function get_todotask()
     {
         $Progress=Task::where('user_id', auth()->user()->id)->where('status', 'InProgress')->get();

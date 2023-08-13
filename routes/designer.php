@@ -33,5 +33,9 @@ use Illuminate\Support\Facades\Route;
                Route::get('/showexternal/{id}', [TaskController::class, 'show_external'])->name('to');
                Route::post('/showexternal/{order}', [TaskController::class, 'store_external'])->name('showexternal'); */
                
+           //    Route::get('/showexternaltask/{id}', [TaskController::class, 'show_external_task'])->name('showexternaltask');
+               Route::post('/showexternal/{order}', [TaskController::class, 'store_external'])->name('showexternal');
+
           });
      });
+
