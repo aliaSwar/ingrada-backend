@@ -31,7 +31,9 @@ use Illuminate\Support\Facades\Route;
                Route::get('/todo', [TaskController::class, 'get_todotask'])->name('to_do');
                Route::get('/index_external', [TaskController::class, 'index_external'])->name('in_ex');
                Route::get('/showexternal/{id}', [TaskController::class, 'show_external'])->name('to');
+           //    Route::get('/showexternaltask/{id}', [TaskController::class, 'show_external_task'])->name('showexternaltask');
                Route::post('/showexternal/{order}', [TaskController::class, 'store_external'])->name('showexternal');
-               
+
           });
      });
+

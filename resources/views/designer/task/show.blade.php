@@ -33,6 +33,10 @@
 
 
                                                       <div class="form-group mb-0" style="margin: 19px;">
+                                                        <form action="{{ route('tasks.update',$task_id) }}"
+                                                          method="POST">
+                                                          @csrf
+                                                          @method('PUT')
 
 
                                                           <i class="ri-pencil-ruler-2-line"></i>
@@ -60,17 +64,11 @@
                                                                               <input type="text" name="type" class="custom-select form-control bg-white custom-radius "  value="{{$order->type??'' }}">
                                                                           </div>
                                                                       </div>
-                                                                      <div class="col-lg-3">
-                                                                          <div class="form-group mb-0">
-                                                                              <label for="exampleInputText3" class="h5">Start Dates</label>
-                                                                              <input type="date" name="start_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->start_date }}">
-                                                                          </div>
-                                                                      </div>
 
                                                                       <div class="col-lg-3">
                                                                         <div class="form-group mb-0">
                                                                             <label for="exampleInputText3" class="h5">End Dates</label>
-                                                                            <input type="date" name="end_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->end_date }}">
+                                                                            <input type="date" name="end_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->limit_date }}">
                                                                         </div>
                                                                     </div>
 
@@ -126,6 +124,7 @@
                                                                          value="submit"
                                                                          class="btn btn-warning mr-3">
                                                                   </div>
+                                                                </form>
                                                                </div>
                                                                 </div>
                                                             </div>
