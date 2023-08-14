@@ -29,7 +29,7 @@ final class DistirbutionAlgorithmAction
                                         ->withTaskCountInProgress($request->start_date,$request->end_date)
                                         ->role('designer')
                                         ->where('is_deleted', false)
-                                        //->where('category',$request->category)
+                                        ->where('category',$request->category)
                                         ->where('is_active', true)
                                         ->orderBy('tasks_count', 'asc')
                                         ->get();

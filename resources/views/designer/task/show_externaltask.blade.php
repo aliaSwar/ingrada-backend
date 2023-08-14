@@ -57,86 +57,27 @@
                                                 <div class="card-body">
                                                      <div class="row">
 
-
-                                                      <div class="col-lg-3">
-                                                        <div class="form-group mb-0">
-                                                             <label for="exampleInputText2"
-                                                                  class="h5">Select Content Writer </label>
-                                                                  <select name="user_id"
-                                                                  class="selectpicker custom-select form-control bg-white custom-radius"
-                                                                  data-style="py-0">
-                                                                  @foreach ($users as $user)
-                                                                  <option value="{{ $user->id }}"> {{ $user->fullname }}</option>
-                                                                  @endforeach
-
-
-                                                                  </select>
-                                                        </div>
-                                                   </div>
-
                                                           <div class="col-lg-3">
                                                                <div class="form-group mb-0">
                                                                     <label for="exampleInputText2"
                                                                          class="h5">Type </label>
-                                                                    <input type="text"
-                                                                         name="type"
-                                                                         class="custom-select form-control bg-white custom-radius "
-                                                                         value="{{ old('type', $order->type??'') }}">
-                                                               </div>
-                                                          </div>
-                                                          <div class="col-lg-3">
-                                                               <div class="form-group mb-0">
-                                                                    <label for="exampleInputText3"
-                                                                         class="h5">End Dates</label>
-                                                                    <input type="date"
-                                                                         name="limit_date"
-                                                                         class="custom-select form-control bg-white custom-radius "
-                                                                         value="{{ old('limit_date', $order->limit_date) }}">
+                                                                  <p>{{ $order->type }}</p> - <p>{{ $order->pereferce}}</p>
+                                                                  -<p>{{ $order->value }}
                                                                </div>
                                                           </div>
                                                           <div class="col-lg-3">
                                                                <div class="form-group mb-0">
                                                                     <label for="exampleInputText3"
                                                                          class="h5">Price</label>
-                                                                    <input type="text"
-                                                                         name="final_price"
-                                                                         class=" form-control bg-white custom-radius "
-                                                                         value="{{$order->primary_price}}">
+                                                                       <p>{{ $order->final_price }}</p>
                                                                </div>
                                                           </div>
-                                                          <hr style="margin-top: 12px;">
-                                                          <div class="col-lg-3">
-                                                               <div class="form-group mb-0">
-                                                                    <label for="exampleInputText2"
-                                                                         class="h5"> Design</label>
-                                                                    <input type="text"
-                                                                         name="pereferce"
-                                                                         class=" form-control bg-white custom-radius "
-                                                                         value={{ old('pereferce', $order->pereferce??'') }}>
-                                                               </div>
-                                                          </div>
-                                                          @if ($order->value!=null)
-                                                          <div class="col-lg-3">
-                                                               <div class="form-group mb-0">
-                                                                    <label for="exampleInputText2"
-                                                                         class="h5">Type Of Design</label>
-                                                                    <input type="text"
-                                                                         name="value"
-                                                                         class=" form-control bg-white custom-radius "
-                                                                         value="{{ old('value', $order->value) }}">
-                                                               </div>
-                                                          </div>
-                                                          @endif
-
 
                                                           <div class="col-lg-3">
                                                                <div class="form-group mb-0">
                                                                     <label for="exampleInputText3"
                                                                          class="h5">Domain</label>
-                                                                    <input type="text"
-                                                                         name="scope"
-                                                                         class=" form-control bg-white custom-radius "
-                                                                         value={{ old('scope', $order->scope??"") }}>
+                                                                    <p>{{  $order->scope}}</p>
                                                                </div>
                                                           </div>
 
@@ -144,6 +85,7 @@
                                                                <div class="form-group mb-0">
                                                                     <label for="exampleInputText3"
                                                                          class="h5">Colors</label>
+                                                                         {{ $order->colors }}
                                                                     <div class="form-control bg-white custom-radius"
                                                                          style="text-align:justify;">
                                                                          <span class="dot"
@@ -167,7 +109,7 @@
                                                                          Client</label>
                                                                     <div class="form-control bg-white custom-radius"
                                                                          style="text-align:justify;">
-                                                                         <a href="C:\Users\ABC\Desktop\cpp">
+                                                                         <a href="{{ asset($order->image) }}">
                                                                               Click to open Image
                                                                          </a>
                                                                     </div>

@@ -41,9 +41,6 @@ final class Task extends Model
             ->orderBy('date');
     }
 
-
-
-
   public function scopeByWeek($query) {
     return $query
         ->select(DB::raw('YEAR(start_date) as year'), DB::raw('WEEK(start_date) as week'), DB::raw('SUM(tasks_hour) as hours'))
@@ -60,7 +57,7 @@ public function scopeByMonth($query)
             ->groupBy('month')
             ->orderBy('month', 'desc');
     }
-
-
-
+public function giver(){
+  return $this->belongsTo(User::class,'giver_id','id');
+}
 }

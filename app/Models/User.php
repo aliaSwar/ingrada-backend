@@ -128,4 +128,7 @@ final class User extends Authenticatable
     {
         return $this->belongsToMany(Day::class);
     }
+    function tasks_giver(){
+       return $this->hasMany(Task::class);
+    }
 }
