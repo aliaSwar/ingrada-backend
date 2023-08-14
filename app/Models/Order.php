@@ -22,12 +22,12 @@ final class Order extends Model
 
     protected $fillable = [
         'customers_id', 'item_id', 'description', 'is_idea', 'is_accept', 'type_order', 'primary_price', 'final_price', 'type',
-        'scope', 'colors', 'fonts', 'file', 'limit_date', 'status', 'notes',
+        'scope', 'colors', 'fonts', 'file', 'limit_date', 'status', 'notes','value'
     ];
 
     public function customer(): BelongsTo
     {
-        return $this->belongsTo(Customer::class,'customers_id','id');
+        return $this->belongsTo(Customer::class);
     }
 
     public function size(): BelongsTo

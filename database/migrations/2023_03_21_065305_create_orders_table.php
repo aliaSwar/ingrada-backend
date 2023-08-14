@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('customers_id')->nullable();
+            $table->foreignId('customer_id')->nullable();
             $table->foreignId('item_id')->nullable();
             $table->text('description')->nullable(); //description the customers
             $table->boolean('is_idea')->default(0);
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->integer('number_pages')->nullable();
             $table->text('fonts')->nullable();
             $table->string('pereferce')->nullable();
-            $table->text('value')->nullable();
+            $table->string('value')->nullable();
             $table->string('file')->nullable();
             $table->string('image')->nullable();
             //TODO::is_order_designer

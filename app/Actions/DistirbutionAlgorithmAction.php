@@ -21,7 +21,7 @@ final class DistirbutionAlgorithmAction
             ->where('is_active', true)
             ->get();
         if ($users->isEmpty()) {
-            return dd('errors.404');
+            abort(404);
         }
 
         $users_with_task_in_progress =User::query()
