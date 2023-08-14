@@ -166,7 +166,7 @@
                                                                          Client</label>
                                                                     <div class="form-control bg-white custom-radius"
                                                                          style="text-align:justify;">
-                                                                         <a href="C:\Users\ABC\Desktop\cpp">
+                                                                         <a href="{{ asset($order->image) }}">
                                                                               Click to open Image
                                                                          </a>
                                                                     </div>
@@ -201,6 +201,7 @@
                                                      style="border-radius: 20px;">
                                                      <div class="card-body">
                                                           <div class="row">
+                                                            <label>Notes: </label>
                                                                <textarea name="notes"
                                                                     class="form-control bg-white @error('notes') border-light-danger @enderror"
                                                                     style="

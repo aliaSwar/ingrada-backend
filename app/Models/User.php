@@ -99,9 +99,9 @@ final class User extends Authenticatable
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function orders(): HasMany
+    public function orders(): BelongsToMany
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsToMany(Order::class);
     }
 
     public function tasks(): HasMany

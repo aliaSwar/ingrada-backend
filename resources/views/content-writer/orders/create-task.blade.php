@@ -53,7 +53,7 @@
                                                               <div class="card-body">
                                                                   <div class="row">
                                                                     <label for="exampleInputText01" class="h5">Desginer</label>
-                                                              <h3> {{ $designer_name}}</h3>
+                                                              <h3> {{ $designer->fullname}}</h3>
                                                                   </div>
                                                               </div>
                                                           </div>
@@ -162,8 +162,8 @@
                                       </div>
                                   </div>
                               </div>
-                              
-        
+
+
 
 
       </x-layouts.app>

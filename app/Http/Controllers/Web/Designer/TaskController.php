@@ -171,10 +171,7 @@ final class TaskController extends Controller
 
       $order=Order::findOrFail($task->order_id);
       $order->update($request->all());
-      return view(
-        'designer.task.index',
-        ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]
-    );
+      return redirect()->route('tasks.index');
     }
 
     /**
