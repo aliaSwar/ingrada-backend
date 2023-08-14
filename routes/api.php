@@ -23,6 +23,7 @@ use App\Http\Controllers\Api\Design\LikedDesignController;
 use App\Http\Controllers\Api\Design\ShowDesignsController;
 use App\Http\Controllers\Api\Design\ShowDetailsDesignController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
+use App\Http\Controllers\Api\Order\GetOrdersController;
 use App\Http\Controllers\Api\Order\RatingDesignerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -145,6 +146,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                     RatingDesignerController::class
                 );
             });
+            Route::get(
+                'get-orders',
+                GetOrdersController::class
+            );
         });
         //Chat
         Route::name('chat.')->prefix('chat')->group(function (): void {

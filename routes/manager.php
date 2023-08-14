@@ -9,7 +9,7 @@ use App\Http\Controllers\Web\Manager\InternalCustomerController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
 use App\Http\Controllers\Web\Manager\RatingDesignerController;
-
+use App\Http\Controllers\Web\Manager\TaskReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
