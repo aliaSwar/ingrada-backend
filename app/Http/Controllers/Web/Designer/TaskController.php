@@ -16,7 +16,7 @@ use Illuminate\View\View;
 final class TaskController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a tasks from content writer
      */
     public function index(): View
     {
@@ -41,63 +41,64 @@ final class TaskController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create($id): View
-    {
-        $order=Order::findOrFail($id);
+    // /**
+    //  * Show the form for creating a new resource.
+    //  */
+    // public function create($id): View
+    // {
+    //     $order=Order::findOrFail($id);
 
-        if ('Failed' ===$order->status) {
+    //     if ('Failed' ===$order->status) {
 
-            return  redirect()->route('content-writer.external-orders.index')->with(['message'=>'the order refused!']);
-        }
-        $designer=User::find($order->designer_id);
+    //         return  redirect()->route('content-writer.external-orders.index')->with(['message'=>'the order refused!']);
+    //     }
+    //     $designer=User::find($order->designer_id);
 
-        return view('designer.task.create', ['order'=>$order,'designer'=>$designer]);
-    }
+    //     return view('designer.task.create', ['order'=>$order,'designer'=>$designer]);
+    // }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request, $id)
-    {
-        dd($request->all());
-        $order=Order::find($id);
-        $task=new Task;
-        $task->start_date=$request->start_date;
-        $task->end_date=$request->end_date;
-        $task->real_end_date=$request->end_date;
-        $task->name=$request->name;
-        $task->status="Progress";
-        $task->description=$request->description;
-        $task->order_id=$order->id;
-        $task->type=$order->type;
-        $task->category="fast";
+    // /**
+    //  * Store a newly created resource in storage.
+    //  */
+    // public function store(Request $request, $id)
+    // {
+    //     dd($request->all());
+    //     $order=Order::find($id);
+    //     $task=new Task;
+    //     $task->start_date=$request->start_date;
+    //     $task->end_date=$request->end_date;
+    //     $task->real_end_date=$request->end_date;
+    //     $task->name=$request->name;
+    //     $task->status="Progress";
+    //     $task->description=$request->description;
+    //     $task->order_id=$order->id;
+    //     $task->type=$order->type;
+    //     $task->category="fast";
 
-        if ($order->designer_id) {
-            $task->user_id=$order->designer_id;
-            $task->save();
-            $user=User::find($order->designer_id);
-            $user->number_tasks_progress=$user->number_tasks_progress+1;
-            $user->save();
-            $user->orders()->attach($order->id);
+    //     if ($order->designer_id) {
+    //         $task->user_id=$order->designer_id;
+    //         $task->save();
+    //         $user=User::find($order->designer_id);
+    //         $user->number_tasks_progress=$user->number_tasks_progress+1;
+    //         $user->save();
+    //         $user->orders()->attach($order->id);
 
-            return back();
-        }
-        $user=(new DistirbutionAlgorithmAction)($request);
-        $task->user_id=$user->id;
-        $task->save();
-        $user->number_tasks_progress=$user->number_tasks_progress+1;
-        $user->save();
-        $order->designer_id=$user->id;
-        $user->orders()->attach($order->id);
+    //         return back();
+    //     }
+    //     $user=(new DistirbutionAlgorithmAction)($request);
+    //     $task->user_id=$user->id;
+    //     $task->save();
+    //     $user->number_tasks_progress=$user->number_tasks_progress+1;
+    //     $user->save();
+    //     $order->designer_id=$user->id;
+    //     $user->orders()->attach($order->id);
 
-        return back();
-    }
+    //     return back();
+    // }
 
     /**
      * Display the specified resource.
+     * request id task
      */
     public function show($id)
     {
@@ -115,8 +116,6 @@ final class TaskController extends Controller
         }
 
         return $this->show_external_task($task->order_id,$id);
-
-
     }
 
     public function show_external($id)
@@ -135,7 +134,7 @@ final class TaskController extends Controller
                 ->get()
         ]);
     }
-
+//coming from content writer
     public function show_external_task($id,$task_id)
     {
         //return 1;
@@ -146,11 +145,6 @@ final class TaskController extends Controller
             'order'          =>   $order,
             'designer_name'  =>   $designer_name,
             'task_id'        =>          $task_id,
-            'users'          =>   User::query()
-                ->role('content writer')
-                ->where('is_deleted', false)
-                ->where('is_active', true)
-                ->get()
         ]);
     }
 
@@ -177,10 +171,7 @@ final class TaskController extends Controller
 
       $order=Order::findOrFail($task->order_id);
       $order->update($request->all());
-      return view(
-        'designer.task.index',
-        ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]
-    );
+      return redirect()->route('tasks.index');
     }
 
     /**

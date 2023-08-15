@@ -20,8 +20,9 @@ final class DistirbutionAlgorithmAction
                    //->where('category',$request->category)
             ->where('is_active', true)
             ->get();
+
         if ($users->isEmpty()) {
-            return dd('errors.404');
+            abort(404);
         }
 
         $users_with_task_in_progress =User::query()
@@ -34,13 +35,14 @@ final class DistirbutionAlgorithmAction
                                         ->orderBy('tasks_count', 'asc')
                                         ->get();
         //dont have any task in progress
-        if ($users_with_task_in_progress->isEmpty() && 'high'===$request->prority) {
-
+        if ( 'high'===$request->prority) {
             return $users->first();
         }
-        // have task in progress
-        if ($users_with_task_in_progress->isNotEmpty()) {
-            return $users_with_task_in_progress->first();
+
+        if ($users->first()->number_tasks <= $users->first()->tasks()->where('start_date',$request->satrt_date)->count()) {
+            return null;
         }
+        return $users->first();
+
     }
 }

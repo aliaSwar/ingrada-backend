@@ -33,7 +33,6 @@ final class ExternalOrderContentController extends Controller
     {
         $order=Order::findOrFail($id);
         $designer_name=User::where('id', $order->designer_id)->select('fullname')->first();
-
         if(Order::where('id', $order->order_id)->where('is_enternal', false)->exists()) {
             return view('content-writer.external-order.show', [
                 'order'          =>   $order,

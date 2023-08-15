@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -36,11 +36,12 @@ class TaskController extends Controller
     {
         $order=Order::find($id);
         $task=new Task();
+        $task->giver_id=auth()->id();
         $task->start_date=$request->start_date;
         $task->end_date=$request->end_date;
         $task->real_end_date=$request->end_date;
         $task->name=$request->name;
-        $task->status="Progress";
+        $task->status="InProgress";
         $task->description=$request->description;
         $task->order_id=$order->id;
         $task->type=$order->type;
@@ -54,18 +55,16 @@ class TaskController extends Controller
             $user->save();
             $user->orders()->attach($order->id);
 
-            return back();
+            return redirect()->route('orders.index');
         }
         $user=(new DistirbutionAlgorithmAction)($request);
-        //pdd($user);
         $task->user_id=$user->id;
         $task->save();
         $user->number_tasks_progress=$user->number_tasks_progress+1;
         $user->save();
         $order->designer_id=$user->id;
-        dd($order);
         $user->orders()->attach($order->id);
 
-        return back();
+        return redirect()->route('orders.index');
     }
 }

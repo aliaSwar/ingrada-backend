@@ -38,6 +38,8 @@
     <tr>
     <th>Task</th>
     <th>Type</th>
+    <th> Start Date</th>
+    <th> End Date</th>
     <th>Status</th>
     <th>Details</th>
     </tr>
@@ -47,6 +49,8 @@
     <tr  >
     <td>{{ $task->name}}</td>
     <td> {{ $task->type}} </td>
+    <td> {{ $task->start_date}} </td>
+    <td> {{ $task->end_date}} </td>
     <td>{{ $task->status}} </td>
     <td>
         <a class="Details"  data-toggle="Details" href="{{ route('tasks.show', $task->id) }}"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
