@@ -155,7 +155,7 @@
                         data-bs-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">
-                        <img src={{ asset( auth()->user()->avatar ?? 'assets\images\users\1.jpg') }} 
+                        <img src={{ asset( auth()->user()->avatar ?? 'assets\images\users\1.jpg') }}
                             alt="user"
                             class="rounded-circle"
                             width="40">
@@ -164,7 +164,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-right user-dd animated flipInY">
                         <a class="dropdown-item"
-                            href="{{ route('profile') }}"><i data-feather="user"
+                            href=""><i data-feather="user"
                                 class="svg-icon me-2 ms-1"></i>
                             My Profile</a>
                         <div class="dropdown-divider"></div>

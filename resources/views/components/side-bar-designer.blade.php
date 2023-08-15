@@ -4,7 +4,7 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
           <ul id="sidebarnav">
-              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
+              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/"
                       aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                           class="hide-menu">HOME</span></a></li>
               <li class="list-divider"></li>
@@ -49,18 +49,18 @@
               <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
 
 
-          <li class="sidebar-item">
-            <form action="{{ route('logout') }}" method="post">
+              <li class="sidebar-item">
+                <form action="{{ route('logout') }}" method="post">
                 @csrf
+                <a class="sidebar-link sidebar-link" href=""
+                    aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
+                        class="hide-menu">
+                        <input type="submit" style="border:none;background:none;padding: 0"
+                    value=" Logout">
 
-                <a href="" class="sidebar-link ">
-                    <i class="feather-icon"></i>
-
-                    <input type="submit" style="border:none;background:none;padding: 0"
-                        value="LOGOUT" ></span>
-                    <a>
-            </form>
-        </li>
+                    </span></a>
+                </form>
+                </li>
 
           </ul>
       </nav>

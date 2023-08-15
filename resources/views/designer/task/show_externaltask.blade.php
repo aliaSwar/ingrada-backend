@@ -85,17 +85,16 @@
                                                                <div class="form-group mb-0">
                                                                     <label for="exampleInputText3"
                                                                          class="h5">Colors</label>
-                                                                         {{ $order->colors }}
+
                                                                     <div class="form-control bg-white custom-radius"
                                                                          style="text-align:justify;">
+                                                                       {{--   @foreach ($order->colors as $color) --}}
+
+
                                                                          <span class="dot"
-                                                                              style="height: 25px; width: 25px;  background-color: #d10707; border-radius: 50%; display: inline-block;"></span>
-                                                                         <span class="dot"
-                                                                              style="height: 25px; width: 25px;  background-color: #a7c920; border-radius: 50%; display: inline-block;"></span>
-                                                                         <span class="dot"
-                                                                              style="height: 25px; width: 25px;  background-color: rgb(51, 168, 88); border-radius: 50%; display: inline-block;"></span>
-                                                                         <span class="dot"
-                                                                              style="height: 25px; width: 25px;  background-color: #520a0a; border-radius: 50%; display: inline-block;"></span>
+                                                                              style="height: 25px; width: 25px;  background-color:# {{ $order->color }}; border-radius: 50%; display: inline-block;"></span>
+
+                                                                            {{--   @endforeach --}}
                                                                     </div>
                                                                </div>
                                                           </div>
@@ -144,6 +143,7 @@
                                                      style="border-radius: 20px;">
                                                      <div class="card-body">
                                                           <div class="row">
+                                                            <label>Notes</label>
                                                                <textarea name="notes"
                                                                     class="form-control bg-white @error('notes') border-light-danger @enderror"
                                                                     style="
