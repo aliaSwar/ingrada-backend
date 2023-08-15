@@ -14,6 +14,11 @@ use Cache;
 use DB;
 use App\Actions\Web\GetPointLastMonthAction;
 use App\Actions\Web\GetPointLastMonthTotalAction;
+use App\Actions\Web\RatingDesignerAction;
+use App\Http\Requests\Manager\StoreRatingRequest;
+
+
+
 class DesignerReportController extends Controller
 {
     /**
@@ -72,7 +77,13 @@ class DesignerReportController extends Controller
             ]
         );
     }
+    function ratingMonthly(StoreRatingRequest $request) {
+      $count = $request->input('count');
 
+      // Do something with the $count value (e.g., store it in the database)
+
+      return response()->json(['message' => 'Rating count stored successfully.']);
+    }
     public function Show_task($task_ids)
     {
 

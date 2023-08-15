@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Web\Designer;
 
 use App\Actions\DistirbutionAlgorithmAction;
+use App\Actions\web\GetPointLastMonthAction;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Order;
@@ -18,13 +19,27 @@ final class TaskController extends Controller
     /**
      * Display a tasks from content writer
      */
-    public function index(): View
+    public function index()
     {
 
-        return view(
-            'designer.task.index',
-            ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]
-        );
+      $designerPoints=( new GetPointLastMonthAction)();
+     // dd($designerPoints );
+    //  $designerPoints = $action->__invoke();
+
+      // Access the first designer's ID and total points
+    //  $designerId = $designerPoints->first()->desginer_id;
+    //  $totalPoints = $designerPoints->first()->total_points;
+
+     // return "Designer ID: $designerId, Total Points: $totalPoints";
+
+
+
+
+
+    ///    return view(
+     //       'designer.task.index',
+     //       ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]
+     //   );
     }
 
 

@@ -1,14 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Actions\web\OrederDesignerAction;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
 
 class ChartController extends Controller
 {
-  public function designer()
+  public function index()
     {
+      //orerd designer
+      $OrederDesigners=( new OrederDesignerAction)();
+
+
         // Get the count of the two specific elements
         $internal = Order::where('is_enternal',true)->get();
         $external = Order::where('is_enternal',false)->get();
@@ -25,6 +30,8 @@ class ChartController extends Controller
        $Covers_count=count($Covers);
        $Drawing_count=count($Drawing);
 
+       //Get the count of 
+
 
         // Initialize the data array for the chart
         $data = [
@@ -35,9 +42,10 @@ class ChartController extends Controller
           'external_count' => $external_count,
           'internal_count' => $internal_count,
 
+
                 ];
         // Pass the data to the view
-       return view('designer_dashboard', compact('data'));
+       return view('designer_dashboard', compact('data','OrederDesigners'));
       // return view('manger_dashboard', compact('data'));
     }
     public function manager()
