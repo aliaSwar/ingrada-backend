@@ -56,3 +56,4 @@ Route::post('/design', function () {
     Route::get('filters/task',[TaskReportController::class,'Filterdate'])->name('filters_task');
 
 require __DIR__ . '/auth.php';
+ 

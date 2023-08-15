@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\Authentication\LoginController;
 use App\Http\Controllers\Api\Authentication\LogoutController;
 use App\Http\Controllers\Api\Authentication\RegisterController;
 use App\Http\Controllers\Api\Chat\ChatCustomerController;
+use App\Http\Controllers\Api\Chat\GetMessagesController;
+use App\Http\Controllers\Api\Chat\GetRoomsChatController;
 use App\Http\Controllers\Api\Configuration\ShowColorsController;
 use App\Http\Controllers\Api\Configuration\ShowDesignersController;
 use App\Http\Controllers\Api\Configuration\ShowFontsController;
@@ -156,6 +158,18 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
             Route::post(
                 'send_message',
                 ChatCustomerController::class
+            );
+            Route::post(
+                'get_rooms_chat',
+                GetRoomsChatController::class
+            );
+            Route::post(
+                'get_rooms_chat',
+                GetRoomsChatController::class
+            );
+            Route::get(
+                'get_chat/{chat_room_id}',
+                GetMessagesController::class
             );
         });
     });
