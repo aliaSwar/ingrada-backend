@@ -26,6 +26,7 @@
 
      <link rel="stylesheet"
           href="{{ asset('dist/css/orders.css') }}">
+          
 </head>
 
 <body>

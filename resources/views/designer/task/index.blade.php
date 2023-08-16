@@ -1,18 +1,6 @@
 <x-layouts.app>
 
 
-    <!doctype html>
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
-    <title>Freedash Template - The Ultimate Multipurpose admin template</title>
-
-    <link rel="stylesheet" href="../assets/libs/chart.js/dist/apex-charts.css" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
-    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <html lang="en">
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -70,56 +58,6 @@
                 <!-- End Top Leader Table -->
                 <!-- *************************************************************** -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- apps -->
-    <!-- apps -->
-    <script src="../dist/js/app-style-switcher.js"></script>
-    <script src="../dist/js/feather.min.js"></script>
-    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="../dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <script src="../assets/extra-libs/c3/d3.min.js"></script>
-
-    <script src="../assets/extra-libs/c3/c3.min.js"></script>
-    <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="../assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
-      <!-- Vendors JS -->
-      <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
-      <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-      <!-- Main JS -->
-      <script src="../assets/js/main.js"></script>
-
-      <!-- Page JS -->
-      <script src="../assets/js/dashboards-analytics.js"></script>
 
          <script>
         $(document).ready(function(){

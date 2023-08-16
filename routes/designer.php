@@ -26,11 +26,9 @@ use Illuminate\Support\Facades\Route;
           */
           Route::middleware(['designer'])->group(function (): void {
                Route::resource('tasks', TaskController::class);
-               //Route::get('tasks/create/{order}', [TaskController::class,'create'])->name('content-writer.tasks.create');
-               //Route::post('tasks/{order}', [TaskController::class,'store'])->name('content-writer.tasks.store');
-                Route::get('/todo', [TaskController::class, 'get_todotask'])->name('to_do');
+               Route::get('/todo', [TaskController::class, 'get_todotask'])->name('to_do');
                Route::get('/index_external', [TaskController::class, 'index_external'])->name('in_ex');
-               Route::get('/showexternal/{id}', [TaskController::class, 'show_external'])->name('to');
+               Route::get('/showexternal/{id}', [TaskController::class, 'show_external'])->name('designer.show_external_order');
                Route::post('/showexternal/{order}', [TaskController::class, 'store_external'])->name('showexternal');
 
            //    Route::get('/showexternaltask/{id}', [TaskController::class, 'show_external_task'])->name('showexternaltask');

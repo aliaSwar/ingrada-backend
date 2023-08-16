@@ -82,18 +82,20 @@
                       </ul>
                   </li>
                   <li class="list-divider"></li>
-                  <li class="menu-item">
-                    <form action="{{ route('logout') }}" method="post">
-                        @csrf
-
-                        <a href="" class="menu-link menu-toggle">
-                            <i class="bx bx-power-off me-2"></i>
-
-                            <input type="submit" style="border:none;background:none;padding: 0"
+                  <li class="sidebar-item"> 
+                            <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <a class="sidebar-link sidebar-link" href=""
+                                aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
+                                    class="hide-menu">
+                                    <input type="submit" style="border:none;background:none;padding: 0"
                                 value=" Logout">
-                            <a>
-                    </form>
+                                
+                                </span></a>
+                            </form>
                 </li>
+        </ul>
+        
 
 
 

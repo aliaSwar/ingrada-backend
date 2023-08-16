@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\Web\Designer\TimerCounterController;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
 use App\Http\Controllers\Web\Manager\TaskReportController;
 use Illuminate\Support\Facades\Route;
@@ -29,15 +30,13 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
 
     });
-    Route::post('/hello', function () {
-        return "Fdfd";
-    })->name('hello');
+   // Route::post('/timer',)->name('hello');
 
     Route::get('/', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::post('timer',TimerCounterController::class);
 
 Route::get('/', function () {
     return view('dashboard');
