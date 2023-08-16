@@ -27,6 +27,7 @@ use App\Http\Controllers\Api\Design\ShowDetailsDesignController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
 use App\Http\Controllers\Api\Order\GetOrdersController;
 use App\Http\Controllers\Api\Order\RatingDesignerController;
+use App\Http\Controllers\Api\Order\UploadFileOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -142,6 +143,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 Route::post(
                     'orders',
                     CustomizeOrderController::class
+                );
+                Route::post(
+                    'upload_file',
+                    UploadFileOrderController::class
                 );
                 Route::post(
                     'rating-designer',
