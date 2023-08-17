@@ -39,16 +39,16 @@
                                             </thead>
 
                                             <tbody>
-                                              @foreach ($tasks_by_month as $task)
-                                              <tr>
-                                                  <td>{{ $task->month }}</td>
-                                                  <td>{{ $task->hours  }}</td>
-                                                  <td>{{ $task->task_count  }}</td>
-                                                  <td>{{  $task->task_ids   }}</td>
+                                            @foreach ($tasks_by_month as $task)
+                                            <tr>
+                                                <td>{{ $task->month }}</td>
+                                                <td>{{ $task->hours  }}</td>
+                                                <td>{{ $task->task_count  }}</td>
+                                                <td>{{  $task->task_ids   }}</td>
 
 
-                                              </tr>
-                                          @endforeach
+                                            </tr>
+                                        @endforeach
                                             </tbody>
                                         </table>
 
@@ -61,52 +61,11 @@
                         </div>
 
                     </main>
+</div>
 
 
 
-  <!-- ============================================================== -->
-  <!-- End Page wrapper  -->
-  <!-- ============================================================== -->
-  </div>
-  </div>
-  </div>
-  </div>
-
-  <!-- ============================================================== -->
-  <!-- End Wrapper -->
-  <!-- ============================================================== -->
-  <!-- End Wrapper -->
-  <!-- ============================================================== -->
-  <!-- All Jquery -->
-  <!-- ============================================================== -->
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- apps -->
-  <!-- apps -->
-  <script src="../dist/js/app-style-switcher.js"></script>
-  <script src="../dist/js/feather.min.js"></script>
-  <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-  <script src="../dist/js/sidebarmenu.js"></script>
-  <!--Custom JavaScript -->
-  <script src="../dist/js/custom.min.js"></script>
-  <!--This page JavaScript -->
-  <script src="../assets/extra-libs/c3/d3.min.js"></script>
-
-  <script src="../assets/extra-libs/c3/c3.min.js"></script>
-  <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
-  <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-  <script src="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-  <script src="../assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-  <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
-  <!-- Vendors JS -->
-  <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
-  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <!-- Main JS -->
-  <script src="../assets/js/main.js"></script>
-
-  <!-- Page JS -->
-  <script src="../assets/js/dashboards-analytics.js"></script>
+  
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="TableFilter.min.js" defer></script>
   <script>
   try {

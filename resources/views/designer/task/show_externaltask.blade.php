@@ -1,10 +1,8 @@
 
 <x-layouts.app>
-      <!-- Other head elements -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <div class="content-page">
-    <div class="container-fluid">
-         <div class="row">
+     <div class="content-page">
+          <div class="container-fluid">
+               <div class="row">
               <div class="col-12">
                    <div class="card">
                         <div class="card-body">
@@ -12,14 +10,17 @@
                                   <div class="card-body">
                                        <div class="form-group mb-3 position-relative">
 
-                                            <h2>Display New External Order To Designer <a href="#">{{$designer_name->fullname??''}}</a></h2>
+                                            <h2>Display New External Order To Designer  <a href="#">{{$designer_name->fullname??''}}</a></h2>
                                        </div>
 
-                                       
-                                             <div style="font-size: 19px" id="timer">00:00:00</div>
-                                             <button id="startButton" class="btn btn-primary"><i class="bi bi-play-fill"></i> Start</button>
-                                             <button id="stopButton" class="btn btn-danger" disabled><i class="bi bi-stop-fill"></i> Stop</button>
 
+                                       <div class="media align-items-center mt-md-0 mt-3">
+                                                <p style="font-size: 19px ;margin-right: 30px; " id="timer" data-user-id="{{ $task_id }}"> 00 : 00 : 00 </p>
+                                                <a id="button-start" class="btn bg-info-light mr-3"><i class="ri-play-circle-line"></i></a>
+                                                <a id="button-stop" class="btn bg-info-light mr-3"><i class="ri-pause-circle-line"></i></a>
+                                                <a id="button-reset" class="btn bg-info-light mr-3"><i class="ri-restart-line"></i></a>
+                                                <a class="btn editt" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseEdit1"><i class="ri-save-line"></i></a>
+                                            </div> 
 
                                                
 
@@ -38,7 +39,7 @@
                                                           class="selectpicker custom-select form-control bg-white custom-radius"
                                                           data-style="py-0">
                                                           <option selected> Initiated</option>
-                                                          <option> InProgress</option>
+                                                          <option> Progress</option>
                                                           <option> Completed</option>
                                                           <option>Failed</option>
 
@@ -201,60 +202,48 @@
 <!-- Add Axios CDN -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-     // Get the timer element and buttons
-     const timerElement = document.getElementById('timer');
-     const startButton = document.getElementById('startButton');
-     const stopButton = document.getElementById('stopButton');
 
-     // Set the initial time
-     let seconds = 0;
-     let minutes = 0;
-     let hours = 0;
+        const timer     = { ref:null, tZero:null, tim:0 }
+    , myTime    = document.getElementById('timer')
+    , btStart   = document.getElementById('button-start')
+    , btStop    = document.getElementById('button-stop')
+    , btReset   = document.getElementById('button-reset')
+    , twoDigits = n => ('0' + n).slice(-2)
+    , one_Sec   = 1000
+    , one_Min   = one_Sec * 60
+    , one_Hour  = one_Min * 60 
 
-     // Format the time as HH:MM:SS
-     function formatTime() {
-     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-     }
+    function countUp()
+    {
+    let now   = new Date().getTime()
+    timer.tim = now - timer.tZero 
+    let h     = Math.floor(timer.tim  / one_Hour)
+        , m     = Math.floor((timer.tim % one_Hour) / one_Min  )
+        , s     = Math.floor((timer.tim % one_Min ) / one_Sec  )
 
-     // Update the timer display
-     function updateTimer() {
-     seconds++;
-     if (seconds === 60) {
-     seconds = 0;
-     minutes++;
-     if (minutes === 60) {
-          minutes = 0;
-          hours++;
-     }
-     }
+    myTime.textContent = ` ${twoDigits(h)} : ${twoDigits(m)} : ${twoDigits(s)} `;
+    return myTime.textContent;
+    }
 
-     // Print the time in the console
-     console.log(formatTime());
+    btStart.onclick=()=>
+    {  
+    timer.tZero      = new Date().getTime() - timer.tim 
+    timer.ref        = setInterval(countUp,500)
 
-     // Update the timer element
-     timerElement.textContent = formatTime();
-     }
+    btStart.disabled = true
+    btStop.disabled  = false
+    }
+    btStop.onclick=()=>
+    {
+     const task_id = document.getElementById('timer').dataset.userId;
 
-     // Start the timer
-     let timerInterval;
-     startButton.addEventListener('click', function() {
-     timerInterval = setInterval(updateTimer, 1000);
-     startButton.disabled = true;
-     });
-
-     // Stop the timer
-     stopButton.addEventListener('click', function() {
-          
-          clearInterval(timerInterval);
-          startButton.disabled = false;
-});
-     function sendTimeToRoute() {
-          
-     // Send the timer data using AJAX
-          const currentTime = formatTime();
-          const url = '/timer'; // Replace with the actual URL of your server endpoint
-          const data = { time: currentTime };
-
+     console.log(task_id);
+         ///send time to back 
+    const url = '/timer'; // Replace with the actual URL of your server endpoint
+          const data = { 
+               time: countUp(),
+               task_id : task_id
+          };
           fetch(url, {
           method: 'POST',
           headers: {
@@ -264,14 +253,25 @@
           body: JSON.stringify(data)
           })
           .then(response => {
-          console.log('Timer data sent successfully');
+          console.log('Timer data sent successfully',response);
           })
           .catch(error => {
           console.error('Error sending timer data:', error);
           });
+     clearInterval( timer.ref )
+     timer.ref        = null
+     btStart.disabled = false
+     btStop.disabled  = true
      }
-
-     // Call the function to send the time every second
-     setInterval(sendTimeToRoute, 1000);
+     btReset.onclick=()=>
+     {
+     if (timer.ref) clearInterval( timer.ref )
+     myTime.textContent = ' 00 : 00 : 00 '
+     timer.tZero        = null
+     timer.ref          = null
+     timer.tim          = 0
+     btStart.disabled   = false
+     btStop.disabled    = true
+}
 </script>
 </x-layouts.app>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Web\Designer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Task;
+
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+
 
 class TimerCounterController extends Controller
 {
@@ -16,8 +19,13 @@ class TimerCounterController extends Controller
      */
     public function __invoke(Request $request): JsonResponse
     {
-        return $request->all();
-        return sendSuccessResponse(__('messages.get_data'));
+        $task= Task::find($request->task_id);
+        $task->tasks_hour= \Carbon\Carbon::hasFormatt($request->time,'H:i:s');
+        $task->save();
+
+        return sendSuccessResponse(
+            __('messages.update_data'),
+        );
     }
 }
 
