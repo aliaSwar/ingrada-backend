@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\Setting\PrefernceValueController;
 use App\Http\Controllers\Web\Setting\RoleController;
 use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
+use App\Http\Controllers\Web\Manager\DesignerReportController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -45,5 +46,12 @@ use Illuminate\Support\Facades\Route;
                Route::resource('preferncesvalues', PrefernceValueController::class);
                Route::get('preferncesvalues-create/{prefernce}', [PrefernceValueController::class, 'create'])->name('preferncesvalues.create');
                Route::post('preferncesvalues-store/{prefernce}', [PrefernceValueController::class, 'store'])->name('preferncesvalues.store');
+
+               Route::get('report/designers',DesignerReportController::class)->name('report.designers');
+               Route::get('report/all_task/{taskIds}',[DesignerReportController::class,'Show_task'])->name('all_task');
+               Route::get('dailyreport/designers/{designer}',[DesignerReportController::class,'Daily_report'])->name('Daily_designers');
+               Route::get('monthlyreport/designers/{designer}',[DesignerReportController::class,'Monthly_report'])->name('Monthly_designers');
+               Route::get('dailyreport/tasks',[TaskReportController::class,'Daily_report'])->name('Monthly_tasks');
+               Route::get('monthlyreport/tasks',[TaskReportController::class,'Monthly_report'])->name('Monthly_tasks');
           });
      });

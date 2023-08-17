@@ -194,6 +194,7 @@ final class TaskController extends Controller
      */
     public function store_external(Request $request, Order $order)
     {
+    //  return $request;
         $order->update($request->all());
         $order->users()->attach($request->user_id);
 

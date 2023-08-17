@@ -7,11 +7,21 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Task;
+use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class TaskContentWriterController extends Controller
 {
+
+
+//display all task for review to content creator
+  public function index()
+    {
+      return view(
+               'content-writer.tasks.index',
+               ['tasks' => Task::where('giver_id', auth()->user()->id)->where('status','Test')->paginate(7)]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,8 +35,7 @@ class TaskController extends Controller
             return  redirect()->route('content-writer.external-orders.index')->with(['message'=>'the order refused!']);
         }
         $designer=User::find($order->designer_id);
-
-        return view('content-writer.orders.create-task', ['order'=>$order,'designer'=>$designer]);
+        return view('content-writer.orders.create-task', ['order'=>$order,'designer'=>$designer,'categories' => Category::all()]);
     }
 
     /**
@@ -67,4 +76,36 @@ class TaskController extends Controller
 
         return redirect()->route('orders.index');
     }
+
+    public function show($id)
+    {
+        $task=Task::findOrFail($id);
+        $order=Order::findOrFail($task->order_id);
+
+//task for internal order
+        if(Order::where('id', $task->order_id)->where('is_enternal', true)->exists()) {
+            return view(
+                'content-writer.tasks.showInternal',
+                ['order' => $order,
+                'task'=>$task
+                ]
+            );
+        }
+
+        return $this->show_external_order($order,$task);
+    }
+
+    //task for external order
+    public function show_external_order($order,$task)
+    {
+        //return 1;
+        $designer_name=User::where('id', $order->designer_id)->select('fullname')->first();
+
+        return view('content-writer.tasks.showExternal', [
+            'order'          =>   $order,
+            'designer_name'  =>   $designer_name,
+            'task'        =>          $task,
+        ]);
+
+      }
 }

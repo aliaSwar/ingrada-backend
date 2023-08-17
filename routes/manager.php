@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 
 
-use App\Http\Controllers\Web\Manager\ExternalOrderController;
+use App\Http\Controllers\Web\Manager\ExternalOrdermanagerController;
 use App\Http\Controllers\Web\Manager\InternalCustomerController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
@@ -30,7 +30,8 @@ use Illuminate\Support\Facades\Route;
           */
           Route::middleware(['manager'])->group(function (): void {
                Route::resource('internal-customers', InternalCustomerController::class);
-               Route::resource('external-orders', ExternalOrderController::class);
+               Route::resource('external-orders', ExternalOrdermanagerController::class);
+               Route::post('external-orders/{order}', [ExternalOrdermanagerController::class, 'store'])->name('store_external');
                Route::resource('internal-orders', InternalOrderController::class);
                Route::get('report/designers',DesignerReportController::class)->name('report.designers');
                Route::get('report/all_task/{taskIds}',[DesignerReportController::class,'Show_task'])->name('all_task');

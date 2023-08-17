@@ -1,7 +1,11 @@
 <x-layouts.app>
   <br>
   <br>
-
+                              <!--logo customiz-->
+                              <div class="col-12">
+                                  <div class="card">
+                                      <div class="card-body">
+                                          <div class="row">
                               <div class="col-12">
                                   <div class="card card-widget task-card">
                                       <div class="card-body">
@@ -12,10 +16,8 @@
 
                                               <div class="media align-items-center mt-md-0 mt-3">
 
-                                                  {{-- <p style="font-size: 19px ;margin-right: 30px; " id="timer"> 00 : 00 : 00 </p> --}}
-                                                  <a id="button-start" class="btn bg-info-light mr-3"><i class="ri-play-circle-line"></i></a>
-                                                  <a id="button-stop" class="btn bg-info-light mr-3"><i class="ri-pause-circle-line"></i></a>
-                                                  <a id="button-reset" class="btn bg-info-light mr-3"><i class="ri-restart-line"></i></a>
+                                                  <p style="font-size: 19px ;margin-right: 30px; "> {{ $task->tasks_hour }} </p>
+
 
 
                                                  <a class="btn editt" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseEdit1"><i class="ri-save-line"></i></a>
@@ -29,76 +31,44 @@
 
 
                                                       <div class="form-group mb-0" style="margin: 19px;">
+                                                        <form action="{{ route('order_update',$task->id) }}"
+                                                          method="POST">
+                                                          @csrf
+                                                          @method('PUT')
 
 
                                                           <i class="ri-pencil-ruler-2-line"></i>
-                                                          <label for="exampleInputText01" class="h5"> Priorty This Task</label>
+                                                          <label for="exampleInputText01" class="h5"> Status This Task</label>
                                                           <select  name="status" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
-                                                              <option selected> High</option>
-                                                              <option> Low</option>
-                                                              <option> Middle</option>
-
-
+                                                              <option selected> Initiated</option>
+                                                              <option> InProgress</option>
+                                                              <option> Test</option>
+                                                              <option> Completed</option>
+                                                              <option>Failed</option>
                                                           </select>
                                                       </div>
                                                                <hr>
                                                           </div>
 
-                                                    <div class="card-body">
-                                                    <form action="{{ route('content-writer.create-tasks.store', $order->id) }}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
+                                                      <div class="card-body">
 
-                                                            @if ($order->is_order_designer)
-                                                            <div class="card mb-3" style="border-radius: 20px;">
-                                                              <div class="card-body">
-                                                                  <div class="row">
-                                                                    <label for="exampleInputText01" class="h5">Desginer</label>
-                                                              <h3> {{ $designer->fullname}}</h3>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                          @else
                                                           <div class="card mb-3" style="border-radius: 20px;">
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                            <h3> Auto Distrbuited Task on Designer </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                            @endif
-                                                            <div class="card mb-3" style="border-radius: 20px;">
                                                               <div class="card-body">
                                                                   <div class="row">
 
                                                                       <div class="col-lg-3">
                                                                           <div class="form-group mb-0">
-                                                                              <label for="exampleInputText2"   class="h5">Name </label>
-                                                                              <input type="text" name="name" class="custom-select form-control bg-white custom-radius "  value="{{$order->type??'' }}">
-                                                                          </div>
-                                                                      </div>
-                                                                      <div class="col-lg-3">
-                                                                          <div class="form-group mb-0">
-                                                                              <label for="exampleInputText3" class="h5">Start Dates</label>
-                                                                              <input type="date" name="start_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->start_date }}">
+                                                                              <label for="exampleInputText2"   class="h5">Type </label>
+                                                                              <input type="text" name="type" class="custom-select form-control bg-white custom-radius "  value="{{$order->type??'' }}">
                                                                           </div>
                                                                       </div>
 
                                                                       <div class="col-lg-3">
                                                                         <div class="form-group mb-0">
                                                                             <label for="exampleInputText3" class="h5">End Dates</label>
-                                                                            <input type="date" name="end_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->end_date }}">
+                                                                            <input type="date" name="end_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->limit_date }}">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-3" >
-                                                                      <i class="ri-pencil-ruler-2-line"></i>
-                                                                      <label for="exampleInputText01" class="h5"> Category</label>
-                                                                      <select  name="category" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
-                                                                      @foreach ($categories as $category)
-                                                                      <option > {{ $category->name }}</option>
-                                                                      @endforeach 
-
-                                                                      </select>
-                                                                  </div>
 
                                                                       <hr style="margin-top: 12px;">
                                                                       <div class="col-lg-3">
@@ -127,15 +97,8 @@
                                                           <div class="card mb-3" style="border-radius: 20px;">
                                                               <div class="card-body">
                                                                   <div class="row">
-                                                                    <label for="exampleInputText040"
-                                                                      class="h5">Description</label>
-                                                                    <textarea name="description"
-                                                                    class="form-control bg-white "
-                                                                    style="
-                                                                    border-radius:
-                                                                    4px;"
-                                                                    id="exampleInputText040"
-                                                                    rows="2"></textarea>
+                                                                          <h5 style="color: #333; " class="mb-2">Description :</h5>
+                                                                          <p class="mb-0">{{ $order->description }}</p>
                                                                   </div>
                                                               </div>
                                                           </div>
@@ -151,8 +114,6 @@
                                                                   </div>
                                                               </div>
                                                           </div>
-
-
                                                           <div class="card mb-3" style="border-radius: 20px;">
                                                             <div class="card-body">
                                                                 <div class="row">
@@ -161,19 +122,20 @@
                                                                          value="submit"
                                                                          class="btn btn-warning mr-3">
                                                                   </div>
+                                                                </form>
                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                       </div>
-                                                    </form>
                                                   </div>
+
                                           </div>
                                       </div>
                                   </div>
                               </div>
-
-
-
+                  </div>
+              </div>
+          </div>
 
       </x-layouts.app>

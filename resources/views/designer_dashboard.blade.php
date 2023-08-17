@@ -356,13 +356,17 @@ var Chart1 = new Chart(ctx, {
 
 <script>
     var ctx = document.getElementById('Chart3').getContext('2d');
+    const syria_count = <?php echo $data['syria_count'] ?>;
+       const Lebanon_count = <?php echo $data['Lebanon_count'] ?>;
+       const Turkey_count  = <?php echo $data['Turkey_count'] ?>;
+       const Jordan_count = <?php echo $data['Jordan_count'] ?>;
 var Chart1 = new Chart(ctx, {
-  type: 'line',
+  type: 'bar',
   data: {
-    labels: [' social media ','Logo ','Covers  ','Drawing '],
+    labels: [' Syria ','Lebanon ','Turkey  ','Jordan'],
     datasets: [{
       label: 'the least',
-      data: [10,20,15,30],
+      data: [syria_count,Lebanon_count,Turkey_count,Jordan_count],
       backgroundColor: [
        'rgba(255, 99, 132, 0.2)',
         'rgb(60, 60, 60)',

@@ -1,11 +1,7 @@
 <x-layouts.app>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <!-- Favicon icon -->
+
+
+  <!doctype html>
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
   <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
   <title>Freedash Template - The Ultimate Multipurpose admin template</title>
@@ -15,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
   <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <html lang="en">
 
           <div class="container-fluid">
               <div class="row">
@@ -39,35 +36,36 @@
   <table class="table table-bordered" id="myTable">
   <thead>
   <tr>
-
+  <th>Task</th>
   <th>Type</th>
-  <th>Price</th>
+  <th> Start Date</th>
+  <th> End Date</th>
   <th>Status</th>
-  <th>Customer Name</th>
   <th>Details</th>
   </tr>
   </thead>
   <tbody>
-      @foreach ($orders as $order)
+      @foreach ($tasks as $task)
   <tr  >
-  <td>{{ $order->type}}</td>
-  <td> {{ $order->final_price}} </td>
-  <td>{{ $order->status}} </td>
-  <td>{{ $order->customer->first_name??''}}</td>
+  <td>{{ $task->name}}</td>
+  <td> {{ $task->type}} </td>
+  <td> {{ $task->start_date}} </td>
+  <td> {{ $task->end_date}} </td>
+  <td>{{ $task->status}} </td>
   <td>
-      <a class="Details"  data-toggle="Details" href={{ route('external-orders.show', $order->id) }}><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
+      <a class="Details"  data-toggle="Details" href="{{ route('task.show', $task->id) }}"><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
   </td>
   </tr>
   @endforeach
   </tbody>
   </table>
-                </div>
-            </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                              </div>
+                          </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
               <!-- *************************************************************** -->
               <!-- End Top Leader Table -->
               <!-- *************************************************************** -->

@@ -23,39 +23,69 @@
 
               </ul>
           </li>
-          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="{{ route('scopes.index') }}"
-              aria-expanded="false"><i data-feather="sliders" class="feather-icon"></i><span
-                  class="hide-menu">Scopes </span></a>
-          <ul aria-expanded="false" class="collapse  first-level base-level-line">
-              <li class="sidebar-item"><a href="permission.html" class="sidebar-link"><span
-                          class="hide-menu"> SHOW & ADD
-                      </span></a>
-              </li>
-              <li class="sidebar-item"><a href="Editpermition.html" class="sidebar-link"><span
-                          class="hide-menu">EDIT
-                      </span></a>
-              </li>
 
-          </ul>
+        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+          aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+              class="hide-menu">DOMAINS & FONTS </span></a>
+      <ul aria-expanded="false" class="collapse  first-level base-level-line">
+          <li class="sidebar-item"><a href="{{ route('fonts.index') }}" class="sidebar-link"><span
+                      class="hide-menu"> SHOW & ADD FONTS
+                  </span></a>
           </li>
-              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
-                      aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
-                          class="hide-menu">Calendar</span></a></li>
-                          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="{{ route('fonts.index') }}"
+          <li class="sidebar-item"><a href="{{ route('scopes.create') }}" class="sidebar-link"><span
+                      class="hide-menu">
+                     ADD DOMAIN
+                  </span></a>
+          </li>
+          <li class="sidebar-item"><a href="{{ route('scopes.index') }}"class="sidebar-link"><span
+              class="hide-menu">
+             SHOW DOMAIN
+          </span></a>
+  </li>
+
+      </ul>
+  </li>
+
+  <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+    aria-expanded="false"><i data-feather="slack" class="feather-icon"></i><span
+        class="hide-menu">TYPES OF DESIGNES </span></a>
+<ul aria-expanded="false" class="collapse  first-level base-level-line">
+
+    <li class="sidebar-item"><a href="{{ route('types.index') }}" class="sidebar-link"><span
+                class="hide-menu"> SHOW TYPES
+            </span></a>
+    </li>
+    <li class="sidebar-item"><a href="{{ route('types.create') }}" class="sidebar-link"><span
+                class="hide-menu">
+                ADD TYPE
+            </span></a>
+    </li>
+
+
+</ul>
+</li>
+
+                          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                               aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                                  class="hide-menu">Fonts </span></a>
+                                  class="hide-menu">Reports </span></a>
                           <ul aria-expanded="false" class="collapse  first-level base-level-line">
                               <li class="sidebar-item"><a href="DailyReport.html" class="sidebar-link"><span
                                           class="hide-menu"> DAILY
                                       </span></a>
                               </li>
-                              <li class="sidebar-item"><a href="monthlyReport.html" class="sidebar-link"><span
+                              <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
                                           class="hide-menu"> MONTHLY
                                       </span></a>
-                              </li>
-                              <li class="sidebar-item"><a href="AnnulyReport.html" class="sidebar-link"><span
-                                          class="hide-menu"> ANNUAL
+                                      <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                        <li class="sidebar-item"><a href="{{ route('report.designers')}}" class="sidebar-link"><span
+                                                    class="hide-menu"> Designer Report
+                                                </span></a>
+                                        </li>
+                                        <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
+                                          class="hide-menu">Task Reoport
                                       </span></a>
+                              </li>
+                                      </ul>
                               </li>
                           </ul>
                       </li>

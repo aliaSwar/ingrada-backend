@@ -79,10 +79,12 @@ class DesignerReportController extends Controller
     }
     function ratingMonthly(StoreRatingRequest $request) {
       $count = $request->input('count');
+      return $count;
+
 
       // Do something with the $count value (e.g., store it in the database)
 
-      return response()->json(['message' => 'Rating count stored successfully.']);
+     // return response()->json(['message' => 'Rating count stored successfully.']);
     }
     public function Show_task($task_ids)
     {
