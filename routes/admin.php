@@ -13,6 +13,7 @@ use App\Http\Controllers\Web\Setting\RoleController;
 use App\Http\Controllers\Web\Setting\ScopeCotroller;
 use App\Http\Controllers\Web\Setting\TypeCotroller;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
+use App\Http\Controllers\Web\Manager\TaskReportController;
 
 use Illuminate\Support\Facades\Route;
 

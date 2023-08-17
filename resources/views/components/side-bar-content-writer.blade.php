@@ -47,10 +47,18 @@
               <li class="list-divider"></li>
 
               <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
-              <li class="sidebar-item"> <a class="sidebar-link " href="authentication-login1.html"
-                  aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
-                      class="hide-menu">LOGOUT </span></a>
-          </li>
+              <li class="sidebar-item">
+                <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <a class="sidebar-link sidebar-link" href=""
+                    aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
+                        class="hide-menu">
+                        <input type="submit" style="border:none;background:none;padding: 0"
+                    value=" Logout">
+
+                    </span></a>
+                </form>
+                </li>
           </ul>
       </nav>
       <!-- End Sidebar navigation -->

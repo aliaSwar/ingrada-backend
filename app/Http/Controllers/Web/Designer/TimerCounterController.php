@@ -20,7 +20,7 @@ class TimerCounterController extends Controller
     public function __invoke(Request $request): JsonResponse
     {
         $task= Task::find($request->task_id);
-        $task->tasks_hour= \Carbon\Carbon::hasFormatt($request->time,'H:i:s');
+        $task->tasks_hour= \Carbon\Carbon::createFromFormat('H : i : s', $request->time);
         $task->save();
 
         return sendSuccessResponse(

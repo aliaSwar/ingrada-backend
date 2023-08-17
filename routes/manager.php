@@ -10,6 +10,8 @@ use App\Http\Controllers\Web\Manager\InternalOrderController;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
 use App\Http\Controllers\Web\Manager\RatingDesignerController;
 use App\Http\Controllers\Web\Manager\TaskReportController;
+use App\Http\Controllers\Web\Manager\GetCompletedOrdersController;
+use App\Http\Controllers\Web\Manager\PublishItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +31,8 @@ use Illuminate\Support\Facades\Route;
            * Protected endpoints.
           */
           Route::middleware(['manager'])->group(function (): void {
+               Route::get('get-complete-orders', GetCompletedOrdersController::class)->name('manager.get_completed_orders');
+               Route::get('publish-item/{order}', PublishItemController::class)->name('manager.publish_item');
                Route::resource('internal-customers', InternalCustomerController::class);
                Route::resource('external-orders', ExternalOrdermanagerController::class);
                Route::post('external-orders/{order}', [ExternalOrdermanagerController::class, 'store'])->name('store_external');

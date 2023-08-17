@@ -23,7 +23,6 @@ return new class extends Migration
             $table->foreignId('size_id')->nullable();
             $table->boolean('is_enable_post')->default(0);
             $table->unsignedBigInteger('likes');
-            $table->double('price')->unsigned();
             $table->string('image');
             $table->timestamps();
         });

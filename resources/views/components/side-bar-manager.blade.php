@@ -50,8 +50,8 @@
                           aria-expanded="false"><i data-feather="trello" class="feather-icon"></i><span
                               class="hide-menu">DEPLOYMENT </span></a>
                       <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                          <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
-                                      class="hide-menu"> CLASS TASK
+                          <li class="sidebar-item"><a href="{{ route('manager.get_completed_orders') }}" class="sidebar-link"><span
+                                      class="hide-menu">  Completed Orders
                                   </span></a>
                           </li>
                           <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span

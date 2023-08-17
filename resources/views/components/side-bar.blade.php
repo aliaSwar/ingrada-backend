@@ -93,12 +93,12 @@
                           aria-expanded="false"><i data-feather="trello" class="feather-icon"></i><span
                               class="hide-menu">RULE MANGMENT </span></a>
                       <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                          <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
-                                      class="hide-menu"> CLASS TASK
+                          <li class="sidebar-item"><a href="{{ route('roles.index' )}}" class="sidebar-link"><span
+                                      class="hide-menu"> Roles
                                   </span></a>
                           </li>
-                          <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
-                                      class="hide-menu"> CLASS DESIGNER
+                          <li class="sidebar-item"><a href="{{ route('roles.create' }}" class="sidebar-link"><span
+                                      class="hide-menu"> Create Role
                                   </span></a>
                           </li>
                           <li class="sidebar-item"><a href="form-checkbox-radio.html" class="sidebar-link"><span
@@ -112,7 +112,7 @@
                       </ul>
                   </li>
                   <li class="list-divider"></li>
-                  <li class="sidebar-item"> 
+                  <li class="sidebar-item">
                             <form action="{{ route('logout') }}" method="post">
                             @csrf
                             <a class="sidebar-link sidebar-link" href=""
@@ -120,12 +120,12 @@
                                     class="hide-menu">
                                     <input type="submit" style="border:none;background:none;padding: 0"
                                 value=" Logout">
-                                
+
                                 </span></a>
                             </form>
                 </li>
         </ul>
-        
+
 
 
 
