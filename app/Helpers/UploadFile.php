@@ -9,5 +9,5 @@ declare(strict_types=1);
  */
 function uploadFile($file, string $naming)
 {
-    return null === $file ? null :asset($file->store($naming . '-images', 'public'));
+    return null === $file ? null :asset("storage/{$file->store($naming . '-images', 'public')}");
 }
