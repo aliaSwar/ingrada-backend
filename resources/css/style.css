@@ -3,6 +3,7 @@
 @import 'icons/font-awesome/css/fontawesome-all.css';
 @import 'icons/simple-line-icons/css/simple-line-icons.css';
 @import 'icons/themify-icons/themify-icons.css';
+@import './orders.css';
 .topbar .dropdown-menu .with-arrow > span {
   transform: rotate(45deg);
   -ms-transform: rotate(45deg);

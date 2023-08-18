@@ -3,9 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Web\Designer\TaskController;
-
-
-
+use App\Http\Controllers\Web\Designer\TimerCounterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +23,7 @@ use Illuminate\Support\Facades\Route;
            * Protected endpoints.
           */
           Route::middleware(['designer'])->group(function (): void {
+               Route::post('timer',TimerCounterController::class);
                Route::resource('tasks', TaskController::class);
                Route::get('/todo', [TaskController::class, 'get_todotask'])->name('to_do');
                Route::get('/index_external', [TaskController::class, 'index_external'])->name('in_ex');

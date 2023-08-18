@@ -20,7 +20,7 @@ final class RoleController extends Controller
     public function index(): View
     {
 
-        $roles = Role::query()->with('users', 'permissions')->get();
+        $roles = Role::query()->get();
  
         return view('setting.roles.index', ['roles' => $roles]);
     }
