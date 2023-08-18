@@ -73,13 +73,7 @@
                                                          <span></span>  <a href={{ asset($order->file_designer) }}> click to open file</a>
 
                                                     </td>
-                                                    <td><a onclick="chat()"><i data-feather="message-circle" class="svg-icon"></i>
-                                                        <script>
-                                                            function chat() {
-                                                              window.location.href = "chat.html";
-                                                            }
-                                                          </script>
-
+                                                    <td><a href="{{ route('manager.chat_customer', $order->customer->id) }}"><i data-feather="message-circle" class="svg-icon"></i>
                                                     </a></td>
                                                     <td>
                                                         <a id="connectId" href="{{ route('manager.publish_item', $order->id) }}"

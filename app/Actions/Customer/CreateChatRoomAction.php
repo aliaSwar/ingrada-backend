@@ -9,11 +9,11 @@ use App\Models\ChatRoom;
 
 final class CreateChatRoomAction{
      
-     public function __invoke(StoreMessageCustomerRequest $request)
+     public function __invoke(int  $user_id,int $customer_id )
      {
           $chat_room = ChatRoom::updateOrCreate([
-               'user_id'     => $request->user_id,
-               'customer_id' => auth()->id()
+               'user_id'     => $user_id,
+               'customer_id' => $customer_id
           ]);
           
           return $chat_room->id;

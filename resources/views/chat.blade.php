@@ -3,181 +3,29 @@
           <div class="row">
                <div class="col-md-12">
                     <div class="card">
-                         <div class="row g-0">
-                              <div class="col-lg-3 col-xl-2 border-end">
-                                   <div class="card-body border-bottom">
-                                        <form>
-                                             <input class="form-control"
-                                                  type="text"
-                                                  placeholder="Search Contact">
-                                        </form>
-                                   </div>
-                                   <div class="scrollable position-relative"
-                                        style="height: calc(100vh - 111px);">
-                                        <ul class="mailbox list-style-none">
-                                             <li>
-                                                  <div class="message-center">
-                                                       <!-- Message -->
-                                                       <a href="javascript:void(0)"
-                                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                            <div class="user-img"><img
-                                                                      src="../assets/images/users/1.jpg"
-                                                                      alt="user"
-                                                                      class="img-fluid rounded-circle"
-                                                                      width="40px"> <span
-                                                                      class="profile-status online float-end"></span>
-                                                            </div>
-                                                            <div class="w-75 d-inline-block v-middle ps-2">
-                                                                 <h6 class="message-title mb-0 mt-1">Pavan kumar</h6>
-                                                                 <span
-                                                                      class="font-12 text-nowrap d-block text-muted text-truncate">Just
-                                                                      see
-                                                                      the my new
-                                                                      admin!</span>
-                                                                 <span class="font-12 text-nowrap d-block text-muted">9:30
-                                                                      AM</span>
-                                                            </div>
-                                                       </a>
-                                                       <!-- Message -->
-                                                       <a href="javascript:void(0)"
-                                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                            <div class="user-img"><img
-                                                                      src="../assets/images/users/2.jpg"
-                                                                      alt="user"
-                                                                      class="img-fluid rounded-circle"
-                                                                      width="40px"> <span
-                                                                      class="profile-status busy float-end"></span>
-                                                            </div>
-                                                            <div class="w-75 d-inline-block v-middle ps-2">
-                                                                 <h6 class="message-title mb-0 mt-1">Sonu Nigam</h6>
-                                                                 <span
-                                                                      class="font-12 text-nowrap d-block text-muted text-truncate">I've
-                                                                      sung a
-                                                                      song! See you at</span>
-                                                                 <span class="font-12 text-nowrap d-block text-muted">9:10
-                                                                      AM</span>
-                                                            </div>
-                                                       </a>
-                                                       <!-- Message -->
-                                                       <a href="javascript:void(0)"
-                                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                            <div class="user-img"> <img
-                                                                      src="../assets/images/users/3.jpg"
-                                                                      alt="user"
-                                                                      class="img-fluid rounded-circle"
-                                                                      width="40px"> <span
-                                                                      class="profile-status away float-end"></span>
-                                                            </div>
-                                                            <div class="w-75 d-inline-block v-middle ps-2">
-                                                                 <h6 class="message-title mb-0 mt-1">Arijit Sinh</h6>
-                                                                 <span
-                                                                      class="font-12 text-nowrap d-block text-muted text-truncate">I
-                                                                      am a
-                                                                      singer!</span>
-                                                                 <span class="font-12 text-nowrap d-block text-muted">9:08
-                                                                      AM</span>
-                                                            </div>
-                                                       </a>
-                                                       <!-- Message -->
-                                                       <a href="javascript:void(0)"
-                                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                            <div class="user-img"><img
-                                                                      src="../assets/images/users/4.jpg"
-                                                                      alt="user"
-                                                                      class="img-fluid rounded-circle"
-                                                                      width="40px"> <span
-                                                                      class="profile-status offline float-end"></span>
-                                                            </div>
-                                                            <div class="w-75 d-inline-block v-middle ps-2">
-                                                                 <h6 class="message-title mb-0 mt-1">Nirav Joshi</h6>
-                                                                 <span
-                                                                      class="font-12 text-nowrap d-block text-muted text-truncate">Just
-                                                                      see the my admin!</span>
-                                                                 <span class="font-12 text-nowrap d-block text-muted">9:02
-                                                                      AM</span>
-                                                            </div>
-                                                       </a>
-                                                       <!-- Message -->
-                                                       <a href="javascript:void(0)"
-                                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                            <div class="user-img"><img
-                                                                      src="../assets/images/users/5.jpg"
-                                                                      alt="user"
-                                                                      class="img-fluid rounded-circle"
-                                                                      width="40px"> <span
-                                                                      class="profile-status offline float-end"></span></span>
-                                                            </div>
-                                                            <div class="w-75 d-inline-block v-middle ps-2">
-                                                                 <h6 class="message-title mb-0 mt-1">Sunil Joshi</h6>
-                                                                 <span
-                                                                      class="font-12 text-nowrap d-block text-muted text-truncate">Just
-                                                                      see the my admin!</span>
-                                                                 <span class="font-12 text-nowrap d-block text-muted">9:02
-                                                                      AM</span>
-                                                            </div>
-                                                       </a>
-                                                       <!-- Message -->
-                                                       <a href="javascript:void(0)"
-                                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                            <div class="user-img"><img
-                                                                      src="../assets/images/users/6.jpg"
-                                                                      alt="user"
-                                                                      class="img-fluid rounded-circle"
-                                                                      width="40px"> <span
-                                                                      class="profile-status offline float-end"></span>
-                                                            </div>
-                                                            <div class="w-75 d-inline-block v-middle ps-2">
-                                                                 <h6 class="message-title mb-0 mt-1">Akshay Kumar</h6>
-                                                                 <span
-                                                                      class="font-12 text-nowrap d-block text-muted text-truncate">Just
-                                                                      see the my admin!</span>
-                                                                 <span class="font-12 text-nowrap d-block text-muted">9:02
-                                                                      AM</span>
-                                                            </div>
-                                                       </a>
-                                                       <!-- Message -->
-                                                       <a href="javascript:void(0)"
-                                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                            <div class="user-img"><img
-                                                                      src="../assets/images/users/7.jpg"
-                                                                      alt="user"
-                                                                      class="img-fluid rounded-circle"
-                                                                      width="40px"> <span
-                                                                      class="profile-status offline float-end"></span>
-                                                            </div>
-                                                            <div class="w-75 d-inline-block v-middle ps-2">
-                                                                 <h6 class="message-title mb-0 mt-1">Pavan kumar</h6>
-                                                                 <span
-                                                                      class="font-12 text-nowrap d-block text-muted text-truncate">Just
-                                                                      see the my admin!</span>
-                                                                 <span class="font-12 text-nowrap d-block text-muted">9:02
-                                                                      AM</span>
-                                                            </div>
-                                                       </a>
-                                                       <!-- Message -->
-                                                       <a href="javascript:void(0)"
-                                                            class="message-item d-flex align-items-center px-3 py-2">
-                                                            <div class="user-img"><img
-                                                                      src="../assets/images/users/8.jpg"
-                                                                      alt="user"
-                                                                      class="img-fluid rounded-circle"
-                                                                      width="40px"> <span
-                                                                      class="profile-status offline float-end"></span>
-                                                            </div>
-                                                            <div class="w-75 d-inline-block v-middle ps-2">
-                                                                 <h6 class="message-title mb-0 mt-1">Varun Dhavan</h6>
-                                                                 <span
-                                                                      class="font-12 text-nowrap d-block text-muted text-truncate">Just
-                                                                      see the my admin!</span>
-                                                                 <span class="font-12 text-nowrap d-block text-muted">9:02
-                                                                      AM</span>
-                                                            </div>
-                                                       </a>
+                              <div class="row ">
+                                   <div class="col-lg-9 ">
+                                        <div class="chat-box scrollable position-relative">
+                                             <ul class="chat-list list-style-none px-3 pt-3">
+                                             <!--chat Row -->
+                                             <li class="chat-item list-style-none mt-3">
+                                                  <div class="chat-img d-inline-block"><img
+                                                            src="../assets/images/users/1.jpg"
+                                                            alt="user"
+                                                            class="rounded-circle"
+                                                            width="45">
+                                                  </div>
+                                                  <div class="chat-content d-inline-block ps-3">
+                                                       <h6 class="font-weight-medium">James Anderson</h6>
                                                   </div>
                                              </li>
-                                        </ul>
+                                             </ul>
+                                        </div>
+                                        
                                    </div>
                               </div>
+                              <hr>
+                              <div class="row g-0">
                               <div class="col-lg-9  col-xl-10">
                                    <div class="chat-box scrollable position-relative"
                                         style="height: calc(100vh - 111px);">

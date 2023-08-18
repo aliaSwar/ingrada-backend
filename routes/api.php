@@ -169,16 +169,12 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 'send_message',
                 ChatCustomerController::class
             );
-            Route::get(
-                'get_rooms_chat',
-                GetRoomsChatController::class
-            );
             Route::post(
                 'get_rooms_chat',
                 GetRoomsChatController::class
             );
             Route::get(
-                'get_chat/{chat_room_id}',
+                'get_chat/{user_id}',
                 GetMessagesController::class
             );
         });
