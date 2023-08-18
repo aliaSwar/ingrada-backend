@@ -17,7 +17,7 @@ final class NewMessageFromCustomerAction{
           );
 
           if ($request->hasFile('file')) {
-               $attributes['file'] = $request->file->store('message-files','public');
+               $attributes['file'] =  uploadFile($request->file,'messages');
           }
           $attributes['chat_room_id']=(new CreateChatRoomAction)($request  );
           

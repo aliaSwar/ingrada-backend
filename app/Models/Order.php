@@ -48,9 +48,5 @@ final class Order extends Model
     {
         return $this->belongsTo(Item::class);
     }
-    public function getFileAttribute($value)
-    {
-        return asset("storage/{$value}");
-    }
 
 }
