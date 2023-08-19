@@ -14,19 +14,29 @@ use Cache;
 use DB;
 use App\Actions\Web\GetPointLastMonthAction;
 use App\Actions\Web\GetPointLastMonthTotalAction;
+
+
+
+
 class DesignerReportController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function __invoke(Request $request)
+
+    public function __invoke()
     {
-      return view('manager.reports.designer', ['users' => User::with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
 
     }
+    public function getDailyDesigner(Request $request)
+    {
+      return view('manager.reports.daily.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+
+    }
+    //get designer for monthly report
+    public function Get_designer(Request $request)
+    {
+      return view('manager.reports.monthly.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+
+    }
+
     public function Daily_report($id)
     {
      // return $id;

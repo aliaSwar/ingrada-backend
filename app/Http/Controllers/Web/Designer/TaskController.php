@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Web\Designer;
 
 use App\Actions\DistirbutionAlgorithmAction;
+use App\Actions\web\GetPointLastMonthAction;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Order;
@@ -18,13 +19,14 @@ final class TaskController extends Controller
     /**
      * Display a tasks from content writer
      */
-    public function index(): View
+    public function index()
     {
 
-        return view(
-            'designer.task.index',
-            ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]
-        );
+    $designerPoints=( new GetPointLastMonthAction)();
+    return view(
+        'designer.task.index',
+        ['tasks' => Task::where('user_id', auth()->user()->id)->paginate(7)]
+    );
     }
 
 
@@ -41,60 +43,6 @@ final class TaskController extends Controller
         ]);
     }
 
-    // /**
-    //  * Show the form for creating a new resource.
-    //  */
-    // public function create($id): View
-    // {
-    //     $order=Order::findOrFail($id);
-
-    //     if ('Failed' ===$order->status) {
-
-    //         return  redirect()->route('content-writer.external-orders.index')->with(['message'=>'the order refused!']);
-    //     }
-    //     $designer=User::find($order->designer_id);
-
-    //     return view('designer.task.create', ['order'=>$order,'designer'=>$designer]);
-    // }
-
-    // /**
-    //  * Store a newly created resource in storage.
-    //  */
-    // public function store(Request $request, $id)
-    // {
-    //     dd($request->all());
-    //     $order=Order::find($id);
-    //     $task=new Task;
-    //     $task->start_date=$request->start_date;
-    //     $task->end_date=$request->end_date;
-    //     $task->real_end_date=$request->end_date;
-    //     $task->name=$request->name;
-    //     $task->status="Progress";
-    //     $task->description=$request->description;
-    //     $task->order_id=$order->id;
-    //     $task->type=$order->type;
-    //     $task->category="fast";
-
-    //     if ($order->designer_id) {
-    //         $task->user_id=$order->designer_id;
-    //         $task->save();
-    //         $user=User::find($order->designer_id);
-    //         $user->number_tasks_progress=$user->number_tasks_progress+1;
-    //         $user->save();
-    //         $user->orders()->attach($order->id);
-
-    //         return back();
-    //     }
-    //     $user=(new DistirbutionAlgorithmAction)($request);
-    //     $task->user_id=$user->id;
-    //     $task->save();
-    //     $user->number_tasks_progress=$user->number_tasks_progress+1;
-    //     $user->save();
-    //     $order->designer_id=$user->id;
-    //     $user->orders()->attach($order->id);
-
-    //     return back();
-    // }
 
     /**
      * Display the specified resource.
@@ -171,6 +119,8 @@ final class TaskController extends Controller
 
       $order=Order::findOrFail($task->order_id);
       $order->update($request->all());
+      $order->is_publish_designer_file=true;
+      $order->save();
       return redirect()->route('tasks.index');
     }
 
@@ -179,6 +129,7 @@ final class TaskController extends Controller
      */
     public function store_external(Request $request, Order $order)
     {
+    //  return $request;
         $order->update($request->all());
         $order->users()->attach($request->user_id);
 

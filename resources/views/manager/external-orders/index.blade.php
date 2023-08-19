@@ -53,7 +53,7 @@
   <td>{{ $order->type}}</td>
   <td> {{ $order->final_price}} </td>
   <td>{{ $order->status}} </td>
-  <td>{{ $order->customers->first_name}}</td>
+  <td>{{ $order->customer->first_name??''}}</td>
   <td>
       <a class="Details"  data-toggle="Details" href={{ route('external-orders.show', $order->id) }}><i class="material-icons" style="color: #b2b3d6;">map</i>  </a>
   </td>

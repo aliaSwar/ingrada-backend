@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\Web\Designer\TimerCounterController;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
 use App\Http\Controllers\Web\Manager\TaskReportController;
+use App\Http\Controllers\Web\Manager\RatingDesignerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,9 +31,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
 
     });
-    Route::post('/hello', function () {
-        return "Fdfd";
-    })->name('hello');
+    Route::post('rating',RatingDesignerController::class)->name('rating');
 
     Route::get('/', function () {
         return view('dashboard');
@@ -39,21 +39,13 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
 
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/design', function () {
   return view('dashboard');
   })->name('design');
 
-  Route::get('/chart', [ChartController::class,'index']);
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 //filter_date
     Route::get('filters/{designer}',[DesignerReportController::class,'Filterdate'])->name('filters');
     Route::get('filters/task',[TaskReportController::class,'Filterdate'])->name('filters_task');
 
 require __DIR__ . '/auth.php';
- 

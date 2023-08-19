@@ -15,6 +15,7 @@ final class GetPointLastMonthTotalAction
 
       $average_points = Point::query()
               ->where('desginer_id',$designer_id)
+              ->where('giver_id',auth()->id())
               ->whereMonth('created_at', Carbon::now()->month)
               ->average('point');
       return $average_points;

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('customer_id')->nullable();
+            $table->foreignId('customer_id');
             $table->foreignId('item_id')->nullable();
             $table->text('description')->nullable(); //description the customers
             $table->boolean('is_idea')->default(0);
@@ -41,7 +41,7 @@ return new class extends Migration
             $table->foreignId('size_id')->nullable();
             $table->date('limit_date', 'y-m-d');
             $table->date('expected_limit_date', 'y-m-d')->nullable();//المتوقع
-            $table->enum('status', ['Pendning','Initiated', 'InProgress', 'Completed', 'Failed']);
+            $table->enum('status', ['Pendning','Initiated', 'Progress', 'Completed', 'Failed']);
             $table->text('notes')->nullable(); // notes the contect writer
             $table->tinyInteger('points')->nullable();
             $table->timestamps();

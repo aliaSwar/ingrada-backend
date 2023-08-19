@@ -6,10 +6,13 @@ namespace App\Http\Controllers\Web\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Category;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-final class ExternalOrderController extends Controller
+final class ExternalOrdermanagerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,10 +35,31 @@ final class ExternalOrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id): void
+    public function show($id)
     {
-        /* return  */
+      $order=Order::findOrFail($id);
+      $designer_name=User::where('id', $order->designer_id)->select('fullname')->first();
+
+      return view('manager.external-orders.show', [
+          'order'          =>   $order,
+          'designer_name'  =>   $designer_name,
+          'users'          =>   User::query()
+              ->role('content writer')
+              ->where('is_deleted', false)
+              ->where('is_active', true)
+              ->get()
+      ]);
     }
+
+
+    public function store(Request $request, Order $order)/* : RedirectResponse */
+    {
+      $order->update($request->all());
+      $order->users()->attach($request->user_id);
+
+        return redirect()->route('external-orders.index')->with(['message' => __("messages.create_data")]);
+    }
+
 
     /**
      * Show the form for editing the specified resource.

@@ -43,13 +43,9 @@
                                                   <td>{{ $user->number_tasks}} </td>
                                                   <td>{{ $user->categories->name??""}} </td>
                                                   <td>{{ $user->is_active}} </td>
-                                                  =
+
 
                                                   <td>
-                                                       <a class="delete"
-                                                            title="Delete"
-                                                            data-toggle="tooltip"><i
-                                                                 class="material-icons">event_busy</i></a>
                                                        <a class="details"
                                                             title="details"
                                                             data-toggle="tooltip"

@@ -4,11 +4,11 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
           <ul id="sidebarnav">
-              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
+              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/"
                       aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                           class="hide-menu">HOME</span></a></li>
               <li class="list-divider"></li>
-              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('users.index') }}"
+              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('designers.index') }}"
                   aria-expanded="false"><i data-feather="user" class="feather-icon"></i><span
                       class="hide-menu">DEIGNERS
                   </span></a>
@@ -50,24 +50,36 @@
                           aria-expanded="false"><i data-feather="trello" class="feather-icon"></i><span
                               class="hide-menu">DEPLOYMENT </span></a>
                       <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                          <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
-                                      class="hide-menu"> CLASS TASK
+                          <li class="sidebar-item"><a href="{{ route('manager.get_completed_orders') }}" class="sidebar-link"><span
+                                      class="hide-menu">  Completed Orders
                                   </span></a>
                           </li>
-                          <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
-                                      class="hide-menu"> CLASS DESIGNER
-                                  </span></a>
-                          </li>
-                          <li class="sidebar-item"><a href="form-checkbox-radio.html" class="sidebar-link"><span
-                                      class="hide-menu">WORKING TASK
-                                  </span></a>
-                          </li>
-                          <li class="sidebar-item"><a href="add role.html" class="sidebar-link"><span
-                              class="hide-menu">ADD RULE
-                          </span></a>
-                  </li>
                       </ul>
                   </li>
+                  <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                    aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                        class="hide-menu">Reports </span></a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a href="{{route('Daily_tasks')}}" class="sidebar-link"><span
+                                class="hide-menu"> DAILY
+                            </span></a>
+                    </li>
+                    <li class="sidebar-item"><a href="{{ route('dailyreport.designers') }}" class="sidebar-link"><span
+                      class="hide-menu"> DAILY
+                  </span></a>
+          </li>
+                    <li class="sidebar-item"><a href="{{route('Monthly_tasks')}}" class="sidebar-link"><span
+                                class="hide-menu"> MONTHLY
+                            </span></a>
+
+                          </li>
+                          <li class="sidebar-item"><a href="{{ route('monthlyreport.designers') }}" class="sidebar-link"><span
+                            class="hide-menu"> MONTHLY
+                        </span></a>
+
+                      </li>
+                </ul>
+            </li>
                   <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                       aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
                           class="hide-menu">DOMAINS & FONTS </span></a>
@@ -107,19 +119,19 @@
 
               </ul>
           </li>
+          <li class="list-divider"></li>
+                  <li class="sidebar-item">
+                            <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <a class="sidebar-link sidebar-link" href=""
+                                aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
+                                    class="hide-menu">
+                                    <input type="submit" style="border:none;background:none;padding: 0"
+                                value=" Logout">
 
-          <li class="sidebar-item">
-            <form action="{{ route('logout') }}" method="post">
-                @csrf
-
-                <a href="" class="sidebar-link ">
-                    <i class="feather-icon"></i>
-
-                    <input type="submit" style="border:none;background:none;padding: 0"
-                        value="LOGOUT" ></span>
-                    <a>
-            </form>
-        </li>
+                                </span></a>
+                            </form>
+                </li>
           </ul>
       </nav>
       <!-- End Sidebar navigation -->

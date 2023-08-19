@@ -147,7 +147,6 @@
                                             <tr>
                                                 <td>USERS </td>
                                                 <th>RULE</th>
-                                                <th>PERMISSION</th>
                                                 <th>ACTIONS</th>
                                             </tr>
                                         </thead>
@@ -163,7 +162,7 @@
                                                             <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
                                                                 data-bs-placement="top" class="avatar avatar-sm pull-up" title
                                                                 data-bs-original-title="{{ $user->fullname }}">
-                                                                <img src="{{ is_null($user->avatar) ? 'assets/images/users/profile-pic.jpg': Storage::url($user->avatar) }}"
+                                                                <img src="{{ asset($user->avatar ?? 'assets/images/users/profile-pic.jpg') }}"
                                                                     alt="Avatar" class="rounded-circle" />
                                                             </li>
                                                         @endforeach
@@ -179,15 +178,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>
 
-                                                    @foreach ($role->permissions as $permission)
-
-                                                {{ $permission->name }} -
-
-                                                    @endforeach
-
-                                                </td>
                                                 <td>
 
                                                     <a class="edit" href="{{ route('roles.edit', $role ) }}"

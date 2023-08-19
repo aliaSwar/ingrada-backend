@@ -15,8 +15,9 @@ class RatingDesignerController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function __invoke(Request $request,int $user_id): JsonResponse
+    public function __invoke(Request $request)/* : JsonResponse */
     {
+      return "fdf";
         $user=User::find($user_id);
         $points=(new GetPointLastMonthAction)($user_id);
         if (!$points->isEmpty()) {

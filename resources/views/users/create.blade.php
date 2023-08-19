@@ -31,7 +31,6 @@
                                         <input type="text"
                                              name="username"
                                              class="form-control"
-                                             id="inputUsername4"
                                              required>
                                    </div>
                                    <div class="col-md-6">
@@ -40,7 +39,6 @@
                                         <input type="email"
                                              name="email"
                                              class="form-control"
-                                             id="inputEmail4"
                                              required>
                                    </div>
                                    <div class="col-md-6">
@@ -102,10 +100,4 @@
                                         <button type="submit"
                                              class="btn btn-warning">Submit</button>
                                    </div>
-
-
-
-
-
-
 </x-layouts.app>

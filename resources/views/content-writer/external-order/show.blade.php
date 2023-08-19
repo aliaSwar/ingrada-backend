@@ -8,9 +8,6 @@
                                    <div class="card card-list task-card">
                                         <div class="card-body">
                                              <div class="form-group mb-3 position-relative">
-
-                                                  <h2>Review New External Order From Designer <a
-                                                            href="#">{{$designer_name->fullname}}</a></h2>
                                              </div>
 
                                              <div class="media align-items-center mt-md-0 mt-3">
@@ -37,7 +34,7 @@
 
                                              </div>
 
-                                             <form action="{{ route('content-writer.external-orders.update',$order->id) }}"
+                                             <form action="{{ route('orders.update',$order->id) }}"
                                                   method="POST">
                                                   @csrf
                                                   @method('PUT')

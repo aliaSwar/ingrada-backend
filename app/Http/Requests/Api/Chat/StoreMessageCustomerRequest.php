@@ -24,7 +24,7 @@ class StoreMessageCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id'    =>    'required|integer|exists:users,id',
+            'order_id'   =>    'required|exists:orders,id',
             'body'       =>    'nullable|string',
             'file'       =>    'nullable|file'
         ];

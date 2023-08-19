@@ -3,6 +3,8 @@
 @import 'icons/font-awesome/css/fontawesome-all.css';
 @import 'icons/simple-line-icons/css/simple-line-icons.css';
 @import 'icons/themify-icons/themify-icons.css';
+@import './orders.css';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 .topbar .dropdown-menu .with-arrow > span {
   transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -15932,8 +15934,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-/*============================================================== 
- For all pages 
+/*==============================================================
+ For all pages
  ============================================================== */
 #main-wrapper {
   width: 100%;
@@ -18701,7 +18703,7 @@ body {
   color: #404E67;
   background: #F5F7FA;
   font-family: 'Open Sans', sans-serif;
-  
+
   }
   .table-wrapper {
   width: 1090px;
@@ -18845,7 +18847,7 @@ body {
     table.table td a.details {
     color: #7509e0;
     }
-   
+
     table.table td i {
     font-size: 19px;
     }

@@ -26,16 +26,12 @@
                               aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                                   class="hide-menu">REPORTS </span></a>
                           <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                              <li class="sidebar-item"><a href="DailyReport.html" class="sidebar-link"><span
+                              <li class="sidebar-item"><a href="{{ route('Daily_repo') }}" class="sidebar-link"><span
                                           class="hide-menu"> DAILY
                                       </span></a>
                               </li>
-                              <li class="sidebar-item"><a href="monthlyReport.html" class="sidebar-link"><span
+                              <li class="sidebar-item"><a href="{{ route('Monthly_repo') }}" class="sidebar-link"><span
                                           class="hide-menu"> MONTHLY
-                                      </span></a>
-                              </li>
-                              <li class="sidebar-item"><a href="AnnulyReport.html" class="sidebar-link"><span
-                                          class="hide-menu"> ANNUAL
                                       </span></a>
                               </li>
                           </ul>

@@ -33,7 +33,7 @@
 
 
                                                       <div class="form-group mb-0" style="margin: 19px;">
-                                                        <form action="{{ route('content-writer.external-orders.update',$order->id) }}"
+                                                        <form action="{{ route('orders.update',$order->id) }}"
                                                           method="POST">
                                                           @csrf
                                                           @method('PUT')

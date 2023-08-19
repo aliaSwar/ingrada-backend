@@ -73,11 +73,7 @@
                                                             data-toggle="tooltip"
                                                             href="{{ route('Daily_designers', $user->id) }}"><i
                                                                  class="material-icons">event_note</i></a>
-                                                       <a class="monthly"
-                                                            title="monthly"
-                                                            data-toggle="tooltip"
-                                                            href="{{ route('Monthly_designers', $user->id) }}"><i
-                                                                 class="material-icons">event_note</i></a>
+                                                     
                                                   </td>
                                              </tr>
                                              @endforeach

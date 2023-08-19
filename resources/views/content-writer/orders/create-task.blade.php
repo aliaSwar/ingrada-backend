@@ -89,6 +89,16 @@
                                                                             <input type="date" name="end_date" class="custom-select form-control bg-white custom-radius "  value="{{  $order->end_date }}">
                                                                         </div>
                                                                     </div>
+                                                                    <div class="col-lg-3" >
+                                                                      <i class="ri-pencil-ruler-2-line"></i>
+                                                                      <label for="exampleInputText01" class="h5"> Category</label>
+                                                                      <select  name="category" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
+                                                                      @foreach ($categories as $category)
+                                                                      <option > {{ $category->name }}</option>
+                                                                      @endforeach 
+
+                                                                      </select>
+                                                                  </div>
 
                                                                       <hr style="margin-top: 12px;">
                                                                       <div class="col-lg-3">

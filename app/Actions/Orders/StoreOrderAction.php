@@ -35,12 +35,18 @@ final class StoreOrderAction
             'file'                         =>    uploadFile($request->file, 'orders'),
             'image'                        =>    uploadFile($request->image, 'orders'),
             'description'                  =>    $request->description,
-            'customers_id'                 =>    $user_id,
+            'customer_id'                  =>    $user_id,
             'value'                        =>    json_encode($request->value),
             'pereferce'                    =>    $request->pereferce,
         ];
-        $order=Order::create($attributes);
+       /// return $attributes;
+        $order= new Order($attributes);
+        $order->designer_id = $request->designer_id;
+        $order->is_order_designer  =  $request->designer_id ? true : false;
+        $order->customer_id  =  auth()->id();
 
+        $order->similler_item_id  =  $request->similler_item_id;
+        $order->save();
 
         return $order;
     }

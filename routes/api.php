@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Authentication\RegisterController;
 use App\Http\Controllers\Api\Chat\ChatCustomerController;
 use App\Http\Controllers\Api\Chat\GetMessagesController;
 use App\Http\Controllers\Api\Chat\GetRoomsChatController;
+use App\Http\Controllers\Api\Configuration\getDesignerController;
 use App\Http\Controllers\Api\Configuration\ShowColorsController;
 use App\Http\Controllers\Api\Configuration\ShowDesignersController;
 use App\Http\Controllers\Api\Configuration\ShowFontsController;
@@ -27,6 +28,8 @@ use App\Http\Controllers\Api\Design\ShowDetailsDesignController;
 use App\Http\Controllers\Api\Order\CustomizeOrderController;
 use App\Http\Controllers\Api\Order\GetOrdersController;
 use App\Http\Controllers\Api\Order\RatingDesignerController;
+use App\Http\Controllers\Api\Order\UploadFileOrderController;
+use App\Http\Controllers\Api\Order\UploadImageOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -134,6 +137,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 'designers',
                 ShowDesignersController::class
             );
+            Route::get(
+                'designer/{id}',
+                getDesignerController::class
+            );
         });
         //Order
         Route::name('order.')->prefix('order')->group(function (): void {
@@ -143,6 +150,14 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                     'orders',
                     CustomizeOrderController::class
                 );
+                Route::post(
+                    'upload_file',
+                    UploadFileOrderController::class
+                );
+                Route::post(
+                  'upload_image',
+                  UploadImageOrderController::class
+              );
                 Route::post(
                     'rating-designer',
                     RatingDesignerController::class
@@ -163,14 +178,11 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 'get_rooms_chat',
                 GetRoomsChatController::class
             );
-            Route::post(
-                'get_rooms_chat',
-                GetRoomsChatController::class
-            );
             Route::get(
-                'get_chat/{chat_room_id}',
+                'get_chat/{user_id}',
                 GetMessagesController::class
-            );
+
+         );
         });
     });
 });

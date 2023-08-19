@@ -30,7 +30,7 @@ final class StoreInternalOrderRequest extends FormRequest
             'final_price'       =>    'required|numeric',
             'notes'             =>    'nullable|string',
             'description'       =>    'nullable|string',
-            'customers_id'     =>     'required|numeric|exists:customers,id',
+            'customer_id'     =>     'required|numeric|exists:customers,id',
             'user_id'          =>     'required|numeric|exists:users,id'
 
         ];

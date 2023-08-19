@@ -1,14 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Actions\web\OrederDesignerAction;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Customer;
+
 
 class ChartController extends Controller
 {
-  public function designer()
+  public function index()
     {
+      //orerd designer
+      $OrederDesigners=( new OrederDesignerAction)();
+
+
         // Get the count of the two specific elements
         $internal = Order::where('is_enternal',true)->get();
         $external = Order::where('is_enternal',false)->get();
@@ -25,19 +31,34 @@ class ChartController extends Controller
        $Covers_count=count($Covers);
        $Drawing_count=count($Drawing);
 
+       //Get the count of country
+       $syria=Customer::where('country','syria')->get();
+       $Lebanon=Customer::where('country','Lebanon')->get();
+       $Turkey=Customer::where('country','Turkey')->get();
+       $Jordan=Customer::where('country','Jordan')->get();
+       $syria_count=count($syria);
+       $Lebanon_count=count($Lebanon);
+       $Turkey_count=count($Turkey);
+       $Jordan_count=count($Jordan);
+
 
         // Initialize the data array for the chart
         $data = [
           'social_media_count' => $social_media_count,
-          'Logo_count' => $Logo_count,
-          'Covers_count' => $Covers_count,
+          'Logo_count'    => $Logo_count,
+          'Covers_count'  => $Covers_count,
           'Drawing_count' => $Drawing_count,
-          'external_count' => $external_count,
-          'internal_count' => $internal_count,
+          'external_count'=> $external_count,
+          'internal_count'=> $internal_count,
+          'syria_count'   => $syria_count,
+          'Lebanon_count' => $Lebanon_count,
+          'Turkey_count'  => $Turkey_count,
+           'Jordan_count' => $Jordan_count
+
 
                 ];
         // Pass the data to the view
-       return view('designer_dashboard', compact('data'));
+       return view('designer_dashboard', compact('data','OrederDesigners'));
       // return view('manger_dashboard', compact('data'));
     }
     public function manager()

@@ -31,7 +31,7 @@
                                         <td class="border-top-0 px-2 py-4">
                                              <div class="popover-icon">
                                                   <a class="btn btn-primary rounded-circle btn-circle font-12" href="{{ route('content-writer.tasks.create',$order) }}">Task</a>
-                                                  <a class="btn btn-danger rounded-circle btn-circle font-12 popover-item" href="javascript:void(0)">SS</a>
+                                                  <a class="btn btn-danger rounded-circle btn-circle font-12" href="{{ route('orders.show',$order->id) }}">Show</a>
 
                                              </div>
                                    </td>

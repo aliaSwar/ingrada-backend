@@ -48,7 +48,7 @@ final class ScopeCotroller extends Controller
         //  $query->whereNotIn('code', $request->colors);
         //})->get();
 
-        $scope->collors()->sync($request->colors);
+        $scope->colors()->sync($request->colors);
 
         return redirect()->route('scopes.index')->with(['message' => __("messages.create_data")]);
     }

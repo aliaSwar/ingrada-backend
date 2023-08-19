@@ -1,4 +1,15 @@
 <x-layouts.app>
+  <style type="text/css">
+
+          #rating span.active {
+        color: orange;
+      }
+
+      #rating span {
+        font-size: 20px;
+        cursor: pointer;
+}
+    </style>
   <div class="container-fluid">
                     <main class="py-4">
 
@@ -45,7 +56,20 @@
                                                   <td>{{ $task->hours  }}</td>
                                                   <td>{{ $task->task_count  }}</td>
                                                   <td>{{  $task->task_ids   }}</td>
+                                                  @if ( is_null($average_points ))
+                                                  <td>
+                                                      <div id='rating' data-user-id="{{ $user_id }}">
+                                                        <span>&#9734; </span>
+                                                        <span>&#9734;</span>
+                                                        <span>&#9734;</span>
+                                                        <span>&#9734;</span>
+                                                        <span>&#9734;</span>
+                                                      </div>
+                                                      <hr>
+                                                  </td>
+                                                  @else
                                                   <td>{{  $average_points  }}</td>
+                                                  @endif
                                                   <td>
                                                     <a class="monthly"
                                                     title="monthly"
@@ -69,4 +93,62 @@
 
                     </main>
 
+                          <!-- Page JS -->
+      <script src="../assets/js/dashboards-analytics.js"></script>
+      <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="TableFilter.min.js" defer></script>
+      <script>
+
+
+
+
+       const stars = document.querySelectorAll('#rating span');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', function () {
+            count = index + 1;
+            updateStars();
+            console.log('Number of active stars: ' + count);
+            //console.log(designer_id);
+            // Send count rating to Laravel controller via AJAX
+            sendDataToController(count);
+        });
+    });
+
+    function updateStars() {
+        stars.forEach((star, index) => {
+            if (index < count) {
+                star.classList.add('active');
+            } else {
+                star.classList.remove('active');
+            }
+        });
+    }
+
+    function sendDataToController(count) {
+       const ratingElement = document.querySelector('#rating');
+       const designer_id = ratingElement.dataset.userId;
+
+       console.log('User ID:', designer_id);
+
+       const url = '/rating'; // Replace with the actual URL of your server endpoint
+          const data = {
+            count: count,
+            designer_id: designer_id
+          };
+          fetch(url, {
+          method: 'POST',
+          headers: {
+               'Content-Type': 'application/json',
+               'X-CSRF-TOKEN': '{{ csrf_token() }}'
+          },
+          body: JSON.stringify(data)
+          })
+          .then(response => {
+          console.log('Timer data sent successfully',response);
+          })
+          .catch(error => {
+          console.error('Error sending timer data:', error);
+          });
+    }
+</script>
   </x-layouts.app>
