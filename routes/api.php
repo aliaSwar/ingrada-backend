@@ -29,6 +29,7 @@ use App\Http\Controllers\Api\Order\CustomizeOrderController;
 use App\Http\Controllers\Api\Order\GetOrdersController;
 use App\Http\Controllers\Api\Order\RatingDesignerController;
 use App\Http\Controllers\Api\Order\UploadFileOrderController;
+use App\Http\Controllers\Api\Order\UploadImageOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -154,6 +155,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                     UploadFileOrderController::class
                 );
                 Route::post(
+                  'upload_image',
+                  UploadImageOrderController::class
+              );
+                Route::post(
                     'rating-designer',
                     RatingDesignerController::class
                 );
@@ -176,7 +181,8 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
             Route::get(
                 'get_chat/{user_id}',
                 GetMessagesController::class
-            );
+
+         );
         });
     });
 });

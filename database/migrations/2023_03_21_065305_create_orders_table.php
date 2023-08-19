@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('customer_id')->nullable();
+            $table->foreignId('customer_id');
             $table->foreignId('item_id')->nullable();
             $table->text('description')->nullable(); //description the customers
             $table->boolean('is_idea')->default(0);
