@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Actions\Customer\CreateChatRoomAction;
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\Message;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -26,7 +27,9 @@ class GetChatController extends Controller
                     ->orderBy('created_at', 'asc')
                     ->get();
                     
-        return view('chat',['messages'  =>  $chat ]);
+        return view('chat',
+        ['messages'  =>  $chat   ,'customer'  => Customer::find($customer_id) ]
+    );
     }
 }
 

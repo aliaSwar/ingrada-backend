@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Web\ChatUserController;
 use App\Http\Controllers\Web\GetChatController;
 use App\Http\Controllers\Web\Manager\ExternalOrdermanagerController;
 use App\Http\Controllers\Web\Manager\InternalCustomerController;
@@ -30,6 +31,7 @@ use Illuminate\Support\Facades\Route;
            * Protected endpoints.
           */
           Route::middleware(['manager'])->group(function (): void {
+               Route::post('new-message/{customer_id}', ChatUserController::class)->name('manager.new_message');
                Route::get('chat-customer/{customer_id}', GetChatController::class)->name('manager.chat_customer');
                Route::get('get-complete-orders', GetCompletedOrdersController::class)->name('manager.get_completed_orders');
                Route::get('publish-item/{order}', PublishItemController::class)->name('manager.publish_item');
