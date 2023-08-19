@@ -19,7 +19,7 @@ class UploadImageOrderController extends Controller
     public function __invoke(UploadFileImageRequest $request): JsonResponse
     {
         $order=Order::find($request->id);
-        $order->file=uploadFile($request->file,'orders');
+        $order->image=uploadFile($request->image,'orders');
 
         $order->save();
 
