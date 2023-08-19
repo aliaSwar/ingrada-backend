@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Web\Designer\TaskController;
+use App\Http\Controllers\Web\Designer\DesignerReportController;
 
 
 
@@ -33,6 +34,10 @@ use Illuminate\Support\Facades\Route;
 
            //    Route::get('/showexternaltask/{id}', [TaskController::class, 'show_external_task'])->name('showexternaltask');
                Route::post('/showexternal/{order}', [TaskController::class, 'store_external'])->name('showexternal');
+               //reports
+               Route::get('dailyreport',[DesignerReportController::class,'Daily_report'])->name('Daily_repo');
+               Route::get('monthlyreport',[DesignerReportController::class,'Monthly_report'])->name('Monthly_repo');
+               Route::get('reports/all_task/{taskIds}',[DesignerReportController::class,'Show_task'])->name('all_tasks');
 
           });
      });
