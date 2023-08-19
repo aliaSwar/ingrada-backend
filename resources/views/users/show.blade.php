@@ -63,29 +63,6 @@
       </style>
 
   <body>
-      <!-- ============================================================== -->
-      <!-- Preloader - style you can find in spinners.css -->
-      <!-- ============================================================== -->
-      <div class="preloader">
-          <div class="lds-ripple">
-              <div class="lds-pos"></div>
-              <div class="lds-pos"></div>
-          </div>
-      </div>
-      <!-- ============================================================== -->
-      <!-- Main wrapper - style you can find in pages.scss -->
-      <!-- ============================================================== -->
-      <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-          data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
-          <!-- ============================================================== -->
-
-                      <!-- Toggle which is visible on mobile only -->
-                      <!-- ============================================================== -->
-                      <a class="topbartoggler d-block d-lg-none waves-effect waves-light" href="javascript:void(0)"
-                          data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
-                              class="ti-more"></i></a>
-                  </div>
 
               <!-- ============================================================== -->
               <!-- Container fluid  -->
@@ -106,8 +83,8 @@
                         </label>
                         <input type="File" name="fileToUpload" id="fileToUpload">
                       </form>
-                      <h4 class="mb-0" style="margin-top: 12px;">joun doe</h4>
-                      <h6 class="mb-0" style="margin-top: 12px;">Designer</h6>
+                      <h4 class="mb-0" style="margin-top: 12px;">{{ $user->username }}</h4>
+                      <h6 class="mb-0" style="margin-top: 12px;">{{ $user->role }}</h6>
 
                   </div>
                   <hr class="my-4">
@@ -123,25 +100,8 @@
                           </span>
 
                           </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                  <h6 class="mb-0"> tasks received</h6>
-                  <span class="text-secondary">13</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                  <h6 class="mb-0">  tasks completed </h6>
-                  <span class="text-secondary">20</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-
-                      <i class="material-icons"></i>
-                      <a id="button" href="reports.html " style="color: #89a7ee;"> show reports </a>
-
-                      </li>
 
 
-
-
-                  </li>
                   </ul>
                   </div>
                   </div>
@@ -154,7 +114,7 @@
                   <h6 class="mb-0"> Name</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control" value="John ">
+                  <input type="text" class="form-control" value="{{$user->fullname}}">
                   </div>
                   </div>
                   <div class="row mb-3">
@@ -162,7 +122,7 @@
                       <h6 class="mb-0">Username</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                      <input type="text" class="form-control" value="Doe">
+                      <input type="text" class="form-control" value="{{$user->username}}">
                       </div>
                       </div>
 
@@ -171,50 +131,18 @@
                   <h6 class="mb-0">Email</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control" value="john@example.com">
+                  <input type="text" class="form-control" value="{{$user->email}}">
                   </div>
                   </div>
-                  <div class="row mb-3">
-                      <div class="col-sm-3">
-                      <h6 class="mb-0">Password</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                      <input type="text" class="form-control" value="mmnnoo00">
-                      </div>
-                      </div>
                       <hr>
-                      <div class="row mb-3">
-                          <div class="col-sm-3">
-                          <h6 class="mb-0">Role</h6>
-                          </div>
-                          <div class="col-sm-9 text-secondary">
-                              <select  name="type" class="selectpicker custom-select form-control bg-white " data-style="py-0">
-                                  <option> designer</option>
-                                  <option> content creator</option>
-
-                              </select>
-                          </div>
-                          </div>
                       <div class="row mb-3">
                           <div class="col-sm-3">
                           <h6 class="mb-0">Category</h6>
                           </div>
                           <div class="col-sm-9 text-secondary">
-                              <select  name="type" class="selectpicker custom-select form-control bg-white " data-style="py-0">
-                                  <option> fast</option>
-                                  <option> creative creator</option>
-
-                              </select>
+                            <input type="text" class="form-control" value="{{$user->category}}">
+                            </div>
                           </div>
-                          </div>
-                          <div class="row mb-3">
-                              <div class="col-sm-3">
-                              <h6 class="mb-0">Vacation</h6>
-                              </div>
-                              <div class="col-sm-9 text-secondary">
-                              <input type="text" class="form-control" value="10">
-                              </div>
-                              </div>
                   <div class="row mb-3">
                   <div class="col-sm-3">
                   <h6 class="mb-0">Phone</h6>
@@ -242,24 +170,8 @@
                       <h6 class="mb-0">Number Task</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" id="task1">
-                      <input type="number" class="form-control" value="18">
+                      <input type="number" class="form-control" value="{{ $user->number_tasks}}">
                       </div>
-                      <div class="col-sm-3" id="task2">
-                          <h6 class="mb-0">Vacations</h6>
-                          </div>
-                          <div class="col-sm-9 text-secondary" id="task2">
-                          <input type="number" class="form-control" value="20">
-                          </div>
-
-
-                  <div class="row">
-                  <div class="col-sm-3"></div>
-                  <div class="col-sm-9 text-secondary">
-                  <input type="button" class="btn btn-outline-warning px-4" value="Save Changes" id="save">
-                  </div>
-                  </div>
-                  </div>
-                  </div>
                   <div class="row">
                   <div class="col-sm-12">
 
@@ -287,27 +199,7 @@
               <!-- ============================================================== -->
           </div>
           <!-- ============================================================== -->
-          <!-- End Page wrapper  -->
-          <!-- ============================================================== -->
-      </div>
-      <!-- ============================================================== -->
-      <!-- End Wrapper -->
-      <!-- ============================================================== -->
-      <!-- End Wrapper -->
-      <!-- ============================================================== -->
-      <!-- All Jquery -->
-      <!-- ============================================================== -->
-      <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-      <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- apps -->
-      <!-- apps -->
-      <script src="../dist/js/app-style-switcher.js"></script>
-      <script src="../dist/js/feather.min.js"></script>
-      <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-      <script src="../dist/js/sidebarmenu.js"></script>
-      <!--Custom JavaScript -->
-      <script src="../dist/js/custom.min.js"></script>
-      <!--This page JavaScript -->
+
 
   </body>
 

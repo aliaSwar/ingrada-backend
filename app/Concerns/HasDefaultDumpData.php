@@ -83,7 +83,6 @@ trait HasDefaultDumpData
     {
         return [
             'image'              =>  asset('assets/images/background/beauty.jpg'),
-            'price'              =>  196,
             'likes'              => 1,
             'is_enable_post'     => 1,
             'prefernce_value_id' => 1,

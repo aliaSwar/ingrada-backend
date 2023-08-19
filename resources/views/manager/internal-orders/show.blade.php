@@ -11,21 +11,7 @@
                                       <div class="card-body">
                                           <div class="d-flex flex-wrap align-items-center justify-content-between">
                                               <div class="d-flex align-items-center">
-
                                               </div>
-
-                                              <div class="media align-items-center mt-md-0 mt-3">
-
-                                                  {{-- <p style="font-size: 19px ;margin-right: 30px; " id="timer"> 00 : 00 : 00 </p> --}}
-                                                  <a id="button-start" class="btn bg-info-light mr-3"><i class="ri-play-circle-line"></i></a>
-                                                  <a id="button-stop" class="btn bg-info-light mr-3"><i class="ri-pause-circle-line"></i></a>
-                                                  <a id="button-reset" class="btn bg-info-light mr-3"><i class="ri-restart-line"></i></a>
-
-
-                                                 <a class="btn editt" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseEdit1"><i class="ri-save-line"></i></a>
-
-
-                                                      </div>
 
                                                       <div class="card card-list task-card" id="edit" style="margin-top: 12px;">
                                                           <div  style="margin-top: 20px; margin-left: 16px;">
@@ -37,7 +23,7 @@
 
                                                           <i class="ri-pencil-ruler-2-line"></i>
                                                           <label for="exampleInputText01" class="h5"> Status This Task</label>
-                                                          <select  name="status" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
+                                                          <select  name="status" class=" form-control bg-white custom-radius" data-style="py-0">
                                                               <option selected> Initiated</option>
                                                               <option> InProgress</option>
                                                               <option> Completed</option>

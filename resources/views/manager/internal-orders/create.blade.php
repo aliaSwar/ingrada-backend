@@ -27,7 +27,7 @@
                                                                                 Designe</label>
                                                                            <br>
                                                                            <select name="type"
-                                                                                class="selectpicker custom-select form-control bg-white custom-radius @error('type') border-light-danger @enderror"
+                                                                                {{-- class="selectpicker custom-select form-control bg-white custom-radius @error('type') border-light-danger @enderror" --}}
                                                                                 data-style="
                                                                                 py-3">
                                                                                 @foreach($types as $type)
@@ -88,7 +88,7 @@
                                                                                 class="h5">Selct Content
                                                                                 Writer</label>
                                                                            <select name="user_id"
-                                                                                class="selectpicker custom-select form-control bg-white custom-radius"
+                                                                                {{-- class="selectpicker custom-select form-control bg-white custom-radius" --}}
                                                                                 data-style="py-0">
                                                                                 @foreach ($categories_user as $category)
                                                                                 <option value="{{ $category->id }}">

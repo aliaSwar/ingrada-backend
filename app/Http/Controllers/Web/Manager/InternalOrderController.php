@@ -43,7 +43,6 @@ final class InternalOrderController extends Controller
             ->where('is_deleted', false)
             ->where('is_active', true)
             ->get();
-
         return view('manager.internal-orders.create', [
             'types'              =>  Type::query()->get(),
             'internal_customers' => Customer::query()->get(),

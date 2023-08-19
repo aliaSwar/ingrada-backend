@@ -38,7 +38,8 @@ final class RegisteredUserController extends Controller
         public function show(User $user): View
         {
             return view(
-                'users.show'
+                'users.show',
+                ['user'=>$user]
             );
         }
 
@@ -49,7 +50,7 @@ final class RegisteredUserController extends Controller
        */
         public function store(RegisteredUserRequest $request): RedirectResponse
         {
-            
+
             $data = $request->validated();
             $data['avatar'] =  uploadFile($request->path, 'users');
             if ($request->category_id) {
@@ -58,16 +59,20 @@ final class RegisteredUserController extends Controller
             }
             $user = new User($data);
             $user->save();
-            
+
             $user->assignRole($request->role);
-            
+
             if (!$user) {
                 return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
             }
-            
+
             Notification::send($user, new UserPublish($user));
 
 
             return redirect()->route('users.index');
+        }
+        function destroy(User $user) {
+             $user->delete();
+             return redirect()->back();
         }
 }

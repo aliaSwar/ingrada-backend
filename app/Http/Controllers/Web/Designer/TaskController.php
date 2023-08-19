@@ -119,6 +119,8 @@ final class TaskController extends Controller
 
       $order=Order::findOrFail($task->order_id);
       $order->update($request->all());
+      $order->is_publish_designer_file=true;
+      $order->save();
       return redirect()->route('tasks.index');
     }
 

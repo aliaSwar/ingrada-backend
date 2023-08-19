@@ -14,7 +14,7 @@ class DesignerController extends Controller
     public function index()
     {
       //should get just designer
-      return view('manager.designer.index', ['users' => User::with('categories')->where('is_super_admin',false)->paginate(7)]);
+      return view('manager.designer.index', ['users' => User::role('designer')->with('categories')->where('is_super_admin',false)->paginate(7)]);
 
     }
 
