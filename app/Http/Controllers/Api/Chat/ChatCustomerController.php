@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Chat;
 
-use App\Actions\Customer\CreateChatRoomAction;
+
 use App\Actions\Customer\NewMessageFromCustomerAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Chat\StoreMessageCustomerRequest;

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Api\Chat;
+namespace App\Http\Requests\Web;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreMessageCustomerRequest extends FormRequest
+class MessageUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class StoreMessageCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id'         =>    'exists:users,id',
-            'body'       =>    'nullable|string',
-            'file'       =>    'nullable|file'
+            'body'           =>    'nullable|string',
+            'file'           =>    'nullable|file'
         ];
     }
 

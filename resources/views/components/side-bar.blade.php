@@ -93,7 +93,7 @@
                           aria-expanded="false"><i data-feather="trello" class="feather-icon"></i><span
                               class="hide-menu">RULE MANGMENT </span></a>
                       <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                          <li class="sidebar-item"><a href="{{ route('roles.index' )}}" class="sidebar-link"><span
+                          <li class="sidebar-item"><a href="{{ route('roles.index')}}" class="sidebar-link"><span
                                       class="hide-menu"> Roles
                                   </span></a>
                           </li>

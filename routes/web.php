@@ -36,11 +36,8 @@ Route::middleware('auth:sanctum')->group(function (): void {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::post('timer',TimerCounterController::class);
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::post('/design', function () {
   return view('dashboard');

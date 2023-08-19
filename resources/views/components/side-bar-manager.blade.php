@@ -119,19 +119,19 @@
 
               </ul>
           </li>
+          <li class="list-divider"></li>
+                  <li class="sidebar-item">
+                            <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <a class="sidebar-link sidebar-link" href=""
+                                aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
+                                    class="hide-menu">
+                                    <input type="submit" style="border:none;background:none;padding: 0"
+                                value=" Logout">
 
-          <li class="sidebar-item">
-            <form action="{{ route('logout') }}" method="post">
-                @csrf
-
-                <a href="" class="sidebar-link ">
-                    <i class="feather-icon"></i>
-
-                    <input type="submit" style="border:none;background:none;padding: 0"
-                        value="LOGOUT" ></span>
-                    <a>
-            </form>
-        </li>
+                                </span></a>
+                            </form>
+                </li>
           </ul>
       </nav>
       <!-- End Sidebar navigation -->

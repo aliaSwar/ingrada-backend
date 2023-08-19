@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Controllers\Api\Configuration;
 
 use App\Http\Controllers\Controller;
@@ -9,23 +7,23 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
-final class ShowDesignersController extends Controller
+class getDesignerController extends Controller
 {
     /**
      * Handle the incoming request.
      *
-     * @param Request $request
+     * @param int $id
      * @return JsonResponse
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(int $id): JsonResponse
     {
         $data=User::query()
-            ->role('designer')
-            ->where('is_active', true)
-            ->where('is_deleted', false)
-            ->where('category', '=', Category::CATEGORY_DESIGNER_CREATIVE)
-            ->get();
+                ->role('designer')
+                ->where('id',  $id)
+                ->where('is_deleted', false)
+                ->first();
 
         return sendSuccessResponse(
             __('messages.get_data'),
@@ -33,3 +31,4 @@ final class ShowDesignersController extends Controller
         );
     }
 }
+

@@ -92,8 +92,7 @@
           <!-- Vendors JS -->
           <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}">
           </script>
-          <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-          <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
           <!-- Main JS -->
           <script src="{{ asset('assets/js/main.js') }}"></script>
 
