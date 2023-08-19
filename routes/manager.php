@@ -10,7 +10,6 @@ use App\Http\Controllers\Web\Manager\ExternalOrdermanagerController;
 use App\Http\Controllers\Web\Manager\InternalCustomerController;
 use App\Http\Controllers\Web\Manager\InternalOrderController;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
-use App\Http\Controllers\Web\Manager\RatingDesignerController;
 use App\Http\Controllers\Web\Manager\TaskReportController;
 use App\Http\Controllers\Web\Manager\GetCompletedOrdersController;
 use App\Http\Controllers\Web\Manager\PublishItemController;
@@ -33,7 +32,9 @@ use Illuminate\Support\Facades\Route;
            * Protected endpoints.
           */
           Route::middleware(['manager'])->group(function (): void {
+
                Route::resource('designers', DesignerController::class);
+               Route::get('/fd', DesignerReportController::class);
                Route::post('new-message/{customer_id}', ChatUserController::class)->name('manager.new_message');
                Route::get('chat-customer/{customer_id}', GetChatController::class)->name('manager.chat_customer');
                Route::get('get-complete-orders', GetCompletedOrdersController::class)->name('manager.get_completed_orders');
@@ -42,7 +43,7 @@ use Illuminate\Support\Facades\Route;
                Route::resource('external-orders', ExternalOrdermanagerController::class);
                Route::post('external-orders/{order}', [ExternalOrdermanagerController::class, 'store'])->name('store_external');
                Route::resource('internal-orders', InternalOrderController::class);
-               Route::get('dailyreport/designers',DesignerReportController::class)->name('dailyreport.designers');
+               Route::get('dailyreport/designers',DesignerReportController::class,'getDailyDesigner')->name('dailyreport.designers');
                Route::get('monthlyreport/designers',[DesignerReportController::class,'Get_designer'])->name('monthlyreport.designers');
 
                Route::get('report/all_task/{taskIds}',[DesignerReportController::class,'Show_task'])->name('all_task');

@@ -1,8 +1,8 @@
 <x-layouts.app>
   <br>
   <br>
-                              <!--logo customiz-->
-                              <div class="col-12">
+
+  <div class="col-12">
                                   <div class="card">
                                       <div class="card-body">
                                           <div class="row">
@@ -39,7 +39,7 @@
 
                                                           <i class="ri-pencil-ruler-2-line"></i>
                                                           <label for="exampleInputText01" class="h5"> Status This Task</label>
-                                                          <select  name="status" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
+                                                          <select  name="status" class="form-control bg-white custom-radius" data-style="py-0">
                                                               <option selected> Initiated</option>
                                                               <option> InProgress</option>
                                                               <option> Test</option>
@@ -91,7 +91,16 @@
                                                                                   </div>
                                                                           </div>
                                                                       </div>
-
+                                                                      <div class="col-lg-3">
+                                                                        <div class="form-group mb-0">
+                                                                            <label for="exampleInputText3" class="h5">File From Designer</label>
+                                                                            <div class="form-control bg-white custom-radius" style="text-align:justify;">
+                                                                                <a href="{{ $order->file_designer }}">
+                                                                                    Click to open file
+                                                                                </a>
+                                                                                </div>
+                                                                        </div>
+                                                                    </div>
                                                               </div>
                                                           </div>
                                                           <div class="card mb-3" style="border-radius: 20px;">

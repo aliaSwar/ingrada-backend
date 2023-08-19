@@ -130,34 +130,24 @@
 
        console.log('User ID:', designer_id);
 
-        const url = '/rating'; // Replace with your Laravel route URL
-        const data = {
+       const url = '/rating'; // Replace with the actual URL of your server endpoint
+          const data = {
             count: count,
             designer_id: designer_id
-        };
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Replace with the appropriate CSRF token
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
-            if (response.ok) {
-                return response // Parse the response body as JSON
-            } else {
-                throw new Error('Error sending rating count to controller.');
-            }
-        })
-        .then(data => {
-            // Handle the data received from the controller
-            console.log('Response from controller:', data);
-        }).catch(error => {
-    // Handle any errors that occur during the AJAX request
-    console.log("dsdsfd");
-
+          };
+          fetch(url, {
+          method: 'POST',
+          headers: {
+               'Content-Type': 'application/json',
+               'X-CSRF-TOKEN': '{{ csrf_token() }}'
+          },
+          body: JSON.stringify(data)
+          })
+          .then(response => {
+          console.log('Timer data sent successfully',response);
+          })
+          .catch(error => {
+          console.error('Error sending timer data:', error);
           });
     }
 </script>

@@ -52,12 +52,12 @@ final class RegisteredUserController extends Controller
         {
 
             $data = $request->validated();
-            $data['avatar'] =  uploadFile($request->path, 'users');
             if ($request->category_id) {
                 $data['category']=Category::findOrFail($request->category_id)->name;
                 $data['category_id']=$request->category_id;
             }
             $user = new User($data);
+            $user->avatar=uploadFile($request->path, 'users');
             $user->save();
 
             $user->assignRole($request->role);
@@ -66,7 +66,7 @@ final class RegisteredUserController extends Controller
                 return redirect()->back()->withErrors(['error' => 'Something went wrong!']);
             }
 
-            Notification::send($user, new UserPublish($user));
+           // Notification::send($user, new UserPublish($user));
 
 
             return redirect()->route('users.index');

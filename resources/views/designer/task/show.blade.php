@@ -20,7 +20,7 @@
                                                 <a id="button-stop" class="btn bg-info-light mr-3"><i class="ri-pause-circle-line"></i></a>
                                                 <a id="button-reset" class="btn bg-info-light mr-3"><i class="ri-restart-line"></i></a>
                                                 <a class="btn editt" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseEdit1"><i class="ri-save-line"></i></a>
-                                            </div> 
+                                            </div>
 
                                                     <div class="card card-list task-card" id="edit" style="margin-top: 12px;">
                                                         <div  style="margin-top: 20px; margin-left: 16px;">
@@ -106,7 +106,7 @@
                                                                       <div class="form-group mb-0">
                                                                           <i class="ri-attachment-2"></i>
                                                                           <label for="exampleInputText01" class="h5">Upload Attachments</label>
-                                                                          <input type="file" name="edit_file" class=" form-control bg-white  " style="border-radius: 10px;" >
+                                                                          <input type="file" name="file_designer" class=" form-control bg-white  " style="border-radius: 10px;" >
                                                                       </div>
                                                                   </div>
                                                               </div>
@@ -144,12 +144,12 @@
     , twoDigits = n => ('0' + n).slice(-2)
     , one_Sec   = 1000
     , one_Min   = one_Sec * 60
-    , one_Hour  = one_Min * 60 
+    , one_Hour  = one_Min * 60
 
     function countUp()
     {
     let now   = new Date().getTime()
-    timer.tim = now - timer.tZero 
+    timer.tim = now - timer.tZero
     let h     = Math.floor(timer.tim  / one_Hour)
         , m     = Math.floor((timer.tim % one_Hour) / one_Min  )
         , s     = Math.floor((timer.tim % one_Min ) / one_Sec  )
@@ -158,8 +158,8 @@
     }
 
     btStart.onclick=()=>
-    {  
-    timer.tZero      = new Date().getTime() - timer.tim 
+    {
+    timer.tZero      = new Date().getTime() - timer.tim
     timer.ref        = setInterval(countUp,500)
     btStart.disabled = true
     btStop.disabled  = false

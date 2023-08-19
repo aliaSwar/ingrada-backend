@@ -60,7 +60,7 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td class="font-weight-medium text-dark border-top-0 px-2 py-4">{{ $order->customer->name }}
+                                                    <td class="font-weight-medium text-dark border-top-0 px-2 py-4">{{ $order->customer->fullname}}
 
                                                     </td>
                                                     <td class="font-weight-medium text-dark border-top-0 px-2 py-4">{{ $order->type }}

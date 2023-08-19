@@ -206,23 +206,7 @@
                                                           </div>
                                                      </div>
                                                 </div>
-                                                <div class="card mb-3"
-                                                     style="border-radius: 20px;">
-                                                     <div class="card-body">
-                                                          <div class="row">
-                                                               <div class="form-group mb-0">
-                                                                    <i class="ri-attachment-2"></i>
-                                                                    <label for="exampleInputText01"
-                                                                         class="h5">Upload
-                                                                         Attachments</label>
-                                                                    <input type="file"
-                                                                         name="edit_file"
-                                                                         class=" form-control bg-white  "
-                                                                         style="border-radius: 10px;">
-                                                               </div>
-                                                          </div>
-                                                     </div>
-                                                </div>
+
                                                 <div class="card mb-3"
                                                      style="border-radius: 20px;">
                                                      <div class="card-body">

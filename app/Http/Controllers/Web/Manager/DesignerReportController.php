@@ -14,29 +14,26 @@ use Cache;
 use DB;
 use App\Actions\Web\GetPointLastMonthAction;
 use App\Actions\Web\GetPointLastMonthTotalAction;
-use App\Actions\Web\RatingDesignerAction;
-use App\Http\Requests\Manager\StoreRatingRequest;
+
 
 
 
 class DesignerReportController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    //get designer for daily report
-    public function __invoke(Request $request)
+
+    public function __invoke()
     {
-      return view('manager.reports.daily.designer', ['users' => User::with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+
+    }
+    public function getDailyDesigner(Request $request)
+    {
+      return view('manager.reports.daily.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
 
     }
     //get designer for monthly report
     public function Get_designer(Request $request)
     {
-      return view('manager.reports.monthly.designer', ['users' => User::with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+      return view('manager.reports.monthly.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
 
     }
 
@@ -85,15 +82,7 @@ class DesignerReportController extends Controller
             ]
         );
     }
-    function ratingMonthly(StoreRatingRequest $request) {
-      $count = $request->input('count');
-      return $count;
 
-
-      // Do something with the $count value (e.g., store it in the database)
-
-     // return response()->json(['message' => 'Rating count stored successfully.']);
-    }
     public function Show_task($task_ids)
     {
 

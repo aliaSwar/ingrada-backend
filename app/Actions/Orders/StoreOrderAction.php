@@ -44,6 +44,8 @@ final class StoreOrderAction
         $order->designer_id = $request->designer_id;
         $order->is_order_designer  =  $request->designer_id ? true : false;
         $order->customer_id  =  auth()->id();
+
+        $order->similler_item_id  =  $request->similler_item_id;
         $order->save();
 
         return $order;

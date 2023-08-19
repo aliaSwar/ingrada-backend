@@ -17,6 +17,6 @@ class Manager
     {
         if (auth()->user()->hasRole('manager'))
             return $next($request);
-        return view('errors.403');
+        abort(403);
     }
 }
