@@ -27,11 +27,19 @@ class DesignerReportController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
+    //get designer for daily report
     public function __invoke(Request $request)
     {
-      return view('manager.reports.designer', ['users' => User::with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+      return view('manager.reports.daily.designer', ['users' => User::with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
 
     }
+    //get designer for monthly report
+    public function Get_designer(Request $request)
+    {
+      return view('manager.reports.monthly.designer', ['users' => User::with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+
+    }
+
     public function Daily_report($id)
     {
      // return $id;

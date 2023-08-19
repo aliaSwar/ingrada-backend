@@ -56,12 +56,11 @@ final class InternalOrderController extends Controller
      */
     public function store(StoreInternalOrderRequest $request)/* : RedirectResponse */
     {
-
         (new StoreInternalOrderAction)($request);
         //return $request;
 
 
-        return redirect()->route('internal-orders.index')->with(['message' => __("messages.create_data")]);
+       return redirect()->route('internal-orders.index')->with(['message' => __("messages.create_data")]);
     }
 
     /**

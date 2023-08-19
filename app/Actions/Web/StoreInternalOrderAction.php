@@ -9,9 +9,9 @@ use App\Models\Order;
 
 final class StoreInternalOrderAction
 {
-    public function __invoke(StoreInternalOrderRequest $request): void
+    public function __invoke(StoreInternalOrderRequest $request)
     {
-
+      
         $attributes = $request->validated();
 
         if ($request->hasFile('file')) {
@@ -23,6 +23,7 @@ final class StoreInternalOrderAction
         $attributes['primary_price']      = $request->final_price;
 
         $order=Order::create($attributes);
+
         $order->is_enternal=true;
         $order->save();
         $order->users()->attach($request->user_id);

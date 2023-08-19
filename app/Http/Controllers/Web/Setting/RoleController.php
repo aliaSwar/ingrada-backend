@@ -21,7 +21,7 @@ final class RoleController extends Controller
     {
 
         $roles = Role::query()->with('users', 'permissions')->get();
- 
+
         return view('setting.roles.index', ['roles' => $roles]);
     }
 

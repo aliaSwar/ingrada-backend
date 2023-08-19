@@ -97,16 +97,16 @@
                                       class="hide-menu"> Roles
                                   </span></a>
                           </li>
-                          <li class="sidebar-item"><a href="{{ route('roles.create' }}" class="sidebar-link"><span
+                          <li class="sidebar-item"><a href="{{ route('roles.create') }}" class="sidebar-link"><span
                                       class="hide-menu"> Create Role
                                   </span></a>
                           </li>
-                          <li class="sidebar-item"><a href="form-checkbox-radio.html" class="sidebar-link"><span
-                                      class="hide-menu">WORKING TASK
+                          <li class="sidebar-item"><a href="{{route('categories.index')}}" class="sidebar-link"><span
+                                      class="hide-menu">Category
                                   </span></a>
                           </li>
-                          <li class="sidebar-item"><a href="add role.html" class="sidebar-link"><span
-                              class="hide-menu">ADD RULE
+                          <li class="sidebar-item"><a href="{{route('categories.create')}}" class="sidebar-link"><span
+                              class="hide-menu">ADD Category
                           </span></a>
                   </li>
                       </ul>

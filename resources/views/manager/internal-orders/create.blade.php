@@ -172,7 +172,7 @@
                                                                  <td>
                                                                       <div class="custom-control custom-checkbox">
                                                                            <input type="checkbox"
-                                                                                name="customers_id"
+                                                                                name="customer_id"
                                                                                 value="{{ $internal_customer->id }}">
                                                                            <label class="custom-control-label"
                                                                                 for="customCheck1">1</label>
