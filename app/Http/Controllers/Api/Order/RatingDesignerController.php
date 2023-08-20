@@ -21,8 +21,8 @@ class RatingDesignerController extends Controller
         $point=(new RatingDesignerAction)($request);
         //return $point;
         return sendSuccessResponse(
-            $point,
-            __('messages.create_data')
+            __('messages.create_data'),
+            $point
         );
     }
 }

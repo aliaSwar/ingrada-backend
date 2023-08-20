@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\Web\Designer\TimerCounterController;
+use App\Http\Controllers\Web\IndexController;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
 use App\Http\Controllers\Web\Manager\TaskReportController;
 use App\Http\Controllers\Web\Manager\RatingDesignerController;
@@ -33,16 +34,8 @@ Route::middleware('auth:sanctum')->group(function (): void {
     });
     Route::post('rating',RatingDesignerController::class)->name('rating');
 
-    Route::get('/', function () {
-        return view('dashboard');
-    })->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/',IndexController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
-
-
-
-Route::post('/design', function () {
-  return view('dashboard');
-  })->name('design');
 
 //filter_date
     Route::get('filters/{designer}',[DesignerReportController::class,'Filterdate'])->name('filters');
