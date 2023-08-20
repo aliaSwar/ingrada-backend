@@ -179,7 +179,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 GetRoomsChatController::class
             );
             Route::get(
-                'get_chat/{user_id}',
+                'get_chat/{order_id}',
                 GetMessagesController::class
 
          );
