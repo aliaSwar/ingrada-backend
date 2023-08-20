@@ -56,19 +56,10 @@
 
 
                                                                       <hr style="margin-top: 12px;">
+
                                                                       <div class="col-lg-3">
                                                                           <div class="form-group mb-0">
-                                                                              <label for="exampleInputText3" class="h5">Illustration From Client</label>
-                                                                              <div class="form-control bg-white custom-radius" style="text-align:justify;">
-                                                                                  <a href="C:\Users\ABC\Desktop\cpp">
-                                                                                      Click to open Image
-                                                                                  </a>
-                                                                                  </div>
-                                                                          </div>
-                                                                      </div>
-                                                                      <div class="col-lg-3">
-                                                                          <div class="form-group mb-0">
-                                                                              <label for="exampleInputText3" class="h5">File From Client</label>
+                                                                              <label for="exampleInputText3" class="h5">File From Manager</label>
                                                                               <div class="form-control bg-white custom-radius" style="text-align:justify;">
                                                                                   <a href="{{ $order->file }}">
                                                                                       Click to open file

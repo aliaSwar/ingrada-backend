@@ -149,253 +149,24 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td class="px-2 py-4">
+                                @foreach ($data['OrederDesigners'] as $OrederDesigner)
+                                <tr>
+                                      <td class="border-top-0 px-2 py-4">
                                           <div class="d-flex no-block align-items-center">
                                               <div class="me-3"><img
-                                                      src="../assets/images/users/widget-table-pic2.jpg"
+                                                      src="{{ asset( $OrederDesigner->receiver->avatar ?? 'assets\images\users\1.jpg') }}"
                                                       alt="user" class="rounded-circle" width="45"
                                                       height="45" /></div>
                                               <div class="">
-                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Daniel
-                                                      Kristeen
-                                                  </h5>
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">{{$OrederDesigner->receiver->fullname}}</h5>
 
                                               </div>
                                           </div>
                                       </td>
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                      </td>
-
-
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">
-                                          <i style="color: #FABB18;" data-feather="star" ></i>
-                                          <i style="color: #FABB18;" data-feather="star" ></i>
-                                          <i  style="color: #FABB18;" data-feather="star" ></i>
-                                          <i style="color: #FABB18;" data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td class="px-2 py-4">
-                                          <div class="d-flex no-block align-items-center">
-                                              <div class="me-3"><img
-                                                      src="../assets/images/users/widget-table-pic2.jpg"
-                                                      alt="user" class="rounded-circle" width="45"
-                                                      height="45" /></div>
-                                              <div class="">
-                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Daniel
-                                                      Kristeen
-                                                  </h5>
-
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                      </td>
-
-
-                                      <td class="font-weight-medium text-dark px-2 py-4">
-                                          <i  style="color: #FABB18;" data-feather="star" ></i>
-                                          <i  style="color: #FABB18;" data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td class="px-2 py-4">
-                                          <div class="d-flex no-block align-items-center">
-                                              <div class="me-3"><img
-                                                      src="../assets/images/users/widget-table-pic3.jpg"
-                                                      alt="user" class="rounded-circle" width="45"
-                                                      height="45" /></div>
-                                              <div class="">
-                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
-                                                      Josephs
-                                                  </h5>
-
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                      </td>
-
-                                      <td class="font-weight-medium text-dark px-2 py-4">
-                                          <i  style="color: #FABB18;" data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                      </td>
-                                  </tr>
-
-                                  <tr>
-                                      <td class="px-2 py-4">
-                                          <div class="d-flex no-block align-items-center">
-                                              <div class="me-3"><img
-                                                      src="../assets/images/users/widget-table-pic3.jpg"
-                                                      alt="user" class="rounded-circle" width="45"
-                                                      height="45" /></div>
-                                              <div class="">
-                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
-                                                      Josephs
-                                                  </h5>
-
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                      </td>
-
-                                      <td class="font-weight-medium text-dark px-2 py-4">
-                                          <i  style="color: #FABB18;" data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td class="px-2 py-4">
-                                          <div class="d-flex no-block align-items-center">
-                                              <div class="me-3"><img
-                                                      src="../assets/images/users/widget-table-pic3.jpg"
-                                                      alt="user" class="rounded-circle" width="45"
-                                                      height="45" /></div>
-                                              <div class="">
-                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
-                                                      Josephs
-                                                  </h5>
-
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                      </td>
-
-                                      <td class="font-weight-medium text-dark px-2 py-4">
-                                          <i  style="color: #FABB18;" data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td class="px-2 py-4">
-                                          <div class="d-flex no-block align-items-center">
-                                              <div class="me-3"><img
-                                                      src="../assets/images/users/widget-table-pic3.jpg"
-                                                      alt="user" class="rounded-circle" width="45"
-                                                      height="45" /></div>
-                                              <div class="">
-                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
-                                                      Josephs
-                                                  </h5>
-
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                      </td>
-
-                                      <td class="font-weight-medium text-dark px-2 py-4">
-                                          <i  style="color: #FABB18;" data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td class="px-2 py-4">
-                                          <div class="d-flex no-block align-items-center">
-                                              <div class="me-3"><img
-                                                      src="../assets/images/users/widget-table-pic3.jpg"
-                                                      alt="user" class="rounded-circle" width="45"
-                                                      height="45" /></div>
-                                              <div class="">
-                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
-                                                      Josephs
-                                                  </h5>
-
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                      </td>
-
-                                      <td class="font-weight-medium text-dark px-2 py-4">
-                                          <i  style="color: #FABB18;" data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td class="px-2 py-4">
-                                          <div class="d-flex no-block align-items-center">
-                                              <div class="me-3"><img
-                                                      src="../assets/images/users/widget-table-pic3.jpg"
-                                                      alt="user" class="rounded-circle" width="45"
-                                                      height="45" /></div>
-                                              <div class="">
-                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
-                                                      Josephs
-                                                  </h5>
-
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                      </td>
-
-                                      <td class="font-weight-medium text-dark px-2 py-4">
-                                          <i  style="color: #FABB18;" data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                          <i data-feather="star" ></i>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td class="border-bottom-0 px-2 py-4">
-                                          <div class="d-flex no-block align-items-center">
-                                              <div class="me-3"><img
-                                                      src="../assets/images/users/widget-table-pic4.jpg"
-                                                      alt="user" class="rounded-circle" width="45"
-                                                      height="45" /></div>
-                                              <div class="">
-                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Jan
-                                                      Petrovic
-                                                  </h5>
-
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                      </td>
-
-
-                                      <td class="border-bottom-0 font-weight-medium text-dark px-2 py-4">	<i data-feather="star" ></i>
-                                          <i style="color: #b087b8;" data-feather="star" ></i>
-                                          <i style="color: #a9a6a0;" data-feather="star" ></i>
-                                          <i style="color: #e1797e;" data-feather="star" ></i>
-                                          <i style="color: #bcbcb8;"  data-feather="star" ></i>
-                                      </td>
-                                  </tr>
+                                      <td>{{$OrederDesigner->receiver->email}}</td>
+                                      <td> {{ $OrederDesigner->total_points}} </td>
+                                      </tr>
+                                      @endforeach
                               </tbody>
                           </table>
                       </div>
@@ -421,38 +192,6 @@
                 <!-- *************************************************************** -->
                 <!-- Start Top Leader Table -->
                 <!-- *************************************************************** -->
-
-                                        <tbody>
-                                          @foreach ($data['OrederDesigners']   as $OrederDesigner)
-                                          <tr>
-                                                <td class="border-top-0 px-2 py-4">
-                                                    <div class="d-flex no-block align-items-center">
-                                                        <div class="me-3"><img
-                                                                src="{{ asset( $OrederDesigner->receiver->avatar ?? 'assets\images\users\1.jpg') }}"
-                                                                alt="user" class="rounded-circle" width="45"
-                                                                height="45" /></div>
-                                                        <div class="">
-                                                            <h5 class="text-dark mb-0 font-16 font-weight-medium">{{$OrederDesigner->receiver->fullname}}</h5>
-
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>{{$OrederDesigner->receiver->email}}</td>
-                                                <td> {{ $OrederDesigner->receiver->category}} </td>
-                                                <td> {{ $OrederDesigner->total_points}} </td>
-                                                </tr>
-                                                @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- *************************************************************** -->
-                <!-- End Top Leader Table -->
-                <!-- *************************************************************** -->
-            </div>
 
 
 

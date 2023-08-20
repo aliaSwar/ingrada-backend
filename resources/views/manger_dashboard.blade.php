@@ -1,16 +1,4 @@
 <x-layouts.app>
-  <!DOCTYPE html>
-  <html dir="ltr" lang="en">
-
-  <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!-- Tell the browser to be responsive to screen width -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link type="text/css" href="@@path/vendor/apexcharts/dist/apexcharts.css" rel="stylesheet">
   <style>
       .bg-info-light
          {
@@ -20,7 +8,10 @@
       margin-left: 12px;
          }
   </style>
-  </head>
+
+  <!-- Custom CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link type="text/css" href="@@path/vendor/apexcharts/dist/apexcharts.css" rel="stylesheet">
 
 
               <!-- ============================================================== -->
@@ -414,21 +405,6 @@
                 </div>
 
 
-                  <!-- *************************************************************** -->
-                  <!-- End Sales Charts Section -->
-                  <!-- *************************************************************** -->
-                  <!-- *************************************************************** -->
-                  <!-- Start Location and Earnings Charts Section -->
-                  <!-- *************************************************************** -->
-
-
-                  <!-- *************************************************************** -->
-                  <!-- End Location and Earnings Charts Section -->
-                  <!-- *************************************************************** -->
-                  <!-- *************************************************************** -->
-                  <!-- Start Top Leader Table -->
-                  <!-- *************************************************************** -->
-
                                           <tbody>
                                             @foreach ($data['OrederDesigners'] as $OrederDesigner)
                                             <tr>
@@ -460,8 +436,11 @@
                   <!-- End Top Leader Table -->
                   <!-- *************************************************************** -->
               </div>
-
-
+              <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
+              <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+               <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+              <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+              <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
      <script>
       var ctx = document.getElementById('Chart2').getContext('2d');
       const socialmedia = <?php echo $data['social_media_count'] ?>;

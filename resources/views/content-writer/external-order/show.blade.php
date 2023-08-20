@@ -10,29 +10,6 @@
                                              <div class="form-group mb-3 position-relative">
                                              </div>
 
-                                             <div class="media align-items-center mt-md-0 mt-3">
-
-                                                  <p style="font-size: 19px  "
-                                                       id="timer"> 00 : 00 : 00 </p>
-                                                  <a id="button-start"
-                                                       class="btn bg-info-light mr-3"><i
-                                                            class="ri-play-circle-line"></i></a>
-                                                  <a id="button-stop"
-                                                       class="btn bg-info-light mr-3"><i
-                                                            class="ri-pause-circle-line"></i></a>
-                                                  <a id="button-reset"
-                                                       class="btn bg-info-light mr-3"><i
-                                                            class="ri-restart-line"></i></a>
-
-
-                                                  <a class="btn editt"
-                                                       data-toggle="collapse"
-                                                       role="button"
-                                                       aria-expanded="false"
-                                                       aria-controls="collapseEdit1"><i class="ri-save-line"></i></a>
-
-
-                                             </div>
 
                                              <form action="{{ route('orders.update',$order->id) }}"
                                                   method="POST">
@@ -46,7 +23,7 @@
                                                        <label for="exampleInputText01"
                                                             class="h5"> Status This Task</label>
                                                        <select name="status"
-                                                            class="selectpicker custom-select form-control bg-white custom-radius"
+                                                            class="form-control bg-white custom-radius"
                                                             data-style="py-0">
                                                             <option selected> Initiated</option>
                                                             <option> InProgress</option>

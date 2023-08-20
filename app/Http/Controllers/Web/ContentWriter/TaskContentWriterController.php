@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Task;
 use App\Models\Category;
+use App\Models\FileTask;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -50,11 +51,11 @@ class TaskContentWriterController extends Controller
         $task->end_date=$request->end_date;
         $task->real_end_date=$request->end_date;
         $task->name=$request->name;
-        $task->status="InProgress";
+        $task->status="Progress";
         $task->description=$request->description;
         $task->order_id=$order->id;
         $task->type=$order->type;
-        $task->category="fast";
+        $task->category=$request->category;
 
         if ($order->designer_id) {
             $task->user_id=$order->designer_id;
@@ -69,6 +70,14 @@ class TaskContentWriterController extends Controller
         $user=(new DistirbutionAlgorithmAction)($request);
         $task->user_id=$user->id;
         $task->save();
+
+        /* $path=uploadFile($request->edit_file,'tasks');
+        $file_task=new FileTask([
+          'path'         =>      $path,
+          'task_id'      =>      $task->id
+        ]);
+        $file_task->save(); */
+
         $user->number_tasks_progress=$user->number_tasks_progress+1;
         $user->save();
         $order->designer_id=$user->id;

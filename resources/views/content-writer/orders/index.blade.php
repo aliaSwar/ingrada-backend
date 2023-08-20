@@ -18,7 +18,7 @@
                               @foreach ($orders as $order)
                               <tr>
                                    <td><span class="fs-6">{{$order->status}}</span></td>
-                                   <td><a href="" class="font-weight-medium link">{{$order->customer->name??""}}</a></td>
+                                   <td><a href="" class="font-weight-medium link">{{ $order->customer->fullname }}</a></td>
                               @if ($order->is_order_designer)
                               <td><a href="javascript:void(0)" class="font-bold link">Selected Designer</a></td>
                               @else

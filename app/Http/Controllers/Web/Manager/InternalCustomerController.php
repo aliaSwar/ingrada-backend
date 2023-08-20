@@ -39,7 +39,7 @@ final class InternalCustomerController extends Controller
         //  $data = Arr::add($data, 'avatar', uploadFile($request->path, 'internal-customers'));
         Customer::create($data);
 
-        return redirect()->route('manager.internal-customers.index')->with(['message' => __('messages.create_data')]);
+        return redirect()->route('internal-customers.index')->with(['message' => __('messages.create_data')]);
     }
 
     /**
