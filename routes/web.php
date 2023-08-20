@@ -8,7 +8,6 @@ use App\Http\Controllers\Web\Designer\TimerCounterController;
 use App\Http\Controllers\Web\IndexController;
 use App\Http\Controllers\Web\Manager\DesignerReportController;
 use App\Http\Controllers\Web\Manager\TaskReportController;
-use App\Http\Controllers\Web\Manager\RatingDesignerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,18 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 // Setting Route
 Route::middleware('auth:sanctum')->group(function (): void {
-    Route::get('use', function () {
-      auth()->user()->assignRole('admin');
-        return auth()->user()->hasRole('admin');
-    });
+
 
 
     });
-    Route::post('rating',RatingDesignerController::class)->name('rating');
+
     Route::resource('/chart',ChartController::class);
 
     Route::get('/',IndexController::class)->middleware(['auth', 'verified'])->name('dashboard');
-
 
 //filter_date
     Route::get('filters/{designer}',[DesignerReportController::class,'Filterdate'])->name('filters');

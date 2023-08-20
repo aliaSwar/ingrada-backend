@@ -20,17 +20,24 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request)
     {
-        if (auth()->user()->hasRole('admin'))
-            (new AdminDashboardAction)();
-        elseif (auth()->user()->hasRole('manager')) 
-            (new ManagerDashboardAction)();
+        if (auth()->user()->hasRole('admin')){
+            $data=(new AdminDashboardAction)();
+      
+            return view('dashboard',['data'=>$data]);
+        }
+        elseif (auth()->user()->hasRole('manager')){
+            $data=(new ManagerDashboardAction)();
+            return view('manger_dashboard', compact('data'));
+        }
         elseif (auth()->user()->hasRole('content writer')) {
-            (new ContentWriterDashboardAction)();
+            $data=(new ContentWriterDashboardAction)();
+            return view('content-writer-dashboard', compact('data'));
         }
         elseif (auth()->user()->hasRole('designer')) {
-            (new DesignerDashboardAction)();
+            $data=(new DesignerDashboardAction)();
+            return view('designer_dashboard', compact('data'));
         }
-        else 
+        else
             abort(403);
     }
 }

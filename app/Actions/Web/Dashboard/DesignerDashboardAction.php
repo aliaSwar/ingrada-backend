@@ -57,12 +57,11 @@ final class DesignerDashboardAction
                'syria_count'   => $syria_count,
                'Lebanon_count' => $Lebanon_count,
                'Turkey_count'  => $Turkey_count,
-               'Jordan_count' => $Jordan_count
-
+               'Jordan_count' => $Jordan_count,
+                'OrederDesigners' => $OrederDesigners
 
                     ];
           // Pass the data to the view
-               return view('designer_dashboard', compact('data','OrederDesigners'));
-
+               return $data;
      }
 }

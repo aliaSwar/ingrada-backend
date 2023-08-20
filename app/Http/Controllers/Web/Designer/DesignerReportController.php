@@ -49,12 +49,7 @@ class DesignerReportController extends Controller
 
     public function Monthly_report( )
     {
-      $is_show_rating=false;
-      $points=(new GetPointLastMonthAction)(auth()->user()->id);
-      if (!$points->isEmpty()) {
-           $is_show_rating=true;
-      }
-      $average_points=(new GetPointLastMonthTotalAction)(auth()->user()->id);
+      $average_points=auth()->user()->points;
       $tasks_by_month = Task::byMonth()->where('user_id',auth()->user()->id)->get();
 
       foreach ($tasks_by_month  as $task) {
@@ -68,7 +63,6 @@ class DesignerReportController extends Controller
             [
               'tasks_by_month'=>$tasks_by_month,
               'user_id'=>auth()->user()->id,
-              'is_show_rating'=>$is_show_rating,
               'average_points'=> $average_points
             ]
         );

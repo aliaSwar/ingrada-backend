@@ -70,7 +70,7 @@
           </li>
                     <li class="sidebar-item"><a href="{{route('Monthly_tasks')}}" class="sidebar-link"><span
                                 class="hide-menu"> MONTHLY Tasks
-                            </span></a> 
+                            </span></a>
 
                           </li>
                           <li class="sidebar-item"><a href="{{ route('monthlyreport.designers') }}" class="sidebar-link"><span

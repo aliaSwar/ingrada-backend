@@ -18,10 +18,6 @@
                       class="hide-menu">REVIEW
                   </span></a>
           </li>
-
-              <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
-                      aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
-                          class="hide-menu">Calendar</span></a></li>
                           <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                               aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                                   class="hide-menu">REPORTS </span></a>

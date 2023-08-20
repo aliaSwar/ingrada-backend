@@ -13,6 +13,7 @@ use App\Http\Controllers\Web\Manager\DesignerReportController;
 use App\Http\Controllers\Web\Manager\TaskReportController;
 use App\Http\Controllers\Web\Manager\GetCompletedOrdersController;
 use App\Http\Controllers\Web\Manager\PublishItemController;
+use App\Http\Controllers\Web\Manager\RatingDesignerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,7 @@ use Illuminate\Support\Facades\Route;
            * Protected endpoints.
           */
           Route::middleware(['manager'])->group(function (): void {
-
+               Route::post('rating',RatingDesignerController::class)->name('rating');
                Route::resource('designers', DesignerController::class);
                Route::get('/fd', DesignerReportController::class);
                Route::post('new-message/{customer_id}', ChatUserController::class)->name('manager.new_message');

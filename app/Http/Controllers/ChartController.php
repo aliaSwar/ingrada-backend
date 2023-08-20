@@ -158,7 +158,7 @@ class ChartController extends Controller
 
                 ];
         // Pass the data to the view
-       return view('dashboard', compact('data'));
+       return $data;
       // return view('manger_dashboard', compact('data'));
     }
 }
