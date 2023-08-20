@@ -182,7 +182,7 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 'get_chat/{order_id}',
                 GetMessagesController::class
 
-         );
+            );
         });
     });
 });

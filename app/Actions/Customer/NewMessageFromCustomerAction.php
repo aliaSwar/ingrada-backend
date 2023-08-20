@@ -17,7 +17,9 @@ final class NewMessageFromCustomerAction{
           $order=Order::find($request->order_id);
           $order->massenger_id=$order->designer_id ?? User::role('manager')->first()->id;
           $order->save();
-          
+          if ( is_null($order->massenger_id)) {
+               return sendFailedResponse();
+          }
           $attributes = $request->only(
                (new Message)->getFillable()
           );

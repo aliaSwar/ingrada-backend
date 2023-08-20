@@ -61,20 +61,20 @@
                         class="hide-menu">Reports </span></a>
                 <ul aria-expanded="false" class="collapse  first-level base-level-line">
                     <li class="sidebar-item"><a href="{{route('Daily_tasks')}}" class="sidebar-link"><span
-                                class="hide-menu"> DAILY
+                                class="hide-menu"> DAILY Tasks
                             </span></a>
                     </li>
                     <li class="sidebar-item"><a href="{{ route('dailyreport.designers') }}" class="sidebar-link"><span
-                      class="hide-menu"> DAILY
+                      class="hide-menu"> DAILY Designers
                   </span></a>
           </li>
                     <li class="sidebar-item"><a href="{{route('Monthly_tasks')}}" class="sidebar-link"><span
-                                class="hide-menu"> MONTHLY
-                            </span></a>
+                                class="hide-menu"> MONTHLY Tasks
+                            </span></a> 
 
                           </li>
                           <li class="sidebar-item"><a href="{{ route('monthlyreport.designers') }}" class="sidebar-link"><span
-                            class="hide-menu"> MONTHLY
+                            class="hide-menu"> MONTHLY Designers
                         </span></a>
 
                       </li>

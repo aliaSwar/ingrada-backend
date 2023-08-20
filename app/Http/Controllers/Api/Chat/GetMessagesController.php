@@ -24,7 +24,9 @@ class GetMessagesController extends Controller
         $order=Order::find($order_id);
         $order->massenger_id=$order->designer_id ?? User::role('manager')->first()->id;
         $order->save();
-        
+        if ( is_null($order->massenger_id)) {
+            return sendFailedResponse();
+        }
         $room_id=(new CreateChatRoomAction)($order->massenger_id,auth()->id());
 
         $chat=Message::query()
