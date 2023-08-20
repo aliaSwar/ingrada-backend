@@ -155,9 +155,9 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                     UploadFileOrderController::class
                 );
                 Route::post(
-                  'upload_image',
-                  UploadImageOrderController::class
-              );
+                'upload_image',
+                UploadImageOrderController::class
+                );
                 Route::post(
                     'rating-designer',
                     RatingDesignerController::class
@@ -179,10 +179,10 @@ Route::name('app.')->prefix('app/')->whereNumber(['id'])->group(function (): voi
                 GetRoomsChatController::class
             );
             Route::get(
-                'get_chat/{user_id}',
+                'get_chat/{order_id}',
                 GetMessagesController::class
 
-         );
+            );
         });
     });
 });

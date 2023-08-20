@@ -14,6 +14,7 @@ final class RatingDesignerAction{
      public function __invoke(StoreRatingDesignerRequest $request)
      {
           $order=Order::where('id',$request->order_id)->first();
+          
           //add point
           $attributes = $request->only(
                (new Point)->getFillable()
@@ -28,7 +29,7 @@ final class RatingDesignerAction{
           $user=User::query()->where('id',$order->designer_id)->first();
 
           $user->update([
-            'points'  =>  ($user->points+$request->point)/2
+               'points'  =>  ($user->points+$request->point)/2
           ]);
           return $point;
      }
