@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
     });
     Route::post('rating',RatingDesignerController::class)->name('rating');
+    Route::resource('/chart',ChartController::class);
 
     Route::get('/', function () {
         return view('dashboard');

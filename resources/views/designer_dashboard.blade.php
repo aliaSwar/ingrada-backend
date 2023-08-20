@@ -79,7 +79,7 @@
                                             <h2 class="text-dark mb-1 font-weight-medium">4:90:2</h2>
 
                                         </div>
-                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate"> This Week's work hours
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate"> Week work hours
                                         </h6>
                                     </div>
                                     <div class="ms-auto mt-md-3 mt-lg-0">
@@ -134,31 +134,305 @@
                 <!-- Start Sales Charts Section -->
                 <!-- *************************************************************** -->
                 <div class="row">
-                  <div class="col-lg-4 col-md-12">
+                  <div class="col-lg-6 col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">The most requested designes</h4>
+                            <h4 class="card-title mb-4"> <i data-feather="pie-chart" class="svg-icon"></i>statistics:</h4>
+
+
+                            <hr>
+                            <div style="width: 300px; height: 300px; margin-left: 100px;">
+
+                                <canvas   id="Chart1"></canvas>
+                            </div>
+                            <hr>
                             <canvas id="Chart3"></canvas>
+                            <hr>
+                            <canvas id="Chart2"></canvas>
                     </div>
                 </div>
             </div>
 
-                <div class="col-lg-4 col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">The most requested designers</h4>
-                            <canvas id="Chart1"></canvas>
-                    </div>
-                </div>
-            </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="card" >
-                            <div class="card-body" >
-                                <h4 class="card-title mb-4">The most requested designers</h4>
-                                <canvas id="Chart2"></canvas>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-6">
+              <div class="card">
+
+
+                      <div class="card-body">
+                          <h4 class="card-title mb-4"> <i data-feather="star" class="svg-icon"></i>Designers Review:</h4>
+                    <hr>
+
+
+                      <div class="table-responsive">
+                          <table class="table no-wrap v-middle mb-0">
+
+                              <thead>
+                                  <tr class="border-0">
+                                      <th class="border-0 font-14 font-weight-medium text-muted">Designer
+                                      </th>
+                                      <th class="border-0 font-14 font-weight-medium text-muted">Email
+                                      </th>
+                                      <th class="border-0 font-14 font-weight-medium text-muted">Budjet</th>
+
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td class="px-2 py-4">
+                                          <div class="d-flex no-block align-items-center">
+                                              <div class="me-3"><img
+                                                      src="../assets/images/users/widget-table-pic2.jpg"
+                                                      alt="user" class="rounded-circle" width="45"
+                                                      height="45" /></div>
+                                              <div class="">
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Daniel
+                                                      Kristeen
+                                                  </h5>
+
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
+
+                                      </td>
+
+
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">
+                                          <i style="color: #FABB18;" data-feather="star" ></i>
+                                          <i style="color: #FABB18;" data-feather="star" ></i>
+                                          <i  style="color: #FABB18;" data-feather="star" ></i>
+                                          <i style="color: #FABB18;" data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="px-2 py-4">
+                                          <div class="d-flex no-block align-items-center">
+                                              <div class="me-3"><img
+                                                      src="../assets/images/users/widget-table-pic2.jpg"
+                                                      alt="user" class="rounded-circle" width="45"
+                                                      height="45" /></div>
+                                              <div class="">
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Daniel
+                                                      Kristeen
+                                                  </h5>
+
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
+
+                                      </td>
+
+
+                                      <td class="font-weight-medium text-dark px-2 py-4">
+                                          <i  style="color: #FABB18;" data-feather="star" ></i>
+                                          <i  style="color: #FABB18;" data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="px-2 py-4">
+                                          <div class="d-flex no-block align-items-center">
+                                              <div class="me-3"><img
+                                                      src="../assets/images/users/widget-table-pic3.jpg"
+                                                      alt="user" class="rounded-circle" width="45"
+                                                      height="45" /></div>
+                                              <div class="">
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
+                                                      Josephs
+                                                  </h5>
+
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
+
+                                      </td>
+
+                                      <td class="font-weight-medium text-dark px-2 py-4">
+                                          <i  style="color: #FABB18;" data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                      </td>
+                                  </tr>
+
+                                  <tr>
+                                      <td class="px-2 py-4">
+                                          <div class="d-flex no-block align-items-center">
+                                              <div class="me-3"><img
+                                                      src="../assets/images/users/widget-table-pic3.jpg"
+                                                      alt="user" class="rounded-circle" width="45"
+                                                      height="45" /></div>
+                                              <div class="">
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
+                                                      Josephs
+                                                  </h5>
+
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
+
+                                      </td>
+
+                                      <td class="font-weight-medium text-dark px-2 py-4">
+                                          <i  style="color: #FABB18;" data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="px-2 py-4">
+                                          <div class="d-flex no-block align-items-center">
+                                              <div class="me-3"><img
+                                                      src="../assets/images/users/widget-table-pic3.jpg"
+                                                      alt="user" class="rounded-circle" width="45"
+                                                      height="45" /></div>
+                                              <div class="">
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
+                                                      Josephs
+                                                  </h5>
+
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
+
+                                      </td>
+
+                                      <td class="font-weight-medium text-dark px-2 py-4">
+                                          <i  style="color: #FABB18;" data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="px-2 py-4">
+                                          <div class="d-flex no-block align-items-center">
+                                              <div class="me-3"><img
+                                                      src="../assets/images/users/widget-table-pic3.jpg"
+                                                      alt="user" class="rounded-circle" width="45"
+                                                      height="45" /></div>
+                                              <div class="">
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
+                                                      Josephs
+                                                  </h5>
+
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
+
+                                      </td>
+
+                                      <td class="font-weight-medium text-dark px-2 py-4">
+                                          <i  style="color: #FABB18;" data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="px-2 py-4">
+                                          <div class="d-flex no-block align-items-center">
+                                              <div class="me-3"><img
+                                                      src="../assets/images/users/widget-table-pic3.jpg"
+                                                      alt="user" class="rounded-circle" width="45"
+                                                      height="45" /></div>
+                                              <div class="">
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
+                                                      Josephs
+                                                  </h5>
+
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
+
+                                      </td>
+
+                                      <td class="font-weight-medium text-dark px-2 py-4">
+                                          <i  style="color: #FABB18;" data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="px-2 py-4">
+                                          <div class="d-flex no-block align-items-center">
+                                              <div class="me-3"><img
+                                                      src="../assets/images/users/widget-table-pic3.jpg"
+                                                      alt="user" class="rounded-circle" width="45"
+                                                      height="45" /></div>
+                                              <div class="">
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
+                                                      Josephs
+                                                  </h5>
+
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
+
+                                      </td>
+
+                                      <td class="font-weight-medium text-dark px-2 py-4">
+                                          <i  style="color: #FABB18;" data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                          <i data-feather="star" ></i>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="border-bottom-0 px-2 py-4">
+                                          <div class="d-flex no-block align-items-center">
+                                              <div class="me-3"><img
+                                                      src="../assets/images/users/widget-table-pic4.jpg"
+                                                      alt="user" class="rounded-circle" width="45"
+                                                      height="45" /></div>
+                                              <div class="">
+                                                  <h5 class="text-dark mb-0 font-16 font-weight-medium">Jan
+                                                      Petrovic
+                                                  </h5>
+
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
+
+                                      </td>
+
+
+                                      <td class="border-bottom-0 font-weight-medium text-dark px-2 py-4">	<i data-feather="star" ></i>
+                                          <i style="color: #b087b8;" data-feather="star" ></i>
+                                          <i style="color: #a9a6a0;" data-feather="star" ></i>
+                                          <i style="color: #e1797e;" data-feather="star" ></i>
+                                          <i style="color: #bcbcb8;"  data-feather="star" ></i>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+
+
+
+              </div>
+
 
                 <!-- *************************************************************** -->
                 <!-- End Sales Charts Section -->
@@ -174,31 +448,7 @@
                 <!-- *************************************************************** -->
                 <!-- Start Top Leader Table -->
                 <!-- *************************************************************** -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
 
-                            <div class="card-header bg-white">
-                                <div class="card-title">
-
-
-                             Designer Reviews
-                            </div></div>
-                            <div class="card-body">
-
-                                <div class="table-responsive">
-                                    <table class="table no-wrap v-middle mb-0">
-
-                                        <thead>
-                                            <tr class="border-0">
-                                                <th class="border-0 font-14 font-weight-medium text-muted">Designer
-                                                </th>
-                                                <th class="border-0 font-14 font-weight-medium text-muted">Email
-                                                </th>
-                                                <th class="border-0 font-14 font-weight-medium text-muted">Category</th>
-                                                <th class="border-0 font-14 font-weight-medium text-muted">Points</th>
-                                            </tr>
-                                        </thead>
                                         <tbody>
                                           @foreach ($OrederDesigners as $OrederDesigner)
                                           <tr>
@@ -296,19 +546,19 @@ var Chart1 = new Chart(ctx, {
       label: 'the least',
       data: [socialmedia,Logo,Covers ,Drawing],
       backgroundColor: [
-      'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
         'rgba(255, 159, 64, 0.2)',
-      'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-       'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)'
       ],
       borderColor: [
-        'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
         'rgba(255, 159, 64, 0.2)'
       ],
       borderWidth: 0.5
@@ -331,20 +581,17 @@ var Chart1 = new Chart(ctx, {
       label: 'the least',
       data: [internal_count,external_count],
       backgroundColor: [
-       'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
-       'rgba(54, 162, 235, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(54, 162, 235, 0.2)'
+
       ],
       borderColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+      'rgb(97, 97, 97)',
+      'rgb(200, 200, 200)',
+      'rgba(255, 159, 64, 0.2)',
+        'rgba(54, 162, 235, 0.2)'
       ],
       borderWidth: 0.5
     }]
@@ -368,17 +615,17 @@ var Chart1 = new Chart(ctx, {
       label: 'the least',
       data: [syria_count,Lebanon_count,Turkey_count,Jordan_count],
       backgroundColor: [
-       'rgba(255, 99, 132, 0.2)',
-        'rgb(60, 60, 60)',
-       'rgb(60, 60, 60)',
-        'rgb(60, 60, 60)'
+        'rgba(54, 162, 235, 0.2)',
+       'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+       'rgba(54, 162, 235, 0.2)'
 
       ],
       borderColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgb(60, 60, 60)',
-        'rgb(60, 60, 60)',
-        'rgb(60, 60, 60)'
+        'rgba(54, 162, 235, 0.2)',,
+        'rgba(54, 162, 235, 0.2)',,
+        'rgba(54, 162, 235, 0.2)',,
+        'rgba(54, 162, 235, 0.2)',
 
       ],
       borderWidth: 0.5

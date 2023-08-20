@@ -195,129 +195,30 @@
                                                   </th>
                                                   <th class="border-0 font-14 font-weight-medium text-muted">Email
                                                   </th>
-                                                  <th class="border-0 font-14 font-weight-medium text-muted">Projrct</th>
-                                                  <th class="border-0 font-14 font-weight-medium text-muted">Budget</th>
+                                                  <th class="border-0 font-14 font-weight-medium text-muted">Category</th>
+                                                  <th class="border-0 font-14 font-weight-medium text-muted">Points</th>
                                               </tr>
                                           </thead>
                                           <tbody>
-                                              <tr>
+                                            @foreach ($OrederDesigners as $OrederDesigner)
+                                            <tr>
                                                   <td class="border-top-0 px-2 py-4">
                                                       <div class="d-flex no-block align-items-center">
                                                           <div class="me-3"><img
-                                                                  src="../assets/images/users/widget-table-pic1.jpg"
+                                                                  src="{{ asset( $OrederDesigner->receiver->avatar ?? 'assets\images\users\1.jpg') }}"
                                                                   alt="user" class="rounded-circle" width="45"
                                                                   height="45" /></div>
                                                           <div class="">
-                                                              <h5 class="text-dark mb-0 font-16 font-weight-medium">Hanna
-                                                                  Gover</h5>
+                                                              <h5 class="text-dark mb-0 font-16 font-weight-medium">{{$OrederDesigner->receiver->fullname}}</h5>
 
                                                           </div>
                                                       </div>
                                                   </td>
-                                                  <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                                  </td>
-                                                  <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	50
-
-                                                  </td>
-
-                                                  <td class="font-weight-medium text-dark border-top-0 px-2 py-4">
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-
-                                                  </td>
-                                              </tr>
-                                              <tr>
-                                                  <td class="px-2 py-4">
-                                                      <div class="d-flex no-block align-items-center">
-                                                          <div class="me-3"><img
-                                                                  src="../assets/images/users/widget-table-pic2.jpg"
-                                                                  alt="user" class="rounded-circle" width="45"
-                                                                  height="45" /></div>
-                                                          <div class="">
-                                                              <h5 class="text-dark mb-0 font-16 font-weight-medium">Daniel
-                                                                  Kristeen
-                                                              </h5>
-
-                                                          </div>
-                                                      </div>
-                                                  </td>
-                                                  <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                                  </td>
-                                                  <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	45
-
-                                                  </td>
-
-                                                  <td class="font-weight-medium text-dark px-2 py-4">
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                  </td>
-                                              </tr>
-                                              <tr>
-                                                  <td class="px-2 py-4">
-                                                      <div class="d-flex no-block align-items-center">
-                                                          <div class="me-3"><img
-                                                                  src="../assets/images/users/widget-table-pic3.jpg"
-                                                                  alt="user" class="rounded-circle" width="45"
-                                                                  height="45" /></div>
-                                                          <div class="">
-                                                              <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
-                                                                  Josephs
-                                                              </h5>
-
-                                                          </div>
-                                                      </div>
-                                                  </td>
-                                                  <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                                  </td>
-                                                  <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	50
-
-                                                  </td>
-                                                  <td class="font-weight-medium text-dark px-2 py-4">
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                  </td>
-                                              </tr>
-                                              <tr>
-                                                  <td class="border-bottom-0 px-2 py-4">
-                                                      <div class="d-flex no-block align-items-center">
-                                                          <div class="me-3"><img
-                                                                  src="../assets/images/users/widget-table-pic4.jpg"
-                                                                  alt="user" class="rounded-circle" width="45"
-                                                                  height="45" /></div>
-                                                          <div class="">
-                                                              <h5 class="text-dark mb-0 font-16 font-weight-medium">Jan
-                                                                  Petrovic
-                                                              </h5>
-
-                                                          </div>
-                                                      </div>
-                                                  </td>
-                                                  <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	bb98@gmail.com
-
-                                                  </td>
-                                                  <td class="font-weight-medium text-dark border-top-0 px-2 py-4">	50
-
-                                                  </td>
-
-                                                  <td class="border-bottom-0 font-weight-medium text-dark px-2 py-4">	<i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                      <i data-feather="star" ></i>
-                                                  </td>
-                                              </tr>
+                                                  <td>{{$OrederDesigner->receiver->email}}</td>
+                                                  <td> {{ $OrederDesigner->receiver->category}} </td>
+                                                  <td> {{ $OrederDesigner->total_points}} </td>
+                                                  </tr>
+                                                  @endforeach
                                           </tbody>
                                       </table>
                                   </div>
@@ -455,13 +356,17 @@
 
   <script>
       var ctx = document.getElementById('Chart3').getContext('2d');
+      const syria_count = <?php echo $data['syria_count'] ?>;
+         const Lebanon_count = <?php echo $data['Lebanon_count'] ?>;
+         const Turkey_count  = <?php echo $data['Turkey_count'] ?>;
+         const Jordan_count = <?php echo $data['Jordan_count'] ?>;
   var Chart1 = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
-      labels: [' social media ','Logo ','Covers  ','Drawing '],
+      labels: [' Syria ','Lebanon ','Turkey  ','Jordan'],
       datasets: [{
         label: 'the least',
-        data: [10,20,15,30],
+        data: [syria_count,Lebanon_count,Turkey_count,Jordan_count],
         backgroundColor: [
          'rgba(255, 99, 132, 0.2)',
           'rgb(60, 60, 60)',

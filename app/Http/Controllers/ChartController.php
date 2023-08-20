@@ -15,11 +15,12 @@ class ChartController extends Controller
       $OrederDesigners=( new OrederDesignerAction)();
 
 
+
         // Get the count of the two specific elements
         $internal = Order::where('is_enternal',true)->get();
         $external = Order::where('is_enternal',false)->get();
-        $internal_count = count($internal);
-        $external_count =count($external);
+        $internal_count = 5;//count($internal);
+        $external_count =7;//count($external);
 
       //Get the count of the type order
        $social_media= Order::where('type','social media')->get();
@@ -27,7 +28,7 @@ class ChartController extends Controller
        $Covers=Order::where('type','Covers')->get();
        $Drawing=Order::where('type','Drawing')->get();
        $social_media_count=count($social_media);
-       $Logo_count=count($Logo);
+       $Logo_count=5;//count($Logo);
        $Covers_count=count($Covers);
        $Drawing_count=count($Drawing);
 
