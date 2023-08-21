@@ -110,7 +110,7 @@
                                                                          value={{ old('pereferce', $order->pereferce??'') }}>
                                                                </div>
                                                           </div>
-                                                          @if ($order->value!=null)
+                                                          
                                                           <div class="col-lg-3">
                                                                <div class="form-group mb-0">
                                                                     <label for="exampleInputText2"
@@ -121,7 +121,7 @@
                                                                          value="{{ old('value', $order->value) }}">
                                                                </div>
                                                           </div>
-                                                          @endif
+                                                          
 
 
                                                           <div class="col-lg-3">
@@ -131,11 +131,12 @@
                                                                     <input type="text"
                                                                          name="scope"
                                                                          class=" form-control bg-white custom-radius "
-                                                                         value={{ old('scope', $order->scope??"") }}>
+                                                                         value={{  $order->scope}}>
                                                                </div>
                                                           </div>
 
                                                           <div class="col-lg-2">
+                                                           {{-- $order->colors[3] --}}
                                                                <div class="form-group mb-0">
                                                                     <label for="exampleInputText3"
                                                                          class="h5">Colors</label>

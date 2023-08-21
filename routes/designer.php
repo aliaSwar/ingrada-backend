@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Web\Designer\TaskController;
 use App\Http\Controllers\Web\Designer\DesignerReportController;
 

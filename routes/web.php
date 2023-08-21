@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\Web\Designer\TimerCounterController;
@@ -32,7 +33,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
 
     });
-
+    Route::get('users/{user}',[RegisteredUserController::class,'show'])->name('users.detailes');
 
     Route::get('/',IndexController::class)->middleware(['auth', 'verified'])->name('dashboard');
 

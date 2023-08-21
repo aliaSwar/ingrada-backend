@@ -32,9 +32,10 @@
                                                        Category</th>
                                                   <th class="text-dark mb-0 font-16 font-weight-medium">Is
                                                        Active</th>
+                                                  <th class="text-dark mb-0 font-16 font-weight-medium">Role</th>
                                                   <th class="text-dark mb-0 font-16 font-weight-medium">
                                                        Actions</th>
-                                             </tr>
+                                             </tr>     
                                         </thead>
                                         <tbody>
                                              @foreach ($users as $user)
@@ -43,7 +44,9 @@
                                                   <td>{{ $user->number_tasks}} </td>
                                                   <td>{{ $user->categories->name??""}} </td>
                                                   <td>{{ $user->is_active}} </td>
-
+                                                  <td>@foreach ($user->roles as $role)
+                                                                      {{ $role->name }}
+                                                                      @endforeach</td>
 
                                                   <td>
                                                        <a class="details"

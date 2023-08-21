@@ -159,12 +159,12 @@
                             alt="user"
                             class="rounded-circle"
                             width="40">
-                        <span class="ms-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark">{{auth()->user()->fullname}}</span> <i data-feather="chevron-down"
+                        <span class="ms-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark"> {{auth()->user()->fullname}}</span> <i data-feather="chevron-down"
                                 class="svg-icon"></i></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-right user-dd animated flipInY">
                         <a class="dropdown-item"
-                            href=""><i data-feather="user"
+                            href="{{ route('users.detailes', auth()->user()) }}"><i data-feather="user"
                                 class="svg-icon me-2 ms-1"></i>
                             My Profile</a>
                         <div class="dropdown-divider"></div>
