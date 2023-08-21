@@ -13,11 +13,12 @@ final class DistirbutionAlgorithmAction
 {
     public function __invoke(Request $request)
     {
+      dd($request->all());
         $users = User::query()
             ->with('tasks')
             ->role('designer')
             ->where('is_deleted', false)
-                   //->where('category',$request->category)
+            //->where('category',$request->category)
             ->where('is_active', true)
             ->get();
 
