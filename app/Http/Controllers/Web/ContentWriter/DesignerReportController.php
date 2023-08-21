@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Web\Manager;
+namespace App\Http\Controllers\Web\ContentWriter;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
@@ -27,13 +27,13 @@ class DesignerReportController extends Controller
     }
     public function getDailyDesigner(Request $request)
     {
-      
-      return view('manager.reports.daily.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+
+      return view('content-writer.reports.daily.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
     }
     //get designer for monthly report
     public function Get_designer(Request $request)
     {
-      return view('manager.reports.monthly.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+      return view('content-writer.reports.monthly.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
 
     }
 
@@ -45,13 +45,14 @@ class DesignerReportController extends Controller
       ->get();
 
       foreach ($tasks_by_day  as $task) {
+        if(!($task->hours==null)){
         $delimiter = ','; // or '-'
         $digits = str_split($task->hours, 2);
-        $task->hours = implode($delimiter, $digits);
+        $task->hours = implode($delimiter, $digits);}
 
     }
         return view(
-            'manager.reports.daily.designers-report',
+            'content-writer.reports.daily.designers-report',
             ['tasks_by_day' =>  $tasks_by_day,'user_id'=>$id]
         );
     }
@@ -73,7 +74,7 @@ class DesignerReportController extends Controller
     }
 
         return view(
-            'manager.reports.monthly.designers-report',
+            'content-writer.reports.monthly.designers-report',
             [
               'tasks_by_month'=>$tasks_by_month,
               'user_id'=>$id,
@@ -108,7 +109,7 @@ class DesignerReportController extends Controller
         ->get();
 
         return view(
-            'manager.reports.monthly.designers-report',
+            'content-writer.reports.monthly.designers-report',
             ['tasks_by_month'=>$tasks_by_month,'user_id'=>$id]
         );
     }
@@ -119,7 +120,7 @@ class DesignerReportController extends Controller
       ->get();
 
         return view(
-            'manager.reports.daily.designers-report',
+            'content-writer.reports.daily.designers-report',
             ['tasks_by_day' =>  $tasks_by_day,'user_id'=>$id]
         );
 

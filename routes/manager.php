@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Route;
                Route::resource('external-orders', ExternalOrdermanagerController::class);
                Route::post('external-orders/{order}', [ExternalOrdermanagerController::class, 'store'])->name('store_external');
                Route::resource('internal-orders', InternalOrderController::class);
-               Route::get('dailyreport/designers',DesignerReportController::class,'getDailyDesigner')->name('dailyreport.designers');
+               Route::get('dailyreport/designers',[DesignerReportController::class,'getDailyDesigner'])->name('dailyreport.designers');
                Route::get('monthlyreport/designers',[DesignerReportController::class,'Get_designer'])->name('monthlyreport.designers');
 
                Route::get('report/all_task/{taskIds}',[DesignerReportController::class,'Show_task'])->name('all_task');

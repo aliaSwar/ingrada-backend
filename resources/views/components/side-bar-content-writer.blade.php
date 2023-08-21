@@ -18,24 +18,21 @@
                       class="hide-menu">REVIEW
                   </span></a>
           </li>
-                          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                              aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                                  class="hide-menu">REPORTS </span></a>
-                          <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                              <li class="sidebar-item"><a href="DailyReport.html" class="sidebar-link"><span
-                                          class="hide-menu"> DAILY
-                                      </span></a>
-                              </li>
-                              <li class="sidebar-item"><a href="monthlyReport.html" class="sidebar-link"><span
-                                          class="hide-menu"> MONTHLY
-                                      </span></a>
-                              </li>
-                              <li class="sidebar-item"><a href="AnnulyReport.html" class="sidebar-link"><span
-                                          class="hide-menu"> ANNUAL
-                                      </span></a>
-                              </li>
-                          </ul>
-                      </li>
+          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+            aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                class="hide-menu">Reports </span></a>
+        <ul aria-expanded="false" class="collapse  first-level base-level-line">
+            <li class="sidebar-item"><a href="{{ route('content-writer_dailyreport.designers') }}" class="sidebar-link"><span
+              class="hide-menu"> DAILY Designers
+          </span></a>
+  </li>
+                  <li class="sidebar-item"><a href="{{ route('content-writer_monthlyreport.designers') }}" class="sidebar-link"><span
+                    class="hide-menu"> MONTHLY Designers
+                </span></a>
+
+              </li>
+        </ul>
+    </li>
 
 
 
