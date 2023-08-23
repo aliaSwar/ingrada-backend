@@ -27,8 +27,8 @@ class DesignerReportController extends Controller
     }
     public function getDailyDesigner(Request $request)
     {
+      
       return view('manager.reports.daily.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
-
     }
     //get designer for monthly report
     public function Get_designer(Request $request)

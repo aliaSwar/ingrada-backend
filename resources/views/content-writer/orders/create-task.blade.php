@@ -10,18 +10,7 @@
 
                                               </div>
 
-                                              <div class="media align-items-center mt-md-0 mt-3">
 
-                                                  {{-- <p style="font-size: 19px ;margin-right: 30px; " id="timer"> 00 : 00 : 00 </p> --}}
-                                                  <a id="button-start" class="btn bg-info-light mr-3"><i class="ri-play-circle-line"></i></a>
-                                                  <a id="button-stop" class="btn bg-info-light mr-3"><i class="ri-pause-circle-line"></i></a>
-                                                  <a id="button-reset" class="btn bg-info-light mr-3"><i class="ri-restart-line"></i></a>
-
-
-                                                 <a class="btn editt" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseEdit1"><i class="ri-save-line"></i></a>
-
-
-                                                      </div>
 
                                                       <div class="card card-list task-card" id="edit" style="margin-top: 12px;">
                                                           <div  style="margin-top: 20px; margin-left: 16px;">
@@ -33,7 +22,7 @@
 
                                                           <i class="ri-pencil-ruler-2-line"></i>
                                                           <label for="exampleInputText01" class="h5"> Priorty This Task</label>
-                                                          <select  name="status" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
+                                                          <select  name="status" class="form-control bg-white custom-radius" data-style="py-0">
                                                               <option selected> High</option>
                                                               <option> Low</option>
                                                               <option> Middle</option>
@@ -92,10 +81,10 @@
                                                                     <div class="col-lg-3" >
                                                                       <i class="ri-pencil-ruler-2-line"></i>
                                                                       <label for="exampleInputText01" class="h5"> Category</label>
-                                                                      <select  name="category" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
+                                                                      <select  name="category" class=" form-control bg-white custom-radius" data-style="py-0">
                                                                       @foreach ($categories as $category)
                                                                       <option > {{ $category->name }}</option>
-                                                                      @endforeach 
+                                                                      @endforeach
 
                                                                       </select>
                                                                   </div>
@@ -105,7 +94,7 @@
                                                                           <div class="form-group mb-0">
                                                                               <label for="exampleInputText3" class="h5">File From manger</label>
                                                                               <div class="form-control bg-white custom-radius" style="text-align:justify;">
-                                                                                  <a href="C:\Users\ABC\Desktop\cpp">
+                                                                                  <a href="{{ asset($order->image) }}">
                                                                                       Click to open Image
                                                                                   </a>
                                                                                   </div>

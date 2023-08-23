@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Web\Designer;
+declare(strict_types=1);
+
+namespace App\Http\Controllers\Web\ContentWriter;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
@@ -12,45 +14,58 @@ use Cache;
 use DB;
 use App\Actions\Web\GetPointLastMonthAction;
 use App\Actions\Web\GetPointLastMonthTotalAction;
-use App\Actions\Web\RatingDesignerAction;
-use App\Http\Requests\Manager\StoreRatingRequest;
+
+
+
 
 class DesignerReportController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function __invoke(Request $request)
+
+    public function __invoke()
     {
-        return sendSuccessResponse(__('messages.get_data'));
+
+    }
+    public function getDailyDesigner(Request $request)
+    {
+
+      return view('content-writer.reports.daily.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+    }
+    //get designer for monthly report
+    public function Get_designer(Request $request)
+    {
+      return view('content-writer.reports.monthly.designer', ['users' => User::role('designer')->with('categories')->where('category_id', '!=', 'null')->paginate(7)]);
+
     }
 
-    public function Daily_report()
+    public function Daily_report($id)
     {
      // return $id;
             $tasks_by_day = Task::byDay()
-      ->where('user_id', auth()->user()->id)
+      ->where('user_id', $id)
       ->get();
 
       foreach ($tasks_by_day  as $task) {
+        if(!($task->hours==null)){
         $delimiter = ','; // or '-'
         $digits = str_split($task->hours, 2);
-        $task->hours = implode($delimiter, $digits);
+        $task->hours = implode($delimiter, $digits);}
 
     }
         return view(
-            'designer.reports.daily.designers-report',
-            ['tasks_by_day' =>  $tasks_by_day,'user_id'=>auth()->user()->id]
+            'content-writer.reports.daily.designers-report',
+            ['tasks_by_day' =>  $tasks_by_day,'user_id'=>$id]
         );
     }
 
-    public function Monthly_report( )
+    public function Monthly_report( $id)
     {
-      $average_points=auth()->user()->points;
-      $tasks_by_month = Task::byMonth()->where('user_id',auth()->user()->id)->get();
+      $is_show_rating=false;
+      $points=(new GetPointLastMonthAction)($id);
+      if (!$points->isEmpty()) {
+           $is_show_rating=true;
+      }
+      $average_points=(new GetPointLastMonthTotalAction)($id);
+      $tasks_by_month = Task::byMonth()->where('user_id', $id)->get();
 
       foreach ($tasks_by_month  as $task) {
         $delimiter = '-'; // or '-'
@@ -59,23 +74,16 @@ class DesignerReportController extends Controller
     }
 
         return view(
-            'designer.reports.monthly.designers-report',
+            'content-writer.reports.monthly.designers-report',
             [
               'tasks_by_month'=>$tasks_by_month,
-              'user_id'=>auth()->user()->id,
+              'user_id'=>$id,
+              'is_show_rating'=>$is_show_rating,
               'average_points'=> $average_points
             ]
         );
     }
-    function ratingMonthly(StoreRatingRequest $request) {
-      $count = $request->input('count');
-      return $count;
 
-
-      // Do something with the $count value (e.g., store it in the database)
-
-     // return response()->json(['message' => 'Rating count stored successfully.']);
-    }
     public function Show_task($task_ids)
     {
 
@@ -101,7 +109,7 @@ class DesignerReportController extends Controller
         ->get();
 
         return view(
-            'manager.reports.monthly.designers-report',
+            'content-writer.reports.monthly.designers-report',
             ['tasks_by_month'=>$tasks_by_month,'user_id'=>$id]
         );
     }
@@ -112,7 +120,7 @@ class DesignerReportController extends Controller
       ->get();
 
         return view(
-            'manager.reports.daily.designers-report',
+            'content-writer.reports.daily.designers-report',
             ['tasks_by_day' =>  $tasks_by_day,'user_id'=>$id]
         );
 
@@ -123,9 +131,6 @@ class DesignerReportController extends Controller
     $digits = str_split($number, 2);
     return implode($delimiter, $digits);
 }
-
-
-
 
 }
 

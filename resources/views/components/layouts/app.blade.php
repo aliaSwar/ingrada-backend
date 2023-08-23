@@ -26,7 +26,7 @@
 
      <link rel="stylesheet"
           href="{{ asset('dist/css/orders.css') }}">
-
+          
 </head>
 
 <body>
@@ -92,87 +92,13 @@
           <!-- Vendors JS -->
           <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}">
           </script>
-
+     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
           <!-- Main JS -->
           <script src="{{ asset('assets/js/main.js') }}"></script>
 
           <!-- Page JS -->
           <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
-          <script>
-          var options = {
-               series: [{
-                    color: "#E4E0F2",
 
-                    name: 'Inflation',
-                    data: [{
-
-                              x: 'Karem',
-                              y: 10
-                         }, {
-                              x: 'Hannaa',
-                              y: 18
-                         }, {
-                              x: 'Boushra',
-                              y: 13
-
-                         },
-                         {
-                              x: 'Owais',
-                              y: 13
-                         },
-                         {
-                              x: 'Nada',
-                              y: 13
-                         }
-                    ]
-               }],
-               chart: {
-                    height: 350,
-                    type: 'bar',
-               },
-               plotOptions: {
-                    bar: {
-                         horizontal: true,
-                         borderRadius: 10,
-
-                         dataLabels: {
-                              position: 'bottom', // top, center, bottom
-
-                         },
-                    }
-               },
-               dataLabels: {
-                    enabled: false,
-                    formatter: function(val) {
-                         return val + "%";
-                    },
-
-
-
-
-                    offsetY: -20,
-                    style: {
-                         fontSize: '12px',
-                         color: ["#FFF0BB"]
-                    }
-               },
-
-
-
-               title: {
-
-                    floating: true,
-                    offsetY: 330,
-                    align: 'center',
-                    style: {
-                         color: '#444'
-                    }
-               }
-          };
-
-          var chart = new ApexCharts(document.querySelector("#chart"), options);
-          chart.render();
-          </script>
 </body>
 
 </html>

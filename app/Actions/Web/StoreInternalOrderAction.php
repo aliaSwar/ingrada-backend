@@ -11,20 +11,20 @@ final class StoreInternalOrderAction
 {
     public function __invoke(StoreInternalOrderRequest $request)
     {
-      
-        $attributes = $request->validated();
 
+        $attributes = $request->validated();
         if ($request->hasFile('file')) {
-            $attributes['file'] = $request->file->store('internal-orders', 'public');
+            $attributes['file'] = uploadFile($request->file,'internal-orders');
         }
         $attributes['is_enternal']        = true;
         $attributes['is_accept']          = true;
         $attributes['status']             = Order::INITIATED_STATUS;
         $attributes['primary_price']      = $request->final_price;
 
-        $order=Order::create($attributes);
-
+        $order= new Order($attributes);
+        $order->customer_id= $request->customer_id;
         $order->is_enternal=true;
+
         $order->save();
         $order->users()->attach($request->user_id);
 

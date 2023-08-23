@@ -57,6 +57,7 @@ final class RegisteredUserController extends Controller
                 $data['category_id']=$request->category_id;
             }
             $user = new User($data);
+            $user->category=Category::findOrFail($request->category_id)->name;
             $user->avatar=uploadFile($request->path, 'users');
             $user->save();
 

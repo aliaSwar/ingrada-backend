@@ -16411,7 +16411,7 @@ sidebar navigation
 .sidebar-nav #sidebarnav .sidebar-item.selected > .sidebar-link {
   border-radius: 0px 60px 60px 0px;
   color: #fff !important;
-  background: linear-gradient(to right, #8971ea, #7f72ea, #7574ea, #6a75e9, #5f76e8);
+  background: linear-gradient(to right, #111112, #111112, #111112, #111112, #111112);
   box-shadow: 0px 7px 12px 0px rgba(95, 118, 232, 0.21);
   opacity: 1;
 }

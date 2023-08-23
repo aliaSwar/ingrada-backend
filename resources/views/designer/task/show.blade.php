@@ -36,9 +36,9 @@
 
                                                           <i class="ri-pencil-ruler-2-line"></i>
                                                           <label for="exampleInputText01" class="h5"> Status This Task</label>
-                                                          <select  name="status" class="selectpicker custom-select form-control bg-white custom-radius" data-style="py-0">
+                                                          <select  name="status" class="custom-select form-control bg-white custom-radius " data-style="py-0">
                                                               <option selected> Initiated</option>
-                                                              <option> InProgress</option>
+                                                              <option> Progress</option>
                                                               <option> Test</option>
                                                               <option> Completed</option>
                                                               <option>Failed</option>

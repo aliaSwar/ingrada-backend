@@ -13,6 +13,7 @@ use App\Http\Controllers\Web\Manager\DesignerReportController;
 use App\Http\Controllers\Web\Manager\TaskReportController;
 use App\Http\Controllers\Web\Manager\GetCompletedOrdersController;
 use App\Http\Controllers\Web\Manager\PublishItemController;
+use App\Http\Controllers\Web\Manager\RatingDesignerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,7 @@ use Illuminate\Support\Facades\Route;
            * Protected endpoints.
           */
           Route::middleware(['manager'])->group(function (): void {
-
+               Route::post('rating',RatingDesignerController::class)->name('rating');
                Route::resource('designers', DesignerController::class);
                Route::get('/fd', DesignerReportController::class);
                Route::post('new-message/{customer_id}', ChatUserController::class)->name('manager.new_message');
@@ -43,7 +44,7 @@ use Illuminate\Support\Facades\Route;
                Route::resource('external-orders', ExternalOrdermanagerController::class);
                Route::post('external-orders/{order}', [ExternalOrdermanagerController::class, 'store'])->name('store_external');
                Route::resource('internal-orders', InternalOrderController::class);
-               Route::get('dailyreport/designers',DesignerReportController::class,'getDailyDesigner')->name('dailyreport.designers');
+               Route::get('dailyreport/designers',[DesignerReportController::class,'getDailyDesigner'])->name('dailyreport.designers');
                Route::get('monthlyreport/designers',[DesignerReportController::class,'Get_designer'])->name('monthlyreport.designers');
 
                Route::get('report/all_task/{taskIds}',[DesignerReportController::class,'Show_task'])->name('all_task');

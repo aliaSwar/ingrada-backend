@@ -70,7 +70,7 @@
           </li>
                     <li class="sidebar-item"><a href="{{route('Monthly_tasks')}}" class="sidebar-link"><span
                                 class="hide-menu"> MONTHLY Tasks
-                            </span></a> 
+                            </span></a>
 
                           </li>
                           <li class="sidebar-item"><a href="{{ route('monthlyreport.designers') }}" class="sidebar-link"><span
@@ -80,45 +80,46 @@
                       </li>
                 </ul>
             </li>
-                  <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                      aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
-                          class="hide-menu">DOMAINS & FONTS </span></a>
-                  <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                      <li class="sidebar-item"><a href="FONT.html" class="sidebar-link"><span
-                                  class="hide-menu"> SHOW & ADD FONTS
-                              </span></a>
-                      </li>
-                      <li class="sidebar-item"><a href="domain.html" class="sidebar-link"><span
-                                  class="hide-menu">
-                                 ADD DOMAIN
-                              </span></a>
-                      </li>
-                      <li class="sidebar-item"><a href="showdomain.html" class="sidebar-link"><span
-                          class="hide-menu">
-                         SHOW DOMAIN
+            <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+              aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                  class="hide-menu">DOMAINS & FONTS </span></a>
+          <ul aria-expanded="false" class="collapse  first-level base-level-line">
+              <li class="sidebar-item"><a href="{{ route('fonts.index') }}" class="sidebar-link"><span
+                          class="hide-menu"> SHOW & ADD FONTS
                       </span></a>
               </li>
-
-                  </ul>
+              <li class="sidebar-item"><a href="{{ route('scopes.create') }}" class="sidebar-link"><span
+                          class="hide-menu">
+                         ADD DOMAIN
+                      </span></a>
               </li>
-              <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                  aria-expanded="false"><i data-feather="slack" class="feather-icon"></i><span
-                      class="hide-menu">TYPES OF DESIGNES </span></a>
-              <ul aria-expanded="false" class="collapse  first-level base-level-line">
+              <li class="sidebar-item"><a href="{{ route('scopes.index') }}"class="sidebar-link"><span
+                  class="hide-menu">
+                 SHOW DOMAIN
+              </span></a>
+      </li>
 
-                  <li class="sidebar-item"><a href="showtypes.html" class="sidebar-link"><span
-                              class="hide-menu"> SHOW TYPES
-                          </span></a>
-                  </li>
-                  <li class="sidebar-item"><a href="addtype(no-js).html" class="sidebar-link"><span
-                              class="hide-menu">
-                              ADD TYPE
-                          </span></a>
-                  </li>
+          </ul>
+      </li>
+
+      <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+        aria-expanded="false"><i data-feather="slack" class="feather-icon"></i><span
+            class="hide-menu">TYPES OF DESIGNES </span></a>
+    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+
+        <li class="sidebar-item"><a href="{{ route('types.index') }}" class="sidebar-link"><span
+                    class="hide-menu"> SHOW TYPES
+                </span></a>
+        </li>
+        <li class="sidebar-item"><a href="{{ route('types.create') }}" class="sidebar-link"><span
+                    class="hide-menu">
+                    ADD TYPE
+                </span></a>
+        </li>
 
 
-              </ul>
-          </li>
+    </ul>
+    </li>
           <li class="list-divider"></li>
                   <li class="sidebar-item">
                             <form action="{{ route('logout') }}" method="post">

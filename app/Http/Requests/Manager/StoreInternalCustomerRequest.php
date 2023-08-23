@@ -36,15 +36,8 @@ final class StoreInternalCustomerRequest extends FormRequest
             'phone_number'             => ['required', 'string', new PhoneNumber],
             'email'                    => ['required', 'unique:customers,email', 'email'],
             //'password'                 => ['required',  'string'],
-            'is_active'                => ['required', 'boolean']
+
         ];
     }
 
-
-    protected function failedValidation(Validator $validator): void
-    {
-        throw new HttpResponseException(
-            sendFailedResponse($validator->errors()->first(), null, 422)
-        );
-    }
 }

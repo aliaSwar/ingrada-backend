@@ -76,7 +76,7 @@
                   <div class="d-flex flex-column align-items-center text-center">
                       <form action="upload.php" method="post" enctype="multipart/form-data">
                           <label for="fileToUpload">
-                        <div class="profile-pic" style="background-image: url('https://randomuser.me/api/portraits/med/men/65.jpg')">
+                        <div class="profile-pic" style="background-image: url($user->avatar)">
                             <span class="glyphicon glyphicon-camera"></span>
                             <span >Change Image</span>
                         </div>
@@ -84,7 +84,11 @@
                         <input type="File" name="fileToUpload" id="fileToUpload">
                       </form>
                       <h4 class="mb-0" style="margin-top: 12px;">{{ $user->username }}</h4>
-                      <h6 class="mb-0" style="margin-top: 12px;">{{ $user->role }}</h6>
+                      <h6 class="mb-0" style="margin-top: 12px;">@foreach ($user->roles as $role)
+                        {{ $role->name }}
+                      @endforeach
+                      
+                    </h6>
 
                   </div>
                   <hr class="my-4">

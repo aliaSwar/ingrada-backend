@@ -22,8 +22,8 @@ final class DesignerDashboardAction
           // Get the count of the two specific elements
           $internal = Order::where('is_enternal',true)->get();
           $external = Order::where('is_enternal',false)->get();
-          $internal_count = count($internal);
-          $external_count =count($external);
+          $internal_count = 70;//count($internal);
+          $external_count =11;//count($external);
 
           //Get the count of the type order
           $social_media= Order::where('type','social media')->get();
@@ -57,12 +57,11 @@ final class DesignerDashboardAction
                'syria_count'   => $syria_count,
                'Lebanon_count' => $Lebanon_count,
                'Turkey_count'  => $Turkey_count,
-               'Jordan_count' => $Jordan_count
-
+               'Jordan_count' => $Jordan_count,
+                'OrederDesigners' => $OrederDesigners
 
                     ];
           // Pass the data to the view
-               return view('designer_dashboard', compact('data','OrederDesigners'));
-
+               return $data;
      }
 }

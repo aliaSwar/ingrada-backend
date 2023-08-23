@@ -1,4 +1,28 @@
 <x-layouts.app>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+    <title>Freedash Template - The Ultimate Multipurpose admin template</title>
+
+    <link rel="stylesheet" href="../assets/libs/chart.js/dist/apex-charts.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <link type="text/css" href="@@path/vendor/apexcharts/dist/apexcharts.css" rel="stylesheet">
+  </head>
      <div class="container-fluid">
 
           <div class="row">
@@ -32,10 +56,9 @@
                                                        Category</th>
                                                   <th class="text-dark mb-0 font-16 font-weight-medium">Is
                                                        Active</th>
-                                                  <th class="text-dark mb-0 font-16 font-weight-medium">Role</th>
                                                   <th class="text-dark mb-0 font-16 font-weight-medium">
                                                        Actions</th>
-                                             </tr>     
+                                             </tr>
                                         </thead>
                                         <tbody>
                                              @foreach ($users as $user)
@@ -44,16 +67,13 @@
                                                   <td>{{ $user->number_tasks}} </td>
                                                   <td>{{ $user->categories->name??""}} </td>
                                                   <td>{{ $user->is_active}} </td>
-                                                  <td>@foreach ($user->roles as $role)
-                                                                      {{ $role->name }}
-                                                                      @endforeach</td>
-
                                                   <td>
-                                                       <a class="details"
-                                                            title="details"
+                                                       <a class="daily"
+                                                            title="daily"
                                                             data-toggle="tooltip"
-                                                            href="{{ route('users.show', $user) }}"><i
+                                                            href="{{ route('content-writer_Daily_designers', $user->id) }}"><i
                                                                  class="material-icons">event_note</i></a>
+
                                                   </td>
                                              </tr>
                                              @endforeach
@@ -61,7 +81,9 @@
 
                                    </table>
                               </div>
+
                          </div>
+
                     </div>
                </div>
           </div>
